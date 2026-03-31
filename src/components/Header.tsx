@@ -7,10 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { href: "/", label: "Accueil" },
   { href: "/services", label: "Services" },
-  { href: "/fonctionnement", label: "Comment ça marche" },
-  { href: "/a-propos", label: "À propos" },
+  { href: "/comment-ca-marche", label: "Comment ça marche" },
+  { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
   { href: "/temoignages", label: "Témoignages" },
-  { href: "/blog", label: "Blog" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -33,8 +33,7 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 shrink-0">
           <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
             <span className="text-white font-bold text-lg">Y</span>
           </div>
@@ -44,7 +43,6 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -57,26 +55,22 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* CTA Desktop */}
         <div className="hidden lg:flex items-center gap-4">
           <a
             href="tel:+33667224507"
             className="flex items-center gap-2 text-sm font-semibold text-primary"
           >
-            <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-              📞
-            </span>
+            <span>📞</span>
             06 67 22 45 07
           </a>
           <Link
-            href="/devis"
+            href="/demander-devis"
             className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-6 py-2.5 rounded-full transition-all cta-glow text-sm"
           >
             Devis Gratuit →
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
@@ -88,7 +82,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -109,7 +102,7 @@ export default function Header() {
                 </Link>
               ))}
               <Link
-                href="/devis"
+                href="/demander-devis"
                 onClick={() => setMobileOpen(false)}
                 className="bg-secondary text-primary-dark font-bold px-6 py-3 rounded-full text-center mt-2"
               >

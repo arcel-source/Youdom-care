@@ -9,42 +9,33 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: {
-    default: "Youdom Care — Aide à Domicile Sur Mesure à Paris et Île-de-France",
+    default: "Youdom Care — Aide à Domicile sur Mesure à Paris et Île-de-France",
     template: "%s | Youdom Care",
   },
   description:
-    "Service d'aide à domicile premium pour personnes âgées, en situation de handicap ou en perte d'autonomie. Auxiliaires de vie qualifiées, disponibles 24h/24. Devis gratuit sous 2h. Crédit d'impôt 50%.",
+    "Service d'aide à domicile premium pour personnes âgées, en situation de handicap ou en perte d'autonomie. Auxiliaires de vie qualifiées, disponibles 24h/24. Crédit d'impôt 50%. Devis gratuit sous 2h.",
   keywords: [
-    "aide à domicile Paris",
-    "auxiliaire de vie",
-    "maintien à domicile",
+    "aide à domicile",
     "aide personnes âgées",
     "aide handicap",
+    "maintien à domicile",
+    "auxiliaire de vie",
     "garde de nuit",
+    "aide à domicile Paris",
     "aide à domicile Île-de-France",
   ],
   openGraph: {
-    title: "Youdom Care — Aide à Domicile Sur Mesure",
-    description: "Service premium d'aide à domicile. Auxiliaires de vie qualifiées. Devis gratuit sous 2h.",
+    title: "Youdom Care — Aide à Domicile sur Mesure",
+    description: "Service premium d'aide à domicile. Devis gratuit sous 2h.",
     url: "https://www.youdom-care.com",
     siteName: "Youdom Care",
     locale: "fr_FR",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Youdom Care — Aide à Domicile Sur Mesure",
-    description: "Service premium d'aide à domicile. Devis gratuit sous 2h.",
-  },
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.youdom-care.com" },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={inter.variable}>
       <head>
@@ -66,11 +57,6 @@ export default function RootLayout({
                 postalCode: "75012",
                 addressCountry: "FR",
               },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: 48.8462,
-                longitude: 2.3725,
-              },
               openingHoursSpecification: {
                 "@type": "OpeningHoursSpecification",
                 dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -79,10 +65,6 @@ export default function RootLayout({
               },
               priceRange: "€€",
               areaServed: { "@type": "City", name: "Paris" },
-              sameAs: [
-                "https://www.facebook.com/youdomc/",
-                "https://www.instagram.com/_u/youdom_care",
-              ],
             }),
           }}
         />

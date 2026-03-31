@@ -24,13 +24,13 @@ export default function FloatingCTA() {
         >
           <a
             href="tel:+33667224507"
-            className="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform"
+            className="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform text-2xl"
             aria-label="Appeler"
           >
-            <span className="text-2xl">📞</span>
+            📞
           </a>
           <Link
-            href="/devis"
+            href="/demander-devis"
             className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-5 py-3 rounded-full shadow-xl cta-glow animate-pulse-soft text-sm text-center"
           >
             Devis Gratuit
