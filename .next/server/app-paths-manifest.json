@@ -1,5 +1,14 @@
 {
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js"
+  "/a-propos/page": "app/a-propos/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/devis/page": "app/devis/page.js",
+  "/faq/page": "app/faq/page.js",
+  "/fonctionnement/page": "app/fonctionnement/page.js",
+  "/page": "app/page.js",
+  "/recrutement/page": "app/recrutement/page.js",
+  "/services/page": "app/services/page.js",
+  "/temoignages/page": "app/temoignages/page.js"
 }

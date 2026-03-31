@@ -1,0 +1,114 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+
+const testimonials = [
+  { name: "Marie D.", role: "Fille d'une bénéficiaire", rating: 5, text: "Grâce à Youdom Care, ma mère peut rester chez elle en toute sécurité. Son auxiliaire de vie, Sophie, est devenue comme une membre de la famille. Je travaille l'esprit tranquille.", service: "Aide à l'autonomie" },
+  { name: "Jean-Pierre L.", role: "Bénéficiaire, 78 ans", rating: 5, text: "Après mon hospitalisation, j'avais peur de ne plus pouvoir vivre seul. L'équipe Youdom Care m'a accompagné avec une gentillesse et un professionnalisme remarquables.", service: "Retour d'hospitalisation" },
+  { name: "Fatima K.", role: "Mère d'un enfant handicapé", rating: 5, text: "Trouver une aide adaptée pour mon fils était un parcours du combattant. Youdom Care a compris nos besoins dès le premier rendez-vous. Un vrai soulagement pour toute la famille.", service: "Aide au handicap" },
+  { name: "Philippe M.", role: "Fils d'un bénéficiaire", rating: 5, text: "Mon père atteint d'Alzheimer nécessite une attention permanente. L'auxiliaire de vie fait preuve d'une patience et d'une humanité exceptionnelles. Merci Youdom Care.", service: "Aide Alzheimer" },
+  { name: "Isabelle R.", role: "Bénéficiaire, 82 ans", rating: 5, text: "Ce n'est pas juste une aide ménagère, c'est une présence chaleureuse. Ma maison est impeccable et j'ai quelqu'un avec qui discuter. Ça change la vie.", service: "Aide ménagère" },
+  { name: "Ahmed B.", role: "Fils d'une bénéficiaire", rating: 5, text: "Le transport PMR nous a changé la vie. Ma mère peut enfin se rendre à ses rendez-vous médicaux sans stress. Le chauffeur est adorable avec elle.", service: "Transport PMR" },
+  { name: "Catherine V.", role: "Fille d'un bénéficiaire", rating: 5, text: "La garde de nuit pour mon père a été une bénédiction. Savoir qu'il y a quelqu'un auprès de lui me permet enfin de dormir tranquille.", service: "Garde de nuit" },
+  { name: "Nathalie G.", role: "Bénéficiaire, 71 ans", rating: 5, text: "L'équipe a été formidable pour m'aider avec la téléassistance. Je me sens en sécurité chez moi et mes enfants sont rassurés. Simple et efficace.", service: "Téléassistance" },
+];
+
+export default function TemoignagesContent() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-20 w-80 h-80 bg-secondary rounded-full blur-[100px]" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Témoignages</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-3 mb-6">
+              Ils nous font{" "}
+              <span className="text-secondary">confiance</span>
+            </h1>
+            <p className="text-xl text-white/70 max-w-2xl mx-auto">
+              Plus de 500 familles accompagnées. Découvrez leurs histoires et pourquoi elles
+              recommandent Youdom Care.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats bar */}
+      <section className="bg-white py-8 border-b">
+        <div className="max-w-4xl mx-auto px-4 flex flex-wrap justify-center gap-8 md:gap-16">
+          {[
+            { v: "4.9/5", l: "Note moyenne" },
+            { v: "500+", l: "Familles" },
+            { v: "98%", l: "Satisfaction" },
+            { v: "100%", l: "Recommandent" },
+          ].map((s) => (
+            <div key={s.l} className="text-center">
+              <div className="text-2xl font-bold text-primary">{s.v}</div>
+              <div className="text-sm text-text-light">{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials grid */}
+      <section className="py-24 bg-warm">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-6">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={t.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="bg-white rounded-2xl p-7 shadow-sm border border-gray-100"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: t.rating }).map((_, j) => (
+                      <span key={j} className="text-secondary">★</span>
+                    ))}
+                  </div>
+                  <span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                    {t.service}
+                  </span>
+                </div>
+                <p className="text-text leading-relaxed mb-5 italic">
+                  &quot;{t.text}&quot;
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="text-primary font-bold">{t.name[0]}</span>
+                  </div>
+                  <div>
+                    <div className="font-bold text-text text-sm">{t.name}</div>
+                    <div className="text-text-light text-xs">{t.role}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-primary">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Rejoignez les familles qui nous font confiance
+          </h2>
+          <p className="text-white/70 text-lg mb-8">
+            Votre satisfaction est notre priorité. Demandez votre devis gratuit.
+          </p>
+          <Link href="/devis" className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-10 py-4 rounded-full text-lg transition-all cta-glow">
+            Demander un Devis Gratuit →
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}

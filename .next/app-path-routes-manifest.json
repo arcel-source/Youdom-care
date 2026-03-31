@@ -1,5 +1,14 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
-  "/page": "/"
+  "/a-propos/page": "/a-propos",
+  "/blog/page": "/blog",
+  "/contact/page": "/contact",
+  "/devis/page": "/devis",
+  "/faq/page": "/faq",
+  "/fonctionnement/page": "/fonctionnement",
+  "/page": "/",
+  "/recrutement/page": "/recrutement",
+  "/services/page": "/services",
+  "/temoignages/page": "/temoignages"
 }
