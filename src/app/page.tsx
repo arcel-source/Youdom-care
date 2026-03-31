@@ -1,236 +1,190 @@
+import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Aide à Domicile sur Mesure | Youdom Care",
-  description: "Service premium d'aide à domicile pour personnes âgées, handicap, perte d'autonomie. Devis gratuit, auxiliaires qualifiées, crédit d'impôt 50%. 24h/24, Paris & IDF.",
+  title: "Youdom Care | Aide à Domicile Paris & Île-de-France | Services Personnalisés",
+  description: "Aide à domicile de qualité pour personnes âgées et handicapées. Paris & Île-de-France. Intervenants formés, continus, empathiques. Crédit d'impôt 50%. Devis gratuit.",
 };
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
+    <div className="min-h-screen bg-white">
+      {/* HERO */}
+      <section className="relative pt-20 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-secondary rounded-full blur-[120px]" />
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-accent rounded-full blur-[100px]" />
+          <div className="absolute top-20 right-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute -bottom-8 -left-8 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
         </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-4">
-              ✨ 500+ familles accompagnées • 98% satisfaction
-            </span>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-              L&apos;aide à domicile <span className="text-secondary">sur mesure</span> qui change tout
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+              Aide à domicile de confiance. Pour vivre dignement chez soi.
             </h1>
-
-            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Des auxiliaires de vie d&apos;exception, dédiées au bien-être de vos proches. 
-              Vivre chez soi, en toute sécurité et dignité. Paris & Île-de-France, 24h/24.
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              Youdom Care : intervenants formés et bienveillants. Paris & Île-de-France. Crédit d'impôt 50%. Réponse en moins de 2 heures.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <a
-                href="/demander-devis"
-                className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-8 py-4 rounded-full text-lg transition-all cta-glow text-center"
-              >
-                Obtenir mon Devis Gratuit →
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
+                Demander un devis gratuit
               </a>
-              <a
-                href="tel:+33667224507"
-                className="border-2 border-white/30 hover:border-white/50 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all text-center flex items-center justify-center gap-2"
-              >
-                📞 Nous Appeler
+              <a href="tel:0184807297" className="px-8 py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-lg">
+                Appeler : 01 84 80 72 97
               </a>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {[
-                { value: "500+", label: "Familles" },
-                { value: "98%", label: "Satisfaction" },
-                { value: "24/7", label: "Disponibilité" },
-                { value: "50%", label: "Crédit d'impôt" },
-              ].map((stat) => (
-                <div key={stat.label} className="bg-white/[0.05] backdrop-blur-sm border border-white/10 rounded-2xl p-4 text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-secondary">{stat.value}</div>
-                  <div className="text-xs md:text-sm text-white/60 mt-1">{stat.label}</div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-24 bg-warm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Nos Services</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-text mt-3 mb-4">
-              Des services adaptés à <span className="text-gradient">chaque besoin</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* POURQUOI YOUDOM CARE */}
+      <section className="py-20 bg-warm">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-text mb-16 text-center">Pourquoi choisir Youdom Care ?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "🤝", title: "Aide à l'autonomie", desc: "Gestes quotidiens, toilette, repas, lever/coucher" },
-              { icon: "🌙", title: "Garde de nuit", desc: "Présence 24h/24 pour votre sécurité et sérénité" },
-              { icon: "♿", title: "Aide au handicap", desc: "Accompagnement spécialisé pour adultes et enfants" },
-              { icon: "🏠", title: "Aide ménagère", desc: "Ménage, lessive, cuisine — domicile impeccable" },
-              { icon: "📡", title: "Téléassistance", desc: "Détecteur chute, géolocalisation, appel d'urgence" },
-              { icon: "🚗", title: "Transport PMR", desc: "Véhicules adaptés, accompagnement sécurisé" },
-              { icon: "🏥", title: "Retour hospitalisation", desc: "Suivi post-hospitalisation à domicile" },
-              { icon: "👶", title: "Enfants handicapés", desc: "Aide et soutien pour enfants malades ou handicapés" },
-            ].map((service) => (
-              <div key={service.title} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-gray-100">
-                <div className="text-3xl mb-3">{service.icon}</div>
-                <h3 className="font-bold text-lg text-text mb-2">{service.title}</h3>
-                <p className="text-text-light text-sm">{service.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <a href="/services" className="inline-flex bg-primary hover:bg-primary-light text-white font-bold px-8 py-4 rounded-full transition-all text-lg">
-              Tous les services →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Pourquoi nous */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-text mb-16">
-            Pourquoi nous <span className="text-gradient">choisir</span> ?
-          </h2>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: "👤", title: "Intervenante unique", desc: "Même personne à chaque visite — lien de confiance" },
-              { icon: "🎓", title: "Personnel qualifié", desc: "Diplômés, formés en continu, références vérifiées" },
-              { icon: "⚡", title: "Réponse sous 2h", desc: "Devis et appel garantis rapides — pas d'attente" },
-              { icon: "💰", title: "50% crédit d'impôt", desc: "On gère les démarches, vous économisez" },
-              { icon: "📊", title: "Suivi qualité", desc: "Enquêtes satisfaction, ajustements permanents" },
-              { icon: "🔄", title: "Adaptabilité", desc: "Le plan d'aide évolue avec vos besoins" },
-            ].map((reason) => (
-              <div key={reason.title} className="bg-warm rounded-2xl p-6 hover:shadow-lg transition-all">
-                <div className="text-3xl mb-3">{reason.icon}</div>
-                <h3 className="font-bold text-text mb-1">{reason.title}</h3>
-                <p className="text-text-light text-sm">{reason.desc}</p>
+              { icon: "🤝", title: "Intervenants de confiance", desc: "Sélection stricte, formations continues, même personne = continuité." },
+              { icon: "⏰", title: "Réponse en 2 heures", desc: "Appel conseil immédiat. Pas d'attente administrative." },
+              { icon: "💰", title: "50% crédit d'impôt", desc: "Automatique service à personne. TVA réduite 5.5%. Vraiment moins cher." },
+              { icon: "🏠", title: "Maintien à domicile", desc: "Vivre chez soi dignement plutôt qu'établissement. Liberté préservée." },
+              { icon: "🎯", title: "Service personnalisé", desc: "Pas de modèle unique. Chaque situation, solution adaptée." },
+              { icon: "📞", title: "Support continu", desc: "Supervision régulière, feedback, ajustements permanents." },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold text-text mb-3">{item.title}</h3>
+                <p className="text-text-light">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Comment ça marche */}
-      <section className="py-24 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-text mb-16">
-            Comment ça <span className="text-gradient">marche</span>
-          </h2>
-
-          <div className="space-y-8">
+      {/* SERVICES */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-text mb-16 text-center">Nos services</h2>
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { num: "01", title: "Contactez-nous", desc: "Par téléphone ou formulaire. C'est gratuit, sans engagement." },
-              { num: "02", title: "Visite à domicile", desc: "On évalue vraiment votre situation, on ne propose rien à la légère." },
-              { num: "03", title: "Sélection d'auxiliaire", desc: "On choisit quelqu'un qui vous correspond — caractère, horaires, besoins." },
-              { num: "04", title: "Plan d'aide personnalisé", desc: "Services, fréquence, horaires, jours — tout est clair et écrit." },
-              { num: "05", title: "Démarrage & suivi", desc: "Première visite, retours, puis suivi régulier et ajustements." },
-            ].map((step, i) => (
-              <div key={step.num} className="flex gap-6 items-start">
-                <div className="shrink-0 flex flex-col items-center">
-                  <div className="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-bold">
-                    {step.num}
+              { slug: "aide-personnes-agees", icon: "👴", title: "Aide aux personnes âgées", desc: "Toilette, repas, mobilité, accompagnement. Pour continuer vie chez soi." },
+              { slug: "aide-handicap", icon: "🦽", title: "Aide handicap", desc: "Services adaptés à chaque handicap. Continuité, respect, dignité." },
+              { slug: "garde-enfants-handicap", icon: "👶", title: "Garde d'enfants", desc: "Garde qualifiée enfants handicapés. Sécurité, bienveillance, confiance." },
+              { slug: "aide-menagere", icon: "🧹", title: "Aide ménagère", desc: "Ménage régulier. Domicile propre, prévention chutes, bien-être." },
+              { slug: "garde-nuit", icon: "🌙", title: "Présence de nuit", desc: "Veille passive ou active. Sécurité nocturne maximale." },
+              { slug: "accompagnement-sorties", icon: "🚶", title: "Accompagnement", desc: "Courses, rdv médecins, loisirs. Autonomie et lien social." },
+            ].map((service, idx) => (
+              <Link key={idx} href={`/services/${service.slug}`} className="group">
+                <div className="bg-warm p-8 rounded-2xl border border-gray-200 hover:border-primary hover:shadow-lg transition-all h-full">
+                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">{service.icon}</div>
+                  <h3 className="text-xl font-bold text-text mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                  <p className="text-text-light text-sm">{service.desc}</p>
+                  <div className="mt-4 text-primary font-bold text-sm group-hover:translate-x-2 transition-transform">
+                    En savoir plus →
                   </div>
-                  {i < 4 && <div className="w-0.5 h-16 bg-primary/20 mt-2" />}
                 </div>
-                <div className="pt-1">
-                  <h3 className="text-xl font-bold text-text mb-2">{step.title}</h3>
-                  <p className="text-text-light">{step.desc}</p>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Témoignages */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-text mb-16">
-            Ce que disent les <span className="text-gradient">familles</span>
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
+      {/* TÉMOIGNAGES */}
+      <section className="py-20 bg-warm">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-text mb-16 text-center">Ce que disent nos clients</h2>
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              {
-                text: "Grâce à Youdom Care, maman peut rester chez elle en toute sécurité. Son auxiliaire, Sophie, est devenue comme une amie. Je travaille l'esprit tranquille.",
-                author: "Marie D.",
-                role: "Fille",
-              },
-              {
-                text: "Papa a Alzheimer et a besoin d'une présence. L'auxiliaire a trouvé avec lui une belle complicité. Elle est patiente, tendre et vraiment professionnelle.",
-                author: "Famille Dupont",
-                role: "Proche",
-              },
-              {
-                text: "Mon fils est en fauteuil roulant. L'auxiliaire le lave avec tendresse, l'habille, l'accompagne aux sorties. Elle lui redonne une vie sociale.",
-                author: "Mère de Tom",
-                role: "Parent",
-              },
-              {
-                text: "Je suis atteint de sclérose en plaques. Youdom Care a trouvé quelqu'un qui comprend mon handicap et m'aide à rester indépendant.",
-                author: "Jean P.",
-                role: "Bénéficiaire",
-              },
-            ].map((testi) => (
-              <div key={testi.author} className="bg-warm rounded-2xl p-7 border border-gray-100">
-                <div className="flex gap-1 mb-4">
+              { name: "Marie T.", city: "Paris 12ème", quote: "Enfin respirer. Maman en de bonnes mains. Youdom Care c'est sérieux." },
+              { name: "Jean-Pierre D.", city: "Boulogne", quote: "Même intervenant depuis 2 ans. On s'est construit confiance vraie. Ça change tout." },
+              { name: "Sophie L.", city: "Vincennes", quote: "Processus simple. Pas bureaucratie pesante. Réponse rapide. Très professionnel." },
+              { name: "Robert M.", city: "Le Kremlin-Bicêtre", quote: "Garde handicap mon fils : patience, bienveillance, compétence. Exactement ce qu'il fallait." },
+              { name: "Valérie N.", city: "Saint-Mandé", quote: "Crédit d'impôt expliqué simplement. Moins cher que prévu. Transparence totale." },
+              { name: "Patrick H.", city: "Ivry-sur-Seine", quote: "Présence nuit : enfin dormir tranquille. Sécurité maximale. Recommend vivement." },
+            ].map((testi, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-200">
+                <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-secondary">★</span>
+                    <span key={i} className="text-secondary text-lg">★</span>
                   ))}
                 </div>
-                <p className="text-text leading-relaxed mb-5 italic">
-                  "{testi.text}"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold">{testi.author[0]}</span>
+                <p className="text-text-light mb-4 italic">"{testi.quote}"</p>
+                <p className="font-bold text-text text-sm">{testi.name}</p>
+                <p className="text-text-light text-xs">{testi.city}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-text-light mt-12">
+            <strong>98% de satisfaction</strong> — Source sondage clients 2025
+          </p>
+        </div>
+      </section>
+
+      {/* AIDES FINANCIÈRES */}
+      <section className="py-20 bg-gradient-to-br from-primary-dark to-primary">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-white mb-12 text-center">Financer votre aide</h2>
+          <div className="grid md:grid-cols-4 gap-6 mb-12">
+            {[
+              { icon: "💰", label: "APA", desc: "Allocation Personnalisée d'Autonomie" },
+              { icon: "🏥", label: "PCH", desc: "Prestation Compensation Handicap" },
+              { icon: "📊", label: "Crédit 50%", desc: "Automatique service à personne" },
+              { icon: "👶", label: "AEEH", desc: "Allocation Éducation Enfant Handicapé" },
+            ].map((aide, idx) => (
+              <div key={idx} className="bg-white/10 p-6 rounded-xl backdrop-blur border border-white/20 text-center">
+                <div className="text-4xl mb-2">{aide.icon}</div>
+                <h3 className="font-bold text-white text-sm mb-1">{aide.label}</h3>
+                <p className="text-white/70 text-xs">{aide.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <Link href="/aides-financieres" className="inline-block px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
+              Guide aides financières complet →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* COMMENT CA MARCHE */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-text mb-16 text-center">Comment ça marche ?</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { step: "1", title: "Appel conseil", desc: "Décrivez situation. Conseil gratuit orienté." },
+              { step: "2", title: "Visite évaluation", desc: "À domicile. Observation et discussion détaillée." },
+              { step: "3", title: "Plan d'aide", desc: "Services, planning, tarif transparent." },
+              { step: "4", title: "Débuter", desc: "Intervenant formé commence rapidement." },
+            ].map((item, idx) => (
+              <div key={idx} className="relative">
+                <div className="bg-warm p-8 rounded-2xl text-center">
+                  <div className="absolute -top-6 -left-6 h-12 w-12 rounded-full bg-secondary text-primary font-bold flex items-center justify-center text-lg">
+                    {item.step}
                   </div>
-                  <div>
-                    <div className="font-bold text-text text-sm">{testi.author}</div>
-                    <div className="text-text-light text-xs">{testi.role}</div>
-                  </div>
+                  <h3 className="font-bold text-text mt-2 mb-2">{item.title}</h3>
+                  <p className="text-text-light text-sm">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="text-center mt-12">
-            <a href="/temoignages" className="inline-flex bg-primary hover:bg-primary-light text-white font-bold px-8 py-4 rounded-full transition-all">
-              Lire tous les témoignages →
+      {/* CTA FINAL */}
+      <section className="py-20 bg-gradient-to-br from-primary to-primary-light">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">Commençons ensemble</h2>
+          <p className="text-white/80 text-lg mb-10">
+            Youdom Care : aide à domicile de qualité. Pour vivre dignement chez soi. Consultation gratuite, réponse en moins de 2 heures.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
+              Demander un devis gratuit
+            </a>
+            <a href="tel:0184807297" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 text-lg">
+              Appeler : 01 84 80 72 97
             </a>
           </div>
         </div>
       </section>
-
-      {/* CTA final */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Prêt à donner le meilleur à votre proche ?
-          </h2>
-          <p className="text-white/70 text-lg mb-8">
-            La première étape est gratuite. On vous écoute, on vous propose la meilleure solution.
-          </p>
-          <a href="/demander-devis" className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-10 py-4 rounded-full text-lg transition-all cta-glow">
-            Demander un Devis Gratuit →
-          </a>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }
