@@ -23,7 +23,7 @@ export default function DevisPage() {
       </section>
 
       <section className="py-10 sm:py-16 bg-warm min-h-[60vh]">
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl lg:max-w-xl mx-auto px-4">
           <DevisForm />
         </div>
       </section>

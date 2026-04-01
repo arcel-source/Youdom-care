@@ -67,7 +67,7 @@ export default function ContactPage() {
 
       {/* FORM + SIDEBAR */}
       <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="max-w-5xl lg:max-w-3xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">
             Envoyer un message
           </h2>

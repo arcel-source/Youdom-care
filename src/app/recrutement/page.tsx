@@ -212,7 +212,7 @@ export default function RecruitmentPage() {
 
       {/* FORMULAIRE */}
       <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl lg:max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-text mb-2 text-center">Postulez maintenant</h2>
           <p className="text-text-light text-center mb-10">
             Remplissez le formulaire ci-dessous. On vous contactera rapidement.
