@@ -210,7 +210,7 @@ export default function DevisForm() {
   return (
     <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
       {/* Progress bar */}
-      <div className="px-4 sm:px-8 lg:px-6 pt-6 sm:pt-8 lg:pt-5">
+      <div className="px-4 sm:px-8 lg:px-6 pt-6 sm:pt-8 lg:pt-3">
         <div className="flex items-center justify-between mb-2">
           {[1, 2, 3, 4, 5].map((s) => (
             <div key={s} className="flex flex-col items-center gap-1">
@@ -239,12 +239,12 @@ export default function DevisForm() {
             style={{ width: `${((step - 1) / (TOTAL_STEPS - 1)) * 100}%` }}
           />
         </div>
-        <p className="text-xs text-text-light text-center mb-3 lg:mb-2">
+        <p className="text-xs text-text-light text-center mb-3 lg:mb-1">
           Étape {step} sur {TOTAL_STEPS}
         </p>
       </div>
 
-      <div className="px-4 sm:px-8 lg:px-6 pb-6 sm:pb-8 lg:pb-5">
+      <div className="px-4 sm:px-8 lg:px-6 pb-6 sm:pb-8 lg:pb-3">
 
         {/* ── STEP 1: PROFIL ── */}
         <div className={`transition-all duration-400 ${step === 1 ? "opacity-100 max-h-[2000px]" : "opacity-0 max-h-0 overflow-hidden pointer-events-none"}`}>
@@ -254,14 +254,14 @@ export default function DevisForm() {
           <p className="text-text-light text-sm lg:text-xs text-center mb-4 lg:mb-3">
             Sélectionnez le type d&apos;aide qui correspond à votre besoin
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-1.5 lg:gap-2">
             {profileOptions.map((p) => {
               const active = selectedProfile === p.id;
               return (
                 <button
                   key={p.id}
                   onClick={() => handleProfileChange(p.id)}
-                  className={`flex items-start gap-3 p-4 sm:p-5 lg:p-3 rounded-xl border-2 text-left transition-all duration-200 ${
+                  className={`flex items-start gap-3 lg:gap-1.5 p-4 sm:p-5 lg:p-3 rounded-xl border-2 text-left transition-all duration-200 ${
                     active
                       ? "border-primary bg-primary/5 shadow-md"
                       : "border-gray-200 hover:border-primary/40 hover:bg-warm"
@@ -297,14 +297,14 @@ export default function DevisForm() {
           <p className="text-text-light text-sm lg:text-xs text-center mb-6">
             Sélectionnez un ou plusieurs services
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-1.5">
             {availableServices.map((s) => {
               const active = selectedServices.includes(s.id);
               return (
                 <button
                   key={s.id}
                   onClick={() => toggle(selectedServices, setSelectedServices, s.id)}
-                  className={`flex items-center gap-3 p-4 rounded-xl border-2 text-left transition-all duration-200 ${
+                  className={`flex items-center gap-3 lg:gap-1.5 p-4 rounded-xl border-2 text-left transition-all duration-200 ${
                     active
                       ? "border-primary bg-primary/5 shadow-md"
                       : "border-gray-200 hover:border-primary/40 hover:bg-warm"
@@ -431,8 +431,8 @@ export default function DevisForm() {
             Nous nous engageons à vous rappeler sous 2 heures (jours ouvrables)
           </p>
 
-          <div className="space-y-3 lg:space-y-2">
-            <div className="flex gap-3">
+          <div className="space-y-2 lg:space-y-1">
+            <div className="flex gap-3 lg:gap-1.5">
               {["Monsieur", "Madame"].map((c) => (
                 <button
                   key={c}
@@ -446,7 +446,7 @@ export default function DevisForm() {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-2">
               <input type="text" placeholder="Prénom *" value={prenom} onChange={(e) => setPrenom(e.target.value)}
                 className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
               <input type="text" placeholder="Nom *" value={nom} onChange={(e) => setNom(e.target.value)}
@@ -455,7 +455,7 @@ export default function DevisForm() {
 
             <AddressInput value={adresse} onChange={setAdresse} placeholder="Adresse *" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-2">
               <div>
                 <input type="text" placeholder="Code postal *" value={cp} onChange={(e) => setCp(e.target.value)}
                   className={`w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border outline-none text-sm transition-all ${
@@ -482,7 +482,7 @@ export default function DevisForm() {
 
             <div>
               <p className="text-sm font-semibold text-text mb-2">À qui est destinée notre aide ?</p>
-              <div className="flex gap-3">
+              <div className="flex gap-3 lg:gap-1.5">
                 {["Pour vous-même", "Pour un proche"].map((d) => (
                   <button
                     key={d}
@@ -505,7 +505,7 @@ export default function DevisForm() {
               className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm resize-none"
             />
 
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-3 lg:gap-1.5">
               <input type="checkbox" id="consent" checked={consent} onChange={(e) => setConsent(e.target.checked)}
                 className="mt-1 w-4 h-4 accent-primary" />
               <label htmlFor="consent" className="text-xs text-text-light leading-relaxed">
@@ -567,7 +567,7 @@ export default function DevisForm() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 lg:gap-1.5 justify-center">
                 <a href="tel:0184807297" className="px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-light transition-colors min-h-[44px]">
                   📞 Appeler maintenant
                 </a>
@@ -610,7 +610,7 @@ export default function DevisForm() {
         )}
 
         {step < 5 && (
-          <div className="flex flex-wrap justify-center gap-4 mt-6 text-xs text-text-light">
+          <div className="flex flex-wrap justify-center gap-4 lg:gap-2 mt-6 text-xs text-text-light">
             <span>🔒 Données protégées</span>
             <span>⚡ Réponse sous 2h</span>
             <span>💯 Sans engagement</span>
