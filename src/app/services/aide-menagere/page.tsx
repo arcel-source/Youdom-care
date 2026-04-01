@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -9,28 +10,36 @@ export const metadata: Metadata = {
 export default function AideMenagerePage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <Image
-            src="/images/services/aide-menagere.jpg"
-            alt="Service d'aide ménagère à domicile"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/80 via-primary/70 to-primary-light/60"></div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Aide ménagère à domicile : confort et bien-être</h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Services réguliers de ménage. Confiance et qualité garanties.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0184807297" className="px-8 py-4 bg-white/20 text-white font-bold rounded-xl border border-white text-lg">
-              Appeler : 01 84 80 72 97
-            </a>
+      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+                Aide ménagère à domicile : confort et bien-être
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">
+                Services réguliers de ménage. Confiance et qualité garanties.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
+                  Demander un devis gratuit
+                </Link>
+                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
+                  Appeler : 01 84 80 72 97
+                </a>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/services/aide-menagere.jpg"
+                  alt="Service d'aide ménagère à domicile"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
