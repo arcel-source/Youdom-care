@@ -38,6 +38,7 @@ export default function Footer() {
               <li><Link href="/comment-ca-marche" className="text-white/70 hover:text-secondary transition-colors text-sm">Comment ça marche</Link></li>
               <li><Link href="/temoignages" className="text-white/70 hover:text-secondary transition-colors text-sm">Témoignages</Link></li>
               <li><Link href="/aides-financieres" className="text-white/70 hover:text-secondary transition-colors text-sm">Aides financières</Link></li>
+              <li><Link href="/recrutement" className="text-white/70 hover:text-secondary transition-colors text-sm">Rejoignez-nous</Link></li>
               <li><Link href="/faq" className="text-white/70 hover:text-secondary transition-colors text-sm">FAQ</Link></li>
             </ul>
           </div>
