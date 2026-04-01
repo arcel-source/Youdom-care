@@ -1,6 +1,13 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  IllustrationContact,
+  IllustrationEvaluation,
+  IllustrationSelection,
+  IllustrationPlan,
+  IllustrationDemarrage,
+} from "@/components/StepIllustrations";
 
 export const metadata: Metadata = {
   title: "Comment Ça Marche | Youdom Care - Aide à Domicile Paris & IDF",
@@ -20,8 +27,7 @@ const steps = [
       "Information sur les aides financières disponibles",
       "Prise de rendez-vous pour l'évaluation à domicile",
     ],
-    image: "/images/home/choose-us-home.png",
-    imageAlt: "Premier contact avec Youdom Care",
+    illustration: "contact",
   },
   {
     num: "02",
@@ -34,8 +40,7 @@ const steps = [
       "Estimation du niveau de dépendance (GIR)",
       "Présentation détaillée des aides financières (APA, PCH, crédit d'impôt)",
     ],
-    image: "/images/home/mission-home.png",
-    imageAlt: "Évaluation gratuite à domicile Youdom Care",
+    illustration: "evaluation",
   },
   {
     num: "03",
@@ -48,8 +53,7 @@ const steps = [
       "Rencontre préalable pour valider le feeling",
       "Possibilité de changer si le courant ne passe pas",
     ],
-    image: "/images/about/assistante-vie-famille.jpg",
-    imageAlt: "Sélection de votre auxiliaire de vie dédiée",
+    illustration: "selection",
   },
   {
     num: "04",
@@ -62,8 +66,7 @@ const steps = [
       "Aide aux démarches administratives (APA, MDPH...)",
       "Contrat simple et sans engagement longue durée",
     ],
-    image: "/images/services/garde-presence.png",
-    imageAlt: "Plan d'aide personnalisé et transparent",
+    illustration: "plan",
   },
   {
     num: "05",
@@ -76,8 +79,7 @@ const steps = [
       "Ajustements du plan d'aide selon l'évolution",
       "Remplacement assuré en cas d'absence",
     ],
-    image: "/images/services/old-people.png",
-    imageAlt: "Suivi qualité et accompagnement permanent",
+    illustration: "demarrage",
   },
 ];
 
@@ -179,15 +181,14 @@ export default function CommentCaMarchePage() {
                   </ul>
                 </div>
 
-                {/* Image */}
-                <div className="flex-1 w-full">
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg h-[250px] sm:h-[300px]">
-                    <Image
-                      src={step.image}
-                      alt={step.imageAlt}
-                      fill
-                      className="object-cover"
-                    />
+                {/* Illustration */}
+                <div className="flex-1 w-full flex items-center justify-center">
+                  <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px]">
+                    {step.illustration === "contact" && <IllustrationContact />}
+                    {step.illustration === "evaluation" && <IllustrationEvaluation />}
+                    {step.illustration === "selection" && <IllustrationSelection />}
+                    {step.illustration === "plan" && <IllustrationPlan />}
+                    {step.illustration === "demarrage" && <IllustrationDemarrage />}
                   </div>
                 </div>
               </div>
