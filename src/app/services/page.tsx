@@ -57,10 +57,10 @@ const services = [
     description: "Courses • Rendez-vous médicaux • Sorties culturelles • Compagnie • Lien social",
   },
   {
-    slug: "alzheimer-parkinson",
-    title: "Aide Alzheimer & Parkinson",
+    slug: "maladies-neurodegeneratives",
+    title: "Maladies neurodégénératives",
     image: "/images/services/old-people.png",
-    description: "Stimulation cognitive • Aides gestes quotidiens • Surveillance • Soutien aidants • Personnel formé",
+    description: "Alzheimer • Parkinson • Sclérose en plaques • SLA • Stimulation cognitive • Personnel formé",
   },
   {
     slug: "garde-enfants-handicap",

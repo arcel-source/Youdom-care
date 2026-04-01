@@ -123,6 +123,7 @@ export default function Home() {
               { slug: "aide-menagere", image: "/images/services/aide-menagere.jpg", title: "Aide ménagère", desc: "Ménage régulier. Domicile propre, prévention chutes, bien-être." },
               { slug: "garde-nuit", image: "/images/services/garde-presence.png", title: "Présence de nuit", desc: "Veille passive ou active. Sécurité nocturne maximale." },
               { slug: "accompagnement-sorties", image: "/images/services/service-accompagnements.png", title: "Accompagnement & sorties", desc: "Courses, rdv médecins, loisirs. Autonomie et lien social." },
+              { slug: "maladies-neurodegeneratives", image: "/images/services/old-people.png", title: "Maladies neurodégénératives", desc: "Alzheimer, Parkinson, sclérose en plaques. Accompagnement spécialisé et humain." },
             ].map((service, idx) => (
               <Link key={idx} href={`/services/${service.slug}`} className="group">
                 <div className="bg-white rounded-2xl border border-gray-200 hover:border-primary hover:shadow-lg transition-all h-full overflow-hidden">
