@@ -29,14 +29,13 @@ export default function GardeNuitPage() {
                 </a>
               </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <div className="hidden lg:flex items-center">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
                 <Image
                   src="/images/services/garde-presence.png"
                   alt="Garde de nuit et présence rassurante à domicile"
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -165,7 +164,7 @@ export default function GardeNuitPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Enfin dormir tranquille</h2>
           <p className="text-white/80 mb-8">Présence de nuit = sécurité maximale + sérénité pour toute la famille.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
+            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
               Demander un devis gratuit
             </a>
             <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl text-lg">

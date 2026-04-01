@@ -29,14 +29,13 @@ export default function AideMenagerePage() {
                 </a>
               </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <div className="hidden lg:flex items-center">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
                 <Image
                   src="/images/services/aide-menagere.jpg"
                   alt="Service d'aide ménagère à domicile"
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -92,14 +91,15 @@ export default function AideMenagerePage() {
               ))}
             </div>
 
-            <div className="hidden lg:block">
+            <div className="hidden lg:flex items-center">
               <div className="rounded-3xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/about/assistant-menager.jpg"
                   alt="Assistante ménagère professionnelle à domicile"
                   width={600}
                   height={700}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -170,7 +170,7 @@ export default function AideMenagerePage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Un intérieur propre et confortable</h2>
           <p className="text-white/80 mb-8">Régularité, confiance, qualité. Youdom Care : même intervenant, tarifs transparents.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
+            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
               Demander un devis gratuit
             </a>
             <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl text-lg">

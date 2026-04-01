@@ -197,7 +197,7 @@ export default function QuiSommesNousPage() {
             <a href="/demander-devis" className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-8 py-4 rounded-full text-lg transition-all cta-glow">
               Demander un Devis →
             </a>
-            <a href="/contact" className="border-2 border-white/30 hover:border-white text-white font-bold px-8 py-4 rounded-full text-lg transition-all">
+            <a href="/demander-devis" className="border-2 border-white/30 hover:border-white text-white font-bold px-8 py-4 rounded-full text-lg transition-all">
               Nous Contacter
             </a>
           </div>

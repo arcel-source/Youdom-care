@@ -29,14 +29,13 @@ export default function RetourHospitalisationPage() {
                 </a>
               </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <div className="hidden lg:flex items-center">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
                 <Image
                   src="/images/services/service-retour-hospitalisation.png"
                   alt="Retour d'hospitalisation à domicile"
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>

@@ -19,7 +19,7 @@ export default function GardeEnfantsHandicapPage() {
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Intervenants expérimentés et formés. Vos enfants en de bonnes mains.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
+                <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
                   Demander un devis gratuit
                 </a>
                 <a href="tel:0184807297" className="px-8 py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-lg">
@@ -27,14 +27,13 @@ export default function GardeEnfantsHandicapPage() {
                 </a>
               </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <div className="hidden lg:flex items-center">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
                 <Image
                   src="/images/services/aide-enfant.png"
                   alt="Garde bienveillante d'enfant en situation de handicap"
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -180,7 +179,7 @@ export default function GardeEnfantsHandicapPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Votre enfant mérite garde de qualité</h2>
           <p className="text-white/80 mb-8">Youdom Care : gardes formées, bienveillantes, 98% satisfaction parents.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
+            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
               Demander un devis gratuit
             </a>
             <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all text-lg">

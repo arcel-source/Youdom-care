@@ -30,14 +30,13 @@ export default function AideHandicapPage() {
                 </a>
               </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <div className="hidden lg:flex items-center">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
                 <Image
                   src="/images/services/handicap-aide-domicile.png"
                   alt="Aide à domicile pour personnes en situation de handicap"
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -108,7 +107,8 @@ export default function AideHandicapPage() {
                   alt="Accompagnement adapté pour personne handicapée à domicile"
                   width={600}
                   height={800}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -275,7 +275,7 @@ export default function AideHandicapPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Vivre pleinement malgré handicap</h2>
           <p className="text-white/80 text-lg mb-8">C&apos;est possible avec aide adaptée. Youdom Care : 8 ans expérience, 150+ intervenants formés, 98% satisfaction.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
+            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
               Demander un devis gratuit
             </a>
             <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all text-lg">

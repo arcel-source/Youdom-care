@@ -23,7 +23,7 @@ export default function AidesFinanciairesPage() {
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Financer votre aide à domicile : APA, PCH, crédit d&apos;impôt 50%</h1>
           <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Les aides existent. Vous en avez le droit. Youdom Care vous accompagne dans démarches.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
+            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
               Demander aide accompagnement
             </a>
             <a href="tel:0184807297" className="px-8 py-4 bg-white/20 text-white font-bold rounded-xl border border-white text-lg">
@@ -322,7 +322,7 @@ export default function AidesFinanciairesPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Commençons ensemble les démarches</h2>
           <p className="text-white/80 mb-8">Youdom Care : expert accompagnement aides. Zéro bureaucratie pesante. On fait simple.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
+            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
               Demander un devis gratuit
             </a>
             <a href="tel:0184807297" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 text-lg">

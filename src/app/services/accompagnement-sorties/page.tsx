@@ -29,14 +29,13 @@ export default function AccompagnementSortiesPage() {
                 </a>
               </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <div className="hidden lg:flex items-center">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
                 <Image
                   src="/images/services/service-accompagnements.png"
                   alt="Accompagnement et sorties pour personnes âgées et handicapées"
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -183,7 +182,7 @@ export default function AccompagnementSortiesPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Preservez la vie active de votre proche</h2>
           <p className="text-white/80 mb-8">Sorties régulières = santé meilleure + bonheur + dignité préservée.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
+            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
               Demander un devis gratuit
             </a>
             <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl text-lg">

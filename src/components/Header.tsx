@@ -87,11 +87,17 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Phone CTA + Hamburger */}
-          <div className="flex items-center gap-3">
+          {/* CTA buttons + Hamburger */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/demander-devis"
+              className="hidden md:flex px-4 lg:px-5 py-2 bg-secondary hover:bg-secondary-light text-primary-dark font-bold rounded-lg text-sm transition-colors min-h-[44px] items-center"
+            >
+              Devis Gratuit
+            </Link>
             <a
               href="tel:0184807297"
-              className="px-4 py-2 sm:px-6 bg-primary hover:bg-primary-light text-white font-bold rounded-lg text-sm transition-colors min-h-[44px] flex items-center"
+              className="px-4 py-2 sm:px-5 bg-primary hover:bg-primary-light text-white font-bold rounded-lg text-sm transition-colors min-h-[44px] flex items-center"
             >
               <span className="hidden sm:inline">01 84 80 72 97</span>
               <span className="sm:hidden text-lg">📞</span>

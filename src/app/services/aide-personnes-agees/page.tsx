@@ -35,14 +35,13 @@ export default function AidePersonnesAgeesPage() {
                 </a>
               </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <div className="hidden lg:flex items-center">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
                 <Image
                   src="/images/services/old-people.png"
                   alt="Aide à domicile pour personnes âgées"
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -139,7 +138,8 @@ export default function AidePersonnesAgeesPage() {
                   alt="Accompagnement bienveillant d'une personne âgée à domicile"
                   width={600}
                   height={800}
-                  className="w-full h-auto object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -335,7 +335,7 @@ export default function AidePersonnesAgeesPage() {
             Rester chez soi, en sécurité, avec de l&apos;aide de qualité — c&apos;est possible. Des centaines de familles l&apos;ont choisi.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
+            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
               Demander un devis gratuit
             </a>
             <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all text-lg">
