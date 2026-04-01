@@ -191,27 +191,20 @@ export default function Home() {
       <section className="py-12 sm:py-16 md:py-20 bg-warm">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text mb-8 sm:mb-12 md:mb-16 text-center">Comment ça marche ?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { step: "1", title: "Appel conseil", desc: "Décrivez situation. Conseil gratuit orienté.", image: "/images/steps/1.png" },
-              { step: "2", title: "Visite évaluation", desc: "À domicile. Observation et discussion détaillée.", image: "/images/steps/2.png" },
-              { step: "3", title: "Plan d'aide", desc: "Services, planning, tarif transparent.", image: "/images/steps/3.png" },
-              { step: "4", title: "Débuter", desc: "Intervenant formé commence rapidement.", image: "/images/steps/4.png" },
+              { step: "1", icon: "📞", title: "Appel conseil", desc: "Décrivez votre situation. Conseil gratuit et orienté." },
+              { step: "2", icon: "🏠", title: "Visite évaluation", desc: "À domicile. Observation et discussion détaillée." },
+              { step: "3", icon: "📋", title: "Plan d'aide", desc: "Services, planning, tarif transparent et personnalisé." },
+              { step: "4", icon: "⭐", title: "Démarrage", desc: "Votre auxiliaire dédiée commence. Suivi continu." },
             ].map((item, idx) => (
               <div key={idx} className="relative">
-                <div className="bg-white p-6 sm:p-8 rounded-2xl text-center shadow-sm">
-                  <div className="absolute -top-4 left-4 sm:-top-6 sm:-left-2 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-secondary text-primary font-bold flex items-center justify-center text-base sm:text-lg z-10">
-                    {item.step}
+                <div className="bg-white p-6 rounded-2xl text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                  <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-xl">{item.step}</span>
                   </div>
-                  <div className="relative w-20 h-20 mx-auto mb-4">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <h3 className="font-bold text-text mt-2 sm:mt-2 mb-2">{item.title}</h3>
+                  <div className="text-3xl mb-3">{item.icon}</div>
+                  <h3 className="font-bold text-text mb-2">{item.title}</h3>
                   <p className="text-text-light text-sm">{item.desc}</p>
                 </div>
               </div>

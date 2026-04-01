@@ -20,7 +20,7 @@ const steps = [
       "Information sur les aides financières disponibles",
       "Prise de rendez-vous pour l'évaluation à domicile",
     ],
-    image: "/images/steps/1.png",
+    image: "/images/home/choose-us-home.png",
     imageAlt: "Premier contact avec Youdom Care",
   },
   {
@@ -34,7 +34,7 @@ const steps = [
       "Estimation du niveau de dépendance (GIR)",
       "Présentation détaillée des aides financières (APA, PCH, crédit d'impôt)",
     ],
-    image: "/images/steps/2.png",
+    image: "/images/home/mission-home.png",
     imageAlt: "Évaluation gratuite à domicile Youdom Care",
   },
   {
@@ -48,7 +48,7 @@ const steps = [
       "Rencontre préalable pour valider le feeling",
       "Possibilité de changer si le courant ne passe pas",
     ],
-    image: "/images/steps/3.png",
+    image: "/images/about/assistante-vie-famille.jpg",
     imageAlt: "Sélection de votre auxiliaire de vie dédiée",
   },
   {
@@ -62,7 +62,7 @@ const steps = [
       "Aide aux démarches administratives (APA, MDPH...)",
       "Contrat simple et sans engagement longue durée",
     ],
-    image: "/images/steps/4.png",
+    image: "/images/services/garde-presence.png",
     imageAlt: "Plan d'aide personnalisé et transparent",
   },
   {
@@ -76,7 +76,7 @@ const steps = [
       "Ajustements du plan d'aide selon l'évolution",
       "Remplacement assuré en cas d'absence",
     ],
-    image: "/images/functioning/intro.jpeg",
+    image: "/images/services/old-people.png",
     imageAlt: "Suivi qualité et accompagnement permanent",
   },
 ];
