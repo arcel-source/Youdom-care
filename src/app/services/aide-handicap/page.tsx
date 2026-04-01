@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Aide à domicile pour personnes handicapées | Youdom Care",
@@ -11,9 +12,17 @@ export default function AideHandicapPage() {
     <div className="min-h-screen bg-white">
       {/* HERO */}
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/images/services/handicap-aide-domicile.png"
+            alt="Aide à domicile pour personnes en situation de handicap"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/80 via-primary/70 to-primary-light/60"></div>
+
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
             Aide à domicile adaptée pour personnes en situation de handicap
@@ -61,30 +70,44 @@ export default function AideHandicapPage() {
 
       {/* SERVICES HANDICAP */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Services adaptés au handicap</h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              "Aide à la mobilité (transferts, déplacements)",
-              "Hygiène personnelle (toilette, habillage, intimité)",
-              "Aide nutritionnelle et gestion santé",
-              "Aide administrative et démarches",
-              "Communication adaptée au handicap",
-              "Activités adaptées et stimulation",
-              "Coordination avec professionnels santé",
-              "Gestion comportements et émotions",
-              "Aide école et accompagnement pédagogique",
-              "Sorties et intégration sociale",
-            ].map((service, idx) => (
-              <div key={idx} className="flex gap-4 p-6 bg-warm rounded-xl border-l-4 border-accent">
-                <div className="text-accent text-2xl font-bold flex-shrink-0">✓</div>
-                <div>
-                  <h3 className="font-bold text-text">{service}</h3>
-                  <p className="text-text-light text-sm mt-1">Service personnalisé selon situation spécifique.</p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid gap-6">
+              {[
+                "Aide à la mobilité (transferts, déplacements)",
+                "Hygiène personnelle (toilette, habillage, intimité)",
+                "Aide nutritionnelle et gestion santé",
+                "Aide administrative et démarches",
+                "Communication adaptée au handicap",
+                "Activités adaptées et stimulation",
+                "Coordination avec professionnels santé",
+                "Gestion comportements et émotions",
+                "Aide école et accompagnement pédagogique",
+                "Sorties et intégration sociale",
+              ].map((service, idx) => (
+                <div key={idx} className="flex gap-4 p-6 bg-warm rounded-xl border-l-4 border-accent">
+                  <div className="text-accent text-2xl font-bold flex-shrink-0">✓</div>
+                  <div>
+                    <h3 className="font-bold text-text">{service}</h3>
+                    <p className="text-text-light text-sm mt-1">Service personnalisé selon situation spécifique.</p>
+                  </div>
                 </div>
+              ))}
+            </div>
+
+            <div className="hidden lg:block relative">
+              <div className="rounded-3xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/services/aide-handicap-domicile.png"
+                  alt="Accompagnement adapté pour personne handicapée à domicile"
+                  width={600}
+                  height={800}
+                  className="w-full h-auto object-cover"
+                />
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -101,9 +124,9 @@ export default function AideHandicapPage() {
                 <li>✓ Transferts et manutention sécurisée</li>
                 <li>✓ Communication adaptée (sourds, autisme, déficits)</li>
                 <li>✓ Gestion comportements et émotions</li>
-                <li>✓ Handicaps spécifiques (autisme, paralyzie cérébrale)</li>
+                <li>✓ Handicaps spécifiques (autisme, paralysie cérébrale)</li>
                 <li>✓ Premiers secours et urgences</li>
-                <li>✓ Respect confiden tialité et RGPD</li>
+                <li>✓ Respect confidentialité et RGPD</li>
               </ul>
             </div>
 
@@ -179,7 +202,7 @@ export default function AideHandicapPage() {
       {/* AIDES FINANCIÈRES */}
       <section className="py-16 bg-gradient-to-br from-warm to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">PCH, AEEH, crédit d'impôt</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">PCH, AEEH, crédit d&apos;impôt</h2>
 
           <div className="space-y-6">
             <div className="bg-white p-8 rounded-2xl border-2 border-secondary">
@@ -190,7 +213,7 @@ export default function AideHandicapPage() {
             </div>
 
             <div className="bg-white p-8 rounded-2xl border-2 border-accent">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Crédit d'impôt 50%</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Crédit d&apos;impôt 50%</h3>
               <p className="text-text-light">
                 Service à personne = réduction automatique 50% impôts + TVA 5.5%. Cumulable avec PCH.
               </p>
@@ -246,7 +269,7 @@ export default function AideHandicapPage() {
       <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Vivre pleinement malgré handicap</h2>
-          <p className="text-white/80 text-lg mb-8">C'est possible avec aide adaptée. Youdom Care : 8 ans expérience, 150+ intervenants formés, 98% satisfaction.</p>
+          <p className="text-white/80 text-lg mb-8">C&apos;est possible avec aide adaptée. Youdom Care : 8 ans expérience, 150+ intervenants formés, 98% satisfaction.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
               Demander un devis gratuit

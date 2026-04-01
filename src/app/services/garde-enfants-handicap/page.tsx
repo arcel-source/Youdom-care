@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Garde d'enfants en situation de handicap | Youdom Care",
@@ -10,25 +11,40 @@ export default function GardeEnfantsHandicapPage() {
   return (
     <div className="min-h-screen bg-white">
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-            Garde d'enfants en situation de handicap : sécurité, bienveillance et confiance absolue
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Intervenants expérimentés et formés. Vos enfants en de bonnes mains.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0184807297" className="px-8 py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-lg">
-              Appeler : 01 84 80 72 97
-            </a>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+                Garde d&apos;enfants en situation de handicap : sécurité, bienveillance et confiance absolue
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Intervenants expérimentés et formés. Vos enfants en de bonnes mains.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
+                  Demander un devis gratuit
+                </a>
+                <a href="tel:0184807297" className="px-8 py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-lg">
+                  Appeler : 01 84 80 72 97
+                </a>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/services/aide-enfant.png"
+                  alt="Garde bienveillante d'enfant en situation de handicap"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Les défis des parents d'enfants handicapés</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Les défis des parents d&apos;enfants handicapés</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {[
               { icon: "😰", title: "L'angoisse de laisser son enfant", desc: "Et s'il a peur ? Et s'il se blesse ? Qui comprendra vraiment ses besoins ?" },
@@ -63,7 +79,7 @@ export default function GardeEnfantsHandicapPage() {
             <div className="p-8 bg-warm rounded-2xl border-l-4 border-accent">
               <h3 className="text-2xl font-bold text-text mb-3">Comprendre chaque enfant comme personne unique</h3>
               <p className="text-text-light">
-                Cet enfant a un handicap, mais c'est une personne. Arthur, 7 ans, aime dinosaures. Peur bruit fort. Besoin routine le matin. Notre intervenant observe, écoute, construit relation respectueuse avec Arthur — pas avec "un cas autiste".
+                Cet enfant a un handicap, mais c&apos;est une personne. Arthur, 7 ans, aime dinosaures. Peur bruit fort. Besoin routine le matin. Notre intervenant observe, écoute, construit relation respectueuse avec Arthur — pas avec &quot;un cas autiste&quot;.
               </p>
             </div>
 
@@ -90,11 +106,11 @@ export default function GardeEnfantsHandicapPage() {
             <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
               <h3 className="text-xl font-bold text-white mb-4">Pour votre enfant</h3>
               <ul className="space-y-2 text-white/90">
-                <li>✓ Quelqu'un qui comprend vraiment son handicap</li>
+                <li>✓ Quelqu&apos;un qui comprend vraiment son handicap</li>
                 <li>✓ Relation de confiance + lien stable</li>
                 <li>✓ Activités adaptées + stimulation + plaisir</li>
                 <li>✓ Respect dignité et choix</li>
-                <li>✓ Vie "normale" pas isolement</li>
+                <li>✓ Vie &quot;normale&quot; pas isolement</li>
               </ul>
             </div>
 
@@ -140,14 +156,14 @@ export default function GardeEnfantsHandicapPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Aides financières (AEEH, PCH, crédit d'impôt 50%)</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Aides financières (AEEH, PCH, crédit d&apos;impôt 50%)</h2>
           <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary mb-8">
             <h3 className="font-bold text-text mb-2">AEEH (Allocation Éducation Enfant Handicapé)</h3>
-            <p className="text-text-light text-sm">Pour enfants handicapés 0-20 ans. Jusqu'à 300-400€/mois. Accessible pour plupart situations.</p>
+            <p className="text-text-light text-sm">Pour enfants handicapés 0-20 ans. Jusqu&apos;à 300-400€/mois. Accessible pour plupart situations.</p>
           </div>
 
           <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-            <h3 className="font-bold text-text mb-2">Crédit d'impôt 50% + TVA 5.5%</h3>
+            <h3 className="font-bold text-text mb-2">Crédit d&apos;impôt 50% + TVA 5.5%</h3>
             <p className="text-text-light text-sm">Service à personne automatique. Youdom Care aide démarches.</p>
           </div>
 

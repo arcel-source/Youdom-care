@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Aide à domicile pour personnes âgées | Youdom Care",
@@ -16,10 +17,16 @@ export default function AidePersonnesAgeesPage() {
     <div className="min-h-screen bg-white">
       {/* HERO SECTION */}
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/images/services/old-people.png"
+            alt="Aide à domicile pour personnes âgées"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/80 via-primary/70 to-primary-light/60"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
@@ -92,32 +99,46 @@ export default function AidePersonnesAgeesPage() {
 
       {/* SECTION : SERVICES DÉTAILLÉS */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Nos services d'aide à domicile pour seniors</h2>
 
-          <div className="space-y-6">
-            {[
-              "Aide à la toilette et hygiène personnelle",
-              "Aide à l'habillage",
-              "Aide à la préparation des repas",
-              "Aide mobilité et transferts sécurisés",
-              "Aide courses et gestion budget",
-              "Entretien domicile et lessive",
-              "Accompagnements médicaux et sorties",
-              "Aide administrative",
-              "Stimulation cognitive et loisirs",
-              "Présence réassurante et vigilance",
-            ].map((service, idx) => (
-              <div key={idx} className="flex gap-4 p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <div className="text-secondary text-2xl font-bold flex-shrink-0">✓</div>
-                <div>
-                  <h3 className="font-bold text-text text-lg">{service}</h3>
-                  <p className="text-text-light text-sm mt-1">
-                    Service adapté aux besoins spécifiques de chaque personne. Fait avec respect et dignité.
-                  </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              {[
+                "Aide à la toilette et hygiène personnelle",
+                "Aide à l'habillage",
+                "Aide à la préparation des repas",
+                "Aide mobilité et transferts sécurisés",
+                "Aide courses et gestion budget",
+                "Entretien domicile et lessive",
+                "Accompagnements médicaux et sorties",
+                "Aide administrative",
+                "Stimulation cognitive et loisirs",
+                "Présence réassurante et vigilance",
+              ].map((service, idx) => (
+                <div key={idx} className="flex gap-4 p-6 bg-warm rounded-xl border-l-4 border-secondary">
+                  <div className="text-secondary text-2xl font-bold flex-shrink-0">✓</div>
+                  <div>
+                    <h3 className="font-bold text-text text-lg">{service}</h3>
+                    <p className="text-text-light text-sm mt-1">
+                      Service adapté aux besoins spécifiques de chaque personne. Fait avec respect et dignité.
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
+
+            <div className="hidden lg:block relative">
+              <div className="rounded-3xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/about/aide-personnes-agees.jpg"
+                  alt="Accompagnement bienveillant d'une personne âgée à domicile"
+                  width={600}
+                  height={800}
+                  className="w-full h-auto object-cover"
+                />
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -239,15 +260,15 @@ export default function AidePersonnesAgeesPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Financer votre aide à domicile</h2>
 
           <div className="bg-white p-8 rounded-2xl border-2 border-secondary mb-8">
-            <h3 className="text-2xl font-bold text-primary mb-4">APA (Allocation Personnalisée d'Autonomie)</h3>
+            <h3 className="text-2xl font-bold text-primary mb-4">APA (Allocation Personnalisée d&apos;Autonomie)</h3>
             <p className="text-text-light mb-4">
-              Pour personnes âgées 60+ en perte d'autonomie. Versée par département. Moyenne 600-1200€/mois selon perte. Peut couvrir 50-80% aide à domicile.
+              Pour personnes âgées 60+ en perte d&apos;autonomie. Versée par département. Moyenne 600-1200€/mois selon perte. Peut couvrir 50-80% aide à domicile.
             </p>
             <p className="text-sm text-text-light">Youdom Care vous aide dans constitution dossier et suivi.</p>
           </div>
 
           <div className="bg-white p-8 rounded-2xl border-2 border-accent">
-            <h3 className="text-2xl font-bold text-primary mb-4">💰 Crédit d'impôt 50%</h3>
+            <h3 className="text-2xl font-bold text-primary mb-4">💰 Crédit d&apos;impôt 50%</h3>
             <p className="text-text-light">
               Service à personne = réduction fiscale automatique 50%. TVA réduite 5.5%. Peut être pris en compte dans calcul APA.
             </p>
@@ -307,7 +328,7 @@ export default function AidePersonnesAgeesPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Prêt à offrir le meilleur à votre proche ?</h2>
           <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Rester chez soi, en sécurité, avec de l'aide de qualité — c'est possible. Des centaines de familles l'ont choisi.
+            Rester chez soi, en sécurité, avec de l&apos;aide de qualité — c&apos;est possible. Des centaines de familles l&apos;ont choisi.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">

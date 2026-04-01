@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Aide ménagère à domicile | Youdom Care",
@@ -8,7 +9,18 @@ export const metadata: Metadata = {
 export default function AideMenagerePage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
+      <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/images/services/aide-menagere.jpg"
+            alt="Service d'aide ménagère à domicile"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/80 via-primary/70 to-primary-light/60"></div>
+
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Aide ménagère à domicile : confort et bien-être</h1>
           <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Services réguliers de ménage. Confiance et qualité garanties.</p>
@@ -46,28 +58,42 @@ export default function AideMenagerePage() {
       </section>
 
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Nos services de ménage détaillés</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {[
-              "Nettoyage courant (balai, serpillière, chiffons)",
-              "Dépoussiérage",
-              "Nettoyage salle de bain",
-              "Toilette W.C.",
-              "Nettoyage cuisine",
-              "Vaisselle",
-              "Entretien sols",
-              "Lessive et repassage",
-              "Rangement basic",
-              "Changement literie",
-              "Aération",
-              "Petits rangements",
-            ].map((service, idx) => (
-              <div key={idx} className="p-4 bg-warm rounded-lg flex items-center gap-3">
-                <span className="text-secondary text-lg font-bold">✓</span>
-                <p className="text-text font-medium text-sm">{service}</p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                "Nettoyage courant (balai, serpillière, chiffons)",
+                "Dépoussiérage",
+                "Nettoyage salle de bain",
+                "Toilette W.C.",
+                "Nettoyage cuisine",
+                "Vaisselle",
+                "Entretien sols",
+                "Lessive et repassage",
+                "Rangement basic",
+                "Changement literie",
+                "Aération",
+                "Petits rangements",
+              ].map((service, idx) => (
+                <div key={idx} className="p-4 bg-warm rounded-lg flex items-center gap-3">
+                  <span className="text-secondary text-lg font-bold">✓</span>
+                  <p className="text-text font-medium text-sm">{service}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="hidden lg:block">
+              <div className="rounded-3xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/about/assistant-menager.jpg"
+                  alt="Assistante ménagère professionnelle à domicile"
+                  width={600}
+                  height={700}
+                  className="w-full h-auto object-cover"
+                />
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -122,8 +148,8 @@ export default function AideMenagerePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Coûts et aides</h2>
           <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-            <h3 className="font-bold text-text mb-3">Crédit d'impôt 50% automatique</h3>
-            <p className="text-text-light text-sm mb-4">Service à personne = réduction d'impôts automatique 50%.</p>
+            <h3 className="font-bold text-text mb-3">Crédit d&apos;impôt 50% automatique</h3>
+            <p className="text-text-light text-sm mb-4">Service à personne = réduction d&apos;impôts automatique 50%.</p>
             <h3 className="font-bold text-text mb-3">TVA réduite 5.5%</h3>
             <p className="text-text-light text-sm">Au lieu 20% pour autres services. Youdom Care applique directement.</p>
           </div>

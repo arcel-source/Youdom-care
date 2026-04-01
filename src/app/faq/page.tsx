@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "FAQ — Questions Fréquentes | Youdom Care",
@@ -43,6 +44,7 @@ const faqs = [
 export default function FAQPage() {
   return (
     <>
+      {/* HERO */}
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-3 mb-6">
@@ -54,27 +56,47 @@ export default function FAQPage() {
         </div>
       </section>
 
+      {/* FAQ + IMAGE SIDEBAR */}
       <section className="py-24 bg-warm">
-        <div className="max-w-3xl mx-auto px-4">
-          <div className="space-y-3">
-            {faqs.map((item, i) => (
-              <details key={i} className="border border-gray-200 rounded-2xl overflow-hidden group">
-                <summary className="cursor-pointer flex items-center justify-between px-6 py-5 text-left hover:bg-warm/80 transition-colors">
-                  <span className="font-semibold text-text pr-4">{item.q}</span>
-                  <span className="text-primary text-xl group-open:rotate-45 transition-transform">+</span>
-                </summary>
-                <div className="px-6 pb-5 text-text-light leading-relaxed border-t border-gray-200">
-                  {item.a}
-                </div>
-              </details>
-            ))}
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* FAQ List */}
+            <div className="lg:col-span-2">
+              <div className="space-y-3">
+                {faqs.map((item, i) => (
+                  <details key={i} className="border border-gray-200 rounded-2xl overflow-hidden group">
+                    <summary className="cursor-pointer flex items-center justify-between px-6 py-5 text-left hover:bg-warm/80 transition-colors">
+                      <span className="font-semibold text-text pr-4">{item.q}</span>
+                      <span className="text-primary text-xl group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div className="px-6 pb-5 text-text-light leading-relaxed border-t border-gray-200">
+                      {item.a}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+
+            {/* Sidebar Image */}
+            <div className="hidden lg:block">
+              <div className="sticky top-32 rounded-3xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/home/cuisine-pro.png"
+                  alt="Aide à domicile professionnelle Youdom Care"
+                  width={400}
+                  height={600}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* CTA */}
       <section className="py-20 bg-primary">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Vous n'avez pas trouvé votre réponse ?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Vous n&apos;avez pas trouvé votre réponse ?</h2>
           <p className="text-white/70 text-lg mb-8">
             Contactez-nous directement — on répond à tout.
           </p>

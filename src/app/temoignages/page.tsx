@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Témoignages | Youdom Care",
@@ -17,7 +18,19 @@ const testimonials = [
 export default function TemoignagesPage() {
   return (
     <>
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
+      {/* HERO */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
+        <div className="absolute inset-0 opacity-15">
+          <Image
+            src="/images/services/slide-service-2.jpg"
+            alt="Familles accompagnées par Youdom Care"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/80 via-primary/70 to-primary-light/60"></div>
+
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-3 mb-6">
             Témoignages
@@ -28,6 +41,7 @@ export default function TemoignagesPage() {
         </div>
       </section>
 
+      {/* STATS */}
       <section className="bg-white py-8 border-b">
         <div className="max-w-4xl mx-auto px-4 flex flex-wrap justify-center gap-8 md:gap-16">
           {[
@@ -44,6 +58,7 @@ export default function TemoignagesPage() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
       <section className="py-24 bg-warm">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-6">
@@ -60,7 +75,7 @@ export default function TemoignagesPage() {
                   </span>
                 </div>
                 <p className="text-text leading-relaxed mb-5 italic">
-                  "{t.text}"
+                  &quot;{t.text}&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center">
@@ -77,6 +92,7 @@ export default function TemoignagesPage() {
         </div>
       </section>
 
+      {/* CTA */}
       <section className="py-20 bg-primary">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Présence de nuit à domicile | Youdom Care",
@@ -8,17 +9,32 @@ export const metadata: Metadata = {
 export default function GardeNuitPage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Présence de nuit à domicile : sécurité et sérénité</h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Veille active ou passive. Évitez l'établissement. Sérénité pour toute la famille.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0184807297" className="px-8 py-4 bg-white/20 text-white font-bold rounded-xl border border-white text-lg">
-              Appeler : 01 84 80 72 97
-            </a>
+      <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Présence de nuit à domicile : sécurité et sérénité</h1>
+              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Veille active ou passive. Évitez l&apos;établissement. Sérénité pour toute la famille.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
+                  Demander un devis gratuit
+                </a>
+                <a href="tel:0184807297" className="px-8 py-4 bg-white/20 text-white font-bold rounded-xl border border-white text-lg">
+                  Appeler : 01 84 80 72 97
+                </a>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/services/garde-presence.png"
+                  alt="Garde de nuit et présence rassurante à domicile"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -92,7 +108,7 @@ export default function GardeNuitPage() {
                 <li>✓ Sécurité domicile (chauffage, portes)</li>
                 <li>✓ Gestion demandes eau/médicaments</li>
                 <li>✓ Vigilance respiration (si apnée)</li>
-                <li>✓ Rassurance en cas d'angoisse</li>
+                <li>✓ Rassurance en cas d&apos;angoisse</li>
                 <li>✓ Urgence identifiée et signalée</li>
               </ul>
             </div>
@@ -129,10 +145,10 @@ export default function GardeNuitPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">APA, PCH, crédit d'impôt 50%</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">APA, PCH, crédit d&apos;impôt 50%</h2>
           <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
             <p className="text-text-light text-sm">
-              <strong>APA :</strong> Allocation Personnalisée d'Autonomie pour personnes âgées. <strong>PCH :</strong> Prestation Compensation Handicap. 
+              <strong>APA :</strong> Allocation Personnalisée d&apos;Autonomie pour personnes âgées. <strong>PCH :</strong> Prestation Compensation Handicap. 
               <strong className="ml-2">Crédit impôt 50% :</strong> Automatique service à personne. Youdom Care aide dossiers.
             </p>
           </div>

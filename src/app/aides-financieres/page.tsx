@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Aides Financières & Démarches | APA, PCH, Crédit d'Impôt 50% | Youdom Care",
@@ -19,7 +20,7 @@ export default function AidesFinanciairesPage() {
           <div className="absolute top-20 right-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Financer votre aide à domicile : APA, PCH, crédit d'impôt 50%</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Financer votre aide à domicile : APA, PCH, crédit d&apos;impôt 50%</h1>
           <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Les aides existent. Vous en avez le droit. Youdom Care vous accompagne dans démarches.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
@@ -34,23 +35,37 @@ export default function AidesFinanciairesPage() {
 
       {/* INTRO */}
       <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Les aides existent. Vous en avez le droit.</h2>
-          <p className="text-text-light text-center text-lg mb-12 max-w-2xl mx-auto">
-            L'aide à domicile coûte de l'argent. Mais ne vous découragez pas : des aides gouvernementales, régionales et fiscales existent pour financer ou réduire le coût réel.
-          </p>
-          <div className="grid md:grid-cols-4 gap-4 text-center">
-            {[
-              { icon: "💰", label: "APA" },
-              { icon: "🏥", label: "PCH" },
-              { icon: "👶", label: "AEEH" },
-              { icon: "📊", label: "Crédit 50%" },
-            ].map((item, i) => (
-              <div key={i} className="bg-white p-6 rounded-xl">
-                <div className="text-4xl mb-2">{item.icon}</div>
-                <p className="font-bold text-text text-sm">{item.label}</p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-text-light text-lg mb-8">
+                L&apos;aide à domicile coûte de l&apos;argent. Mais ne vous découragez pas : des aides gouvernementales, régionales et fiscales existent pour financer ou réduire le coût réel.
+              </p>
+              <div className="grid grid-cols-2 gap-4 text-center">
+                {[
+                  { icon: "💰", label: "APA" },
+                  { icon: "🏥", label: "PCH" },
+                  { icon: "👶", label: "AEEH" },
+                  { icon: "📊", label: "Crédit 50%" },
+                ].map((item, i) => (
+                  <div key={i} className="bg-white p-6 rounded-xl">
+                    <div className="text-4xl mb-2">{item.icon}</div>
+                    <p className="font-bold text-text text-sm">{item.label}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div className="hidden lg:block rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/home/choose-us-home.png"
+                alt="Les aides financières pour l'aide à domicile"
+                width={500}
+                height={400}
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -58,43 +73,43 @@ export default function AidesFinanciairesPage() {
       {/* APA */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">L'APA (Allocation Personnalisée d'Autonomie)</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">L&apos;APA (Allocation Personnalisée d&apos;Autonomie)</h2>
 
           <div className="space-y-8">
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qu'est-ce que l'APA ?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qu&apos;est-ce que l&apos;APA ?</h3>
               <p className="text-text-light mb-4">
-                L'APA est une aide financière versée par le département pour les personnes âgées en perte d'autonomie. C'est pas un prêt : c'est une allocation. Vous la recevez sans la rembourser.
+                L&apos;APA est une aide financière versée par le département pour les personnes âgées en perte d&apos;autonomie. C&apos;est pas un prêt : c&apos;est une allocation. Vous la recevez sans la rembourser.
               </p>
               <p className="text-text-light">
-                Contrairement à beaucoup d'aides, l'APA n'est pas soumise à condition de ressources. Que vous soyez riche ou pauvre, si vous remplissez critères d'autonomie, vous avez droit.
+                Contrairement à beaucoup d&apos;aides, l&apos;APA n&apos;est pas soumise à condition de ressources. Que vous soyez riche ou pauvre, si vous remplissez critères d&apos;autonomie, vous avez droit.
               </p>
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qui peut demander l'APA ?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qui peut demander l&apos;APA ?</h3>
               <ul className="space-y-3 text-text-light">
                 <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Âge minimum 60 ans</li>
                 <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Réside en France</li>
-                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> En perte d'autonomie (évaluée selon grille AGGIR)</li>
+                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> En perte d&apos;autonomie (évaluée selon grille AGGIR)</li>
                 <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Groupes de ressources AGGIR 1 à 4 seulement</li>
               </ul>
               <p className="text-text-light text-sm mt-4 italic">Note : AGGIR 5 et 6 = refusé automatiquement.</p>
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-primary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Montants de l'APA</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Montants de l&apos;APA</h3>
               <p className="text-text-light mb-4">
-                <strong>Montant moyen national :</strong> 600€ à 1200€/mois selon niveau perte d'autonomie. Varie selon département (+ chère Paris que province).
+                <strong>Montant moyen national :</strong> 600€ à 1200€/mois selon niveau perte d&apos;autonomie. Varie selon département (+ chère Paris que province).
               </p>
               <p className="text-text-light">
                 Calcul : montant APA possible × pourcentage participation département = montant réel.
               </p>
-              <p className="text-text-light text-sm mt-4">Peut couvrir 50% à 80% de l'aide à domicile selon situation.</p>
+              <p className="text-text-light text-sm mt-4">Peut couvrir 50% à 80% de l&apos;aide à domicile selon situation.</p>
             </div>
 
             <div className="bg-white p-8 rounded-2xl border-2 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-4">Comment obtenir l'APA ?</h3>
+              <h3 className="text-2xl font-bold text-primary mb-4">Comment obtenir l&apos;APA ?</h3>
               <div className="space-y-4">
                 {[
                   { step: "1", title: "Demande auprès département", desc: "CCAS local ou directement direction solidarité département." },
@@ -126,9 +141,9 @@ export default function AidesFinanciairesPage() {
 
           <div className="space-y-8">
             <div className="bg-white p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qu'est-ce que la PCH ?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qu&apos;est-ce que la PCH ?</h3>
               <p className="text-text-light">
-                La PCH est aide financière État pour personnes handicapées. Versée par département. Couvre besoin d'aide spécifique (gestes, déplacements, accompagnement). Très complète et souvent + élevée que APA.
+                La PCH est aide financière État pour personnes handicapées. Versée par département. Couvre besoin d&apos;aide spécifique (gestes, déplacements, accompagnement). Très complète et souvent + élevée que APA.
               </p>
             </div>
 
@@ -145,7 +160,7 @@ export default function AidesFinanciairesPage() {
             <div className="bg-white p-8 rounded-2xl border-l-4 border-primary">
               <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Montants possibles</h3>
               <p className="text-text-light">
-                Très variables selon type handicap et besoins. Peut couvrir jusqu'à 100% aide à domicile pour handicap grave. Moyenne : 1000€ à 3000€/mois dans cas importants.
+                Très variables selon type handicap et besoins. Peut couvrir jusqu&apos;à 100% aide à domicile pour handicap grave. Moyenne : 1000€ à 3000€/mois dans cas importants.
               </p>
             </div>
 
@@ -190,11 +205,11 @@ export default function AidesFinanciairesPage() {
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Crédit d'Impôt 50% (Service à Personne)</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Crédit d&apos;Impôt 50% (Service à Personne)</h3>
               <p className="text-text-light text-sm mb-4">
                 Réduction fiscale automatique pour aide à domicile, ménage, etc. Vous déduisez 50% du coût de vos impôts (ou crédit de 50% si vous ne payez pas impôt).
               </p>
-              <p className="text-text-light text-sm">S'applique automatiquement si Youdom Care agréée.</p>
+              <p className="text-text-light text-sm">S&apos;applique automatiquement si Youdom Care agréée.</p>
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-primary">
@@ -255,7 +270,7 @@ export default function AidesFinanciairesPage() {
           </div>
 
           <p className="text-white/80 text-center mt-8 text-sm">
-            <strong>Gratuit :</strong> l'accompagnement Youdom Care pour dossiers aides n'a aucun coût supplémentaire.
+            <strong>Gratuit :</strong> l&apos;accompagnement Youdom Care pour dossiers aides n&apos;a aucun coût supplémentaire.
           </p>
         </div>
       </section>

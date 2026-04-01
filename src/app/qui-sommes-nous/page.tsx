@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Qui Sommes-Nous | Youdom Care",
@@ -8,17 +9,30 @@ export const metadata: Metadata = {
 export default function QuiSommesNousPage() {
   return (
     <>
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
+      {/* HERO */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
+        <div className="absolute inset-0 opacity-15">
+          <Image
+            src="/images/about/assistante-vie-famille.jpg"
+            alt="Assistante de vie accompagnant une famille"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/80 via-primary/70 to-primary-light/60"></div>
+
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-3 mb-6">
             Qui Sommes-Nous
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-            L&apos;humain au cœur de chaque action. 10+ ans d'expertise, 500+ familles, 98% de satisfaction.
+            L&apos;humain au cœur de chaque action. 10+ ans d&apos;expertise, 500+ familles, 98% de satisfaction.
           </p>
         </div>
       </section>
 
+      {/* MISSION */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -32,18 +46,45 @@ export default function QuiSommesNousPage() {
                   est la solution privilégiée par les personnes âgées et leurs familles.
                 </p>
                 <p>
-                  Quitter son domicile, c'est perdre son autonomie, ses souvenirs, ses repères. 
-                  Notre approche repose sur une conviction forte : l'aide à domicile doit être 
+                  Quitter son domicile, c&apos;est perdre son autonomie, ses souvenirs, ses repères. 
+                  Notre approche repose sur une conviction forte : l&apos;aide à domicile doit être 
                   humaine, professionnelle et sur mesure.
                 </p>
                 <p>
-                  Nous évaluons vos besoins, sélectionnons l'intervenant idéal, et construisons 
-                  un plan d'accompagnement qui évolue avec vous.
+                  Nous évaluons vos besoins, sélectionnons l&apos;intervenant idéal, et construisons 
+                  un plan d&apos;accompagnement qui évolue avec vous.
                 </p>
               </div>
             </div>
 
-            <div className="bg-warm rounded-3xl p-8">
+            <div className="rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/home/mission-home.png"
+                alt="Notre mission : accompagner avec bienveillance"
+                width={600}
+                height={500}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CE QUE NOUS FAISONS */}
+      <section className="py-16 bg-warm">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="hidden lg:block rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/about/autonomie.jpg"
+                alt="Préserver l'autonomie des personnes accompagnées"
+                width={600}
+                height={500}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+
+            <div className="bg-white rounded-3xl p-8">
               <h3 className="text-xl font-bold text-text mb-6">Ce que nous faisons pour vous</h3>
               <ul className="space-y-4">
                 {[
@@ -65,6 +106,7 @@ export default function QuiSommesNousPage() {
         </div>
       </section>
 
+      {/* CHIFFRES */}
       <section className="py-20 bg-primary">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-12">Youdom Care en chiffres</h2>
@@ -86,6 +128,7 @@ export default function QuiSommesNousPage() {
         </div>
       </section>
 
+      {/* VALEURS */}
       <section className="py-24 bg-warm">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-text mb-16">Nos valeurs</h2>
@@ -108,11 +151,47 @@ export default function QuiSommesNousPage() {
         </div>
       </section>
 
+      {/* POURQUOI NOUS CHOISIR */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-text mb-6">Pourquoi nous choisir ?</h2>
+              <div className="space-y-4 text-text-light leading-relaxed">
+                <p>
+                  Avec plus de 10 ans d&apos;expérience dans l&apos;aide à domicile, nous avons accompagné 
+                  des centaines de familles à travers des moments difficiles et importants.
+                </p>
+                <p>
+                  Notre différence : nous ne sommes pas une simple agence d&apos;intérim. Nous prenons 
+                  le temps de comprendre votre situation, de sélectionner l&apos;intervenant parfait, 
+                  et de vous accompagner sur la durée.
+                </p>
+                <p>
+                  Chaque famille est unique. Chaque accompagnement aussi.
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/home/pourquoi-choisir.png"
+                alt="Pourquoi choisir Youdom Care pour l'aide à domicile"
+                width={600}
+                height={500}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="py-20 bg-primary">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Faites connaissance avec nous</h2>
           <p className="text-white/70 text-lg mb-8">
-            La première étape, c'est simplement de se parler.
+            La première étape, c&apos;est simplement de se parler.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/demander-devis" className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-8 py-4 rounded-full text-lg transition-all cta-glow">

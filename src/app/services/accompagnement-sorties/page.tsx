@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Accompagnement et sorties | Youdom Care",
@@ -8,26 +9,41 @@ export const metadata: Metadata = {
 export default function AccompagnementSortiesPage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Accompagnement et sorties : autonomie et lien social</h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Courses, rendez-vous médicaux, loisirs. Preservez dignité et indépendance.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0184807297" className="px-8 py-4 bg-white/20 text-white font-bold rounded-xl border border-white text-lg">
-              Appeler : 01 84 80 72 97
-            </a>
+      <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Accompagnement et sorties : autonomie et lien social</h1>
+              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Courses, rendez-vous médicaux, loisirs. Preservez dignité et indépendance.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
+                  Demander un devis gratuit
+                </a>
+                <a href="tel:0184807297" className="px-8 py-4 bg-white/20 text-white font-bold rounded-xl border border-white text-lg">
+                  Appeler : 01 84 80 72 97
+                </a>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/services/service-accompagnements.png"
+                  alt="Accompagnement et sorties pour personnes âgées et handicapées"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Pourquoi l'accompagnement et les sorties ?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Pourquoi l&apos;accompagnement et les sorties ?</h2>
           <p className="text-text-light text-center mb-12 max-w-2xl mx-auto">
-            Sortir, faire des activités, avoir une vie sociale — c'est pas un luxe. C'est fondamental pour la santé physique ET mentale.
+            Sortir, faire des activités, avoir une vie sociale — c&apos;est pas un luxe. C&apos;est fondamental pour la santé physique ET mentale.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -50,7 +66,7 @@ export default function AccompagnementSortiesPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Types d'accompagnement possibles</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Types d&apos;accompagnement possibles</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-8 bg-warm rounded-2xl border-l-4 border-secondary">
               <h3 className="text-2xl font-bold text-primary mb-4">Courses et déplacements essentiels</h3>
@@ -150,7 +166,7 @@ export default function AccompagnementSortiesPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-text mb-6 text-center">Financement</h2>
           <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
             <p className="text-text-light text-sm">
-              <strong>APA :</strong> Peut couvrir part accompagnement. <strong>Crédit d'impôt 50% :</strong> Automatique service à personne. 
+              <strong>APA :</strong> Peut couvrir part accompagnement. <strong>Crédit d&apos;impôt 50% :</strong> Automatique service à personne. 
               <strong className="ml-2">TVA réduite 5.5%.</strong> Youdom Care aide démarches.
             </p>
           </div>
