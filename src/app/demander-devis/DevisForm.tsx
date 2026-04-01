@@ -173,7 +173,7 @@ export default function DevisForm() {
   return (
     <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
       {/* Progress bar */}
-      <div className="px-4 sm:px-8 pt-6 sm:pt-8">
+      <div className="px-4 sm:px-8 lg:px-6 pt-6 sm:pt-8 lg:pt-5">
         <div className="flex items-center justify-between mb-2">
           {[1, 2, 3, 4, 5].map((s) => (
             <div key={s} className="flex flex-col items-center gap-1">
@@ -202,29 +202,29 @@ export default function DevisForm() {
             style={{ width: `${((step - 1) / (TOTAL_STEPS - 1)) * 100}%` }}
           />
         </div>
-        <p className="text-xs text-text-light text-center mb-4">
+        <p className="text-xs text-text-light text-center mb-3 lg:mb-2">
           Étape {step} sur {TOTAL_STEPS}
         </p>
       </div>
 
-      <div className="px-4 sm:px-8 pb-6 sm:pb-8">
+      <div className="px-4 sm:px-8 lg:px-6 pb-6 sm:pb-8 lg:pb-5">
 
         {/* ── STEP 1: PROFIL ── */}
         <div className={`transition-all duration-400 ${step === 1 ? "opacity-100 max-h-[2000px]" : "opacity-0 max-h-0 overflow-hidden pointer-events-none"}`}>
-          <h2 className="text-lg sm:text-xl font-bold text-text mb-1 text-center">
+          <h2 className="text-lg sm:text-xl lg:text-base font-bold text-text mb-1 text-center">
             Quelle est votre situation ?
           </h2>
-          <p className="text-text-light text-sm text-center mb-6">
+          <p className="text-text-light text-sm lg:text-xs text-center mb-4 lg:mb-3">
             Sélectionnez le type d&apos;aide qui correspond à votre besoin
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-2">
             {profileOptions.map((p) => {
               const active = selectedProfile === p.id;
               return (
                 <button
                   key={p.id}
                   onClick={() => handleProfileChange(p.id)}
-                  className={`flex items-start gap-3 p-4 sm:p-5 rounded-xl border-2 text-left transition-all duration-200 ${
+                  className={`flex items-start gap-3 p-4 sm:p-5 lg:p-3 rounded-xl border-2 text-left transition-all duration-200 ${
                     active
                       ? "border-primary bg-primary/5 shadow-md"
                       : "border-gray-200 hover:border-primary/40 hover:bg-warm"
@@ -257,7 +257,7 @@ export default function DevisForm() {
           <h2 className="text-lg sm:text-xl font-bold text-text mb-1 text-center">
             De quels services avez-vous besoin ?
           </h2>
-          <p className="text-text-light text-sm text-center mb-6">
+          <p className="text-text-light text-sm lg:text-xs text-center mb-6">
             Sélectionnez un ou plusieurs services
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -297,7 +297,7 @@ export default function DevisForm() {
           <h2 className="text-lg sm:text-xl font-bold text-text mb-1 text-center">
             Planifiez vos interventions
           </h2>
-          <p className="text-text-light text-sm text-center mb-6">
+          <p className="text-text-light text-sm lg:text-xs text-center mb-6">
             Sélectionnez vos jours, puis choisissez les créneaux horaires pour chaque jour
           </p>
 
@@ -309,7 +309,7 @@ export default function DevisForm() {
                 <button
                   key={t}
                   onClick={() => setTiming(t)}
-                  className={`px-4 py-2.5 rounded-lg text-sm font-medium border-2 transition-all ${
+                  className={`px-4 py-2.5 lg:py-1.5 rounded-lg text-sm font-medium border-2 transition-all ${
                     timing === t ? "border-primary bg-primary text-white" : "border-gray-200 text-text-light hover:border-primary/40"
                   }`}
                 >
@@ -327,7 +327,7 @@ export default function DevisForm() {
                 <button
                   key={d}
                   onClick={() => toggleDay(d)}
-                  className={`px-4 py-2.5 rounded-lg text-sm font-medium border-2 transition-all ${
+                  className={`px-4 py-2.5 lg:py-1.5 rounded-lg text-sm font-medium border-2 transition-all ${
                     selectedDays.includes(d) ? "border-primary bg-primary text-white" : "border-gray-200 text-text-light hover:border-primary/40"
                   }`}
                 >
@@ -390,7 +390,7 @@ export default function DevisForm() {
           <h2 className="text-lg sm:text-xl font-bold text-text mb-1 text-center">
             Vos coordonnées
           </h2>
-          <p className="text-text-light text-sm text-center mb-6">
+          <p className="text-text-light text-sm lg:text-xs text-center mb-6">
             Nous nous engageons à vous rappeler sous 2 heures (jours ouvrables)
           </p>
 
@@ -400,7 +400,7 @@ export default function DevisForm() {
                 <button
                   key={c}
                   onClick={() => setCivilite(c)}
-                  className={`flex-1 py-3 rounded-xl text-sm font-semibold border-2 transition-all ${
+                  className={`flex-1 py-3 lg:py-2 rounded-xl text-sm font-semibold border-2 transition-all ${
                     civilite === c ? "border-primary bg-primary text-white" : "border-gray-200 text-text-light hover:border-primary/40"
                   }`}
                 >
@@ -411,20 +411,20 @@ export default function DevisForm() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input type="text" placeholder="Prénom *" value={prenom} onChange={(e) => setPrenom(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
+                className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
               <input type="text" placeholder="Nom *" value={nom} onChange={(e) => setNom(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
+                className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input type="tel" placeholder="Téléphone *" value={tel} onChange={(e) => setTel(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
+                className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
               <input type="email" placeholder="Email *" value={email} onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
+                className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
             </div>
 
             <input type="text" placeholder="Code postal *" value={cp} onChange={(e) => setCp(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
+              className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
 
             <div>
               <p className="text-sm font-semibold text-text mb-2">À qui est destinée notre aide ?</p>
@@ -433,7 +433,7 @@ export default function DevisForm() {
                   <button
                     key={d}
                     onClick={() => setDestinataire(d)}
-                    className={`flex-1 py-3 rounded-xl text-sm font-medium border-2 transition-all ${
+                    className={`flex-1 py-3 lg:py-2 rounded-xl text-sm font-medium border-2 transition-all ${
                       destinataire === d ? "border-primary bg-primary/5" : "border-gray-200 text-text-light hover:border-primary/40"
                     }`}
                   >
@@ -448,7 +448,7 @@ export default function DevisForm() {
               value={commentaire}
               onChange={(e) => setCommentaire(e.target.value)}
               rows={3}
-              className="w-full px-4 py-3 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm resize-none"
+              className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm resize-none"
             />
 
             <div className="flex items-start gap-3">
@@ -530,7 +530,7 @@ export default function DevisForm() {
           <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
             <button
               onClick={() => setStep(Math.max(1, step - 1))}
-              className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all min-h-[44px] ${
+              className={`px-5 py-3 lg:py-2 rounded-xl text-sm font-semibold transition-all min-h-[44px] ${
                 step === 1 ? "text-gray-300 cursor-not-allowed" : "text-text-light hover:text-primary hover:bg-warm"
               }`}
               disabled={step === 1}
@@ -544,7 +544,7 @@ export default function DevisForm() {
                 else setStep(step + 1);
               }}
               disabled={!canNext()}
-              className={`px-6 sm:px-8 py-3 rounded-xl text-sm font-bold transition-all min-h-[44px] ${
+              className={`px-6 sm:px-8 py-3 lg:py-2 rounded-xl text-sm font-bold transition-all min-h-[44px] ${
                 canNext()
                   ? "bg-primary hover:bg-primary-light text-white shadow-md hover:shadow-lg"
                   : "bg-gray-200 text-gray-400 cursor-not-allowed"
