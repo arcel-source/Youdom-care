@@ -230,10 +230,10 @@ export default function RecruitmentPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:rh@youdomcare.fr"
+              href="mailto:rh@youdomcare.com"
               className="w-full sm:w-auto px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 text-lg min-h-[44px] text-center"
             >
-              📧 rh@youdomcare.fr
+              📧 rh@youdomcare.com
             </a>
             <a
               href="tel:0184807297"
