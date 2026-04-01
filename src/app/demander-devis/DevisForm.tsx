@@ -74,17 +74,17 @@ const timingOptions = [
 ];
 
 const dayOptions = [
-  "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "Tous les jours",
+  "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche",
 ];
 
 const slotOptions = [
-  "Matin",
-  "Midi",
-  "Après-midi",
-  "Soir",
-  "Journée entière (8h › 20h)",
-  "Nuit (20h › 8h)",
-  "24h/24",
+  { id: "matin", label: "Matin", detail: "6h - 12h" },
+  { id: "midi", label: "Midi", detail: "12h - 14h" },
+  { id: "aprem", label: "Après-midi", detail: "14h - 18h" },
+  { id: "soir", label: "Soir", detail: "18h - 22h" },
+  { id: "nuit", label: "Nuit", detail: "22h - 6h" },
+  { id: "journee", label: "Journée entière", detail: "8h - 20h" },
+  { id: "24h", label: "24h/24", detail: "Présence continue" },
 ];
 
 const TOTAL_STEPS = 5;
@@ -102,7 +102,7 @@ export default function DevisForm() {
   /* step 3 — planning */
   const [timing, setTiming] = useState("");
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
-  const [selectedSlots, setSelectedSlots] = useState<string[]>([]);
+  const [daySlots, setDaySlots] = useState<Record<string, string[]>>({});
 
   /* step 4 — coordonnées */
   const [civilite, setCivilite] = useState("");
@@ -123,12 +123,35 @@ export default function DevisForm() {
     setter(list.includes(value) ? list.filter((v2) => v2 !== value) : [...list, value]);
   };
 
+  const toggleDay = (day: string) => {
+    if (selectedDays.includes(day)) {
+      setSelectedDays(selectedDays.filter((d) => d !== day));
+      setDaySlots((prev) => {
+        const copy = { ...prev };
+        delete copy[day];
+        return copy;
+      });
+    } else {
+      setSelectedDays([...selectedDays, day]);
+    }
+  };
+
+  const toggleDaySlot = (day: string, slotId: string) => {
+    setDaySlots((prev) => {
+      const current = prev[day] || [];
+      const updated = current.includes(slotId)
+        ? current.filter((s) => s !== slotId)
+        : [...current, slotId];
+      return { ...prev, [day]: updated };
+    });
+  };
+
   const availableServices = selectedProfile ? (servicesByProfile[selectedProfile] || []) : [];
 
   const canNext = () => {
     if (step === 1) return selectedProfile !== "";
     if (step === 2) return selectedServices.length > 0;
-    if (step === 3) return timing !== "" && selectedDays.length > 0 && selectedSlots.length > 0;
+    if (step === 3) return timing !== "" && selectedDays.length > 0 && selectedDays.every((d) => (daySlots[d] || []).length > 0);
     if (step === 4)
       return civilite !== "" && prenom.trim() !== "" && nom.trim() !== "" && tel.trim() !== "" && email.trim() !== "" && cp.trim() !== "" && destinataire !== "" && consent;
     return true;
@@ -136,7 +159,7 @@ export default function DevisForm() {
 
   const handleProfileChange = (id: string) => {
     setSelectedProfile(id);
-    setSelectedServices([]); // reset services when profile changes
+    setSelectedServices([]);
   };
 
   const handleSubmit = () => {
@@ -270,13 +293,17 @@ export default function DevisForm() {
         </div>
 
         {/* ── STEP 3: PLANNING ── */}
-        <div className={`transition-all duration-400 ${step === 3 ? "opacity-100 max-h-[2000px]" : "opacity-0 max-h-0 overflow-hidden pointer-events-none"}`}>
-          <h2 className="text-lg sm:text-xl font-bold text-text mb-6 text-center">
-            Quand est-ce que nous commençons ?
+        <div className={`transition-all duration-400 ${step === 3 ? "opacity-100 max-h-[5000px]" : "opacity-0 max-h-0 overflow-hidden pointer-events-none"}`}>
+          <h2 className="text-lg sm:text-xl font-bold text-text mb-1 text-center">
+            Planifiez vos interventions
           </h2>
+          <p className="text-text-light text-sm text-center mb-6">
+            Sélectionnez vos jours, puis choisissez les créneaux horaires pour chaque jour
+          </p>
 
+          {/* Délai */}
           <div className="mb-6">
-            <p className="text-sm font-semibold text-text mb-3">Délai souhaité</p>
+            <p className="text-sm font-semibold text-text mb-3">📅 Quand souhaitez-vous commencer ?</p>
             <div className="flex flex-wrap gap-2">
               {timingOptions.map((t) => (
                 <button
@@ -292,13 +319,14 @@ export default function DevisForm() {
             </div>
           </div>
 
+          {/* Jours */}
           <div className="mb-6">
-            <p className="text-sm font-semibold text-text mb-3">Jours souhaités</p>
+            <p className="text-sm font-semibold text-text mb-3">📆 Quels jours avez-vous besoin d&apos;aide ?</p>
             <div className="flex flex-wrap gap-2">
               {dayOptions.map((d) => (
                 <button
                   key={d}
-                  onClick={() => toggle(selectedDays, setSelectedDays, d)}
+                  onClick={() => toggleDay(d)}
                   className={`px-4 py-2.5 rounded-lg text-sm font-medium border-2 transition-all ${
                     selectedDays.includes(d) ? "border-primary bg-primary text-white" : "border-gray-200 text-text-light hover:border-primary/40"
                   }`}
@@ -309,22 +337,52 @@ export default function DevisForm() {
             </div>
           </div>
 
-          <div>
-            <p className="text-sm font-semibold text-text mb-3">Horaires préférés</p>
-            <div className="flex flex-wrap gap-2">
-              {slotOptions.map((s) => (
-                <button
-                  key={s}
-                  onClick={() => toggle(selectedSlots, setSelectedSlots, s)}
-                  className={`px-4 py-2.5 rounded-lg text-sm font-medium border-2 transition-all ${
-                    selectedSlots.includes(s) ? "border-primary bg-primary text-white" : "border-gray-200 text-text-light hover:border-primary/40"
-                  }`}
-                >
-                  {s}
-                </button>
-              ))}
+          {/* Créneaux par jour */}
+          {selectedDays.length > 0 && (
+            <div>
+              <p className="text-sm font-semibold text-text mb-3">⏰ Créneaux horaires par jour</p>
+              <p className="text-xs text-text-light mb-4">Pour chaque jour sélectionné, indiquez les créneaux souhaités</p>
+              <div className="space-y-3">
+                {selectedDays.map((day) => {
+                  const slots = daySlots[day] || [];
+                  return (
+                    <div key={day} className="bg-warm rounded-xl p-4 border border-gray-100">
+                      <div className="flex items-center justify-between mb-3">
+                        <p className="text-sm font-bold text-primary">{day}</p>
+                        {slots.length > 0 && (
+                          <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">
+                            {slots.length} créneau{slots.length > 1 ? "x" : ""}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {slotOptions.map((s) => {
+                          const active = slots.includes(s.id);
+                          return (
+                            <button
+                              key={s.id}
+                              onClick={() => toggleDaySlot(day, s.id)}
+                              className={`px-3 py-2 rounded-lg text-xs font-medium border-2 transition-all flex flex-col items-center min-w-[85px] ${
+                                active
+                                  ? "border-primary bg-primary text-white"
+                                  : "border-gray-200 text-text-light hover:border-primary/40 bg-white"
+                              }`}
+                            >
+                              <span>{s.label}</span>
+                              <span className={`text-[10px] mt-0.5 ${active ? "text-white/70" : "text-text-light/60"}`}>{s.detail}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                      {slots.length === 0 && (
+                        <p className="text-xs text-danger mt-2">⚠ Sélectionnez au moins un créneau pour ce jour</p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* ── STEP 4: COORDONNÉES ── */}
@@ -408,7 +466,7 @@ export default function DevisForm() {
         </div>
 
         {/* ── STEP 5: CONFIRMATION ── */}
-        <div className={`transition-all duration-400 ${step === 5 ? "opacity-100 max-h-[2000px]" : "opacity-0 max-h-0 overflow-hidden pointer-events-none"}`}>
+        <div className={`transition-all duration-400 ${step === 5 ? "opacity-100 max-h-[3000px]" : "opacity-0 max-h-0 overflow-hidden pointer-events-none"}`}>
           {submitted && (
             <div className="text-center py-6">
               <div className="text-6xl mb-4">✅</div>
@@ -434,17 +492,24 @@ export default function DevisForm() {
                     </span>
                   </p>
                   <p>
-                    <span className="text-text-light">Début :</span>{" "}
+                    <span className="text-text-light">Début souhaité :</span>{" "}
                     <span className="text-text font-medium">{timing}</span>
                   </p>
-                  <p>
-                    <span className="text-text-light">Jours :</span>{" "}
-                    <span className="text-text font-medium">{selectedDays.join(", ")}</span>
-                  </p>
-                  <p>
-                    <span className="text-text-light">Horaires :</span>{" "}
-                    <span className="text-text font-medium">{selectedSlots.join(", ")}</span>
-                  </p>
+                  <div>
+                    <span className="text-text-light">Planning détaillé :</span>
+                    <div className="mt-2 space-y-1.5 bg-white rounded-lg p-3 border border-gray-100">
+                      {selectedDays.map((day) => {
+                        const slots = daySlots[day] || [];
+                        const labels = slots.map((id) => slotOptions.find((s) => s.id === id)?.label).filter(Boolean);
+                        return (
+                          <div key={day} className="flex items-start gap-2">
+                            <span className="text-primary font-semibold text-xs min-w-[70px]">{day}</span>
+                            <span className="text-text text-xs">{labels.join(", ") || "—"}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
 
