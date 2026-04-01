@@ -118,7 +118,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               { slug: "aide-personnes-agees", image: "/images/services/aide-autonomie.png", title: "Aide aux personnes âgées", desc: "Toilette, repas, mobilité, accompagnement. Pour continuer vie chez soi." },
-              { slug: "aide-handicap", image: "/images/services/aide-handicap-domicile.png", title: "Aide handicap", desc: "Services adaptés à chaque handicap. Continuité, respect, dignité." },
+              { slug: "aide-handicap", image: "/images/services/aide-handicap-domicile.png", title: "Aide et accompagnement pour personnes handicapées", desc: "Services adaptés à chaque handicap. Continuité, respect, dignité." },
               { slug: "garde-enfants-handicap", image: "/images/services/aide-enfant.png", title: "Garde d'enfants handicapés", desc: "Garde qualifiée enfants handicapés. Sécurité, bienveillance." },
               { slug: "aide-menagere", image: "/images/services/aide-menagere.jpg", title: "Aide ménagère", desc: "Ménage régulier. Domicile propre, prévention chutes, bien-être." },
               { slug: "garde-nuit", image: "/images/services/garde-presence.png", title: "Présence de nuit", desc: "Veille passive ou active. Sécurité nocturne maximale." },
