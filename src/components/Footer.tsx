@@ -3,31 +3,6 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-primary-dark text-white">
-      <div className="bg-primary py-10 sm:py-12">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-            Besoin d&apos;aide à domicile ?
-          </h2>
-          <p className="text-white/80 text-base sm:text-lg mb-6 sm:mb-8">
-            Obtenez votre devis gratuit en 2 minutes. Nous vous rappelons sous 2 heures.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Link
-              href="/demander-devis"
-              className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg transition-all cta-glow min-h-[44px] flex items-center justify-center"
-            >
-              Demander un Devis →
-            </Link>
-            <a
-              href="tel:+33667224507"
-              className="border-2 border-white/30 hover:border-white text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg transition-all min-h-[44px] flex items-center justify-center"
-            >
-              📞 06 67 22 45 07
-            </a>
-          </div>
-        </div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           <div>
