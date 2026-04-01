@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import AddressInput from "./AddressInput";
 
 /* ───── data ───── */
 const profileOptions = [
@@ -110,10 +111,16 @@ export default function DevisForm() {
   const [nom, setNom] = useState("");
   const [tel, setTel] = useState("");
   const [email, setEmail] = useState("");
+  const [adresse, setAdresse] = useState("");
   const [cp, setCp] = useState("");
   const [destinataire, setDestinataire] = useState("");
   const [commentaire, setCommentaire] = useState("");
   const [consent, setConsent] = useState(false);
+
+  /* validation & suggestions */
+  const [adressSuggestions, setAdressSuggestions] = useState<any[]>([]);
+  const [showAdresseSuggestions, setShowAdresseSuggestions] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   /* step 5 — confirmation */
   const [submitted, setSubmitted] = useState(false);
@@ -148,12 +155,42 @@ export default function DevisForm() {
 
   const availableServices = selectedProfile ? (servicesByProfile[selectedProfile] || []) : [];
 
+  // Validation functions
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhoneFR = (phone: string): boolean => {
+    const cleaned = phone.replace(/[\s\.\-]/g, "");
+    const phoneRegex = /^(?:(?:\+|00)33|0)[1-9](?:[0-9]{8})$/;
+    return phoneRegex.test(cleaned);
+  };
+
+  const validateCP = (cp: string): boolean => {
+    return /^\d{5}$/.test(cp);
+  };
+
   const canNext = () => {
     if (step === 1) return selectedProfile !== "";
     if (step === 2) return selectedServices.length > 0;
     if (step === 3) return timing !== "" && selectedDays.length > 0 && selectedDays.every((d) => (daySlots[d] || []).length > 0);
-    if (step === 4)
-      return civilite !== "" && prenom.trim() !== "" && nom.trim() !== "" && tel.trim() !== "" && email.trim() !== "" && cp.trim() !== "" && destinataire !== "" && consent;
+    if (step === 4) {
+      return (
+        civilite !== "" &&
+        prenom.trim() !== "" &&
+        nom.trim() !== "" &&
+        tel.trim() !== "" &&
+        email.trim() !== "" &&
+        cp.trim() !== "" &&
+        adresse.trim() !== "" &&
+        destinataire !== "" &&
+        consent &&
+        validateEmail(email) &&
+        validatePhoneFR(tel) &&
+        validateCP(cp)
+      );
+    }
     return true;
   };
 
@@ -394,7 +431,7 @@ export default function DevisForm() {
             Nous nous engageons à vous rappeler sous 2 heures (jours ouvrables)
           </p>
 
-          <div className="space-y-4">
+          <div className="space-y-3 lg:space-y-2">
             <div className="flex gap-3">
               {["Monsieur", "Madame"].map((c) => (
                 <button
@@ -416,15 +453,32 @@ export default function DevisForm() {
                 className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
             </div>
 
+            <AddressInput value={adresse} onChange={setAdresse} placeholder="Adresse *" />
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="tel" placeholder="Téléphone *" value={tel} onChange={(e) => setTel(e.target.value)}
-                className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
-              <input type="email" placeholder="Email *" value={email} onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
+              <div>
+                <input type="text" placeholder="Code postal *" value={cp} onChange={(e) => setCp(e.target.value)}
+                  className={`w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border outline-none text-sm transition-all ${
+                    cp && !validateCP(cp) ? "border-red-500 focus:ring-2 focus:ring-red-200" : "border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  }`} />
+                {cp && !validateCP(cp) && <p className="text-red-500 text-xs mt-1">Code postal invalide (5 chiffres)</p>}
+              </div>
+              <div>
+                <input type="email" placeholder="Email *" value={email} onChange={(e) => setEmail(e.target.value)}
+                  className={`w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border outline-none text-sm transition-all ${
+                    email && !validateEmail(email) ? "border-red-500 focus:ring-2 focus:ring-red-200" : "border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  }`} />
+                {email && !validateEmail(email) && <p className="text-red-500 text-xs mt-1">Email invalide</p>}
+              </div>
             </div>
 
-            <input type="text" placeholder="Code postal *" value={cp} onChange={(e) => setCp(e.target.value)}
-              className="w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm" />
+            <div>
+              <input type="tel" placeholder="Téléphone *" value={tel} onChange={(e) => setTel(e.target.value)}
+                className={`w-full px-4 py-3 lg:py-2 rounded-xl bg-warm border outline-none text-sm transition-all ${
+                  tel && !validatePhoneFR(tel) ? "border-red-500 focus:ring-2 focus:ring-red-200" : "border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20"
+                }`} />
+              {tel && !validatePhoneFR(tel) && <p className="text-red-500 text-xs mt-1">Téléphone français invalide (ex: 06 12 34 56 78)</p>}
+            </div>
 
             <div>
               <p className="text-sm font-semibold text-text mb-2">À qui est destinée notre aide ?</p>
