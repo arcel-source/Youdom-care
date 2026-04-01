@@ -19,8 +19,8 @@ export default function AidesFinanciairesPage() {
           <div className="absolute top-20 right-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Financer votre aide à domicile : APA, PCH, crédit d'impôt 50%</h1>
-          <p className="text-xl text-white/80 mb-8">Les aides existent. Vous en avez le droit. Youdom Care vous accompagne dans démarches.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Financer votre aide à domicile : APA, PCH, crédit d'impôt 50%</h1>
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Les aides existent. Vous en avez le droit. Youdom Care vous accompagne dans démarches.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
               Demander aide accompagnement
@@ -35,7 +35,7 @@ export default function AidesFinanciairesPage() {
       {/* INTRO */}
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Les aides existent. Vous en avez le droit.</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Les aides existent. Vous en avez le droit.</h2>
           <p className="text-text-light text-center text-lg mb-12 max-w-2xl mx-auto">
             L'aide à domicile coûte de l'argent. Mais ne vous découragez pas : des aides gouvernementales, régionales et fiscales existent pour financer ou réduire le coût réel.
           </p>
@@ -58,11 +58,11 @@ export default function AidesFinanciairesPage() {
       {/* APA */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">L'APA (Allocation Personnalisée d'Autonomie)</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">L'APA (Allocation Personnalisée d'Autonomie)</h2>
 
           <div className="space-y-8">
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-3">Qu'est-ce que l'APA ?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qu'est-ce que l'APA ?</h3>
               <p className="text-text-light mb-4">
                 L'APA est une aide financière versée par le département pour les personnes âgées en perte d'autonomie. C'est pas un prêt : c'est une allocation. Vous la recevez sans la rembourser.
               </p>
@@ -72,7 +72,7 @@ export default function AidesFinanciairesPage() {
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-2xl font-bold text-primary mb-3">Qui peut demander l'APA ?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qui peut demander l'APA ?</h3>
               <ul className="space-y-3 text-text-light">
                 <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Âge minimum 60 ans</li>
                 <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Réside en France</li>
@@ -83,7 +83,7 @@ export default function AidesFinanciairesPage() {
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-primary">
-              <h3 className="text-2xl font-bold text-primary mb-3">Montants de l'APA</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Montants de l'APA</h3>
               <p className="text-text-light mb-4">
                 <strong>Montant moyen national :</strong> 600€ à 1200€/mois selon niveau perte d'autonomie. Varie selon département (+ chère Paris que province).
               </p>
@@ -122,18 +122,18 @@ export default function AidesFinanciairesPage() {
       {/* PCH */}
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">La PCH (Prestation Compensation Handicap)</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">La PCH (Prestation Compensation Handicap)</h2>
 
           <div className="space-y-8">
             <div className="bg-white p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-3">Qu'est-ce que la PCH ?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qu'est-ce que la PCH ?</h3>
               <p className="text-text-light">
                 La PCH est aide financière État pour personnes handicapées. Versée par département. Couvre besoin d'aide spécifique (gestes, déplacements, accompagnement). Très complète et souvent + élevée que APA.
               </p>
             </div>
 
             <div className="bg-white p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-2xl font-bold text-primary mb-3">Qui peut demander la PCH ?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qui peut demander la PCH ?</h3>
               <ul className="space-y-3 text-text-light">
                 <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Personnes avec handicap (moteur, sensoriel, cognitif, mental, etc)</li>
                 <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Âge limite : avant 75 ans (sauf exceptions)</li>
@@ -143,7 +143,7 @@ export default function AidesFinanciairesPage() {
             </div>
 
             <div className="bg-white p-8 rounded-2xl border-l-4 border-primary">
-              <h3 className="text-2xl font-bold text-primary mb-3">Montants possibles</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Montants possibles</h3>
               <p className="text-text-light">
                 Très variables selon type handicap et besoins. Peut couvrir jusqu'à 100% aide à domicile pour handicap grave. Moyenne : 1000€ à 3000€/mois dans cas importants.
               </p>
@@ -178,11 +178,11 @@ export default function AidesFinanciairesPage() {
       {/* AUTRES AIDES */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Autres aides financières</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Autres aides financières</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-3">AEEH (Allocation Éducation Enfant Handicapé)</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">AEEH (Allocation Éducation Enfant Handicapé)</h3>
               <p className="text-text-light text-sm mb-4">
                 Pour enfants handicapés 0-20 ans. Montant de base 135€/mois + compléments si situation grave. Peut financer aide à domicile ou garde.
               </p>
@@ -190,7 +190,7 @@ export default function AidesFinanciairesPage() {
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-2xl font-bold text-primary mb-3">Crédit d'Impôt 50% (Service à Personne)</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Crédit d'Impôt 50% (Service à Personne)</h3>
               <p className="text-text-light text-sm mb-4">
                 Réduction fiscale automatique pour aide à domicile, ménage, etc. Vous déduisez 50% du coût de vos impôts (ou crédit de 50% si vous ne payez pas impôt).
               </p>
@@ -198,7 +198,7 @@ export default function AidesFinanciairesPage() {
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-primary">
-              <h3 className="text-2xl font-bold text-primary mb-3">TVA Réduite 5.5%</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">TVA Réduite 5.5%</h3>
               <p className="text-text-light text-sm mb-4">
                 Au lieu 20% pour autres services. Youdom Care applique TVA 5.5% automatiquement pour service à domicile.
               </p>
@@ -206,7 +206,7 @@ export default function AidesFinanciairesPage() {
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-3">CESU (Chèques Emploi Service Universel)</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">CESU (Chèques Emploi Service Universel)</h3>
               <p className="text-text-light text-sm mb-4">
                 Chèques spécialisés pour services à personne. Simplifient paiement et déclaration charges sociales. Acceptés par Youdom Care.
               </p>
@@ -214,7 +214,7 @@ export default function AidesFinanciairesPage() {
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-2xl font-bold text-primary mb-3">Aides Mutuelles</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Aides Mutuelles</h3>
               <p className="text-text-light text-sm mb-4">
                 Certaines mutuelles complémentaires santé proposent aides ou remboursements partiels pour aide à domicile.
               </p>
@@ -222,7 +222,7 @@ export default function AidesFinanciairesPage() {
             </div>
 
             <div className="bg-warm p-8 rounded-2xl border-l-4 border-primary">
-              <h3 className="text-2xl font-bold text-primary mb-3">Aides Locales & Régionales</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Aides Locales & Régionales</h3>
               <p className="text-text-light text-sm mb-4">
                 Certains conseils régionaux/départementaux, mairies, proposent complément aides nationales. Très variable selon localisation.
               </p>
@@ -235,7 +235,7 @@ export default function AidesFinanciairesPage() {
       {/* ACCOMPAGNEMENT YOUDOM CARE */}
       <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Youdom Care vous accompagne dans démarches</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Youdom Care vous accompagne dans démarches</h2>
 
           <div className="space-y-6">
             {[
@@ -263,7 +263,7 @@ export default function AidesFinanciairesPage() {
       {/* FAQ */}
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Vos questions sur les aides</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Vos questions sur les aides</h2>
 
           <div className="space-y-6">
             {[
@@ -304,7 +304,7 @@ export default function AidesFinanciairesPage() {
       {/* CTA FINAL */}
       <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Commençons ensemble les démarches</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Commençons ensemble les démarches</h2>
           <p className="text-white/80 mb-8">Youdom Care : expert accompagnement aides. Zéro bureaucratie pesante. On fait simple.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">

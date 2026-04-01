@@ -11,10 +11,10 @@ export default function GardeEnfantsHandicapPage() {
     <div className="min-h-screen bg-white">
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
             Garde d'enfants en situation de handicap : sécurité, bienveillance et confiance absolue
           </h1>
-          <p className="text-xl text-white/80 mb-8">Intervenants expérimentés et formés. Vos enfants en de bonnes mains.</p>
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Intervenants expérimentés et formés. Vos enfants en de bonnes mains.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
               Demander un devis gratuit
@@ -28,7 +28,7 @@ export default function GardeEnfantsHandicapPage() {
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Les défis des parents d'enfants handicapés</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Les défis des parents d'enfants handicapés</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {[
               { icon: "😰", title: "L'angoisse de laisser son enfant", desc: "Et s'il a peur ? Et s'il se blesse ? Qui comprendra vraiment ses besoins ?" },
@@ -50,7 +50,7 @@ export default function GardeEnfantsHandicapPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Notre approche : expertise, patience, bienveillance</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Notre approche : expertise, patience, bienveillance</h2>
           <div className="space-y-6">
             <div className="p-8 bg-warm rounded-2xl border-l-4 border-secondary">
               <h3 className="text-2xl font-bold text-text mb-3">Intervenants rigoureusement sélectionnés</h3>
@@ -85,7 +85,7 @@ export default function GardeEnfantsHandicapPage() {
 
       <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Ce que vous gagnez</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Ce que vous gagnez</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
               <h3 className="text-xl font-bold text-white mb-4">Pour votre enfant</h3>
@@ -114,7 +114,7 @@ export default function GardeEnfantsHandicapPage() {
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Débuter la garde : processus progressif et rassurant</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Débuter la garde : processus progressif et rassurant</h2>
           <div className="space-y-4">
             {[
               { step: "1", title: "Appel conseil détaillé", desc: "Vous décrivez handicap enfant, fonctionnement jour, besoins spécifiques." },
@@ -140,7 +140,7 @@ export default function GardeEnfantsHandicapPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Aides financières (AEEH, PCH, crédit d'impôt 50%)</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Aides financières (AEEH, PCH, crédit d'impôt 50%)</h2>
           <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary mb-8">
             <h3 className="font-bold text-text mb-2">AEEH (Allocation Éducation Enfant Handicapé)</h3>
             <p className="text-text-light text-sm">Pour enfants handicapés 0-20 ans. Jusqu'à 300-400€/mois. Accessible pour plupart situations.</p>
@@ -161,7 +161,7 @@ export default function GardeEnfantsHandicapPage() {
 
       <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Votre enfant mérite garde de qualité</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Votre enfant mérite garde de qualité</h2>
           <p className="text-white/80 mb-8">Youdom Care : gardes formées, bienveillantes, 98% satisfaction parents.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">

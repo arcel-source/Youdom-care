@@ -10,8 +10,8 @@ export default function ContactPage() {
     <div className="min-h-screen bg-white">
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Nous contacter</h1>
-          <p className="text-xl text-white/80">Réponse en moins de 2 heures. Consultation gratuite.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Nous contacter</h1>
+          <p className="text-base sm:text-lg md:text-xl text-white/80">Réponse en moins de 2 heures. Consultation gratuite.</p>
         </div>
       </section>
 
@@ -50,7 +50,7 @@ export default function ContactPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-2xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Demander un devis gratuit</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Demander un devis gratuit</h2>
           
           <form className="space-y-6 bg-warm p-8 rounded-2xl">
             <div>
@@ -126,7 +126,7 @@ export default function ContactPage() {
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Nos coordonnées</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Nos coordonnées</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-2xl">
               <h3 className="font-bold text-text mb-4">Siège social</h3>

@@ -10,8 +10,8 @@ export default function AideMenagerePage() {
     <div className="min-h-screen bg-white">
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Aide ménagère à domicile : confort et bien-être</h1>
-          <p className="text-xl text-white/80 mb-8">Services réguliers de ménage. Confiance et qualité garanties.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Aide ménagère à domicile : confort et bien-être</h1>
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Services réguliers de ménage. Confiance et qualité garanties.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
               Demander un devis gratuit
@@ -25,7 +25,7 @@ export default function AideMenagerePage() {
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Pourquoi une aide ménagère à domicile ?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Pourquoi une aide ménagère à domicile ?</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: "🧓", title: "Mobilité réduite", desc: "Personnes âgées, handicap — escalier impossible." },
@@ -47,7 +47,7 @@ export default function AideMenagerePage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Nos services de ménage détaillés</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Nos services de ménage détaillés</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {[
               "Nettoyage courant (balai, serpillière, chiffons)",
@@ -74,7 +74,7 @@ export default function AideMenagerePage() {
 
       <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Bénéfices</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Bénéfices</h2>
           <div className="grid md:grid-cols-3 gap-6 text-white">
             <div className="bg-white/10 p-6 rounded-xl backdrop-blur border border-white/20">
               <h3 className="font-bold mb-3">Pour la personne aidée</h3>
@@ -94,7 +94,7 @@ export default function AideMenagerePage() {
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Flexibilité et régularité</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Flexibilité et régularité</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-xl border border-gray-200">
               <h3 className="font-bold text-text mb-3">Fréquences possibles</h3>
@@ -120,7 +120,7 @@ export default function AideMenagerePage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Coûts et aides</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Coûts et aides</h2>
           <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
             <h3 className="font-bold text-text mb-3">Crédit d'impôt 50% automatique</h3>
             <p className="text-text-light text-sm mb-4">Service à personne = réduction d'impôts automatique 50%.</p>
@@ -132,7 +132,7 @@ export default function AideMenagerePage() {
 
       <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Un intérieur propre et confortable</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Un intérieur propre et confortable</h2>
           <p className="text-white/80 mb-8">Régularité, confiance, qualité. Youdom Care : même intervenant, tarifs transparents.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">

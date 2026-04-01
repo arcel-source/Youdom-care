@@ -10,8 +10,8 @@ export default function AccompagnementSortiesPage() {
     <div className="min-h-screen bg-white">
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Accompagnement et sorties : autonomie et lien social</h1>
-          <p className="text-xl text-white/80 mb-8">Courses, rendez-vous médicaux, loisirs. Preservez dignité et indépendance.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Accompagnement et sorties : autonomie et lien social</h1>
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Courses, rendez-vous médicaux, loisirs. Preservez dignité et indépendance.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
               Demander un devis gratuit
@@ -25,7 +25,7 @@ export default function AccompagnementSortiesPage() {
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Pourquoi l'accompagnement et les sorties ?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Pourquoi l'accompagnement et les sorties ?</h2>
           <p className="text-text-light text-center mb-12 max-w-2xl mx-auto">
             Sortir, faire des activités, avoir une vie sociale — c'est pas un luxe. C'est fondamental pour la santé physique ET mentale.
           </p>
@@ -50,7 +50,7 @@ export default function AccompagnementSortiesPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Types d'accompagnement possibles</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Types d'accompagnement possibles</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-8 bg-warm rounded-2xl border-l-4 border-secondary">
               <h3 className="text-2xl font-bold text-primary mb-4">Courses et déplacements essentiels</h3>
@@ -101,7 +101,7 @@ export default function AccompagnementSortiesPage() {
 
       <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Bénéfices importants</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Bénéfices importants</h2>
           <div className="grid md:grid-cols-3 gap-6 text-white text-sm">
             <div className="bg-white/10 p-6 rounded-xl backdrop-blur border border-white/20">
               <h3 className="font-bold mb-3">Pour la personne</h3>
@@ -121,7 +121,7 @@ export default function AccompagnementSortiesPage() {
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Comment ça fonctionne</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Comment ça fonctionne</h2>
           <div className="space-y-4">
             {[
               { s: "1", t: "Appel conseil", d: "Type sorties souhaitées, fréquence, horaires, besoins spécifiques." },
@@ -147,7 +147,7 @@ export default function AccompagnementSortiesPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-6 text-center">Financement</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-6 text-center">Financement</h2>
           <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
             <p className="text-text-light text-sm">
               <strong>APA :</strong> Peut couvrir part accompagnement. <strong>Crédit d'impôt 50% :</strong> Automatique service à personne. 
@@ -159,7 +159,7 @@ export default function AccompagnementSortiesPage() {
 
       <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Preservez la vie active de votre proche</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Preservez la vie active de votre proche</h2>
           <p className="text-white/80 mb-8">Sorties régulières = santé meilleure + bonheur + dignité préservée.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">

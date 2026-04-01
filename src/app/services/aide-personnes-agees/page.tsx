@@ -22,10 +22,10 @@ export default function AidePersonnesAgeesPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
             Aide à domicile pour personnes âgées : maintien à domicile, sécurité et sérénité
           </h1>
-          <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
             Vieillir chez soi avec dignité. Services sur-mesure, intervenants formés, continuité garantie.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -42,7 +42,7 @@ export default function AidePersonnesAgeesPage() {
       {/* SECTION : DÉFIS RÉELS */}
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-3 text-center">Pourquoi l'aide à domicile pour personnes âgées est devenue essentielle</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-3 text-center">Pourquoi l'aide à domicile pour personnes âgées est devenue essentielle</h2>
           <p className="text-text-light text-center mb-12 text-lg">
             Les défis auxquels font face les seniors et leurs familles sont nombreux, souvent invisibles, et de plus en plus complexes.
           </p>
@@ -93,7 +93,7 @@ export default function AidePersonnesAgeesPage() {
       {/* SECTION : SERVICES DÉTAILLÉS */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Nos services d'aide à domicile pour seniors</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Nos services d'aide à domicile pour seniors</h2>
 
           <div className="space-y-6">
             {[
@@ -125,7 +125,7 @@ export default function AidePersonnesAgeesPage() {
       {/* SECTION : BÉNÉFICES */}
       <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Ce que vous gagnez vraiment avec Youdom Care</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Ce que vous gagnez vraiment avec Youdom Care</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
@@ -156,7 +156,7 @@ export default function AidePersonnesAgeesPage() {
       {/* SECTION : PROCESSUS */}
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Mise en place simple et sûre en 6 étapes</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Mise en place simple et sûre en 6 étapes</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             {[
@@ -188,7 +188,7 @@ export default function AidePersonnesAgeesPage() {
       {/* SECTION : POURQUOI YOUDOM CARE */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Pourquoi choisir Youdom Care</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Pourquoi choisir Youdom Care</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -236,7 +236,7 @@ export default function AidePersonnesAgeesPage() {
       {/* SECTION : AIDES FINANCIÈRES */}
       <section className="py-16 bg-gradient-to-br from-warm to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Financer votre aide à domicile</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Financer votre aide à domicile</h2>
 
           <div className="bg-white p-8 rounded-2xl border-2 border-secondary mb-8">
             <h3 className="text-2xl font-bold text-primary mb-4">APA (Allocation Personnalisée d'Autonomie)</h3>
@@ -264,7 +264,7 @@ export default function AidePersonnesAgeesPage() {
       {/* SECTION : FAQ */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Questions fréquentes</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Questions fréquentes</h2>
 
           <div className="space-y-6">
             {[
@@ -305,7 +305,7 @@ export default function AidePersonnesAgeesPage() {
       {/* SECTION : CTA FINAL */}
       <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Prêt à offrir le meilleur à votre proche ?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Prêt à offrir le meilleur à votre proche ?</h2>
           <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
             Rester chez soi, en sécurité, avec de l'aide de qualité — c'est possible. Des centaines de familles l'ont choisi.
           </p>

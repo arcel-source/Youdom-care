@@ -73,10 +73,10 @@ export default function ServicesPage() {
     <>
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-3 mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-3 mb-6">
             Nos Services d&apos;Aide à Domicile
           </h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
             12 services adaptés à chaque situation. De l&apos;aide quotidienne à la téléassistance, 
             nous avons la solution pour vous.
           </p>
@@ -102,7 +102,7 @@ export default function ServicesPage() {
 
       <section className="py-20 bg-primary">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Besoin d&apos;un service sur mesure ?
           </h2>
           <p className="text-white/70 text-lg mb-8">

@@ -10,8 +10,8 @@ export default function GardeNuitPage() {
     <div className="min-h-screen bg-white">
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Présence de nuit à domicile : sécurité et sérénité</h1>
-          <p className="text-xl text-white/80 mb-8">Veille active ou passive. Évitez l'établissement. Sérénité pour toute la famille.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Présence de nuit à domicile : sécurité et sérénité</h1>
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Veille active ou passive. Évitez l'établissement. Sérénité pour toute la famille.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
               Demander un devis gratuit
@@ -25,7 +25,7 @@ export default function GardeNuitPage() {
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Pourquoi une présence la nuit ?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Pourquoi une présence la nuit ?</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {[
               { icon: "🚨", title: "Peur de chute la nuit", desc: "Aller toilettes = risque. Confusion nocturne possible." },
@@ -47,7 +47,7 @@ export default function GardeNuitPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Deux types de veille</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Deux types de veille</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-warm p-8 rounded-2xl border-2 border-secondary">
               <h3 className="text-2xl font-bold text-primary mb-4">Veille passive (surveillance)</h3>
@@ -76,7 +76,7 @@ export default function GardeNuitPage() {
 
       <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Services spécifiques la nuit</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Services spécifiques la nuit</h2>
           <div className="grid md:grid-cols-2 gap-6 text-white text-sm">
             <div>
               <ul className="space-y-2">
@@ -102,7 +102,7 @@ export default function GardeNuitPage() {
 
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">Processus mise en place</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Processus mise en place</h2>
           <div className="space-y-4">
             {[
               { s: "1", t: "Appel conseil", d: "Nature besoins, type veille, horaires exacts (21h-7h, 22h-8h, etc)." },
@@ -129,7 +129,7 @@ export default function GardeNuitPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">APA, PCH, crédit d'impôt 50%</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">APA, PCH, crédit d'impôt 50%</h2>
           <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
             <p className="text-text-light text-sm">
               <strong>APA :</strong> Allocation Personnalisée d'Autonomie pour personnes âgées. <strong>PCH :</strong> Prestation Compensation Handicap. 
@@ -141,7 +141,7 @@ export default function GardeNuitPage() {
 
       <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Enfin dormir tranquille</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Enfin dormir tranquille</h2>
           <p className="text-white/80 mb-8">Présence de nuit = sécurité maximale + sérénité pour toute la famille.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">

@@ -10,10 +10,10 @@ export default function QuiSommesNousPage() {
     <>
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-3 mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-3 mb-6">
             Qui Sommes-Nous
           </h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
             L&apos;humain au cœur de chaque action. 10+ ans d'expertise, 500+ familles, 98% de satisfaction.
           </p>
         </div>
@@ -67,8 +67,8 @@ export default function QuiSommesNousPage() {
 
       <section className="py-20 bg-primary">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-white mb-12">Youdom Care en chiffres</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-12">Youdom Care en chiffres</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
             {[
               { value: "500+", label: "Familles" },
               { value: "150+", label: "Intervenants" },
@@ -88,7 +88,7 @@ export default function QuiSommesNousPage() {
 
       <section className="py-24 bg-warm">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-text mb-16">Nos valeurs</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-text mb-16">Nos valeurs</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: "❤️", title: "Bienveillance", desc: "Chaque personne est traitée comme un membre de notre famille." },
@@ -110,7 +110,7 @@ export default function QuiSommesNousPage() {
 
       <section className="py-20 bg-primary">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Faites connaissance avec nous</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Faites connaissance avec nous</h2>
           <p className="text-white/70 text-lg mb-8">
             La première étape, c'est simplement de se parler.
           </p>

@@ -10,10 +10,10 @@ export default function CommentCaMarchePage() {
     <>
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-3 mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-3 mb-6">
             Comment Ça Marche
           </h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
             Simple, humain et efficace. De votre premier appel à l&apos;accompagnement quotidien.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function CommentCaMarchePage() {
 
       <section className="py-20 bg-warm">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-text mb-12">Nos engagements</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-text mb-12">Nos engagements</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { icon: "✅", text: "Même auxiliaire à chaque intervention" },
@@ -105,7 +105,7 @@ export default function CommentCaMarchePage() {
 
       <section className="py-20 bg-primary">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Prêt à commencer ?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Prêt à commencer ?</h2>
           <p className="text-white/70 text-lg mb-8">
             La première étape est gratuite et sans engagement.
           </p>

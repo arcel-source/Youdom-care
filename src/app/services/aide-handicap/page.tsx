@@ -15,10 +15,10 @@ export default function AideHandicapPage() {
           <div className="absolute top-20 right-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
             Aide à domicile adaptée pour personnes en situation de handicap
           </h1>
-          <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
             Accompagnement personnalisé, flexible et bienveillant. Chaque handicap est unique.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -35,7 +35,7 @@ export default function AideHandicapPage() {
       {/* ENJEUX */}
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Vivre avec un handicap : défis et besoins</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Vivre avec un handicap : défis et besoins</h2>
           <p className="text-text-light text-center mb-12 text-lg max-w-3xl mx-auto">
             Chaque handicap est unique. Paralysie cérébrale, autisme, surdité, malvoyance, troubles psychiques — chacun exige une réponse spécifique.
           </p>
@@ -62,7 +62,7 @@ export default function AideHandicapPage() {
       {/* SERVICES HANDICAP */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Services adaptés au handicap</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Services adaptés au handicap</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -92,7 +92,7 @@ export default function AideHandicapPage() {
       {/* EXPERTISE */}
       <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Notre expertise du handicap</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Notre expertise du handicap</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
@@ -125,7 +125,7 @@ export default function AideHandicapPage() {
       {/* BÉNÉFICES */}
       <section className="py-16 bg-warm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Avantages concrets</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Avantages concrets</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -149,7 +149,7 @@ export default function AideHandicapPage() {
       {/* PROCESSUS */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Débuter accompagnement adapté</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Débuter accompagnement adapté</h2>
 
           <div className="space-y-6">
             {[
@@ -179,18 +179,18 @@ export default function AideHandicapPage() {
       {/* AIDES FINANCIÈRES */}
       <section className="py-16 bg-gradient-to-br from-warm to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">PCH, AEEH, crédit d'impôt</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">PCH, AEEH, crédit d'impôt</h2>
 
           <div className="space-y-6">
             <div className="bg-white p-8 rounded-2xl border-2 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-3">PCH (Prestation Compensation Handicap)</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">PCH (Prestation Compensation Handicap)</h3>
               <p className="text-text-light">
                 Pour adultes handicapés. Peut couvrir part importante aide à domicile. Youdom Care aide dossier MDPH.
               </p>
             </div>
 
             <div className="bg-white p-8 rounded-2xl border-2 border-accent">
-              <h3 className="text-2xl font-bold text-primary mb-3">Crédit d'impôt 50%</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Crédit d'impôt 50%</h3>
               <p className="text-text-light">
                 Service à personne = réduction automatique 50% impôts + TVA 5.5%. Cumulable avec PCH.
               </p>
@@ -208,7 +208,7 @@ export default function AideHandicapPage() {
       {/* FAQ */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-12 text-center">Vos questions</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Vos questions</h2>
 
           <div className="space-y-6">
             {[
@@ -245,7 +245,7 @@ export default function AideHandicapPage() {
       {/* CTA */}
       <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Vivre pleinement malgré handicap</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Vivre pleinement malgré handicap</h2>
           <p className="text-white/80 text-lg mb-8">C'est possible avec aide adaptée. Youdom Care : 8 ans expérience, 150+ intervenants formés, 98% satisfaction.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
