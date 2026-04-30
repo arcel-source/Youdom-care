@@ -115,7 +115,7 @@ export default function HandicapPage() {
             <div className="lg:col-span-5">
               <div className="relative h-80 sm:h-[440px] rounded-3xl overflow-hidden shadow-lifted">
                 <Image
-                  src="/images/services/aide-handicap-domicile.png"
+                  src="/images/curated/service-aide-handicap.jpg"
                   alt="Accompagnement à domicile personne en situation de handicap"
                   fill
                   priority

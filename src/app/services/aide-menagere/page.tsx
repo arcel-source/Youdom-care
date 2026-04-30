@@ -204,7 +204,7 @@ export default function AideMenagerePage() {
           "Avance immédiate du crédit d'impôt 50 %",
           "Vigilance préventive sur la sécurité du logement",
         ]}
-        image="/images/services/aide-menagere.jpg"
+        image="/images/curated/service-aide-menagere.jpg"
         imageAlt="Aide ménagère en intervention à domicile"
       />
 
@@ -227,7 +227,7 @@ export default function AideMenagerePage() {
         title="Pas de standard : votre maison, votre cadre"
         description="Chaque domicile a ses zones sensibles, ses préférences, ses produits. Nous nous y plions, pas l'inverse."
         points={methodPoints}
-        image="/images/services/aide-menagere.jpg"
+        image="/images/curated/service-aide-menagere.jpg"
         imageAlt="Auxiliaire en intervention ménage"
       />
 
@@ -235,7 +235,7 @@ export default function AideMenagerePage() {
         title="Des auxiliaires de qualité, en CDI, formées"
         description="Nous n'envoyons pas n'importe qui chez vous. Sélection rigoureuse, formation aux gestes ménagers professionnels, casier judiciaire vérifié."
         specialization="Hygiène domiciliaire, manipulation produits, repérage des dangers domestiques"
-        image="/images/about/assistant-menager.jpg"
+        image="/images/curated/service-aide-menagere.jpg"
         imageAlt="Auxiliaire ménagère professionnelle"
       />
 

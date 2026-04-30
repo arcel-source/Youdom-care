@@ -175,7 +175,7 @@ export default function CommentCaMarchePage() {
             <div className="lg:col-span-5">
               <div className="relative h-80 sm:h-[460px] rounded-3xl overflow-hidden shadow-lifted">
                 <Image
-                  src="/images/home/pourquoi-choisir.png"
+                  src="/images/curated/comment-ca-marche-caregiver.jpg"
                   alt="Auxiliaire de vie professionnelle Youdom Care"
                   fill
                   className="object-cover"

@@ -38,7 +38,7 @@ export default function ServiceProvider({
   title = "Qui sont vos intervenants ?",
   description = "Nos auxiliaires de vie sont en CDI, formées en continu, et sélectionnées sur des critères stricts. Pas d'auto-entrepreneurs, pas de turnover.",
   specialization,
-  image = "/images/about/assistante-vie-famille.jpg",
+  image = "/images/curated/public-aidants-knitting-granddaughter.jpg",
   imageAlt = "Auxiliaire de vie en intervention",
   criteria = defaultCriteria,
 }: Props) {

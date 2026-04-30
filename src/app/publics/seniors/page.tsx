@@ -106,7 +106,7 @@ export default function SeniorsPage() {
             <div className="lg:col-span-5">
               <div className="relative h-80 sm:h-[440px] rounded-3xl overflow-hidden shadow-lifted">
                 <Image
-                  src="/images/about/aide-personnes-agees.jpg"
+                  src="/images/curated/service-aide-personnes-agees.jpg"
                   alt="Personne âgée à son domicile, accompagnée"
                   fill
                   priority

@@ -204,7 +204,7 @@ export default function AccompagnementSortiesPage() {
           "Combinable avec Transport PMR si besoin",
           "Accompagnement médical complet (prise de notes incluse)",
         ]}
-        image="/images/services/service-accompagnements.png"
+        image="/images/curated/service-accompagnement-sorties.jpg"
         imageAlt="Auxiliaire accompagnant une personne âgée en sortie"
       />
 
@@ -227,7 +227,7 @@ export default function AccompagnementSortiesPage() {
         title="Une présence qui crée des rendez-vous, pas des prestations"
         description="Une sortie réussie, c'est une routine qui structure la semaine et redonne envie."
         points={methodPoints}
-        image="/images/about/autonomie.jpg"
+        image="/images/curated/service-accompagnement-sorties.jpg"
         imageAlt="Personne autonome lors d'une sortie"
       />
 
@@ -235,7 +235,7 @@ export default function AccompagnementSortiesPage() {
         title="Des auxiliaires patientes, mobiles, à l'écoute"
         description="Pas de chronomètre. Notre rôle est d'accompagner avec présence et plaisir, pas de cocher des cases."
         specialization="Premiers secours, écoute active, repérage Paris/IDF, gestes sécurisés en extérieur"
-        image="/images/about/autonomie.jpg"
+        image="/images/curated/service-accompagnement-sorties.jpg"
         imageAlt="Auxiliaire en accompagnement extérieur"
       />
 

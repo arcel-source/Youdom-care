@@ -18,7 +18,7 @@ export default function AidantsCapture() {
           <div className="lg:col-span-5 relative">
             <div className="relative h-80 sm:h-[460px] rounded-3xl overflow-hidden shadow-lifted">
               <Image
-                src="/images/about/assistante-vie-famille.jpg"
+                src="/images/curated/public-aidants-knitting-granddaughter.jpg"
                 alt="Aidante familiale et bénéficiaire échangent un moment de complicité"
                 fill
                 className="object-cover"

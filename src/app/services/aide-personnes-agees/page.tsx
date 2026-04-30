@@ -214,7 +214,7 @@ export default function AidePersonnesAgeesPage() {
           "Démarrage possible en 48 h (sortie d'hôpital, urgence)",
           "Coordinatrice dédiée, joignable 7j/7",
         ]}
-        image="/images/services/aide-autonomie.png"
+        image="/images/curated/service-aide-personnes-agees.jpg"
         imageAlt="Auxiliaire de vie accompagnant une personne âgée à domicile"
       />
 
@@ -237,7 +237,7 @@ export default function AidePersonnesAgeesPage() {
         title="Un accompagnement gérontologique pensé pour durer"
         description="Nous ne plaçons pas une auxiliaire « au hasard » : nous construisons une relation."
         points={methodPoints}
-        image="/images/about/aide-personnes-agees.jpg"
+        image="/images/curated/service-aide-personnes-agees.jpg"
         imageAlt="Auxiliaire et bénéficiaire en moment de complicité"
       />
 
@@ -245,7 +245,7 @@ export default function AidePersonnesAgeesPage() {
         title="Des auxiliaires formées spécifiquement aux seniors"
         description="Nos auxiliaires sont en CDI, formées à la gérontologie, à la gestion des chutes, à la communication avec les personnes désorientées."
         specialization="Gérontologie, Alzheimer, manutention, premiers secours"
-        image="/images/about/aide-personnes-agees.jpg"
+        image="/images/curated/service-aide-personnes-agees.jpg"
         imageAlt="Auxiliaire de vie spécialisée seniors"
       />
 

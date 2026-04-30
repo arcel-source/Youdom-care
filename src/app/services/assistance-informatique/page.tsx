@@ -204,7 +204,7 @@ export default function AssistanceInformatiquePage() {
           "Démarches en ligne (impôts, Ameli, CAF) accompagnées",
           "Sécurité & anti-arnaques expliquées clairement",
         ]}
-        image="/images/services/assistance-informatique.png"
+        image="/images/curated/service-assistance-informatique.jpg"
         imageAlt="Cours d'informatique pour senior à domicile"
       />
 
@@ -227,7 +227,7 @@ export default function AssistanceInformatiquePage() {
         title="L'apprentissage qui colle, pas la tutorielle qu'on oublie"
         description="Mémo papier, rythme libre, pratique encadrée : voilà ce qui fait la différence avec un tuto YouTube."
         points={methodPoints}
-        image="/images/services/assistance-informatique.png"
+        image="/images/curated/service-assistance-informatique.jpg"
         imageAlt="Apprentissage informatique patient"
       />
 
@@ -235,7 +235,7 @@ export default function AssistanceInformatiquePage() {
         title="Des intervenants formés à la pédagogie senior"
         description="Patience, vocabulaire accessible, capacité à expliquer 10 fois sans s'agacer. Beaucoup viennent de la médiation numérique ou ont enseigné."
         specialization="Pédagogie adulte, médiation numérique, vulgarisation, écoute"
-        image="/images/services/assistance-informatique.png"
+        image="/images/curated/service-assistance-informatique.jpg"
         imageAlt="Pédagogue informatique senior"
       />
 

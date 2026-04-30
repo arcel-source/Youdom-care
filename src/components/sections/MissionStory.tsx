@@ -59,7 +59,7 @@ export default function MissionStory() {
               <div className="space-y-4">
                 <div className="relative h-48 sm:h-60 rounded-2xl overflow-hidden shadow-card">
                   <Image
-                    src="/images/home/mission-home.png"
+                    src="/images/curated/home-mission-helping-exercise.jpg"
                     alt="Auxiliaire de vie partage un repas avec une personne âgée"
                     fill
                     className="object-cover"
@@ -68,7 +68,7 @@ export default function MissionStory() {
                 </div>
                 <div className="relative h-32 sm:h-44 rounded-2xl overflow-hidden shadow-card">
                   <Image
-                    src="/images/about/autonomie.jpg"
+                    src="/images/curated/service-accompagnement-sorties.jpg"
                     alt="Personne autonome chez elle"
                     fill
                     className="object-cover"
@@ -79,7 +79,7 @@ export default function MissionStory() {
               <div className="space-y-4 mt-8">
                 <div className="relative h-32 sm:h-44 rounded-2xl overflow-hidden shadow-card">
                   <Image
-                    src="/images/services/aide-menagere.jpg"
+                    src="/images/curated/service-aide-menagere.jpg"
                     alt="Aide ménagère en intervention"
                     fill
                     className="object-cover"
@@ -88,7 +88,7 @@ export default function MissionStory() {
                 </div>
                 <div className="relative h-48 sm:h-60 rounded-2xl overflow-hidden shadow-card">
                   <Image
-                    src="/images/about/assistant-menager.jpg"
+                    src="/images/curated/service-aide-menagere.jpg"
                     alt="Moment de complicité entre intervenant et bénéficiaire"
                     fill
                     className="object-cover"

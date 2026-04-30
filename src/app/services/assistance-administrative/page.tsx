@@ -204,7 +204,7 @@ export default function AssistanceAdministrativePage() {
           "Démarches en ligne (Ameli, impôts, ANTS) accompagnées",
           "Confidentialité contractuelle absolue",
         ]}
-        image="/images/services/assistance-administrative.png"
+        image="/images/curated/service-assistance-administrative.jpg"
         imageAlt="Auxiliaire aidant aux démarches administratives à domicile"
       />
 
@@ -227,7 +227,7 @@ export default function AssistanceAdministrativePage() {
         title="Un audit, un plan, un suivi régulier"
         description="Pas de précipitation : on commence par comprendre, on priorise, on agit, on suit."
         points={methodPoints}
-        image="/images/services/assistance-administrative.png"
+        image="/images/curated/service-assistance-administrative.jpg"
         imageAlt="Gestion administrative organisée"
       />
 
@@ -235,7 +235,7 @@ export default function AssistanceAdministrativePage() {
         title="Des auxiliaires formées au social et administratif"
         description="Nos auxiliaires de cette spécialité sont issues du social, du conseil ou ont une formation MDPH/CAF spécifique. Pas du bricolage."
         specialization="MDPH, APA, fiscalité simple, CAF, mutuelles, démarches en ligne"
-        image="/images/services/assistance-administrative.png"
+        image="/images/curated/service-assistance-administrative.jpg"
         imageAlt="Spécialiste assistance administrative"
       />
 

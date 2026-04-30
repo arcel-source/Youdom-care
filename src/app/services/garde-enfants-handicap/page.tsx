@@ -204,7 +204,7 @@ export default function GardeEnfantsHandicapPage() {
           "Coordination avec IME, SESSAD, AESH, pédopsy",
           "Cumul AEEH + PCH + crédit d'impôt 50 %",
         ]}
-        image="/images/services/aide-enfant.png"
+        image="/images/curated/service-garde-enfants-handicap.jpg"
         imageAlt="Auxiliaire accompagnant un enfant en situation de handicap"
       />
 
@@ -227,7 +227,7 @@ export default function GardeEnfantsHandicapPage() {
         title="Une garde co-construite avec vous"
         description="L'enfant n'est pas un dossier. C'est un univers que nous apprenons à connaître."
         points={methodPoints}
-        image="/images/services/aide-enfant.png"
+        image="/images/curated/service-garde-enfants-handicap.jpg"
         imageAlt="Garde qualifiée enfant handicap"
       />
 
@@ -235,7 +235,7 @@ export default function GardeEnfantsHandicapPage() {
         title="Des auxiliaires expérimentées en handicap pédiatrique"
         description="Toutes ont travaillé en IME, SESSAD, hôpital pédiatrique ou crèche inclusive avant de nous rejoindre. La passion de l'enfance et la formation au handicap."
         specialization="TSA, polyhandicap, dys, méthodes ABA/PECS, premiers secours pédiatriques"
-        image="/images/services/aide-enfant.png"
+        image="/images/curated/service-garde-enfants-handicap.jpg"
         imageAlt="Auxiliaire spécialisée enfant handicap"
       />
 

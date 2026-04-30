@@ -192,7 +192,7 @@ export default function TransportPmrPage() {
           "Réservation simple — confirmation et rappel SMS",
           "Crédit d'impôt 50 % automatique",
         ]}
-        image="/images/services/transport-handicapes.png"
+        image="/images/curated/service-transport-pmr.jpg"
         imageAlt="Véhicule PMR avec personne en fauteuil roulant"
       />
 
@@ -215,7 +215,7 @@ export default function TransportPmrPage() {
         title="Un service pensé pour votre tranquillité"
         description="Pas de surprise, pas de stress, pas d'attente : un transport qui rassure."
         points={methodPoints}
-        image="/images/services/transport-handicapes.png"
+        image="/images/curated/service-transport-pmr.jpg"
         imageAlt="Transport PMR sécurisé"
       />
 
@@ -223,7 +223,7 @@ export default function TransportPmrPage() {
         title="Des chauffeurs formés et patients"
         description="Beaucoup de nos chauffeurs ont une formation auxiliaire de vie en plus de leur permis. Manutention, dialogue, écoute : pas seulement conduire."
         specialization="Manutention, premiers secours, communication adaptée handicap, conduite défensive"
-        image="/images/services/transport-handicapes.png"
+        image="/images/curated/service-transport-pmr.jpg"
         imageAlt="Chauffeur PMR formé"
       />
 

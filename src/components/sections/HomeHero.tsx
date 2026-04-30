@@ -9,7 +9,7 @@ export default function HomeHero() {
       {/* Image de fond floutée pour ambiance */}
       <div className="absolute inset-0 opacity-25">
         <Image
-          src="/images/home/old.png"
+          src="/images/curated/home-hero-couple-warm.jpg"
           alt=""
           fill
           priority
@@ -81,7 +81,7 @@ export default function HomeHero() {
               {/* Image principale */}
               <div className="relative h-72 sm:h-96 rounded-3xl overflow-hidden shadow-lifted">
                 <Image
-                  src="/images/about/aide-personnes-agees.jpg"
+                  src="/images/curated/service-aide-personnes-agees.jpg"
                   alt="Aide à domicile bienveillante pour personne âgée"
                   fill
                   priority

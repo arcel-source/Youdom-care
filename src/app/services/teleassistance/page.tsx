@@ -204,7 +204,7 @@ export default function TeleassistancePage() {
           "Géolocalisation pour les personnes désorientées",
           "Procédures personnalisées avec votre famille",
         ]}
-        image="/images/services/tele-assistance.png"
+        image="/images/curated/service-teleassistance.jpg"
         imageAlt="Médaillon de téléassistance"
       />
 
@@ -227,7 +227,7 @@ export default function TeleassistancePage() {
         title="Un déploiement maîtrisé, un suivi continu"
         description="Pas juste un boîtier : un dispositif construit avec vous, validé techniquement, suivi mensuellement."
         points={methodPoints}
-        image="/images/services/tele-assistance.png"
+        image="/images/curated/service-teleassistance.jpg"
         imageAlt="Installation téléassistance à domicile"
       />
 
@@ -235,7 +235,7 @@ export default function TeleassistancePage() {
         title="Un centre d'écoute français, formé, humain"
         description="Nos téléopérateurs sont formés à l'écoute des personnes fragiles, à la gestion d'urgence, aux protocoles médicaux. Pas de robot, pas de délocalisé : des humains, ici."
         specialization="Gestion d'urgence, premiers secours téléphoniques, écoute personnes fragiles"
-        image="/images/services/tele-assistance.png"
+        image="/images/curated/service-teleassistance.jpg"
         imageAlt="Centre d'écoute téléassistance"
       />
 

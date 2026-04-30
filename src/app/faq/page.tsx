@@ -81,7 +81,7 @@ export default function FAQPage() {
             <div className="hidden lg:block">
               <div className="sticky top-32 rounded-3xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/home/cuisine-pro.png"
+                  src="/images/curated/home-mission-helping-exercise.jpg"
                   alt="Aide à domicile professionnelle Youdom Care"
                   width={400}
                   height={600}

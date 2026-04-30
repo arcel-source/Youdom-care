@@ -174,7 +174,7 @@ export default function ContactPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden h-48 lg:h-56">
                 <Image
-                  src="/images/home/choose-us-home.png"
+                  src="/images/curated/home-hero-couple-warm.jpg"
                   alt="Équipe Youdom Care"
                   fill
                   className="object-cover"

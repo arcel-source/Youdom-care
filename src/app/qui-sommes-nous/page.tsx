@@ -142,7 +142,7 @@ export default function QuiSommesNousPage() {
                 <div className="space-y-4">
                   <div className="relative h-48 sm:h-60 rounded-2xl overflow-hidden shadow-card">
                     <Image
-                      src="/images/about/aide-personnes-agees.jpg"
+                      src="/images/curated/service-aide-personnes-agees.jpg"
                       alt="Auxiliaire et bénéficiaire"
                       fill
                       className="object-cover"
@@ -151,7 +151,7 @@ export default function QuiSommesNousPage() {
                   </div>
                   <div className="relative h-32 sm:h-44 rounded-2xl overflow-hidden shadow-card">
                     <Image
-                      src="/images/about/autonomie.jpg"
+                      src="/images/curated/service-accompagnement-sorties.jpg"
                       alt="Autonomie préservée"
                       fill
                       className="object-cover"
@@ -162,7 +162,7 @@ export default function QuiSommesNousPage() {
                 <div className="space-y-4 mt-8">
                   <div className="relative h-32 sm:h-44 rounded-2xl overflow-hidden shadow-card">
                     <Image
-                      src="/images/services/aide-menagere.jpg"
+                      src="/images/curated/service-aide-menagere.jpg"
                       alt="Aide ménagère professionnelle"
                       fill
                       className="object-cover"
@@ -171,7 +171,7 @@ export default function QuiSommesNousPage() {
                   </div>
                   <div className="relative h-48 sm:h-60 rounded-2xl overflow-hidden shadow-card">
                     <Image
-                      src="/images/about/assistante-vie-famille.jpg"
+                      src="/images/curated/public-aidants-knitting-granddaughter.jpg"
                       alt="Auxiliaire et famille"
                       fill
                       className="object-cover"

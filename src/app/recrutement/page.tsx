@@ -32,7 +32,7 @@ export default function RecruitmentPage() {
             <div className="hidden lg:flex items-center justify-center">
               <div className="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-2xl bg-gray-200">
                 <Image
-                  src="/images/about/aide-personnes-agees.jpg"
+                  src="/images/curated/service-aide-personnes-agees.jpg"
                   alt="Équipe Youdom Care"
                   fill
                   className="object-cover"

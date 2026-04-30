@@ -14,7 +14,7 @@ export default function EngagementsBlock() {
             <div className="relative">
               <div className="relative h-96 sm:h-[500px] rounded-3xl overflow-hidden shadow-lifted">
                 <Image
-                  src="/images/home/pourquoi-choisir.png"
+                  src="/images/curated/comment-ca-marche-caregiver.jpg"
                   alt="Auxiliaire de vie Youdom Care en intervention"
                   fill
                   className="object-cover"

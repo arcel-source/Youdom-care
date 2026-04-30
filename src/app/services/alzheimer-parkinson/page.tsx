@@ -204,7 +204,7 @@ export default function AlzheimerParkinsonPage() {
           "Coordination avec neurologue, gériatre, orthophoniste",
           "Soutien et répit pour les aidants familiaux",
         ]}
-        image="/images/services/old-people.png"
+        image="/images/curated/service-alzheimer-parkinson.jpg"
         imageAlt="Auxiliaire accompagnant une personne atteinte d'Alzheimer"
       />
 
@@ -227,7 +227,7 @@ export default function AlzheimerParkinsonPage() {
         title="Notre méthodologie pour Alzheimer, Parkinson, SLA, SEP"
         description="Construite avec des neurologues, des orthophonistes et des aidants experts."
         points={methodPoints}
-        image="/images/about/aide-personnes-agees.jpg"
+        image="/images/curated/service-aide-personnes-agees.jpg"
         imageAlt="Auxiliaire et bénéficiaire en stimulation cognitive"
       />
 
@@ -235,7 +235,7 @@ export default function AlzheimerParkinsonPage() {
         title="Des auxiliaires spécifiquement formées au neurodégénératif"
         description="Formation Humanitude, méthode Montessori adaptée, manutention Parkinson, communication Alzheimer : nos équipes sont à la hauteur de la complexité."
         specialization="Humanitude, Montessori, désescalade comportementale, déglutition, manutention spécialisée"
-        image="/images/about/assistante-vie-famille.jpg"
+        image="/images/curated/public-aidants-knitting-granddaughter.jpg"
         imageAlt="Auxiliaire spécialisée maladies neurodégénératives"
       />
 

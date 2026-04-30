@@ -40,8 +40,8 @@ export const articles: Article[] = [
     category: "Seniors",
     readingTime: 8,
     publishedAt: "2026-01-15",
-    image: "/images/about/aide-personnes-agees.jpg",
-    imageAlt: "Domicile adapté à une personne âgée",
+    image: "/images/curated/service-garde-nuit.jpg",
+    imageAlt: "Chambre senior adaptée pour la sécurité",
     metaTitle:
       "Adapter le domicile d'une personne âgée — guide complet 2026 | Youdom Care",
     metaDescription:
@@ -161,8 +161,8 @@ export const articles: Article[] = [
     category: "Seniors",
     readingTime: 9,
     publishedAt: "2026-02-04",
-    image: "/images/services/old-people.png",
-    imageAlt: "Personne âgée et son aidant",
+    image: "/images/curated/blog-coffee-balcony-warm.jpg",
+    imageAlt: "Couple senior en moment de réflexion à la maison",
     metaTitle:
       "Signes de perte d'autonomie : quand demander une aide à domicile ? | Youdom Care",
     metaDescription:
@@ -290,8 +290,8 @@ export const articles: Article[] = [
     category: "Conseils",
     readingTime: 7,
     publishedAt: "2026-02-20",
-    image: "/images/about/assistante-vie-famille.jpg",
-    imageAlt: "Choix d'une aide à domicile",
+    image: "/images/curated/blog-handshake-trust.jpg",
+    imageAlt: "Poignée de main de confiance entre auxiliaire et bénéficiaire",
     metaTitle:
       "Bien choisir son aide à domicile : critères, questions, red flags | Youdom Care",
     metaDescription:
@@ -407,8 +407,8 @@ export const articles: Article[] = [
     category: "Conseils",
     readingTime: 8,
     publishedAt: "2026-03-08",
-    image: "/images/about/aide-personnes-agees.jpg",
-    imageAlt: "Personne âgée — protection contre la maltraitance",
+    image: "/images/curated/blog-presence-bedside.jpg",
+    imageAlt: "Présence rassurante au chevet d'une personne âgée",
     metaTitle:
       "Maltraitance des personnes âgées : signes et que faire | Youdom Care",
     metaDescription:
@@ -506,8 +506,8 @@ export const articles: Article[] = [
     category: "Aides financières",
     readingTime: 10,
     publishedAt: "2026-03-22",
-    image: "/images/services/aide-autonomie.png",
-    imageAlt: "Aides financières aide à domicile",
+    image: "/images/curated/aides-financieres-senior-video.jpg",
+    imageAlt: "Personne âgée consultant les aides financières",
     metaTitle:
       "Financer l'aide à domicile : APA, PCH, crédit d'impôt 50 % | Guide 2026",
     metaDescription:
@@ -633,8 +633,8 @@ export const articles: Article[] = [
     category: "Seniors",
     readingTime: 7,
     publishedAt: "2026-04-05",
-    image: "/images/services/service-accompagnements.png",
-    imageAlt: "Lien social senior",
+    image: "/images/curated/service-accompagnement-sorties.jpg",
+    imageAlt: "Deux seniors marchant ensemble dans un parc",
     metaTitle:
       "Lutter contre l'isolement des seniors : 8 solutions concrètes | Youdom Care",
     metaDescription:
@@ -725,8 +725,8 @@ export const articles: Article[] = [
     category: "Conseils",
     readingTime: 8,
     publishedAt: "2026-04-18",
-    image: "/images/about/autonomie.jpg",
-    imageAlt: "Gérer la dépendance",
+    image: "/images/curated/qui-sommes-nous-couple-indoors.jpg",
+    imageAlt: "Couple senior dans un moment serein chez eux",
     metaTitle:
       "Gérer la dépendance au quotidien : accepter et bien vivre | Youdom Care",
     metaDescription:
@@ -811,8 +811,8 @@ export const articles: Article[] = [
     category: "Handicap",
     readingTime: 7,
     publishedAt: "2026-05-02",
-    image: "/images/services/aide-handicap-domicile.png",
-    imageAlt: "Handicap invisible",
+    image: "/images/curated/blog-mother-daughter-braille.jpg",
+    imageAlt: "Mère et fille apprenant le braille ensemble",
     metaTitle:
       "Handicap visible et invisible : comprendre et accompagner | Youdom Care",
     metaDescription:

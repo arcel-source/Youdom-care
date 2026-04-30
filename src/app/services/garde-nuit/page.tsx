@@ -192,7 +192,7 @@ export default function GardeNuitPage() {
           "Démarrage en 24-48 h sur les urgences",
           "Cahier de liaison rempli — relais propre avec l'aide de jour",
         ]}
-        image="/images/services/garde-presence.png"
+        image="/images/curated/service-garde-nuit.jpg"
         imageAlt="Auxiliaire en garde de nuit auprès d'une personne âgée"
       />
 
@@ -215,7 +215,7 @@ export default function GardeNuitPage() {
         title="Une garde de nuit pensée comme un protocole"
         description="Pas de simple « surveillance » : un dispositif structuré, formé, encadré."
         points={methodPoints}
-        image="/images/services/garde-presence.png"
+        image="/images/curated/service-garde-nuit.jpg"
         imageAlt="Garde de nuit qualifiée"
       />
 
@@ -223,7 +223,7 @@ export default function GardeNuitPage() {
         title="Des auxiliaires de nuit qualifiées et reposées"
         description="Nous ne demandons jamais à une auxiliaire de jour de prendre une nuit. Nuit et jour : équipes dédiées, formées différemment."
         specialization="Veille passive, gestion des troubles du sommeil, soins palliatifs, premiers secours"
-        image="/images/about/assistante-vie-famille.jpg"
+        image="/images/curated/public-aidants-knitting-granddaughter.jpg"
         imageAlt="Auxiliaire de nuit formée"
       />
 

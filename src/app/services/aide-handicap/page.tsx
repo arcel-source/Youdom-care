@@ -209,7 +209,7 @@ export default function AideHandicapPage() {
           "Vous choisissez votre auxiliaire — changement possible 48 h",
           "Démarches MDPH montées par notre coordinatrice",
         ]}
-        image="/images/services/aide-handicap-domicile.png"
+        image="/images/curated/service-aide-handicap.jpg"
         imageAlt="Auxiliaire accompagnant une personne en fauteuil roulant à domicile"
       />
 
@@ -232,7 +232,7 @@ export default function AideHandicapPage() {
         title="Un accompagnement co-construit, pas imposé"
         description="L'autodétermination est notre principe directeur. Vous décidez, nous accompagnons."
         points={methodPoints}
-        image="/images/services/aide-handicap-domicile.png"
+        image="/images/curated/service-aide-handicap.jpg"
         imageAlt="Personne en situation de handicap accompagnée"
       />
 
@@ -240,7 +240,7 @@ export default function AideHandicapPage() {
         title="Des auxiliaires formées au handicap, choisies pour vous"
         description="Au-delà des compétences techniques : empathie, capacité d'adaptation, respect de l'intimité. Vous validez le profil avant tout démarrage."
         specialization="Manutention, communication adaptée, gestion troubles comportement, autonomisation"
-        image="/images/about/assistante-vie-famille.jpg"
+        image="/images/curated/public-aidants-knitting-granddaughter.jpg"
         imageAlt="Auxiliaire spécialisée handicap"
       />
 

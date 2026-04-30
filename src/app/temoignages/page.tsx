@@ -22,7 +22,7 @@ export default function TemoignagesPage() {
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
         <div className="absolute inset-0 opacity-15">
           <Image
-            src="/images/services/slide-service-2.jpg"
+            src="/images/curated/home-hero-couple-warm.jpg"
             alt="Familles accompagnées par Youdom Care"
             fill
             className="object-cover"

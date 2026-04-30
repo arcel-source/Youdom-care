@@ -204,7 +204,7 @@ export default function RetourHospitalisationPage() {
           "Prise en charge mutuelle ou PRADO possible",
           "Bilan à J+15 pour ajuster ou arrêter sans frais",
         ]}
-        image="/images/services/service-retour-hospitalisation.png"
+        image="/images/curated/service-retour-hospitalisation.jpg"
         imageAlt="Auxiliaire accompagnant un patient en convalescence à domicile"
       />
 
@@ -227,7 +227,7 @@ export default function RetourHospitalisationPage() {
         title="Un protocole de sortie d'hôpital éprouvé en 5 temps"
         description="Conçu avec des médecins gériatres et des infirmières libérales partenaires."
         points={methodPoints}
-        image="/images/about/aide-personnes-agees.jpg"
+        image="/images/curated/service-aide-personnes-agees.jpg"
         imageAlt="Auxiliaire et patient en convalescence"
       />
 
@@ -235,7 +235,7 @@ export default function RetourHospitalisationPage() {
         title="Des auxiliaires formées au post-hospitalier"
         description="Nos équipes connaissent les protocoles de sortie d'hôpital, savent reconnaître les signaux d'alerte et travailler en binôme avec les libéraux."
         specialization="Soins post-op, prévention escarres, dénutrition, communication médicale"
-        image="/images/about/assistante-vie-famille.jpg"
+        image="/images/curated/public-aidants-knitting-granddaughter.jpg"
         imageAlt="Auxiliaire spécialisée post-hospitalisation"
       />
 

@@ -207,7 +207,7 @@ export default function AidantsFamiliauxPage() {
             <div className="lg:col-span-5 relative">
               <div className="relative h-80 sm:h-[440px] rounded-3xl overflow-hidden shadow-lifted">
                 <Image
-                  src="/images/about/assistante-vie-famille.jpg"
+                  src="/images/curated/public-aidants-knitting-granddaughter.jpg"
                   alt="Aidante familiale partageant un moment avec son proche"
                   fill
                   priority
