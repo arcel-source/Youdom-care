@@ -1,336 +1,288 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+import SectionHeading from "@/components/ui/SectionHeading";
+import AidesSimulator from "@/components/sections/AidesSimulator";
+import FinalCTA from "@/components/sections/FinalCTA";
+import { aidesFinancieres, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Aides Financières & Démarches | APA, PCH, Crédit d'Impôt 50% | Youdom Care",
-  description: "APA, PCH, crédit d'impôt 50%, AEEH. Youdom Care vous accompagne dans démarches. Financement accessible aide à domicile.",
-  openGraph: {
-    title: "Aides Financières : APA, PCH, Crédit d'Impôt 50%",
-    description: "Guide complet aides. Youdom Care aide dossiers et démarches.",
-  },
+  title: "Aides financières — APA, PCH, crédit d'impôt 50 % | Youdom Care",
+  description:
+    "Toutes les aides 2026 pour financer une aide à domicile : APA, PCH, AEEH, crédit d'impôt 50 %, MaPrimeAdapt, mutuelles, CESU. Simulateur. Dossiers montés.",
 };
 
-export default function AidesFinanciairesPage() {
+const detailedAides = [
+  {
+    code: "APA",
+    title: "Allocation Personnalisée d'Autonomie",
+    audience: "Seniors 60+ ans en perte d'autonomie",
+    plafonds: [
+      { gir: "GIR 1", montant: "1 955 €/mois" },
+      { gir: "GIR 2", montant: "1 569 €/mois" },
+      { gir: "GIR 3", montant: "1 134 €/mois" },
+      { gir: "GIR 4", montant: "756 €/mois" },
+    ],
+    details: [
+      "Versée par votre Conseil départemental",
+      "Évaluation gratuite par une équipe médico-sociale à domicile",
+      "Couvre l'aide humaine, la téléassistance, certains aménagements",
+      "Ticket modérateur de 0 % à 90 % selon vos revenus",
+      "Délai d'instruction : 60 jours, parfois moins en urgence",
+    ],
+  },
+  {
+    code: "PCH",
+    title: "Prestation de Compensation du Handicap",
+    audience: "Personnes handicapées de moins de 60 ans (et enfants depuis 2023)",
+    plafonds: [{ gir: "Aide humaine", montant: "~14,98 €/h en mode prestataire" }],
+    details: [
+      "Versée par la MDPH (Maison Départementale des Personnes Handicapées)",
+      "Couvre aide humaine, aide technique, aménagement domicile, transport",
+      "Évaluation par l'équipe pluridisciplinaire de la MDPH",
+      "Pas de plafond global — heures accordées selon besoins évalués",
+      "Délai d'instruction : 4 à 6 mois en moyenne",
+      "Cumulable avec AAH, crédit d'impôt 50 %, mutuelle",
+    ],
+  },
+  {
+    code: "Crédit d'impôt 50 %",
+    title: "Crédit d'impôt service à la personne",
+    audience: "Tous foyers fiscaux (pas de condition d'âge ou ressources)",
+    plafonds: [
+      { gir: "Plafond annuel", montant: "12 000 € (15 000 € la 1ʳᵉ année)" },
+      { gir: "Personne âgée/handicapée", montant: "20 000 €/an" },
+    ],
+    details: [
+      "50 % de la somme versée — automatique en SAP",
+      "Avance immédiate possible : vous payez seulement 50 % directement",
+      "Fonctionne même si vous n'êtes pas imposable (versement direct)",
+      "Cumul possible avec APA, PCH et autres aides",
+      "Service de l'URSSAF gratuit pour activer l'avance immédiate",
+    ],
+  },
+  {
+    code: "AEEH",
+    title: "Allocation d'Éducation de l'Enfant Handicapé",
+    audience: "Parents d'enfants handicapés de moins de 20 ans",
+    plafonds: [
+      { gir: "Base", montant: "~149 €/mois" },
+      { gir: "Complément 1 à 6", montant: "+115 € à +1 290 €/mois" },
+    ],
+    details: [
+      "Versée par la CAF",
+      "Base + complément selon le handicap et les besoins",
+      "Cumul possible avec PCH enfant depuis 2023",
+      "Cumul avec CMG (Complément Mode de Garde) majoré handicap",
+    ],
+  },
+  {
+    code: "MaPrimeAdapt'",
+    title: "Aide travaux d'adaptation logement",
+    audience: "Propriétaires & locataires (sous conditions de ressources)",
+    plafonds: [
+      { gir: "Aide", montant: "Jusqu'à 70 % des travaux" },
+      { gir: "Plafond travaux", montant: "22 000 €" },
+    ],
+    details: [
+      "Nouvelle aide depuis 2024",
+      "Finance douche italienne, monte-escalier, rampes, etc.",
+      "Cumulable avec APA, caisses retraite, crédit d'impôt 25 % équipements",
+      "Diagnostic obligatoire par ergothérapeute (financé)",
+    ],
+  },
+  {
+    code: "Caisses retraite",
+    title: "Aides CARSAT, AGIRC-ARRCO, MSA",
+    audience: "Retraités GIR 5-6 (autonomie préservée)",
+    plafonds: [{ gir: "Variable", montant: "selon caisse et ressources" }],
+    details: [
+      "Plan d'Action Personnalisé (PAP) de la CARSAT",
+      "Aides à l'aide-ménagère, aide à la sortie d'hospitalisation",
+      "Cumul possible avec crédit d'impôt 50 %",
+      "Financement de la téléassistance souvent inclus",
+    ],
+  },
+  {
+    code: "Mutuelles",
+    title: "Garantie « assistance vie quotidienne »",
+    audience: "Selon contrat mutuelle santé",
+    plafonds: [{ gir: "Variable", montant: "selon contrat" }],
+    details: [
+      "La majorité des mutuelles couvrent l'aide à domicile post-hospitalisation",
+      "Plafond typique : 7 à 30 jours d'aide ménagère, garde d'enfants malades",
+      "À demander : nombre d'heures, délai déclenchement, justificatifs",
+      "Nous montons le dossier mutuelle gratuitement",
+    ],
+  },
+  {
+    code: "CESU",
+    title: "Chèques Emploi Service Universel préfinancés",
+    audience: "Salariés dont l'employeur propose des CESU",
+    plafonds: [{ gir: "Plafond exo", montant: "2 540 €/an exonérés (2026)" }],
+    details: [
+      "Distribués par votre employeur (CSE, comité d'entreprise)",
+      "Acceptés directement par Youdom Care en règlement partiel",
+      "Cumulables avec crédit d'impôt 50 %",
+      "Aussi disponibles via comités d'entreprise pour retraités",
+    ],
+  },
+];
+
+export default function AidesFinancieresPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       {/* HERO */}
-      <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Financer votre aide à domicile : APA, PCH, crédit d&apos;impôt 50%</h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Les aides existent. Vous en avez le droit. Youdom Care vous accompagne dans démarches.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
-              Demander aide accompagnement
-            </a>
-            <a href="tel:0184807297" className="px-8 py-4 bg-white/20 text-white font-bold rounded-xl border border-white text-lg">
-              Appeler : 01 84 80 72 97
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* INTRO */}
-      <section className="py-16 bg-warm">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Les aides existent. Vous en avez le droit.</h2>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-text-light text-lg mb-8">
-                L&apos;aide à domicile coûte de l&apos;argent. Mais ne vous découragez pas : des aides gouvernementales, régionales et fiscales existent pour financer ou réduire le coût réel.
-              </p>
-              <div className="grid grid-cols-2 gap-4 text-center">
-                {[
-                  { icon: "💰", label: "APA" },
-                  { icon: "🏥", label: "PCH" },
-                  { icon: "👶", label: "AEEH" },
-                  { icon: "📊", label: "Crédit 50%" },
-                ].map((item, i) => (
-                  <div key={i} className="bg-white p-6 rounded-xl">
-                    <div className="text-4xl mb-2">{item.icon}</div>
-                    <p className="font-bold text-text text-sm">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="hidden lg:block rounded-3xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/home/choose-us-home.png"
-                alt="Les aides financières pour l'aide à domicile"
-                width={500}
-                height={400}
-                className="w-full h-auto object-cover"
-              />
+      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-20 overflow-hidden">
+        <div
+          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
+          style={{ background: "var(--color-secondary)" }}
+          aria-hidden="true"
+        />
+        <Container className="relative z-10">
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
+            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
+            <span aria-hidden="true">›</span>
+            <span className="text-white/50">Aides financières</span>
+          </nav>
+          <div className="max-w-3xl">
+            <span className="eyebrow !text-secondary">Financement</span>
+            <h1 className="text-white">
+              Toutes les aides pour financer
+              <br />
+              <span className="text-secondary">votre aide à domicile en 2026.</span>
+            </h1>
+            <p className="lead !text-white/85 mt-5">
+              APA, PCH, crédit d&apos;impôt 50 %, mutuelles, MaPrimeAdapt&apos;, CESU :
+              le panorama complet et à jour. Avec un simulateur intégré pour estimer
+              votre coût net en 30 secondes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mt-8">
+              <Button href="#simulateur" variant="primary" size="lg" glow>
+                Lancer le simulateur
+              </Button>
+              <Button
+                href={`tel:${siteConfig.phone.mainE164}`}
+                variant="white"
+                size="lg"
+                icon={<span aria-hidden="true">📞</span>}
+              >
+                Échanger avec une coordinatrice
+              </Button>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* APA */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">L&apos;APA (Allocation Personnalisée d&apos;Autonomie)</h2>
-
-          <div className="space-y-8">
-            <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qu&apos;est-ce que l&apos;APA ?</h3>
-              <p className="text-text-light mb-4">
-                L&apos;APA est une aide financière versée par le département pour les personnes âgées en perte d&apos;autonomie. C&apos;est pas un prêt : c&apos;est une allocation. Vous la recevez sans la rembourser.
-              </p>
-              <p className="text-text-light">
-                Contrairement à beaucoup d&apos;aides, l&apos;APA n&apos;est pas soumise à condition de ressources. Que vous soyez riche ou pauvre, si vous remplissez critères d&apos;autonomie, vous avez droit.
-              </p>
-            </div>
-
-            <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qui peut demander l&apos;APA ?</h3>
-              <ul className="space-y-3 text-text-light">
-                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Âge minimum 60 ans</li>
-                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Réside en France</li>
-                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> En perte d&apos;autonomie (évaluée selon grille AGGIR)</li>
-                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Groupes de ressources AGGIR 1 à 4 seulement</li>
-              </ul>
-              <p className="text-text-light text-sm mt-4 italic">Note : AGGIR 5 et 6 = refusé automatiquement.</p>
-            </div>
-
-            <div className="bg-warm p-8 rounded-2xl border-l-4 border-primary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Montants de l&apos;APA</h3>
-              <p className="text-text-light mb-4">
-                <strong>Montant moyen national :</strong> 600€ à 1200€/mois selon niveau perte d&apos;autonomie. Varie selon département (+ chère Paris que province).
-              </p>
-              <p className="text-text-light">
-                Calcul : montant APA possible × pourcentage participation département = montant réel.
-              </p>
-              <p className="text-text-light text-sm mt-4">Peut couvrir 50% à 80% de l&apos;aide à domicile selon situation.</p>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl border-2 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-4">Comment obtenir l&apos;APA ?</h3>
-              <div className="space-y-4">
-                {[
-                  { step: "1", title: "Demande auprès département", desc: "CCAS local ou directement direction solidarité département." },
-                  { step: "2", title: "Évaluation à domicile", desc: "Équipe département vient observer, poser questions." },
-                  { step: "3", title: "Décision APA", desc: "Accord + montant mensuel décidé." },
-                  { step: "4", title: "Plan d'aide", desc: "Services DÉTAILLÉS établis avec assistant social." },
-                  { step: "5", title: "Mise en place", desc: "Youdom Care reçoit validation APA et facture département direct." },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 p-4 bg-warm rounded-lg">
-                    <div className="flex-shrink-0 h-8 w-8 rounded bg-secondary text-primary font-bold text-sm flex items-center justify-center">
-                      {item.step}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-text text-sm">{item.title}</h4>
-                      <p className="text-text-light text-xs mt-1">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PCH */}
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">La PCH (Prestation Compensation Handicap)</h2>
-
-          <div className="space-y-8">
-            <div className="bg-white p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qu&apos;est-ce que la PCH ?</h3>
-              <p className="text-text-light">
-                La PCH est aide financière État pour personnes handicapées. Versée par département. Couvre besoin d&apos;aide spécifique (gestes, déplacements, accompagnement). Très complète et souvent + élevée que APA.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Qui peut demander la PCH ?</h3>
-              <ul className="space-y-3 text-text-light">
-                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Personnes avec handicap (moteur, sensoriel, cognitif, mental, etc)</li>
-                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Âge limite : avant 75 ans (sauf exceptions)</li>
-                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Résidence France</li>
-                <li className="flex gap-2"><span className="text-accent font-bold">✓</span> Certains critères incapacité</li>
-              </ul>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl border-l-4 border-primary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Montants possibles</h3>
-              <p className="text-text-light">
-                Très variables selon type handicap et besoins. Peut couvrir jusqu&apos;à 100% aide à domicile pour handicap grave. Moyenne : 1000€ à 3000€/mois dans cas importants.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl border-2 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-4">Comment obtenir la PCH ?</h3>
-              <div className="space-y-4">
-                {[
-                  { step: "1", title: "Demande MDPH", desc: "Maison Départementale Personne Handicapée. Formulaire CERFA téléchargeable." },
-                  { step: "2", title: "Dossier projet de vie", desc: "Description détaillée : vie quotidienne, besoins spécifiques, objectifs." },
-                  { step: "3", title: "Évaluation pluridisciplinaire", desc: "Médecin, travailleur social, autres spécialistes selon situation." },
-                  { step: "4", title: "Décision", desc: "4-6 mois d'attente. Plan d'aide adapté si accord." },
-                  { step: "5", title: "Mise en place", desc: "Youdom Care facture MDPH. Vous payez reste/franchises si applicable." },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 p-4 bg-warm rounded-lg">
-                    <div className="flex-shrink-0 h-8 w-8 rounded bg-secondary text-primary font-bold text-sm flex items-center justify-center">
-                      {item.step}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-text text-sm">{item.title}</h4>
-                      <p className="text-text-light text-xs mt-1">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* AUTRES AIDES */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Autres aides financières</h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">AEEH (Allocation Éducation Enfant Handicapé)</h3>
-              <p className="text-text-light text-sm mb-4">
-                Pour enfants handicapés 0-20 ans. Montant de base 135€/mois + compléments si situation grave. Peut financer aide à domicile ou garde.
-              </p>
-              <p className="text-text-light text-sm">Demande CAF. Pas condition ressources stricte.</p>
-            </div>
-
-            <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Crédit d&apos;Impôt 50% (Service à Personne)</h3>
-              <p className="text-text-light text-sm mb-4">
-                Réduction fiscale automatique pour aide à domicile, ménage, etc. Vous déduisez 50% du coût de vos impôts (ou crédit de 50% si vous ne payez pas impôt).
-              </p>
-              <p className="text-text-light text-sm">S&apos;applique automatiquement si Youdom Care agréée.</p>
-            </div>
-
-            <div className="bg-warm p-8 rounded-2xl border-l-4 border-primary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">TVA Réduite 5.5%</h3>
-              <p className="text-text-light text-sm mb-4">
-                Au lieu 20% pour autres services. Youdom Care applique TVA 5.5% automatiquement pour service à domicile.
-              </p>
-              <p className="text-text-light text-sm">Incluse dans tarif Youdom Care.</p>
-            </div>
-
-            <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">CESU (Chèques Emploi Service Universel)</h3>
-              <p className="text-text-light text-sm mb-4">
-                Chèques spécialisés pour services à personne. Simplifient paiement et déclaration charges sociales. Acceptés par Youdom Care.
-              </p>
-              <p className="text-text-light text-sm">Demande auprès banque ou Caisse Allocations Familiales.</p>
-            </div>
-
-            <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Aides Mutuelles</h3>
-              <p className="text-text-light text-sm mb-4">
-                Certaines mutuelles complémentaires santé proposent aides ou remboursements partiels pour aide à domicile.
-              </p>
-              <p className="text-text-light text-sm">Renseignez-vous auprès votre mutuelle.</p>
-            </div>
-
-            <div className="bg-warm p-8 rounded-2xl border-l-4 border-primary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Aides Locales & Régionales</h3>
-              <p className="text-text-light text-sm mb-4">
-                Certains conseils régionaux/départementaux, mairies, proposent complément aides nationales. Très variable selon localisation.
-              </p>
-              <p className="text-text-light text-sm">Youdom Care peut vous aider identifier disponibilités.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ACCOMPAGNEMENT YOUDOM CARE */}
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Youdom Care vous accompagne dans démarches</h2>
-
-          <div className="space-y-6">
-            {[
-              "Identification aides possibles selon votre situation",
-              "Aide constitution dossier (formulaires CERFA, justificatifs)",
-              "Rédaction projet de vie convaincant (PCH)",
-              "Communication avec département/MDPH",
-              "Suivi instruction (relances, clarifications)",
-              "Mise en place post-accord (facturation directe)",
-              "Rapports d'activité pour renouvellement aides",
-            ].map((item, i) => (
-              <div key={i} className="flex gap-4 p-4 bg-white/10 rounded-lg backdrop-blur border border-white/20">
-                <span className="text-secondary text-lg font-bold flex-shrink-0">✓</span>
-                <p className="text-white text-sm">{item}</p>
+      {/* RECAP RAPIDE */}
+      <section className="bg-white py-12">
+        <Container size="wide">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            {aidesFinancieres.map((a) => (
+              <div
+                key={a.code}
+                className="bg-warm rounded-2xl p-4 text-center border border-border"
+              >
+                <div className="text-secondary text-xs font-bold uppercase tracking-wider mb-1">
+                  {a.code}
+                </div>
+                <p className="text-xs text-text-light leading-snug">{a.audience}</p>
               </div>
             ))}
           </div>
-
-          <p className="text-white/80 text-center mt-8 text-sm">
-            <strong>Gratuit :</strong> l&apos;accompagnement Youdom Care pour dossiers aides n&apos;a aucun coût supplémentaire.
-          </p>
-        </div>
+        </Container>
       </section>
 
-      {/* FAQ */}
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Vos questions sur les aides</h2>
+      <div id="simulateur">
+        <AidesSimulator />
+      </div>
 
-          <div className="space-y-6">
-            {[
-              {
-                q: "Ai-je le droit à l'APA ?",
-                a: "Si vous avez 60+, résidez France, et êtes en perte d'autonomie (AGGIR 1-4), probablement oui. Seule réponse : appeler département ou Youdom Care pour évaluation.",
-              },
-              {
-                q: "Combien de temps pour obtenir une aide ?",
-                a: "APA : 2-4 semaines généralement. PCH : 4-6 mois. Youdom Care peut aider accélérer processus.",
-              },
-              {
-                q: "Que faire si aide refusée ?",
-                a: "Droit recours. Youdom Care peut aider constituer dossier appel ou contacter assistant social pour clarifier.",
-              },
-              {
-                q: "Peut-on cumuler APA et PCH ?",
-                a: "Non. Vous recevez l'une ou l'autre. Mais si situation change, vous pouvez demander révision.",
-              },
-              {
-                q: "Comment fonctionne crédit d'impôt 50% ?",
-                a: "Youdom Care facture montant brut. Vous déduisez 50% vos impôts l'année suivante. Si vous ne payez pas impôt : crédit versé.",
-              },
-              {
-                q: "Youdom Care aide-t-elle gratuitement pour dossiers ?",
-                a: "Oui. Aucun coût supplémentaire pour aide administrative et dossiers. C'est inclus service Youdom Care.",
-              },
-            ].map((item, i) => (
-              <div key={i} className="p-6 bg-white rounded-xl border-l-4 border-secondary">
-                <h3 className="font-bold text-text mb-2">Q: {item.q}</h3>
-                <p className="text-text-light text-sm">A: {item.a}</p>
-              </div>
+      {/* DÉTAIL DES AIDES */}
+      <section className="bg-warm-grain py-16 sm:py-24">
+        <Container size="wide">
+          <SectionHeading
+            eyebrow="En détail"
+            title="8 dispositifs pour financer votre accompagnement"
+            description="Cliquez sur chacun pour comprendre les conditions, plafonds et démarches."
+          />
+
+          <div className="space-y-5">
+            {detailedAides.map((aide, idx) => (
+              <article
+                key={aide.code}
+                className="bg-white rounded-2xl border border-border p-6 sm:p-8 shadow-card"
+              >
+                <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
+                  <div className="lg:col-span-3">
+                    <div className="text-secondary text-xs font-bold uppercase tracking-wider mb-1">
+                      {String(idx + 1).padStart(2, "0")} · {aide.code}
+                    </div>
+                    <h3 className="text-primary-dark text-lg mb-2">{aide.title}</h3>
+                    <p className="text-xs text-text-light leading-snug">{aide.audience}</p>
+                  </div>
+
+                  <div className="lg:col-span-4">
+                    <div className="text-xs uppercase tracking-wider font-bold text-text-muted mb-2">
+                      Montants
+                    </div>
+                    <ul className="space-y-2">
+                      {aide.plafonds.map((p) => (
+                        <li
+                          key={p.gir}
+                          className="flex items-baseline justify-between gap-2 text-sm"
+                        >
+                          <span className="text-text-light">{p.gir}</span>
+                          <span className="font-bold text-primary-dark">{p.montant}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="lg:col-span-5">
+                    <div className="text-xs uppercase tracking-wider font-bold text-text-muted mb-2">
+                      À retenir
+                    </div>
+                    <ul className="space-y-1.5">
+                      {aide.details.map((d, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-text-light">
+                          <span className="text-success shrink-0 mt-0.5" aria-hidden="true">✓</span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* CTA FINAL */}
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Commençons ensemble les démarches</h2>
-          <p className="text-white/80 mb-8">Youdom Care : expert accompagnement aides. Zéro bureaucratie pesante. On fait simple.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0184807297" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 text-lg">
-              Appeler : 01 84 80 72 97
-            </a>
+      {/* SERVICE DOSSIERS */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container size="narrow">
+          <div className="bg-gradient-to-br from-secondary-50 to-warm rounded-3xl p-8 sm:p-12 border border-secondary/30 text-center">
+            <span className="eyebrow">Service inclus</span>
+            <h2 className="text-primary-dark">Nous montons les dossiers à votre place.</h2>
+            <p className="lead mt-4">
+              APA, PCH, MaPrimeAdapt, mutuelle, PRADO : notre coordinatrice prépare,
+              dépose et suit chaque dossier. <strong>C&apos;est gratuit, c&apos;est inclus
+              dans notre service.</strong> Pas de paperasse pour vous.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+              <Button href="/demander-devis" variant="primary" size="lg" glow>
+                Démarrer ma demande
+              </Button>
+              <Button href="/contact" variant="outline" size="lg">
+                Échanger avec une coordinatrice
+              </Button>
+            </div>
           </div>
-        </div>
+        </Container>
       </section>
-    </div>
+
+      <FinalCTA />
+    </>
   );
 }

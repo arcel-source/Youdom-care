@@ -1,4 +1,7 @@
 import { Metadata } from "next";
+import JsonLd from "@/components/seo/JsonLd";
+import { faqSchema } from "@/lib/structured-data";
+import { faqQuick } from "@/lib/site-config";
 import HomeHero from "@/components/sections/HomeHero";
 import TrustBar from "@/components/sections/TrustBar";
 import PersonaSelector from "@/components/sections/PersonaSelector";
@@ -23,6 +26,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <JsonLd
+        data={faqSchema(
+          faqQuick.map((q) => ({ question: q.question, answer: q.answer })),
+        )}
+      />
       <HomeHero />
       <TrustBar />
       <PersonaSelector />

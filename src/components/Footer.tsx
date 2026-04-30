@@ -108,6 +108,11 @@ export default function Footer() {
             <h3 className="font-bold text-base mb-5 text-white">Ressources</h3>
             <ul className="space-y-2.5">
               <li>
+                <Link href="/blog" className="text-white/70 hover:text-secondary text-sm transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/aides-financieres" className="text-white/70 hover:text-secondary text-sm transition-colors">
                   Aides financières
                 </Link>

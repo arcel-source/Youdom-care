@@ -1,309 +1,241 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  IllustrationContact,
-  IllustrationEvaluation,
-  IllustrationSelection,
-  IllustrationPlan,
-  IllustrationDemarrage,
-} from "@/components/StepIllustrations";
+import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+import SectionHeading from "@/components/ui/SectionHeading";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
+import { processSteps, siteConfig, brandStats } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Comment Ça Marche | Youdom Care - Aide à Domicile Paris & IDF",
+  title:
+    "Comment ça marche — notre méthode en 5 étapes | Youdom Care",
   description:
-    "Découvrez notre processus simple et transparent en 5 étapes : premier contact, évaluation gratuite, sélection de l'auxiliaire, plan d'aide, démarrage et suivi.",
+    "De l'appel au démarrage : notre méthode en 5 étapes pour mettre en place une aide à domicile sereine. Visite gratuite, plan personnalisé, sans engagement.",
 };
 
-const steps = [
+const qualityCommitments = [
   {
-    num: "01",
-    title: "Premier contact",
-    subtitle: "Gratuit & sans engagement",
-    desc: "Appelez-nous ou remplissez notre formulaire de devis en ligne. Un conseiller dédié prend en charge votre demande et vous rappelle sous 2 heures pour comprendre votre situation.",
-    details: [
-      "Écoute attentive de votre situation",
-      "Premiers conseils personnalisés",
-      "Information sur les aides financières disponibles",
-      "Prise de rendez-vous pour l'évaluation à domicile",
-    ],
-    illustration: "contact",
+    title: "Recrutement strict",
+    description:
+      "6 étapes de sélection : entretien RH, vérification des diplômes, casier judiciaire B3, test de mise en situation, période d'observation, formation interne avant la 1ʳᵉ mission seul·e.",
   },
   {
-    num: "02",
-    title: "Évaluation gratuite à domicile",
-    subtitle: "Visite sans engagement",
-    desc: "Un responsable de secteur se déplace chez vous gratuitement. Il évalue les besoins réels, observe l'environnement et discute avec vous et votre proche pour construire la meilleure solution.",
-    details: [
-      "Évaluation complète des besoins physiques et psychologiques",
-      "Observation du domicile et conseils d'aménagement",
-      "Estimation du niveau de dépendance (GIR)",
-      "Présentation détaillée des aides financières (APA, PCH, crédit d'impôt)",
-    ],
-    illustration: "evaluation",
+    title: "Formation continue",
+    description:
+      "Tous nos auxiliaires en CDI suivent au moins une formation par trimestre : Humanitude, manutention, premiers secours, communication adaptée, spécialisations.",
   },
   {
-    num: "03",
-    title: "Sélection de votre auxiliaire",
-    subtitle: "Intervenante unique et dédiée",
-    desc: "Nous sélectionnons l'auxiliaire de vie idéale en fonction de votre situation, vos préférences et votre personnalité. Une rencontre est organisée à domicile avant le démarrage.",
-    details: [
-      "Matching sur les compétences et la compatibilité humaine",
-      "Personnel diplômé, formé et expérimenté",
-      "Rencontre préalable pour valider le feeling",
-      "Possibilité de changer si le courant ne passe pas",
-    ],
-    illustration: "selection",
+    title: "Supervision qualité",
+    description:
+      "Visite de contrôle inopinée par notre coordinatrice qualité tous les trimestres. Compte-rendu mensuel partagé avec les familles (avec accord du bénéficiaire).",
   },
   {
-    num: "04",
-    title: "Plan d'aide sur mesure",
-    subtitle: "100% personnalisé",
-    desc: "Ensemble, nous définissons précisément les services, la fréquence, les jours, les horaires et le budget. Tout est transparent, écrit noir sur blanc, sans surprise.",
-    details: [
-      "Planning détaillé adapté à votre rythme",
-      "Tarification claire et transparente",
-      "Aide aux démarches administratives (APA, MDPH...)",
-      "Contrat simple et sans engagement longue durée",
-    ],
-    illustration: "plan",
+    title: "Charte signée",
+    description:
+      "Notre charte qualité est signée par chaque auxiliaire ET le bénéficiaire/famille. Engagements opposables, contrôlés, mesurés.",
   },
   {
-    num: "05",
-    title: "Démarrage & suivi qualité",
-    subtitle: "Accompagnement permanent",
-    desc: "Les prestations démarrent avec votre auxiliaire dédiée. Nous assurons un suivi qualité rigoureux avec des points réguliers, des enquêtes de satisfaction et des ajustements si besoin.",
-    details: [
-      "Même auxiliaire à chaque intervention",
-      "Points qualité réguliers avec la famille",
-      "Ajustements du plan d'aide selon l'évolution",
-      "Remplacement assuré en cas d'absence",
-    ],
-    illustration: "demarrage",
+    title: "Cellule éthique",
+    description:
+      "Un comité interne traite les signalements de maltraitance ou de dysfonctionnement. Réponse sous 24 h, mesures correctives immédiates.",
   },
+  {
+    title: "Enquête NPS trimestrielle",
+    description:
+      "Tous les 3 mois, vous évaluez la prestation. Score NPS partagé en interne, plans d'action correctifs si nécessaire.",
+  },
+];
+
+const guarantees = [
+  { icon: "💯", text: "Visite à domicile gratuite, sans engagement" },
+  { icon: "⏱️", text: "Réponse en moins de 2 h ouvrées" },
+  { icon: "🚨", text: "Démarrage en 48 h sur les urgences (sortie d'hôpital, etc.)" },
+  { icon: "🔄", text: "Changement d'auxiliaire possible sous 48 h sans frais" },
+  { icon: "📞", text: "Coordinatrice joignable 7j/7" },
+  { icon: "🛡️", text: "Assurance responsabilité civile pro complète" },
 ];
 
 export default function CommentCaMarchePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       {/* HERO */}
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Comment ça marche ?
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-4">
-                Un processus simple, humain et transparent.
-                De votre premier appel à l&apos;accompagnement quotidien, tout est pensé pour vous faciliter la vie.
-              </p>
-              <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
-                <span className="bg-white/10 text-white/90 text-sm font-medium px-4 py-2 rounded-full border border-white/20">✅ 100% gratuit</span>
-                <span className="bg-white/10 text-white/90 text-sm font-medium px-4 py-2 rounded-full border border-white/20">⚡ Réponse sous 2h</span>
-                <span className="bg-white/10 text-white/90 text-sm font-medium px-4 py-2 rounded-full border border-white/20">🔒 Sans engagement</span>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Demander un devis gratuit
-                </Link>
-                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
+      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-20 overflow-hidden">
+        <div
+          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
+          style={{ background: "var(--color-secondary)" }}
+          aria-hidden="true"
+        />
+        <Container className="relative z-10">
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
+            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
+            <span aria-hidden="true">›</span>
+            <span className="text-white/50">Comment ça marche</span>
+          </nav>
+          <div className="max-w-3xl">
+            <span className="eyebrow !text-secondary">Notre méthode</span>
+            <h1 className="text-white">
+              De votre appel à la première visite,
+              <br />
+              <span className="text-secondary">en moins de 7 jours.</span>
+            </h1>
+            <p className="lead !text-white/85 mt-5">
+              Un parcours simple, transparent, entièrement gratuit jusqu&apos;à la
+              signature. Visite à domicile incluse, plan personnalisé, sans
+              engagement.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mt-8">
+              <Button href="/demander-devis" variant="primary" size="lg" glow>
+                Démarrer ma demande
+              </Button>
+              <Button
+                href={`tel:${siteConfig.phone.mainE164}`}
+                variant="white"
+                size="lg"
+                icon={<span aria-hidden="true">📞</span>}
+              >
+                {siteConfig.phone.main}
+              </Button>
             </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
+          </div>
+        </Container>
+      </section>
+
+      {/* 5 ÉTAPES — DÉTAILLÉES */}
+      <section className="bg-white py-16 sm:py-24">
+        <Container size="wide">
+          <SectionHeading
+            eyebrow="Notre méthode pas à pas"
+            title="5 étapes simples, gratuites jusqu'à la signature"
+          />
+
+          <div className="space-y-12">
+            {processSteps.map((step, idx) => {
+              const isEven = idx % 2 === 0;
+              return (
+                <div
+                  key={step.step}
+                  className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-center"
+                >
+                  <div className={`lg:col-span-7 ${isEven ? "" : "lg:order-2"}`}>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        {step.step}
+                      </div>
+                      <div>
+                        <span className="inline-block px-2.5 py-0.5 bg-secondary-50 text-secondary-dark text-xs font-semibold rounded-full mb-1">
+                          {step.duration}
+                        </span>
+                        <h3 className="text-primary-dark m-0">{step.title}</h3>
+                      </div>
+                    </div>
+                    <p className="text-lg text-text-light leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                  <div className={`lg:col-span-5 ${isEven ? "" : "lg:order-1"}`}>
+                    <div className="bg-warm rounded-2xl p-8 text-center text-7xl shadow-card" aria-hidden="true">
+                      {step.icon}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* GARANTIES */}
+      <section className="bg-warm-grain py-16 sm:py-24">
+        <Container>
+          <SectionHeading
+            eyebrow="Notre engagement"
+            title="6 garanties dès le premier contact"
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {guarantees.map((g, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl p-5 border border-border flex items-start gap-3"
+              >
+                <div className="text-2xl shrink-0" aria-hidden="true">{g.icon}</div>
+                <p className="text-sm font-semibold text-primary-dark leading-snug">{g.text}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* QUALITÉ */}
+      <section className="bg-white py-16 sm:py-24">
+        <Container size="wide">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-14">
+            <div className="lg:col-span-5">
+              <div className="relative h-80 sm:h-[460px] rounded-3xl overflow-hidden shadow-lifted">
                 <Image
-                  src="/images/functioning/intro.jpeg"
-                  alt="Notre fonctionnement - Youdom Care"
+                  src="/images/home/pourquoi-choisir.png"
+                  alt="Auxiliaire de vie professionnelle Youdom Care"
                   fill
                   className="object-cover"
-                  priority
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                 />
               </div>
             </div>
+            <div className="lg:col-span-7">
+              <SectionHeading
+                eyebrow="Notre démarche qualité"
+                title="6 mécanismes pour garantir l'excellence dans la durée"
+                description="Au-delà de la prestation : un système qui protège vos proches et améliore en continu."
+                align="left"
+              />
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* RÉSUMÉ RAPIDE */}
-      <section className="py-10 sm:py-14 bg-warm">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4">
-            {["Premier contact", "Évaluation", "Sélection", "Plan d'aide", "Démarrage"].map((label, idx) => (
-              <div key={idx} className="text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-base mx-auto mb-2">
-                  {idx + 1}
-                </div>
-                <p className="text-xs sm:text-sm font-semibold text-text">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ÉTAPES DÉTAILLÉES */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text mb-4 text-center">
-            Les 5 étapes de votre accompagnement
-          </h2>
-          <p className="text-text-light text-center mb-12 sm:mb-16 max-w-2xl mx-auto">
-            Chaque étape est conçue pour vous rassurer, vous informer et vous accompagner avec bienveillance.
-          </p>
-
-          <div className="space-y-12 sm:space-y-16">
-            {steps.map((step, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            {qualityCommitments.map((c, idx) => (
               <div
-                key={step.num}
-                className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-12 items-center`}
+                key={c.title}
+                className="bg-warm rounded-2xl p-6 border border-transparent hover:border-primary hover:bg-white transition-all"
               >
-                {/* Texte */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-10 h-10 bg-secondary text-primary-dark rounded-full flex items-center justify-center font-bold text-sm">
-                      {step.num}
-                    </span>
-                    <span className="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
-                      {step.subtitle}
-                    </span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-text mb-3">{step.title}</h3>
-                  <p className="text-text-light mb-5 leading-relaxed">{step.desc}</p>
-                  <ul className="space-y-2.5">
-                    {step.details.map((detail, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm">
-                        <span className="text-primary mt-0.5 shrink-0">✓</span>
-                        <span className="text-text-light">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Illustration */}
-                <div className="flex-1 w-full flex items-center justify-center">
-                  <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px]">
-                    {step.illustration === "contact" && <IllustrationContact />}
-                    {step.illustration === "evaluation" && <IllustrationEvaluation />}
-                    {step.illustration === "selection" && <IllustrationSelection />}
-                    {step.illustration === "plan" && <IllustrationPlan />}
-                    {step.illustration === "demarrage" && <IllustrationDemarrage />}
-                  </div>
-                </div>
+                <div className="text-secondary text-3xl font-bold mb-2">{String(idx + 1).padStart(2, "0")}</div>
+                <h3 className="text-base font-bold text-primary-dark mb-2">{c.title}</h3>
+                <p className="text-sm text-text-light leading-relaxed">{c.description}</p>
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* NOS ENGAGEMENTS */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 text-center">Nos engagements qualité</h2>
-          <p className="text-white/70 text-center mb-10 max-w-2xl mx-auto">
-            Ce qui fait la différence Youdom Care, c&apos;est notre exigence à chaque étape.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              { icon: "🔄", title: "Continuité garantie", desc: "Toujours la même auxiliaire. Pas de turnover, pas de surprise. La confiance se construit dans la durée." },
-              { icon: "⚡", title: "Réactivité", desc: "Réponse sous 2 heures. Remplacement sous 24h en cas d'absence. Vous n'êtes jamais laissé sans solution." },
-              { icon: "🎓", title: "Personnel qualifié", desc: "Auxiliaires diplômées, formées en continu. Compétences techniques et humaines vérifiées." },
-              { icon: "💰", title: "Transparence totale", desc: "Tarifs clairs, devis détaillé, pas de frais cachés. Accompagnement pour les aides financières." },
-              { icon: "📊", title: "Suivi rigoureux", desc: "Points qualité réguliers, enquêtes de satisfaction, ajustements selon l'évolution des besoins." },
-              { icon: "📞", title: "Disponibilité", desc: "Joignable du lundi au samedi 8h-20h. Une permanence pour les urgences." },
-            ].map((eng, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur p-6 rounded-2xl border border-white/20">
-                <div className="text-3xl mb-3">{eng.icon}</div>
-                <h3 className="font-bold text-white mb-2">{eng.title}</h3>
-                <p className="text-white/80 text-sm leading-relaxed">{eng.desc}</p>
-              </div>
-            ))}
+      {/* CHIFFRES CLÉS */}
+      <section className="bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white py-16 sm:py-20">
+        <Container size="wide">
+          <div className="text-center mb-10 max-w-2xl mx-auto">
+            <span className="eyebrow !text-secondary">Notre méthode en chiffres</span>
+            <h2 className="text-white">Une approche éprouvée, mesurée, partagée.</h2>
           </div>
-        </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <Stat value={`${brandStats.satisfactionRate}%`} label="de satisfaction client" />
+            <Stat value={`< ${brandStats.responseTimeHours} h`} label="délai de réponse" />
+            <Stat value={`${brandStats.familiesAccompanied}+`} label="familles accompagnées" />
+            <Stat value={`${brandStats.caregiversCount}`} label="auxiliaires en CDI" />
+          </div>
+        </Container>
       </section>
 
-      {/* CHIFFRES */}
-      <section className="py-12 sm:py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-10 text-center">Youdom Care en chiffres</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {[
-              { chiffre: "500+", label: "Familles accompagnées" },
-              { chiffre: "98%", label: "Taux de satisfaction" },
-              { chiffre: "< 2h", label: "Délai de réponse" },
-              { chiffre: "10+", label: "Années d'expérience" },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-5 sm:p-6 rounded-2xl text-center border border-gray-100 shadow-sm">
-                <div className="text-2xl sm:text-3xl font-extrabold text-primary mb-1">{item.chiffre}</div>
-                <p className="text-text-light text-xs sm:text-sm">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <EngagementsBlock />
 
-      {/* FAQ RAPIDE */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Questions fréquentes</h2>
-          <div className="space-y-4">
-            {[
-              {
-                q: "Combien de temps entre le premier appel et le démarrage ?",
-                a: "En général, entre 48h et 1 semaine selon la complexité de la situation. En cas d'urgence (retour d'hospitalisation), nous pouvons intervenir sous 24h.",
-              },
-              {
-                q: "L'évaluation à domicile est-elle vraiment gratuite ?",
-                a: "Oui, totalement gratuite et sans aucun engagement. C'est l'occasion de se rencontrer, d'évaluer les besoins et de vous présenter nos solutions.",
-              },
-              {
-                q: "Puis-je changer d'auxiliaire si ça ne convient pas ?",
-                a: "Absolument. Le feeling humain est essentiel. Si le courant ne passe pas, nous proposons un nouvel intervenant sans délai ni frais supplémentaire.",
-              },
-              {
-                q: "Y a-t-il un nombre minimum d'heures ?",
-                a: "Nous proposons des formules à partir de 2h par intervention. Le plan d'aide est 100% flexible et s'adapte à vos besoins réels.",
-              },
-              {
-                q: "Comment sont formés vos intervenants ?",
-                a: "Nos auxiliaires sont diplômées (DEAVS, ADVF ou équivalent) et suivent des formations continues : gestes techniques, maladies neurodégénératives, premiers secours.",
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-warm p-5 sm:p-6 rounded-xl border-l-4 border-secondary">
-                <h3 className="font-bold text-text mb-2 text-sm sm:text-base">{item.q}</h3>
-                <p className="text-text-light text-sm">{item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FinalCTA />
+    </>
+  );
+}
 
-      {/* CTA */}
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Prêt à commencer ?</h2>
-          <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            La première étape est gratuite et sans engagement.
-            Contactez-nous, on s&apos;occupe du reste.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/demander-devis"
-              className="w-full sm:w-auto px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg min-h-[44px] text-center"
-            >
-              Demander un devis gratuit →
-            </Link>
-            <a
-              href="tel:0184807297"
-              className="w-full sm:w-auto px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 text-lg min-h-[44px] text-center"
-            >
-              📞 01 84 80 72 97
-            </a>
-          </div>
-          <p className="text-white/60 mt-4 text-sm">Réponse sous 2 heures • Sans engagement • Conseil gratuit</p>
-        </div>
-      </section>
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="text-center">
+      <div className="text-3xl sm:text-5xl font-bold text-secondary mb-1">{value}</div>
+      <div className="text-sm text-white/80">{label}</div>
     </div>
   );
 }

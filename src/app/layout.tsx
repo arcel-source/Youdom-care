@@ -3,7 +3,9 @@ import { Inter, Fraunces } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
+import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
+import { localBusinessSchema } from "@/lib/structured-data";
 import "./globals.css";
 
 const inter = Inter({
@@ -101,6 +103,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <FloatingCTA />
+        <JsonLd data={localBusinessSchema()} />
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig, services, personas } from "@/lib/site-config";
+import { articles } from "@/lib/blog-articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -9,9 +10,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/", priority: 1, changeFrequency: "weekly" as const },
     { url: "/services", priority: 0.9, changeFrequency: "weekly" as const },
     { url: "/aides-financieres", priority: 0.9, changeFrequency: "monthly" as const },
-    { url: "/comment-ca-marche", priority: 0.8, changeFrequency: "monthly" as const },
+    { url: "/comment-ca-marche", priority: 0.85, changeFrequency: "monthly" as const },
     { url: "/qui-sommes-nous", priority: 0.7, changeFrequency: "monthly" as const },
     { url: "/temoignages", priority: 0.7, changeFrequency: "weekly" as const },
+    { url: "/blog", priority: 0.85, changeFrequency: "weekly" as const },
     { url: "/faq", priority: 0.7, changeFrequency: "monthly" as const },
     { url: "/recrutement", priority: 0.7, changeFrequency: "weekly" as const },
     { url: "/contact", priority: 0.8, changeFrequency: "monthly" as const },
@@ -33,10 +35,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...personaRoutes].map((route) => ({
-    url: `${base}${route.url}`,
-    lastModified: now,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
+  const blogRoutes = articles.map((article) => ({
+    url: `/blog/${article.slug}`,
+    priority: 0.7,
+    changeFrequency: "monthly" as const,
+    lastMod: article.updatedAt ?? article.publishedAt,
   }));
+
+  return [
+    ...staticRoutes.map((r) => ({
+      url: `${base}${r.url}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+    ...serviceRoutes.map((r) => ({
+      url: `${base}${r.url}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+    ...personaRoutes.map((r) => ({
+      url: `${base}${r.url}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+    ...blogRoutes.map((r) => ({
+      url: `${base}${r.url}`,
+      lastModified: new Date(r.lastMod),
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+  ];
 }

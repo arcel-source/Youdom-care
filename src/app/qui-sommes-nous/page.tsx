@@ -1,208 +1,289 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+import SectionHeading from "@/components/ui/SectionHeading";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
+import { siteConfig, brandStats, agrements } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Qui Sommes-Nous | Youdom Care",
-  description: "Youdom Care — 10+ ans d'expertise en aide à domicile. 500+ familles. Valeurs : bienveillance, sur mesure, confiance, excellence.",
+  title: "Qui sommes-nous — l'histoire de Youdom Care | Aide à domicile IDF",
+  description:
+    "Youdom Care, aide à domicile en Île-de-France depuis 2014 : notre histoire, nos valeurs, nos agréments, notre équipe. 500+ familles accompagnées, 98 % de satisfaction.",
 };
+
+const values = [
+  {
+    icon: "🤝",
+    title: "Humanité",
+    description:
+      "Avant la prestation : la personne. Avant le contrat : la confiance. Nous prenons le temps qu'il faut.",
+  },
+  {
+    icon: "🏠",
+    title: "Maintien à domicile",
+    description:
+      "Vivre chez soi est un droit. Notre mission : rendre cela possible le plus longtemps possible, dans la dignité.",
+  },
+  {
+    icon: "💎",
+    title: "Excellence opérationnelle",
+    description:
+      "Recrutement strict, formations continues, supervision qualité, charte signée. La qualité ne se déclare pas, elle se prouve.",
+  },
+  {
+    icon: "🌱",
+    title: "Continuité",
+    description:
+      "Le même intervenant, le même coordinateur, la même équipe. La relation se construit dans la durée.",
+  },
+  {
+    icon: "🔓",
+    title: "Transparence",
+    description:
+      "Tarifs clairs, devis détaillés, aides expliquées, processus visibles. Aucune mauvaise surprise, jamais.",
+  },
+  {
+    icon: "♿",
+    title: "Inclusion",
+    description:
+      "Personnes âgées, en situation de handicap, aidants : nos services s'adressent à tous, sans hiérarchie d'attention.",
+  },
+];
+
+const milestones = [
+  { year: "2014", event: "Création de Youdom Care à Paris par une équipe issue du social et de la santé" },
+  { year: "2016", event: "Obtention de l'agrément Service à la Personne (SAP)" },
+  { year: "2018", event: "Autorisation SAAD départementale (75)" },
+  { year: "2020", event: "Crise Covid : continuité de service totale, dispositifs sanitaires renforcés" },
+  { year: "2022", event: "Avance immédiate du crédit d'impôt mise en place pour tous nos clients" },
+  { year: "2024", event: "MaPrimeAdapt' intégrée dans nos services d'accompagnement administratif" },
+  { year: "2026", event: `Refonte de notre site web et lancement d'un espace client en ligne` },
+];
 
 export default function QuiSommesNousPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="absolute inset-0 opacity-15">
-          <Image
-            src="/images/about/assistante-vie-famille.jpg"
-            alt="Assistante de vie accompagnant une famille"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/80 via-primary/70 to-primary-light/60"></div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-3 mb-6">
-            Qui Sommes-Nous
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-            L&apos;humain au cœur de chaque action. 10+ ans d&apos;expertise, 500+ familles, 98% de satisfaction.
-          </p>
-        </div>
+      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-20 overflow-hidden">
+        <div
+          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
+          style={{ background: "var(--color-secondary)" }}
+          aria-hidden="true"
+        />
+        <Container className="relative z-10">
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
+            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
+            <span aria-hidden="true">›</span>
+            <span className="text-white/50">Qui sommes-nous</span>
+          </nav>
+          <div className="max-w-3xl">
+            <span className="eyebrow !text-secondary">Notre histoire</span>
+            <h1 className="text-white">
+              Une équipe qui croit que vieillir chez soi
+              <br />
+              <span className="text-secondary">est un droit, pas un privilège.</span>
+            </h1>
+            <p className="lead !text-white/85 mt-5">
+              Depuis {brandStats.yearsOfExperience} ans, Youdom Care accompagne les
+              familles d&apos;Île-de-France pour permettre le maintien à domicile dans
+              la dignité. {brandStats.familiesAccompanied}+ familles, {brandStats.caregiversCount} auxiliaires en CDI,
+              {" "}{brandStats.satisfactionRate} % de satisfaction.
+            </p>
+          </div>
+        </Container>
       </section>
 
-      {/* MISSION */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-text mt-3 mb-6">
-                Notre mission
+      {/* HISTOIRE */}
+      <section className="bg-white py-16 sm:py-24">
+        <Container size="wide">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6">
+              <span className="eyebrow">Notre origine</span>
+              <h2>
+                Né d&apos;un constat simple :
+                <br />
+                <span className="text-gradient">l&apos;aide à domicile méritait mieux.</span>
               </h2>
-              <div className="space-y-4 text-text-light leading-relaxed">
-                <p>
-                  Chez Youdom Care, nous croyons que vivre chez soi le plus longtemps possible 
-                  est la solution privilégiée par les personnes âgées et leurs familles.
+
+              <div className="mt-6 space-y-4 text-text-light">
+                <p className="text-lg leading-relaxed">
+                  En 2014, nos fondateurs — issus du secteur social et hospitalier —
+                  ont vu trop de personnes quitter leur maison pour une chambre
+                  d&apos;EHPAD parce qu&apos;elles n&apos;avaient pas les bonnes mains à
+                  leurs côtés.
                 </p>
-                <p>
-                  Quitter son domicile, c&apos;est perdre son autonomie, ses souvenirs, ses repères. 
-                  Notre approche repose sur une conviction forte : l&apos;aide à domicile doit être 
-                  humaine, professionnelle et sur mesure.
+                <p className="leading-relaxed">
+                  Trop d&apos;aidants épuisés. Trop de familles seules face à la
+                  complexité des aides. Trop d&apos;intervenants qui changeaient
+                  toutes les semaines, sans écoute, sans suivi.
                 </p>
-                <p>
-                  Nous évaluons vos besoins, sélectionnons l&apos;intervenant idéal, et construisons 
-                  un plan d&apos;accompagnement qui évolue avec vous.
+                <p className="leading-relaxed">
+                  Nous avons créé Youdom Care pour faire autrement :{" "}
+                  <strong className="text-primary-dark">
+                    le même intervenant, des tarifs transparents, des dossiers
+                    d&apos;aide montés à votre place, une charte qualité signée
+                  </strong>
+                  . Et surtout : du temps humain pour chaque personne.
+                </p>
+                <p className="leading-relaxed">
+                  Aujourd&apos;hui, {brandStats.familiesAccompanied}+ familles d&apos;IDF nous font
+                  confiance. {brandStats.caregiversCount} auxiliaires en CDI portent notre
+                  mission au quotidien. Et nous continuons d&apos;améliorer ce que
+                  signifie « aide à domicile de qualité » en France.
                 </p>
               </div>
             </div>
 
-            <div className="rounded-3xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/home/mission-home.png"
-                alt="Notre mission : accompagner avec bienveillance"
-                width={600}
-                height={500}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CE QUE NOUS FAISONS */}
-      <section className="py-16 bg-warm">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="hidden lg:block rounded-3xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/about/autonomie.jpg"
-                alt="Préserver l'autonomie des personnes accompagnées"
-                width={600}
-                height={500}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-
-            <div className="bg-white rounded-3xl p-8">
-              <h3 className="text-xl font-bold text-text mb-6">Ce que nous faisons pour vous</h3>
-              <ul className="space-y-4">
-                {[
-                  "Accompagner les personnes en perte d'autonomie dans leur quotidien",
-                  "Évaluer vos besoins avec soin et sans jugement",
-                  "Sélectionner des intervenants uniques et adaptés",
-                  "Vous permettre de bénéficier d'un crédit d'impôt 50%",
-                  "Coordonner avec les professionnels de santé",
-                  "Accompagner les familles dans leurs démarches administratives",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="text-accent text-lg mt-0.5">✓</span>
-                    <span className="text-text-light">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CHIFFRES */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-12">Youdom Care en chiffres</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-            {[
-              { value: "500+", label: "Familles" },
-              { value: "150+", label: "Intervenants" },
-              { value: "98%", label: "Satisfaction" },
-              { value: "24/7", label: "Disponibilité" },
-              { value: "50%", label: "Crédit d'impôt" },
-              { value: "2h", label: "Délai réponse" },
-            ].map((n) => (
-              <div key={n.label} className="text-center">
-                <div className="text-3xl font-bold text-secondary">{n.value}</div>
-                <div className="text-white/60 text-sm mt-1">{n.label}</div>
+            <div className="lg:col-span-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <div className="relative h-48 sm:h-60 rounded-2xl overflow-hidden shadow-card">
+                    <Image
+                      src="/images/about/aide-personnes-agees.jpg"
+                      alt="Auxiliaire et bénéficiaire"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 25vw, 50vw"
+                    />
+                  </div>
+                  <div className="relative h-32 sm:h-44 rounded-2xl overflow-hidden shadow-card">
+                    <Image
+                      src="/images/about/autonomie.jpg"
+                      alt="Autonomie préservée"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 25vw, 50vw"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-4 mt-8">
+                  <div className="relative h-32 sm:h-44 rounded-2xl overflow-hidden shadow-card">
+                    <Image
+                      src="/images/services/aide-menagere.jpg"
+                      alt="Aide ménagère professionnelle"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 25vw, 50vw"
+                    />
+                  </div>
+                  <div className="relative h-48 sm:h-60 rounded-2xl overflow-hidden shadow-card">
+                    <Image
+                      src="/images/about/assistante-vie-famille.jpg"
+                      alt="Auxiliaire et famille"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 25vw, 50vw"
+                    />
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* VALEURS */}
-      <section className="py-24 bg-warm">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-text mb-16">Nos valeurs</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: "❤️", title: "Bienveillance", desc: "Chaque personne est traitée comme un membre de notre famille." },
-              { icon: "🎯", title: "Sur mesure", desc: "Pas de service standardisé. Chaque plan est unique." },
-              { icon: "🤝", title: "Confiance", desc: "Transparence totale, intervenants vérifiés, suivi rigoureux." },
-              { icon: "🏆", title: "Excellence", desc: "Personnel diplômé, formé en continu, sélectionné pour ses qualités." },
-              { icon: "👂", title: "Écoute", desc: "On prend le temps de vraiment comprendre vos besoins." },
-              { icon: "🔄", title: "Adaptabilité", desc: "Nos services évoluent avec vos besoins. Rien n'est figé." },
-            ].map((v) => (
-              <div key={v.title} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all">
-                <div className="text-3xl mb-3">{v.icon}</div>
-                <h3 className="font-bold text-lg text-text mb-2">{v.title}</h3>
-                <p className="text-text-light text-sm leading-relaxed">{v.desc}</p>
+      <section className="bg-warm-grain py-16 sm:py-24">
+        <Container size="wide">
+          <SectionHeading
+            eyebrow="Notre socle"
+            title="6 valeurs qui guident chacune de nos décisions"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {values.map((v) => (
+              <div
+                key={v.title}
+                className="bg-white rounded-2xl p-6 border border-border shadow-card"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary-50 flex items-center justify-center text-2xl mb-4" aria-hidden="true">
+                  {v.icon}
+                </div>
+                <h3 className="text-base font-bold text-primary-dark mb-2">{v.title}</h3>
+                <p className="text-sm text-text-light leading-relaxed">{v.description}</p>
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* POURQUOI NOUS CHOISIR */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-text mb-6">Pourquoi nous choisir ?</h2>
-              <div className="space-y-4 text-text-light leading-relaxed">
-                <p>
-                  Avec plus de 10 ans d&apos;expérience dans l&apos;aide à domicile, nous avons accompagné 
-                  des centaines de familles à travers des moments difficiles et importants.
-                </p>
-                <p>
-                  Notre différence : nous ne sommes pas une simple agence d&apos;intérim. Nous prenons 
-                  le temps de comprendre votre situation, de sélectionner l&apos;intervenant parfait, 
-                  et de vous accompagner sur la durée.
-                </p>
-                <p>
-                  Chaque famille est unique. Chaque accompagnement aussi.
-                </p>
+      {/* TIMELINE */}
+      <section className="bg-white py-16 sm:py-24">
+        <Container size="narrow">
+          <SectionHeading
+            eyebrow="Notre histoire"
+            title="Des dates clés qui racontent un engagement"
+          />
+          <ol className="relative border-l-2 border-primary/30 pl-8 space-y-8">
+            {milestones.map((m) => (
+              <li key={m.year} className="relative">
+                <div
+                  className="absolute -left-[42px] w-6 h-6 rounded-full bg-primary border-4 border-white shadow-card"
+                  aria-hidden="true"
+                />
+                <div className="text-secondary font-bold text-sm uppercase tracking-wider mb-1">
+                  {m.year}
+                </div>
+                <p className="text-text leading-relaxed">{m.event}</p>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </section>
+
+      {/* AGRÉMENTS */}
+      <section className="bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white py-16 sm:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="Nos agréments"
+            title="Une entreprise reconnue, autorisée, contrôlée"
+            description="Au-delà des labels : nos agréments garantissent vos droits et notre sérieux."
+            invert
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            {agrements.map((a) => (
+              <div
+                key={a.short}
+                className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/15"
+              >
+                <div className="text-secondary text-xs font-bold uppercase tracking-wider mb-1">
+                  {a.short}
+                </div>
+                <h3 className="text-white font-bold mb-2">{a.label}</h3>
+                <p className="text-sm text-white/80 leading-relaxed">{a.description}</p>
               </div>
-            </div>
-
-            <div className="rounded-3xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/home/pourquoi-choisir.png"
-                alt="Pourquoi choisir Youdom Care pour l'aide à domicile"
-                width={600}
-                height={500}
-                className="w-full h-auto object-cover"
-              />
-            </div>
+            ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Faites connaissance avec nous</h2>
-          <p className="text-white/70 text-lg mb-8">
-            La première étape, c&apos;est simplement de se parler.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/demander-devis" className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-8 py-4 rounded-full text-lg transition-all cta-glow">
-              Demander un Devis →
-            </a>
-            <a href="/demander-devis" className="border-2 border-white/30 hover:border-white text-white font-bold px-8 py-4 rounded-full text-lg transition-all">
-              Nous Contacter
-            </a>
+      {/* CHIFFRES */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container size="wide">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
+            <Stat value={`${brandStats.familiesAccompanied}+`} label="familles accompagnées" />
+            <Stat value={`${brandStats.caregiversCount}`} label="auxiliaires en CDI" />
+            <Stat value={`${brandStats.interventionsPerMonth.toLocaleString("fr-FR")}`} label="interventions / mois" />
+            <Stat value={`${brandStats.satisfactionRate}%`} label="de satisfaction" />
           </div>
-        </div>
+        </Container>
       </section>
+
+      <EngagementsBlock />
+
+      <FinalCTA />
     </>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <div className="text-3xl sm:text-5xl font-bold text-primary-dark mb-1">{value}</div>
+      <div className="text-sm text-text-light">{label}</div>
+    </div>
   );
 }
