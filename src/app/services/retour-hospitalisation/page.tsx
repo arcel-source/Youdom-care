@@ -1,175 +1,268 @@
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import ServiceHero from "@/components/service/ServiceHero";
+import ServicePainPoints from "@/components/service/ServicePainPoints";
+import ServiceIncluded from "@/components/service/ServiceIncluded";
+import ServiceMethod from "@/components/service/ServiceMethod";
+import ServicePricing from "@/components/service/ServicePricing";
+import ServiceProvider from "@/components/service/ServiceProvider";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceCrossSell from "@/components/service/ServiceCrossSell";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Aide Retour d'Hospitalisation | Youdom Care",
-  description: "Accompagnement retour d'hospitalisation à domicile. Suivi post-opératoire, aide aux soins, coordination médicale. Paris & IDF.",
+  title:
+    "Retour d'hospitalisation à domicile — démarrage en 48 h | Youdom Care",
+  description:
+    "Sortie d'hôpital sereine pour votre proche : aide aux soins, suivi post-opératoire, coordination avec médecin et infirmière. Démarrage en 48 à 72 h, week-end inclus. Pris en charge possible par la mutuelle.",
 };
+
+const painPoints = [
+  {
+    icon: "⏱️",
+    title: "Sortie précipitée",
+    description:
+      "Hôpital qui annonce la sortie 24 h avant, week-end qui approche, famille qui ne peut pas s'organiser à temps.",
+  },
+  {
+    icon: "🏥",
+    title: "Continuité des soins fragile",
+    description:
+      "Pansements, injections, kiné, traitements à reprendre — le moindre oubli peut conduire à une réhospitalisation.",
+  },
+  {
+    icon: "💔",
+    title: "Patient désorienté",
+    description:
+      "Après une longue hospitalisation, certains patients perdent leurs repères et ont besoin d'une présence rassurante 24/24.",
+  },
+  {
+    icon: "🚫",
+    title: "Risque de chute majeur",
+    description:
+      "Faiblesse musculaire, fatigue, traitements lourds : les premières semaines sont les plus dangereuses.",
+  },
+  {
+    icon: "🍲",
+    title: "Reprise alimentaire difficile",
+    description:
+      "Régimes spécifiques post-op, perte d'appétit, dénutrition guettant — un suivi alimentaire est crucial.",
+  },
+  {
+    icon: "📞",
+    title: "Coordination complexe",
+    description:
+      "Médecin traitant, infirmier libéral, kiné, pharmacie : il faut quelqu'un qui orchestre tout.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: "🏥",
+    title: "Coordination avec l'hôpital",
+    description:
+      "Échange avec le service hospitalier pour récupérer le dossier de sortie, les ordonnances, les recommandations.",
+  },
+  {
+    icon: "💊",
+    title: "Suivi des traitements",
+    description:
+      "Préparation du pilulier, rappel des prises, alerte au médecin si effets secondaires inhabituels.",
+  },
+  {
+    icon: "🩹",
+    title: "Aide aux soins (avec infirmier)",
+    description:
+      "Préparation pour la toilette, aide à l'habillage post-pansement, soutien lors des soins infirmiers à domicile.",
+  },
+  {
+    icon: "🚶",
+    title: "Aide à la rééducation",
+    description:
+      "Accompagnement aux séances de kiné, pratique des exercices à domicile, mobilité progressive.",
+  },
+  {
+    icon: "🍎",
+    title: "Suivi alimentaire & repas adaptés",
+    description:
+      "Régime post-op, hydratation surveillée, repas équilibrés. Prévention dénutrition.",
+  },
+  {
+    icon: "🛁",
+    title: "Toilette & confort",
+    description:
+      "Toilette adaptée à la cicatrisation, change de protection, prévention escarres si alitement.",
+  },
+  {
+    icon: "🚗",
+    title: "Transport médical",
+    description:
+      "Accompagnement aux RDV de contrôle, à la pharmacie, au laboratoire. Véhicules adaptés possible.",
+  },
+  {
+    icon: "👨‍⚕️",
+    title: "Liaison médecin traitant",
+    description:
+      "Compte-rendu hebdomadaire au médecin, alerte rapide en cas d'évolution. Vous avez un point de contact unique.",
+  },
+];
+
+const methodPoints = [
+  {
+    title: "Activation 48 h avant la sortie",
+    description:
+      "Dès que la date de sortie est connue, nous mobilisons l'équipe : auxiliaire pressentie, plan d'aide, coordination avec l'hôpital. Tout est prêt le jour J.",
+  },
+  {
+    title: "Visite à domicile avant la sortie",
+    description:
+      "Notre coordinatrice peut visiter le domicile pendant l'hospitalisation pour adapter l'environnement (déplacement de meubles, sécurisation salle de bain).",
+  },
+  {
+    title: "Présence renforcée la 1ʳᵉ semaine",
+    description:
+      "Souvent 4 à 8 h/jour les 7 premiers jours pour assurer la sécurité, puis ajustement progressif selon l'évolution.",
+  },
+  {
+    title: "Bilan à J+15",
+    description:
+      "Notre coordinatrice repasse 2 semaines après la sortie : bilan de la convalescence, ajustement du plan, décision de poursuite ou d'arrêt.",
+  },
+  {
+    title: "Transition vers aide longue ou arrêt",
+    description:
+      "Si la convalescence est terminée, on s'arrête sans frais. Si une aide durable est nécessaire, on bascule vers un plan classique.",
+  },
+];
+
+const aides = [
+  {
+    code: "Mutuelle santé",
+    description:
+      "La majorité des mutuelles couvrent partiellement (souvent 100 %) l'aide à domicile post-hospitalisation pendant 7 à 30 jours. Nous montons le dossier.",
+  },
+  {
+    code: "Sécurité sociale",
+    description:
+      "Sortie de chimio, AVC, opération lourde : prise en charge possible via le PRADO (Programme de Retour À DOmicile) de l'Assurance Maladie.",
+  },
+  {
+    code: "Crédit d'impôt 50 %",
+    description:
+      "Automatique sur tout le reste à charge. Peut être pris en avance immédiate (sans attendre la déclaration).",
+  },
+  {
+    code: "APA accélérée",
+    description:
+      "Une APA d'urgence peut être déclenchée en 24-48 h pour les sorties d'hôpital. Le département la versera ensuite, nous avançons les frais.",
+  },
+];
+
+const faq = [
+  {
+    question: "Vous pouvez vraiment démarrer en 48 h, même le week-end ?",
+    answer:
+      "Oui. Nous avons une équipe d'astreinte qui couvre les sorties d'hôpital 7j/7. Appelez-nous dès que la date de sortie vous est annoncée — idéalement 48 h avant — et nous synchronisons l'auxiliaire avec votre sortie. Le seul cas où c'est plus tendu : sortie annoncée le vendredi soir pour le samedi matin. Mais même là, on trouve presque toujours.",
+  },
+  {
+    question: "Mon père sort de chimio. Est-ce un cadre adapté ?",
+    answer:
+      "Tout à fait. Les sorties de chimio (anémie, fatigue extrême, immunosuppression) demandent une vigilance particulière sur l'alimentation, l'hygiène et la prévention des infections. Nos auxiliaires sont formées à ces protocoles. Le dispositif PRADO de la Sécu prend souvent en charge une partie.",
+  },
+  {
+    question: "Comment vous coordonnez-vous avec l'infirmière à domicile ?",
+    answer:
+      "Nous travaillons en équipe avec l'infirmier libéral du patient. Notre auxiliaire prépare le patient pour la toilette, prend en charge l'aide aux gestes non médicaux, et signale toute évolution à l'infirmière. Un cahier de liaison est tenu au domicile, lisible par toute l'équipe (infirmier, kiné, médecin, famille).",
+  },
+  {
+    question: "Combien de temps dure habituellement ce service ?",
+    answer:
+      "Très variable. Une simple sortie d'opération orthopédique : 7 à 14 jours. Un AVC ou une fracture du col du fémur chez une personne âgée : 30 à 60 jours, parfois plus. Nous évaluons chaque semaine si la prolongation est utile, ou si on bascule vers une aide longue (avec APA).",
+  },
+  {
+    question: "Que faire si l'état se dégrade pendant la convalescence ?",
+    answer:
+      "Notre auxiliaire est formée à reconnaître les signaux d'alerte (fièvre, douleur anormale, désorientation, plaie qui s'infecte). Elle appelle immédiatement notre coordinateur ET le médecin traitant — ou le 15 si urgence. Tout incident est tracé dans le cahier de liaison.",
+  },
+  {
+    question: "Et si la mutuelle refuse la prise en charge ?",
+    answer:
+      "Nous montons toujours le dossier complet pour maximiser vos chances (ordonnance, certificat de sortie, devis détaillé). Si la mutuelle refuse, le service reste accessible via le crédit d'impôt 50 % (qui s'applique à tous) et l'APA pour les seniors. Notre coordinatrice vous expose tous les leviers en transparence.",
+  },
+];
 
 export default function RetourHospitalisationPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Aide au retour d&apos;hospitalisation
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">
-                La convalescence à domicile en toute sérénité. Un accompagnement professionnel pour bien récupérer.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Demander un devis gratuit
-                </Link>
-                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
-                <Image
-                  src="/images/services/service-retour-hospitalisation.png"
-                  alt="Retour d'hospitalisation à domicile"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <ServiceHero
+        category="Retour d'hospitalisation"
+        title="La sortie d'hôpital sereine, dès le 1ᵉʳ jour."
+        subtitle="Quand l'hôpital sonne la sortie, tout doit être prêt. Coordination, soins, sécurité, repas adaptés, présence rassurante : nous prenons le relais en 48 h, week-end compris."
+        highlights={[
+          "Démarrage en 48 à 72 h, week-end et urgences inclus",
+          "Coordination avec hôpital, médecin, infirmier, kiné",
+          "Prise en charge mutuelle ou PRADO possible",
+          "Bilan à J+15 pour ajuster ou arrêter sans frais",
+        ]}
+        image="/images/services/service-retour-hospitalisation.png"
+        imageAlt="Auxiliaire accompagnant un patient en convalescence à domicile"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-3 text-center">Les enjeux du retour à domicile</h2>
-          <p className="text-text-light text-center mb-12 text-lg">Après une hospitalisation, le retour à la maison est un moment délicat qui nécessite un accompagnement adapté.</p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { icon: "🏥", title: "Sortie précoce", desc: "Les séjours hospitaliers raccourcissent. Le patient rentre souvent encore fragile." },
-              { icon: "💊", title: "Traitements complexes", desc: "Nouveaux médicaments, pansements, suivi post-opératoire rigoureux à respecter." },
-              { icon: "🚶", title: "Mobilité réduite", desc: "Après une opération, les gestes quotidiens deviennent difficiles et risqués." },
-              { icon: "😰", title: "Risque de réhospitalisation", desc: "Sans suivi adapté, le risque de complications et de retour à l'hôpital augmente." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-text-light">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePainPoints
+        eyebrow="Les enjeux d'une sortie réussie"
+        title="Les 7 premiers jours conditionnent la suite"
+        description="Une sortie mal préparée = un risque élevé de réhospitalisation. C'est précisément ce que nous évitons."
+        items={painPoints}
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Notre accompagnement post-hospitalisation</h2>
-          <div className="space-y-6">
-            {[
-              "Aide à la toilette et aux soins d'hygiène post-opératoires",
-              "Aide à la prise de médicaments et suivi des prescriptions",
-              "Préparation de repas adaptés à la convalescence",
-              "Aide à la mobilité et prévention des chutes",
-              "Coordination avec l'équipe médicale (infirmiers, kiné)",
-              "Entretien du domicile pendant la convalescence",
-              "Accompagnement aux rendez-vous de suivi",
-              "Soutien moral et présence rassurante",
-              "Courses et gestion du quotidien",
-              "Adaptation progressive vers l'autonomie retrouvée",
-            ].map((service, idx) => (
-              <div key={idx} className="flex gap-4 p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <div className="text-secondary text-2xl font-bold flex-shrink-0">✓</div>
-                <div>
-                  <h3 className="font-bold text-text text-lg">{service}</h3>
-                  <p className="text-text-light text-sm mt-1">Accompagnement professionnel pour une convalescence sereine.</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceIncluded
+        eyebrow="Tout ce qu'on prend en charge"
+        title="Un dispositif complet, du transport au pilulier"
+        description="Vous pouvez confier l'organisation entière. Nous orchestrons, vous récupérez votre proche en confiance."
+        items={includedServices}
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Les bénéfices d&apos;un bon accompagnement</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Pour le patient</h3>
-              <ul className="space-y-3">
-                {["Récupération plus rapide à domicile", "Moins de stress que prolongation hospitalière", "Confort du domicile familier", "Suivi personnalisé et attentif", "Retour progressif à l'autonomie"].map((item, i) => (
-                  <li key={i} className="flex gap-2 text-white/90"><span>✓</span> {item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Pour la famille</h3>
-              <ul className="space-y-3">
-                {["Moins de charge sur les proches", "Professionnels compétents à la maison", "Risque de réhospitalisation réduit", "Coordination médicale assurée", "Tranquillité d'esprit"].map((item, i) => (
-                  <li key={i} className="flex gap-2 text-white/90"><span>✓</span> {item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceMethod
+        eyebrow="Notre méthode dédiée"
+        title="Un protocole de sortie d'hôpital éprouvé en 5 temps"
+        description="Conçu avec des médecins gériatres et des infirmières libérales partenaires."
+        points={methodPoints}
+        image="/images/about/aide-personnes-agees.jpg"
+        imageAlt="Auxiliaire et patient en convalescence"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Mise en place rapide</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { step: "1", title: "Contact avant la sortie", desc: "Idéalement, contactez-nous avant la sortie d'hôpital pour préparer le retour." },
-              { step: "2", title: "Évaluation des besoins", desc: "Bilan des soins nécessaires et du niveau d'aide requis." },
-              { step: "3", title: "Démarrage immédiat", desc: "Intervention possible dès le jour du retour à domicile." },
-              { step: "4", title: "Suivi évolutif", desc: "Adaptation du plan d'aide selon la progression de la récupération." },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-6">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary text-white font-bold text-lg">{item.step}</div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-text">{item.title}</h3>
-                  <p className="text-text-light mt-1">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceProvider
+        title="Des auxiliaires formées au post-hospitalier"
+        description="Nos équipes connaissent les protocoles de sortie d'hôpital, savent reconnaître les signaux d'alerte et travailler en binôme avec les libéraux."
+        specialization="Soins post-op, prévention escarres, dénutrition, communication médicale"
+        image="/images/about/assistante-vie-famille.jpg"
+        imageAlt="Auxiliaire spécialisée post-hospitalisation"
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Questions fréquentes</h2>
-          <div className="space-y-6">
-            {[
-              { q: "Quand contacter Youdom Care pour un retour d'hospitalisation ?", a: "Idéalement 48h avant la sortie, mais nous pouvons aussi intervenir en urgence le jour même. Appelez-nous dès que la date de sortie est connue." },
-              { q: "L'aide est-elle temporaire ou permanente ?", a: "Le service est entièrement flexible. Il peut durer quelques jours, quelques semaines ou se prolonger si nécessaire. Nous adaptons au fur et à mesure." },
-              { q: "Vos intervenants peuvent-ils aider aux pansements ?", a: "Nos auxiliaires aident à la toilette et au confort. Les actes médicaux (pansements complexes) sont assurés par les infirmiers avec qui nous coordonnons." },
-              { q: "Est-ce pris en charge financièrement ?", a: "Oui, selon votre situation : APA, PCH, mutuelle, crédit d'impôt 50%. Nous vous aidons à identifier toutes les aides possibles." },
-            ].map((item, idx) => (
-              <div key={idx} className="p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <h3 className="font-bold text-text text-lg mb-2">Q: {item.q}</h3>
-                <p className="text-text-light">A: {item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePricing
+        hourlyRange={{ min: 28, max: 34 }}
+        aides={aides}
+        exampleNet="Exemple : 14 jours de présence (4 h/jour) après une sortie d'opération coûtent en moyenne 1 600 €. Avec mutuelle + crédit d'impôt, le reste à charge tombe souvent à 200-400 €."
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Préparez un retour serein</h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">Ne laissez pas la convalescence au hasard. Notre équipe est prête à vous accompagner.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">Demander un devis gratuit</Link>
-            <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all text-lg">Appeler maintenant</a>
-          </div>
-          <p className="text-white/70 mt-6">Réponse sous 2 heures • Sans engagement • Conseil gratuit</p>
-        </div>
-      </section>
-    </div>
+      <EngagementsBlock />
+
+      <ServiceFAQ
+        title="Vos questions sur le retour à domicile après hospitalisation"
+        items={faq}
+      />
+
+      <ServiceCrossSell
+        currentSlug="retour-hospitalisation"
+        recommendedSlugs={[
+          "aide-personnes-agees",
+          "garde-nuit",
+          "transport-pmr",
+          "aide-menagere",
+        ]}
+      />
+
+      <FinalCTA />
+    </>
   );
 }

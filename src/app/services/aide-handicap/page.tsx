@@ -1,289 +1,273 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import ServiceHero from "@/components/service/ServiceHero";
+import ServicePainPoints from "@/components/service/ServicePainPoints";
+import ServiceIncluded from "@/components/service/ServiceIncluded";
+import ServiceMethod from "@/components/service/ServiceMethod";
+import ServicePricing from "@/components/service/ServicePricing";
+import ServiceProvider from "@/components/service/ServiceProvider";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceCrossSell from "@/components/service/ServiceCrossSell";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Aide à domicile pour personnes handicapées | Youdom Care",
-  description: "Aide à domicile adaptée handicap. Accompagnement personnalisé, coordiné, flexible. Expertise PCH. Devis gratuit.",
+  title:
+    "Aide à domicile pour personnes en situation de handicap | Youdom Care",
+  description:
+    "Accompagnement personnalisé pour adultes et jeunes en situation de handicap : aide quotidienne, autonomie, projet de vie, dignité. PCH + crédit d'impôt 50 %. Devis gratuit.",
 };
+
+const painPoints = [
+  {
+    icon: "🤝",
+    title: "Le besoin de respect & dignité",
+    description:
+      "Le handicap n'efface pas la personne. Trop de services traitent encore les bénéficiaires comme des objets de soin. Pas chez nous.",
+  },
+  {
+    icon: "🎯",
+    title: "Projet de vie individuel",
+    description:
+      "Étudier, travailler, vivre en couple, voyager : nos auxiliaires sont là pour rendre votre projet possible, pas pour le contraindre.",
+  },
+  {
+    icon: "♿",
+    title: "Mobilité spécifique",
+    description:
+      "Transferts lit ↔ fauteuil roulant, soins quotidiens, aides techniques : il faut une vraie maîtrise gestuelle, pas du bricolage.",
+  },
+  {
+    icon: "🧠",
+    title: "Handicap psychique ou cognitif",
+    description:
+      "TSA, déficience intellectuelle, troubles psychiques : un cadre prévisible, des intervenants formés à la communication adaptée.",
+  },
+  {
+    icon: "👨‍👩‍👧",
+    title: "Soulagement des proches",
+    description:
+      "Quand vous vivez avec un proche en situation de handicap, le répit n'est pas optionnel. C'est vital pour vous et pour lui.",
+  },
+  {
+    icon: "📋",
+    title: "Démarches MDPH labyrinthiques",
+    description:
+      "PCH, AAH, RQTH, AEEH : monter et défendre les dossiers est un travail à temps plein. Nous le faisons à votre place.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: "🛁",
+    title: "Toilette & soins quotidiens",
+    description:
+      "Toilette adaptée à votre handicap, transferts sécurisés, soins de pression si alitement, change de protections.",
+  },
+  {
+    icon: "👕",
+    title: "Habillage & change",
+    description:
+      "Aide adaptée à votre niveau d'autonomie. Respect du goût, du choix vestimentaire, de l'estime de soi.",
+  },
+  {
+    icon: "🍽️",
+    title: "Repas & alimentation adaptée",
+    description:
+      "Préparation, aide à la prise (textures modifiées si dysphagie), respect des régimes spéciaux et préférences.",
+  },
+  {
+    icon: "♿",
+    title: "Mobilité & transferts",
+    description:
+      "Transferts maîtrisés (manuels ou sur lève-personne), accompagnement avec fauteuil roulant en intérieur et extérieur.",
+  },
+  {
+    icon: "🚗",
+    title: "Sorties & vie sociale",
+    description:
+      "Accompagnement aux loisirs, courses, RDV médicaux, vie associative. La vie sociale est un droit, pas un luxe.",
+  },
+  {
+    icon: "🎓",
+    title: "Soutien à l'autonomie",
+    description:
+      "Apprentissage des gestes du quotidien, accompagnement des projets professionnels, scolaires ou personnels.",
+  },
+  {
+    icon: "🧹",
+    title: "Aide ménagère & logistique",
+    description:
+      "Ménage, courses, lessive — pour vous concentrer sur votre vie, pas sur l'intendance.",
+  },
+  {
+    icon: "📞",
+    title: "Assistance administrative MDPH",
+    description:
+      "Montage et suivi des dossiers PCH, AAH, RQTH, demandes de matériel adapté. Service inclus dans notre accompagnement.",
+  },
+];
+
+const methodPoints = [
+  {
+    title: "Évaluation respectueuse à domicile",
+    description:
+      "Notre coordinatrice rencontre la personne (et ses proches si elle le souhaite). Nous discutons besoins ET projet de vie — pas seulement les déficiences.",
+  },
+  {
+    title: "Plan personnalisé co-construit",
+    description:
+      "Vous gardez la main. Nous proposons un plan, vous l'ajustez. Pas d'injonction. Vos heures, vos rituels, vos préférences priment.",
+  },
+  {
+    title: "Auxiliaires choisies pour la compatibilité",
+    description:
+      "Nous présentons 1 ou 2 auxiliaires, vous décidez. Genre, profil, expérience : tout compte. Vous avez le droit de refuser sans justification.",
+  },
+  {
+    title: "Coordination avec votre écosystème",
+    description:
+      "MDPH, médecin, ergothérapeute, SAAD partenaires, employeur : nous synchronisons les acteurs autour de vous.",
+  },
+  {
+    title: "Liberté de vie, pas de contrôle",
+    description:
+      "Notre rôle est de soutenir, pas de surveiller. Vos choix de vie (travail, sorties, relations) ne nous regardent que si vous nous y associez.",
+  },
+];
+
+const aides = [
+  {
+    code: "PCH",
+    description:
+      "Prestation de Compensation du Handicap. Couvre l'aide humaine (jusqu'à ~14,98 €/h), aide technique, aménagement domicile. Versée par la MDPH.",
+  },
+  {
+    code: "AAH",
+    description:
+      "Allocation Adultes Handicapés. Revenu de base pour les adultes en situation de handicap, peut être cumulé avec d'autres aides.",
+  },
+  {
+    code: "Crédit d'impôt 50 %",
+    description:
+      "Automatique en service à la personne. Récupéré chaque année (ou en avance immédiate via l'URSSAF).",
+  },
+  {
+    code: "MDPH (orientation)",
+    description:
+      "Reconnaissance de handicap, RQTH, orientation SAAD : nous montons les dossiers et défendons votre situation.",
+  },
+];
+
+const faq = [
+  {
+    question: "Pour quels handicaps êtes-vous formés ?",
+    answer:
+      "Nos auxiliaires interviennent pour tous types de handicap : moteur (paraplégie, tétraplégie, IMC, SEP), sensoriel (cécité, surdité), psychique (troubles bipolaires, schizophrénie stabilisée), cognitif (déficience intellectuelle, TSA, DYS). Pour chaque profil, nous formons spécifiquement nos équipes (gestuelle, communication, cadrage).",
+  },
+  {
+    question: "Vous accompagnez les jeunes adultes en situation de handicap ?",
+    answer:
+      "Oui, à partir de 18 ans (et avant via notre service garde d'enfants en situation de handicap). Notre approche est particulièrement adaptée aux jeunes adultes qui sortent d'IME ou de SESSAD : projet de vie autonome, accompagnement à l'emploi, vie sociale, premier logement.",
+  },
+  {
+    question: "Comment respectez-vous l'autodétermination de la personne ?",
+    answer:
+      "C'est un principe non-négociable chez nous. La personne décide de tout ce qui peut l'être : ses horaires, ses repas, ses sorties, son auxiliaire, ses limites d'intervention. Si elle ne peut pas s'exprimer verbalement, nous travaillons en lien avec ses proches ET utilisons les outils de communication adaptés (CAA, pictogrammes, etc.).",
+  },
+  {
+    question: "Vous travaillez avec des SAAD ou des associations ?",
+    answer:
+      "Oui. Nous coopérons régulièrement avec des SAAD partenaires, des associations (APF France handicap, APAJH, UNAPEI, autisme France), des ESAT, des SAVS. Cette coordination est gratuite et incluse dans notre service.",
+  },
+  {
+    question: "Quel est le rôle de la PCH dans le financement ?",
+    answer:
+      "La PCH (Prestation de Compensation du Handicap) finance l'aide humaine. Le tarif horaire pris en charge varie selon le statut (prestataire 14,98 €/h en 2024 en mode prestataire). La MDPH évalue vos besoins et accorde un volume horaire. Nous vous aidons à monter ou réviser votre dossier — c'est inclus.",
+  },
+  {
+    question: "Et si je veux changer d'auxiliaire ?",
+    answer:
+      "Sans aucun problème, sans aucune justification, sans frais. La compatibilité humaine est essentielle. Vous nous appelez, nous changeons sous 48 à 72 h. Aucune mauvaise expérience n'est tolérée — c'est un engagement de notre charte.",
+  },
+  {
+    question: "Mon proche a un comportement difficile par moments. Vous gérez ?",
+    answer:
+      "Oui, nos auxiliaires sont formées à la gestion des troubles du comportement (crises d'angoisse, opposition, automutilation, agressivité ponctuelle). Nous adaptons l'intervention : binôme parfois, durée plus courte, désescalade verbale. Et nous échangeons avec votre psychiatre/psychologue si vous le souhaitez.",
+  },
+];
 
 export default function AideHandicapPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* HERO */}
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Aide à domicile adaptée pour personnes en situation de handicap
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">
-                Accompagnement personnalisé, flexible et bienveillant. Chaque handicap est unique.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Demander un devis gratuit
-                </Link>
-                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
-                <Image
-                  src="/images/services/handicap-aide-domicile.png"
-                  alt="Aide à domicile pour personnes en situation de handicap"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <ServiceHero
+        category="Aide & accompagnement handicap"
+        title="Vivre votre vie. À votre rythme. À vos conditions."
+        subtitle="L'accompagnement à domicile pour adultes en situation de handicap qui respecte votre projet de vie. Pas un cadre imposé — une présence qui vous soutient, sans vous remplacer."
+        highlights={[
+          "Aide humaine financée par la PCH",
+          "Auxiliaires formées à votre type de handicap",
+          "Vous choisissez votre auxiliaire — changement possible 48 h",
+          "Démarches MDPH montées par notre coordinatrice",
+        ]}
+        image="/images/services/aide-handicap-domicile.png"
+        imageAlt="Auxiliaire accompagnant une personne en fauteuil roulant à domicile"
+      />
 
-      {/* ENJEUX */}
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Vivre avec un handicap : défis et besoins</h2>
-          <p className="text-text-light text-center mb-12 text-lg max-w-3xl mx-auto">
-            Chaque handicap est unique. Paralysie cérébrale, autisme, surdité, malvoyance, troubles psychiques — chacun exige une réponse spécifique.
-          </p>
+      <ServicePainPoints
+        eyebrow="Ce que nous écoutons"
+        title="Le handicap, ce n'est pas que des besoins de soin"
+        description="C'est aussi un projet de vie, une dignité, une autonomie à construire. Notre approche le respecte."
+        items={painPoints}
+      />
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { icon: "🎯", title: "Limitations quotidiennes", desc: "Mobilité, coordination, communication — chaque tâche peut devenir complexe ou impossible." },
-              { icon: "🏥", title: "Coordination médicale", desc: "Kinés, médecins, psychologues. Gérer tout ça seul = impossible sans aide." },
-              { icon: "🤝", title: "Isolement social", desc: "Handicap = souvent exclusion. Sortie compliquée, aidants épuisés, résultat : isolement." },
-              { icon: "👨‍👩‍👧", title: "Aidants à la limite", desc: "Parents ou conjoints : culpabilité, épuisement physique et psychologique." },
-              { icon: "💼", title: "Inclusion professionnelle", desc: "Emploi difficile. Besoin aide adaptée pour préserver autonomie et dignité." },
-              { icon: "🎓", title: "Soutien éducatif", desc: "École compliquée. Aide spécialisée peut faire la différence." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-text-light">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceIncluded
+        eyebrow="Ce qu'on fait avec vous"
+        title="8 missions adaptées à chaque handicap"
+        description="De l'aide quotidienne au soutien aux projets : nos prestations s'adaptent à votre niveau d'autonomie ET à vos ambitions."
+        items={includedServices}
+      />
 
-      {/* SERVICES HANDICAP */}
-      <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Services adaptés au handicap</h2>
+      <ServiceMethod
+        eyebrow="Notre approche"
+        title="Un accompagnement co-construit, pas imposé"
+        description="L'autodétermination est notre principe directeur. Vous décidez, nous accompagnons."
+        points={methodPoints}
+        image="/images/services/aide-handicap-domicile.png"
+        imageAlt="Personne en situation de handicap accompagnée"
+      />
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="grid gap-6">
-              {[
-                "Aide à la mobilité (transferts, déplacements)",
-                "Hygiène personnelle (toilette, habillage, intimité)",
-                "Aide nutritionnelle et gestion santé",
-                "Aide administrative et démarches",
-                "Communication adaptée au handicap",
-                "Activités adaptées et stimulation",
-                "Coordination avec professionnels santé",
-                "Gestion comportements et émotions",
-                "Aide école et accompagnement pédagogique",
-                "Sorties et intégration sociale",
-              ].map((service, idx) => (
-                <div key={idx} className="flex gap-4 p-6 bg-warm rounded-xl border-l-4 border-accent">
-                  <div className="text-accent text-2xl font-bold flex-shrink-0">✓</div>
-                  <div>
-                    <h3 className="font-bold text-text">{service}</h3>
-                    <p className="text-text-light text-sm mt-1">Service personnalisé selon situation spécifique.</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+      <ServiceProvider
+        title="Des auxiliaires formées au handicap, choisies pour vous"
+        description="Au-delà des compétences techniques : empathie, capacité d'adaptation, respect de l'intimité. Vous validez le profil avant tout démarrage."
+        specialization="Manutention, communication adaptée, gestion troubles comportement, autonomisation"
+        image="/images/about/assistante-vie-famille.jpg"
+        imageAlt="Auxiliaire spécialisée handicap"
+      />
 
-            <div className="hidden lg:block relative">
-              <div className="rounded-3xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/services/aide-handicap-domicile.png"
-                  alt="Accompagnement adapté pour personne handicapée à domicile"
-                  width={600}
-                  height={800}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServicePricing
+        hourlyRange={{ min: 26, max: 34 }}
+        aides={aides}
+        exampleNet="Exemple : avec une PCH de 80 h/mois et le crédit d'impôt 50 %, le reste à charge mensuel tombe souvent entre 0 et 250 € pour un plan d'aide de 100 h/mois."
+      />
 
-      {/* EXPERTISE */}
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Notre expertise du handicap</h2>
+      <EngagementsBlock />
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Formations spécialisées</h3>
-              <ul className="space-y-2 text-white/90">
-                <li>✓ Transferts et manutention sécurisée</li>
-                <li>✓ Communication adaptée (sourds, autisme, déficits)</li>
-                <li>✓ Gestion comportements et émotions</li>
-                <li>✓ Handicaps spécifiques (autisme, paralysie cérébrale)</li>
-                <li>✓ Premiers secours et urgences</li>
-                <li>✓ Respect confidentialité et RGPD</li>
-              </ul>
-            </div>
+      <ServiceFAQ
+        title="Vos questions sur l'accompagnement handicap"
+        items={faq}
+      />
 
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Approche Youdom Care</h3>
-              <ul className="space-y-2 text-white/90">
-                <li>✓ Sélection stricte intervenants</li>
-                <li>✓ Supervision régulière et continue</li>
-                <li>✓ Respect absolu et secret professionnel</li>
-                <li>✓ Coordination médicale et sociale</li>
-                <li>✓ Flexibilité et adaptation permanente</li>
-                <li>✓ Accompagnement aides (PCH, AEEH)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceCrossSell
+        currentSlug="aide-handicap"
+        recommendedSlugs={[
+          "garde-enfants-handicap",
+          "transport-pmr",
+          "garde-nuit",
+          "assistance-administrative",
+        ]}
+      />
 
-      {/* BÉNÉFICES */}
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Avantages concrets</h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { icon: "🏠", title: "Maintien à domicile", desc: "Plutôt qu'établissement spécialisé, vivre chez soi ou en communauté." },
-              { icon: "🎯", title: "Autonomie préservée", desc: "Aide ne remplace pas, elle soutient l'autonomie restante." },
-              { icon: "🤲", title: "Dignité respectée", desc: "Aidé, mais pas infantilisé. Vos choix respectés." },
-              { icon: "👥", title: "Lien social actif", desc: "Sorties, activités, intervenant comme relation = réduction isolement." },
-              { icon: "🛡️", title: "Sécurité", desc: "Quelqu'un veille. Gestes adaptés. Urgence gérée rapidement." },
-              { icon: "✨", title: "Vie riche", desc: "Pas juste survie. Activités, plaisirs, sens préservés." },
-            ].map((item, idx) => (
-              <div key={idx} className="p-6 bg-white rounded-xl border border-gray-200">
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-text-light text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESSUS */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Débuter accompagnement adapté</h2>
-
-          <div className="space-y-6">
-            {[
-              { step: "1", title: "Appel conseil détaillé", desc: "Vous décrivez handicap, situation actuelle, besoins spécifiques." },
-              { step: "2", title: "Évaluation approfondie", desc: "Visite à domicile. Observation. Discussion détaillée avec famille." },
-              { step: "3", title: "Rencontre équipe médicale", desc: "Si besoin, contact kinés, médecins pour comprendre protocoles." },
-              { step: "4", title: "Plan d'aide détaillé", desc: "Services, planning, formation intervenant, tarif transparent." },
-              { step: "5", title: "Formation intervenant", desc: "Briefing complet sur situation particulière et protocoles." },
-              { step: "6", title: "Rencontres progressives", desc: "Premier contact calme. Progression adaptée. Building confiance." },
-              { step: "7", title: "Démarrage accompagné", desc: "Aide commence avec supervision renforcée semaine 1." },
-              { step: "8", title: "Suivi continu", desc: "Feedback hebdomadaire. Réunions suivi mensuelles. Ajustements permanents." },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-6 p-6 bg-warm rounded-xl border-l-4 border-primary">
-                <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary text-white font-bold flex-shrink-0 text-sm">
-                  {item.step}
-                </div>
-                <div>
-                  <h3 className="font-bold text-text">{item.title}</h3>
-                  <p className="text-text-light text-sm mt-1">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AIDES FINANCIÈRES */}
-      <section className="py-16 bg-gradient-to-br from-warm to-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">PCH, AEEH, crédit d&apos;impôt</h2>
-
-          <div className="space-y-6">
-            <div className="bg-white p-8 rounded-2xl border-2 border-secondary">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">PCH (Prestation Compensation Handicap)</h3>
-              <p className="text-text-light">
-                Pour adultes handicapés. Peut couvrir part importante aide à domicile. Youdom Care aide dossier MDPH.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl border-2 border-accent">
-              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Crédit d&apos;impôt 50%</h3>
-              <p className="text-text-light">
-                Service à personne = réduction automatique 50% impôts + TVA 5.5%. Cumulable avec PCH.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8 text-center">
-            <Link href="/aides-financieres" className="inline-block px-6 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary-light transition-colors">
-              Guide aides financières complet →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Vos questions</h2>
-
-          <div className="space-y-6">
-            {[
-              {
-                q: "Comment adaptez-vous l'aide à mon handicap spécifique ?",
-                a: "Évaluation approfondie + formation intervenant sur votre situation + plan détaillé + ajustements continus.",
-              },
-              {
-                q: "Travaillez-vous avec l'équipe médicale ?",
-                a: "Oui. Avec accord, on communique avec médecins, kinés, éducateurs. Respect protocoles. Rapports réguliers.",
-              },
-              {
-                q: "Peut-on avoir même intervenant à chaque fois ?",
-                a: "Oui, c'est notre politique. Continuité = important pour personne handicapée.",
-              },
-              {
-                q: "Comment garantir confidentialité sur état santé ?",
-                a: "Contrat secret professionnel. Formation légale. Violation = licenciement + poursuites. C'est très sérieux.",
-              },
-              {
-                q: "Peut-on avoir présence de nuit si besoin ?",
-                a: "Oui. Veille passive ou active selon situation. Pour certains handicaps (épilepsie, déambulation), c'est crucial.",
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <h3 className="font-bold text-text mb-2">Q: {item.q}</h3>
-                <p className="text-text-light">A: {item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Vivre pleinement malgré handicap</h2>
-          <p className="text-white/80 text-lg mb-8">C&apos;est possible avec aide adaptée. Youdom Care : 8 ans expérience, 150+ intervenants formés, 98% satisfaction.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all text-lg">
-              Appeler maintenant
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+      <FinalCTA />
+    </>
   );
 }
