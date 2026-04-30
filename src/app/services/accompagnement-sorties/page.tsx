@@ -1,196 +1,268 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import ServiceHero from "@/components/service/ServiceHero";
+import ServicePainPoints from "@/components/service/ServicePainPoints";
+import ServiceIncluded from "@/components/service/ServiceIncluded";
+import ServiceMethod from "@/components/service/ServiceMethod";
+import ServicePricing from "@/components/service/ServicePricing";
+import ServiceProvider from "@/components/service/ServiceProvider";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceCrossSell from "@/components/service/ServiceCrossSell";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Accompagnement et sorties | Youdom Care",
-  description: "Accompagnement personnes âgées et handicapées. Courses, rendez-vous, loisirs. Autonomie et lien social. Devis gratuit.",
+  title:
+    "Accompagnement aux sorties, courses, RDV médicaux | Youdom Care",
+  description:
+    "Accompagnement personnalisé pour les courses, rendez-vous médicaux, sorties culturelles et loisirs. Le lien social qui maintient en vie. Crédit d'impôt 50 %. Devis gratuit.",
 };
+
+const painPoints = [
+  {
+    icon: "🏠",
+    title: "L'isolement progressif",
+    description:
+      "Quand on ne sort plus, l'univers se rétrécit. L'isolement est un facteur de mortalité aussi grave que le tabagisme.",
+  },
+  {
+    icon: "🚶",
+    title: "Peur de la chute en extérieur",
+    description:
+      "Trottoirs irréguliers, escalators, stations de métro : sans bras pour se rassurer, beaucoup de seniors renoncent à sortir.",
+  },
+  {
+    icon: "🚇",
+    title: "Transports devenus hostiles",
+    description:
+      "Lignes complexes, foules, escaliers : prendre les transports demande une énergie qu'on n'a plus toujours après 80 ans.",
+  },
+  {
+    icon: "👨‍⚕️",
+    title: "RDV médicaux ratés",
+    description:
+      "Sans accompagnement, les RDV se reportent, s'oublient. L'observance médicale chute. Les conséquences arrivent.",
+  },
+  {
+    icon: "🎭",
+    title: "Plaisirs abandonnés",
+    description:
+      "Cinéma, musée, concert, marché : ces sorties qui faisaient sens disparaissent une à une. La vie se rétracte.",
+  },
+  {
+    icon: "💔",
+    title: "Solitude affective",
+    description:
+      "Manger seul, marcher seul, rentrer dans un appartement vide : la solitude détruit aussi sûrement que la maladie.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: "🛒",
+    title: "Courses & marché",
+    description:
+      "Choisir son pain, sentir les fruits, garder le plaisir du marché. Avec aide pour porter, payer, rentrer en sécurité.",
+  },
+  {
+    icon: "👨‍⚕️",
+    title: "RDV médicaux & paramédicaux",
+    description:
+      "Médecin traitant, spécialiste, kiné, dentiste, opticien. Préparation, accompagnement, prise de notes des consignes.",
+  },
+  {
+    icon: "💊",
+    title: "Pharmacie & laboratoires",
+    description:
+      "Renouvellement d'ordonnance, prélèvements sanguins, retraits de médicaments. Une routine sécurisée.",
+  },
+  {
+    icon: "🎭",
+    title: "Loisirs & culture",
+    description:
+      "Cinéma, théâtre, musée, exposition, concert classique. Pour garder les goûts qui ont fait votre vie.",
+  },
+  {
+    icon: "🌳",
+    title: "Promenades & parcs",
+    description:
+      "Sortir au parc, marcher au bord de l'eau, prendre l'air. Le mouvement = la santé, le moral, le lien social.",
+  },
+  {
+    icon: "✉️",
+    title: "Démarches en personne",
+    description:
+      "Banque, mairie, Poste, notaire. Tout ce qui demande une présence physique reste accessible.",
+  },
+  {
+    icon: "👥",
+    title: "Visites familiales & sociales",
+    description:
+      "Aller voir un proche, déjeuner chez les enfants, assister à un mariage. Le lien social préservé.",
+  },
+  {
+    icon: "🧠",
+    title: "Compagnie & conversation",
+    description:
+      "Parfois la sortie est une excuse. La présence, l'écoute, la discussion, c'est la vraie prestation.",
+  },
+];
+
+const methodPoints = [
+  {
+    title: "Comprendre vos goûts",
+    description:
+      "Avant la première sortie, notre coordinatrice écoute : qu'aimiez-vous faire ? que voudriez-vous reprendre ? Pas de routine standard.",
+  },
+  {
+    title: "Pairer avec une auxiliaire compatible",
+    description:
+      "Une amatrice de musées si vous aimez l'art, une marcheuse si vous aimez le grand air. La compatibilité humaine est centrale.",
+  },
+  {
+    title: "Sécuriser les déplacements",
+    description:
+      "Reconnaissance des trajets, repérage des bancs, anticipation des aléas (escaliers, foule, météo). Aucune sortie improvisée si à risque.",
+  },
+  {
+    title: "Tenir une présence régulière",
+    description:
+      "1 à 3 sorties par semaine, à jour fixe, créent des « rendez-vous » dans la semaine. C'est ce qui structure et fait du bien.",
+  },
+  {
+    title: "Suivre l'impact",
+    description:
+      "Notre coordinatrice fait un point régulier : moral, énergie, sociabilité. Si une routine ne convient plus, on change.",
+  },
+];
+
+const aides = [
+  {
+    code: "APA",
+    description:
+      "L'APA finance largement l'accompagnement extérieur, considéré comme essentiel à l'autonomie.",
+  },
+  {
+    code: "PCH",
+    description:
+      "La PCH aide humaine couvre les sorties pour les personnes en situation de handicap (RDV, vie sociale).",
+  },
+  {
+    code: "Crédit d'impôt 50 %",
+    description:
+      "Automatique. Le tarif horaire net après crédit d'impôt rend les sorties accessibles à tous les budgets.",
+  },
+  {
+    code: "Caisses retraite",
+    description:
+      "Plusieurs caisses (CARSAT, AGIRC-ARRCO) financent des actions de prévention de l'isolement.",
+  },
+];
+
+const faq = [
+  {
+    question: "Pouvez-vous accompagner en transports en commun ?",
+    answer:
+      "Oui, c'est même fréquent (métro, bus, train). Notre auxiliaire connaît le réseau, sait gérer les escalators, les changements, les ascenseurs. Pour des trajets plus complexes ou les RDV éloignés, nous pouvons combiner avec notre service Transport PMR (véhicule adapté).",
+  },
+  {
+    question: "Vous payez pour moi à la pharmacie / au marché ?",
+    answer:
+      "Selon votre choix : avec votre carte (vous gardez le contrôle), en CESU (notre auxiliaire ne touche jamais d'argent liquide), ou avec une caisse spéciale fournie par vous (gestion détaillée par cahier de comptes). Transparence totale.",
+  },
+  {
+    question: "Mon papa refuse de sortir. Pouvez-vous l'aider ?",
+    answer:
+      "C'est très fréquent et délicat. Notre approche : on ne force jamais. La 1ʳᵉ sortie peut être très courte (5 minutes au pied de l'immeuble), accompagnée d'un café. Le lien se construit, l'envie revient. Plusieurs de nos bénéficiaires ont retrouvé le plaisir de sortir après 6-12 mois d'accompagnement patient.",
+  },
+  {
+    question: "Et si la météo est mauvaise le jour de la sortie ?",
+    answer:
+      "Nous adaptons : sortie reportée si vraiment dangereux, ou redirigée (musée plutôt que parc). L'auxiliaire reste sur le créneau prévu, transformé en visite à domicile, lecture, jeu, conversation. Pas de séance perdue.",
+  },
+  {
+    question: "Combien de temps dure typiquement une sortie ?",
+    answer:
+      "Pour une sortie courses : 1 h 30 à 2 h. Pour un RDV médical : 2 à 3 h (préparation, transport, attente, retour). Pour une sortie loisirs : 3 à 4 h. Notre coordinatrice cale les durées à l'avance, ajustables selon vos retours.",
+  },
+  {
+    question: "Pouvez-vous nous accompagner en vacances / week-end ?",
+    answer:
+      "Oui, dans certains cas (séjour familial, week-end thalasso, mariage). Sur devis spécifique, avec décompte heures effectives + nuitées. Permet à la famille de partir avec un proche dépendant en toute sérénité.",
+  },
+];
 
 export default function AccompagnementSortiesPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Accompagnement et sorties : autonomie et lien social
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">
-                Courses, rendez-vous médicaux, loisirs. Preservez dignité et indépendance.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Demander un devis gratuit
-                </Link>
-                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
-                <Image
-                  src="/images/services/service-accompagnements.png"
-                  alt="Accompagnement et sorties pour personnes âgées et handicapées"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <ServiceHero
+        category="Accompagnement & sorties"
+        title="Sortir, c'est rester vivant."
+        subtitle="Courses, RDV médicaux, balades, cinéma, marché : un accompagnement personnalisé pour préserver l'autonomie, le plaisir et le lien social."
+        highlights={[
+          "Auxiliaire compatible avec vos goûts",
+          "Sorties à jour fixe pour structurer la semaine",
+          "Combinable avec Transport PMR si besoin",
+          "Accompagnement médical complet (prise de notes incluse)",
+        ]}
+        image="/images/services/service-accompagnements.png"
+        imageAlt="Auxiliaire accompagnant une personne âgée en sortie"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Pourquoi l&apos;accompagnement et les sorties ?</h2>
-          <p className="text-text-light text-center mb-12 max-w-2xl mx-auto">
-            Sortir, faire des activités, avoir une vie sociale — c&apos;est pas un luxe. C&apos;est fondamental pour la santé physique ET mentale.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { icon: "🧠", title: "Santé mentale", desc: "Isolement = dépression accélérée. Lien social = santé cérébrale meilleure." },
-              { icon: "💪", title: "Santé physique", desc: "Sorties = exercice + stimulation. Meilleure condition physique globale." },
-              { icon: "🤝", title: "Lien social", desc: "Voir amis, participer activités. Dignité et sens à la vie." },
-              { icon: "🚶", title: "Autonomie préservée", desc: "Continuer faire choses seul (avec soutien) = autonomie." },
-              { icon: "😊", title: "Qualité de vie", desc: "Vivre vraiment, pas juste exister. Plaisir du quotidien." },
-              { icon: "👥", title: "Lien famille", desc: "Sorties ensemble = temps qualité. Pas juste tâches." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-xl border border-gray-200">
-                <div className="text-3xl mb-2">{item.icon}</div>
-                <h3 className="font-bold text-text mb-1 text-sm">{item.title}</h3>
-                <p className="text-text-light text-xs">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePainPoints
+        eyebrow="Pourquoi sortir reste vital"
+        title="L'isolement social tue plus silencieusement que les maladies"
+        description="L'OMS le considère comme un déterminant majeur de la santé. Sortir n'est pas un loisir : c'est une mesure de prévention médicale."
+        items={painPoints}
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Types d&apos;accompagnement possibles</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 bg-warm rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-4">Courses et déplacements essentiels</h3>
-              <ul className="space-y-2 text-text-light text-sm">
-                <li>✓ Courses supermarché (avec choix si possible)</li>
-                <li>✓ Pharmacie</li>
-                <li>✓ Boulangerie, marché</li>
-                <li>✓ Gestion budget/paiements simples</li>
-                <li>✓ Retour sécurisé à la maison</li>
-              </ul>
-            </div>
+      <ServiceIncluded
+        eyebrow="Tout ce qu'on accompagne"
+        title="8 types de sorties pour rester relié au monde"
+        description="Du quotidien indispensable aux plaisirs choisis : nous y allons avec vous."
+        items={includedServices}
+      />
 
-            <div className="p-8 bg-warm rounded-2xl border-l-4 border-accent">
-              <h3 className="text-2xl font-bold text-primary mb-4">Rendez-vous médicaux</h3>
-              <ul className="space-y-2 text-text-light text-sm">
-                <li>✓ Accompagnement chez médecin</li>
-                <li>✓ Attendre pour retour</li>
-                <li>✓ Noter instructions si besoin</li>
-                <li>✓ Pharmacie récupérer ordonnance</li>
-                <li>✓ Kinésiologie, spécialistes</li>
-              </ul>
-            </div>
+      <ServiceMethod
+        eyebrow="Notre méthode"
+        title="Une présence qui crée des rendez-vous, pas des prestations"
+        description="Une sortie réussie, c'est une routine qui structure la semaine et redonne envie."
+        points={methodPoints}
+        image="/images/about/autonomie.jpg"
+        imageAlt="Personne autonome lors d'une sortie"
+      />
 
-            <div className="p-8 bg-warm rounded-2xl border-l-4 border-primary">
-              <h3 className="text-2xl font-bold text-primary mb-4">Loisirs et culture</h3>
-              <ul className="space-y-2 text-text-light text-sm">
-                <li>✓ Promenades parc ou ville</li>
-                <li>✓ Musée, exposition</li>
-                <li>✓ Cinéma, théâtre</li>
-                <li>✓ Café, restaurant</li>
-                <li>✓ Activités sociales</li>
-              </ul>
-            </div>
+      <ServiceProvider
+        title="Des auxiliaires patientes, mobiles, à l'écoute"
+        description="Pas de chronomètre. Notre rôle est d'accompagner avec présence et plaisir, pas de cocher des cases."
+        specialization="Premiers secours, écoute active, repérage Paris/IDF, gestes sécurisés en extérieur"
+        image="/images/about/autonomie.jpg"
+        imageAlt="Auxiliaire en accompagnement extérieur"
+      />
 
-            <div className="p-8 bg-warm rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-4">Accompagnement école/activités enfant</h3>
-              <ul className="space-y-2 text-text-light text-sm">
-                <li>✓ Accompagnement école</li>
-                <li>✓ Récupération après classe</li>
-                <li>✓ Activités (sport, musique)</li>
-                <li>✓ Rendez-vous médico-scolaires</li>
-                <li>✓ Aide devoirs si applicable</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServicePricing
+        hourlyRange={{ min: 25, max: 30 }}
+        aides={aides}
+        exampleNet="Exemple : 2 sorties hebdo de 3 h (courses + RDV) = ~660 €/mois brut. Avec APA + crédit d'impôt, le reste à charge tombe souvent entre 90 et 220 €/mois."
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Bénéfices importants</h2>
-          <div className="grid md:grid-cols-3 gap-6 text-white text-sm">
-            <div className="bg-white/10 p-6 rounded-xl backdrop-blur border border-white/20">
-              <h3 className="font-bold mb-3">Pour la personne</h3>
-              <p className="text-white/80">Autonomie préservée. Lien social actif. Santé physique et mentale meilleure. Dignité.</p>
-            </div>
-            <div className="bg-white/10 p-6 rounded-xl backdrop-blur border border-white/20">
-              <h3 className="font-bold mb-3">Pour la famille</h3>
-              <p className="text-white/80">Moins de stress. Parent peut travailler sans culpabilité. Meilleure qualité temps ensemble.</p>
-            </div>
-            <div className="bg-white/10 p-6 rounded-xl backdrop-blur border border-white/20">
-              <h3 className="font-bold mb-3">Pour la santé</h3>
-              <p className="text-white/80">Prévention isolement = meilleure santé cardiaque, moins dépression, moins chute.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EngagementsBlock />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Comment ça fonctionne</h2>
-          <div className="space-y-4">
-            {[
-              { s: "1", t: "Appel conseil", d: "Type sorties souhaitées, fréquence, horaires, besoins spécifiques." },
-              { s: "2", t: "Évaluation", d: "Discussion détaillée : mobilité, autonomie, préférences, limites." },
-              { s: "3", t: "Plan accompagnement", d: "Sorties programmées, tarif, flexibilité." },
-              { s: "4", t: "Sélection intervenant", d: "Personne adaptée : patient, bienveillant, bon chauffeur." },
-              { s: "5", t: "Premières sorties", d: "Avec supervision. Feedback parent et accompagné." },
-              { s: "6", t: "Suivi continu", d: "Feedback régulier, ajustements selon évolution besoins." },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-secondary">
-                <div className="flex-shrink-0 w-8 h-8 rounded bg-primary text-white text-sm font-bold flex items-center justify-center">
-                  {item.s}
-                </div>
-                <div>
-                  <h3 className="font-bold text-text text-sm">{item.t}</h3>
-                  <p className="text-text-light text-xs mt-1">{item.d}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceFAQ
+        title="Vos questions sur les sorties accompagnées"
+        items={faq}
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-6 text-center">Financement</h2>
-          <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-            <p className="text-text-light text-sm">
-              <strong>APA :</strong> Peut couvrir part accompagnement. <strong>Crédit d&apos;impôt 50% :</strong> Automatique service à personne. 
-              <strong className="ml-2">TVA réduite 5.5%.</strong> Youdom Care aide démarches.
-            </p>
-          </div>
-        </div>
-      </section>
+      <ServiceCrossSell
+        currentSlug="accompagnement-sorties"
+        recommendedSlugs={[
+          "transport-pmr",
+          "aide-personnes-agees",
+          "aide-menagere",
+          "assistance-administrative",
+        ]}
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Preservez la vie active de votre proche</h2>
-          <p className="text-white/80 mb-8">Sorties régulières = santé meilleure + bonheur + dignité préservée.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl text-lg">
-              Appeler maintenant
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+      <FinalCTA />
+    </>
   );
 }

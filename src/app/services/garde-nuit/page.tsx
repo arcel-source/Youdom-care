@@ -1,178 +1,256 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import ServiceHero from "@/components/service/ServiceHero";
+import ServicePainPoints from "@/components/service/ServicePainPoints";
+import ServiceIncluded from "@/components/service/ServiceIncluded";
+import ServiceMethod from "@/components/service/ServiceMethod";
+import ServicePricing from "@/components/service/ServicePricing";
+import ServiceProvider from "@/components/service/ServiceProvider";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceCrossSell from "@/components/service/ServiceCrossSell";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Présence de nuit à domicile | Youdom Care",
-  description: "Présence de nuit à domicile pour sécurité. Veille active, supervision. Sérénité pour famille. Devis gratuit.",
+  title:
+    "Garde de nuit & présence nocturne à domicile | Youdom Care",
+  description:
+    "Présence de nuit (passive ou active) pour personnes âgées, en sortie d'hôpital ou avec Alzheimer. Sécurité 24/24, sommeil retrouvé pour la famille. Devis gratuit.",
 };
+
+const painPoints = [
+  {
+    icon: "🌙",
+    title: "Les nuits qui détruisent",
+    description:
+      "Réveils multiples, surveillance perpétuelle, sommeil léger en alerte : l'aidant qui dort mal s'épuise irréversiblement.",
+  },
+  {
+    icon: "⚠️",
+    title: "Risque de chute nocturne",
+    description:
+      "60 % des chutes graves surviennent la nuit (lever pour les toilettes, désorientation). Une présence dissuade et sécurise.",
+  },
+  {
+    icon: "🚶",
+    title: "Déambulation Alzheimer",
+    description:
+      "Le « syndrome crépusculaire » provoque agitation et déambulation nocturne. Une présence calme désamorce les crises.",
+  },
+  {
+    icon: "🩹",
+    title: "Sortie d'hôpital ou post-op",
+    description:
+      "Les premières nuits après une opération demandent vigilance : douleur, désorientation médicamenteuse, soins.",
+  },
+  {
+    icon: "🏥",
+    title: "Hospitalisation à domicile",
+    description:
+      "HAD, soins palliatifs, fin de vie : une garde de nuit qualifiée permet de maintenir la personne chez elle dignement.",
+  },
+  {
+    icon: "👨‍👩‍👧",
+    title: "Famille géographiquement éloignée",
+    description:
+      "Vous habitez loin et craignez « l'appel du milieu de la nuit » ? Une garde de nuit offre la sérénité à toute la famille.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: "🛏️",
+    title: "Coucher accompagné",
+    description:
+      "Aide à la mise en chemise de nuit, à la toilette du soir, au passage aux toilettes, à l'installation confortable.",
+  },
+  {
+    icon: "👁️",
+    title: "Surveillance active ou passive",
+    description:
+      "Selon vos besoins : présence éveillée toute la nuit (active) ou veille avec sommeil dans une chambre dédiée (passive).",
+  },
+  {
+    icon: "🚽",
+    title: "Aide aux levers nocturnes",
+    description:
+      "Accompagnement aux toilettes, change si protections, retour au lit en sécurité.",
+  },
+  {
+    icon: "💊",
+    title: "Prises médicamenteuses",
+    description:
+      "Médicaments du soir, du milieu de nuit ou du petit matin. Hypnotiques, anxiolytiques, traitements Parkinson nocturnes.",
+  },
+  {
+    icon: "🆘",
+    title: "Réaction d'urgence",
+    description:
+      "Formation aux premiers secours, appel du 15 si besoin, alerte famille immédiate. Cahier de liaison rempli au matin.",
+  },
+  {
+    icon: "🌅",
+    title: "Lever du matin",
+    description:
+      "Aide au réveil, toilette, habillage, premier petit-déjeuner avant la prise de relais par l'auxiliaire de jour.",
+  },
+];
+
+const methodPoints = [
+  {
+    title: "Évaluation du besoin réel",
+    description:
+      "Présence active permanente ? Veille passive ? Garde alternée 1 nuit/2 ? Notre coordinatrice mesure le besoin exact pour optimiser le coût.",
+  },
+  {
+    title: "Auxiliaire dédiée à la nuit",
+    description:
+      "Différente de celle du jour (questions de récupération). Mais formée à votre dossier, présentée avant le démarrage.",
+  },
+  {
+    title: "Conditions d'hébergement claires",
+    description:
+      "Pour la veille passive : chambre dédiée, lit, accès salle de bain, repas. Nous validons que votre logement permet une garde de qualité.",
+  },
+  {
+    title: "Cahier de liaison nuit/jour",
+    description:
+      "Chaque événement de la nuit est consigné : levers, prises, agitation, sommeil. L'auxiliaire de jour prend la suite informée.",
+  },
+  {
+    title: "Soutien & relais permanent",
+    description:
+      "Coordinateur d'astreinte joignable 24/24 par l'auxiliaire si situation imprévue (refus de couché, fugue Alzheimer, urgence médicale).",
+  },
+];
+
+const aides = [
+  {
+    code: "APA",
+    description:
+      "L'APA finance la garde de nuit pour les GIR 1-3 sans plafond horaire spécifique. Justification médicale parfois demandée.",
+  },
+  {
+    code: "PCH",
+    description:
+      "La PCH peut couvrir la nuit pour les personnes handicapées avec besoin de surveillance constante (aide humaine renforcée).",
+  },
+  {
+    code: "Mutuelle santé",
+    description:
+      "Beaucoup de mutuelles couvrent la garde de nuit après hospitalisation (prise en charge ponctuelle 7 à 30 jours).",
+  },
+  {
+    code: "Crédit d'impôt 50 %",
+    description:
+      "Automatique sur le tarif horaire de nuit. Souvent oublié dans les calculs : il divise réellement par deux le coût final.",
+  },
+];
+
+const faq = [
+  {
+    question: "Quelle est la différence entre garde active et veille passive ?",
+    answer:
+      "Garde active : l'auxiliaire reste éveillée toute la nuit (cas des soins palliatifs, fin de vie, désorientation sévère, post-op récent). Veille passive : l'auxiliaire dort dans une chambre dédiée mais peut intervenir à tout moment (typique : prévention chutes, présence rassurante). La passive est ~30 % moins chère que l'active.",
+  },
+  {
+    question: "Quelle est la durée typique d'une nuit ?",
+    answer:
+      "Généralement 22 h à 7 h, soit 9 h. Possible 21 h à 6 h selon vos horaires. Plus court (ex. 0 h à 6 h) sur demande pour des situations spécifiques. Notre coordinatrice ajuste à votre rythme.",
+  },
+  {
+    question: "Pouvez-vous démarrer cette nuit ?",
+    answer:
+      "En cas d'urgence (sortie d'hôpital, crise nocturne, aidant épuisé), oui — avec un délai de 24 à 48 h selon disponibilité. Nous avons une cellule d'urgence joignable jusqu'à 22 h pour ces situations critiques.",
+  },
+  {
+    question: "Comment garantissez-vous la sécurité de l'auxiliaire la nuit ?",
+    answer:
+      "Pour les missions sensibles (Alzheimer agité, fin de vie), nous évaluons les conditions du domicile. L'auxiliaire dispose d'un téléphone d'astreinte qui sonne directement chez nos coordinateurs. Aucune mission n'est confiée si la sécurité de l'auxiliaire ne peut être assurée.",
+  },
+  {
+    question: "Mon proche refuse l'idée d'une « inconnue » la nuit. Comment faire ?",
+    answer:
+      "Très fréquent. Trois pistes : 1) commencer par 1 nuit hebdo pour créer le lien ; 2) faire venir l'auxiliaire l'après-midi en amont pour un goûter, un échange, une mise en confiance ; 3) garantir absolument la même personne (pas de tournante) pour que la nuit devienne familière.",
+  },
+  {
+    question: "Pouvez-vous gérer la fin de vie à domicile (soins palliatifs) ?",
+    answer:
+      "Oui, en coordination avec l'équipe HAD (hospitalisation à domicile) ou le réseau de soins palliatifs. Nos auxiliaires de nuit sont formées à l'accompagnement de fin de vie : présence apaisée, gestion de la douleur (alerte infirmière), soutien à la famille. C'est l'une de nos missions les plus précieuses.",
+  },
+];
 
 export default function GardeNuitPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Présence de nuit à domicile : sécurité et sérénité
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">
-                Veille active ou passive. Évitez l&apos;établissement. Sérénité pour toute la famille.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Demander un devis gratuit
-                </Link>
-                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
-                <Image
-                  src="/images/services/garde-presence.png"
-                  alt="Garde de nuit et présence rassurante à domicile"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <ServiceHero
+        category="Présence de nuit"
+        title="Vos nuits retrouvées. Leur sécurité assurée."
+        subtitle="Garde de nuit (active ou passive) pour les personnes âgées, en convalescence, atteintes d'Alzheimer ou en fin de vie. Une présence qualifiée, du coucher au lever."
+        highlights={[
+          "Veille active ou passive selon vos besoins",
+          "Auxiliaires formées aux nuits Alzheimer / soins palliatifs",
+          "Démarrage en 24-48 h sur les urgences",
+          "Cahier de liaison rempli — relais propre avec l'aide de jour",
+        ]}
+        image="/images/services/garde-presence.png"
+        imageAlt="Auxiliaire en garde de nuit auprès d'une personne âgée"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Pourquoi une présence la nuit ?</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { icon: "🚨", title: "Peur de chute la nuit", desc: "Aller toilettes = risque. Confusion nocturne possible." },
-              { icon: "😰", title: "Cauchemars & déambulation", desc: "Alzheimer, Parkinson. Peur être seul. Déambulation risquée." },
-              { icon: "🏥", title: "Urgences médicales", desc: "AVC nocturne, dyspnée. Quelqu'un doit intervenir vite." },
-              { icon: "💤", title: "Incontinence la nuit", desc: "Gestion discrète, hygiène, confort. Aide nécessaire." },
-              { icon: "😊", title: "Sérénité aidant", desc: "Parent/enfant peut enfin dormir. Tranquillité énorme." },
-              { icon: "🏠", title: "Maintien à domicile", desc: "Présence nuit = souvent condition pour rester à la maison." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-xl border border-gray-200">
-                <div className="text-3xl mb-2">{item.icon}</div>
-                <h3 className="font-bold text-text mb-1">{item.title}</h3>
-                <p className="text-text-light text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePainPoints
+        eyebrow="Pourquoi la nuit fragilise"
+        title="La nuit est le moment où tout peut arriver"
+        description="Chutes, agitation, soins, médicaments, sommeil de l'aidant : la nuit demande des compétences spécifiques."
+        items={painPoints}
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Deux types de veille</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-warm p-8 rounded-2xl border-2 border-secondary">
-              <h3 className="text-2xl font-bold text-primary mb-4">Veille passive (surveillance)</h3>
-              <ul className="space-y-2 text-text-light text-sm">
-                <li>✓ Intervenant présent au domicile</li>
-                <li>✓ Reste éveillé mais discrétion</li>
-                <li>✓ Intervient en cas de besoin</li>
-                <li>✓ Idéal : enfants autonomes, seniors stables</li>
-                <li>✓ Tarif : plus accessible</li>
-              </ul>
-            </div>
+      <ServiceIncluded
+        eyebrow="Notre présence nocturne"
+        title="Tout ce qu'on prend en charge la nuit"
+        description="Du coucher au petit-déjeuner, votre proche n'est jamais seul. Et vous dormez."
+        items={includedServices}
+      />
 
-            <div className="bg-warm p-8 rounded-2xl border-2 border-accent">
-              <h3 className="text-2xl font-bold text-primary mb-4">Veille active (accompagnement)</h3>
-              <ul className="space-y-2 text-text-light text-sm">
-                <li>✓ Intervenant très attentif</li>
-                <li>✓ Aide toilette, change, confort</li>
-                <li>✓ Prêt intervenir immédiatement</li>
-                <li>✓ Idéal : Alzheimer, perte autonomie, soins</li>
-                <li>✓ Tarif : plus élevé mais justifié</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceMethod
+        eyebrow="Notre méthode nuit"
+        title="Une garde de nuit pensée comme un protocole"
+        description="Pas de simple « surveillance » : un dispositif structuré, formé, encadré."
+        points={methodPoints}
+        image="/images/services/garde-presence.png"
+        imageAlt="Garde de nuit qualifiée"
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Services spécifiques la nuit</h2>
-          <div className="grid md:grid-cols-2 gap-6 text-white text-sm">
-            <div>
-              <ul className="space-y-2">
-                <li>✓ Aide toilette et change</li>
-                <li>✓ Gestion incontinence discrète</li>
-                <li>✓ Aide lever aux toilettes</li>
-                <li>✓ Prévention chutes</li>
-                <li>✓ Confort lit (repositionnement)</li>
-              </ul>
-            </div>
-            <div>
-              <ul className="space-y-2">
-                <li>✓ Sécurité domicile (chauffage, portes)</li>
-                <li>✓ Gestion demandes eau/médicaments</li>
-                <li>✓ Vigilance respiration (si apnée)</li>
-                <li>✓ Rassurance en cas d&apos;angoisse</li>
-                <li>✓ Urgence identifiée et signalée</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceProvider
+        title="Des auxiliaires de nuit qualifiées et reposées"
+        description="Nous ne demandons jamais à une auxiliaire de jour de prendre une nuit. Nuit et jour : équipes dédiées, formées différemment."
+        specialization="Veille passive, gestion des troubles du sommeil, soins palliatifs, premiers secours"
+        image="/images/about/assistante-vie-famille.jpg"
+        imageAlt="Auxiliaire de nuit formée"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Processus mise en place</h2>
-          <div className="space-y-4">
-            {[
-              { s: "1", t: "Appel conseil", d: "Nature besoins, type veille, horaires exacts (21h-7h, 22h-8h, etc)." },
-              { s: "2", t: "Évaluation approfondie", d: "Chambre, salle bain, accessibilité nocturne détaillée." },
-              { s: "3", t: "Plan veille", d: "Tâches, urgences, protocoles spécifiques." },
-              { s: "4", t: "Sélection intervenant", d: "Expérience nuit, patience, psychologie." },
-              { s: "5", t: "Rodage", d: "Visite fin de journée, calibrage, clarification." },
-              { s: "6", t: "Première vraie nuit", d: "Contact urgence bien visible. Supervision renforcée." },
-              { s: "7", t: "Suivi régulier", d: "Feedback hebdomadaire, ajustements continus." },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-secondary">
-                <div className="flex-shrink-0 w-8 h-8 rounded bg-primary text-white text-sm font-bold flex items-center justify-center">
-                  {item.s}
-                </div>
-                <div>
-                  <h3 className="font-bold text-text text-sm">{item.t}</h3>
-                  <p className="text-text-light text-xs mt-1">{item.d}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePricing
+        hourlyRange={{ min: 18, max: 28 }}
+        aides={aides}
+        exampleNet="Exemple : une nuit en veille passive (9 h) coûte environ 200 € brut. Avec crédit d'impôt 50 % : 100 € net. Avec APA cumulée : souvent 30 à 60 € de reste à charge par nuit."
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">APA, PCH, crédit d&apos;impôt 50%</h2>
-          <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-            <p className="text-text-light text-sm">
-              <strong>APA :</strong> Allocation Personnalisée d&apos;Autonomie pour personnes âgées. <strong>PCH :</strong> Prestation Compensation Handicap. 
-              <strong className="ml-2">Crédit impôt 50% :</strong> Automatique service à personne. Youdom Care aide dossiers.
-            </p>
-          </div>
-        </div>
-      </section>
+      <EngagementsBlock />
 
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Enfin dormir tranquille</h2>
-          <p className="text-white/80 mb-8">Présence de nuit = sécurité maximale + sérénité pour toute la famille.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl text-lg">
-              Appeler maintenant
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+      <ServiceFAQ
+        title="Vos questions sur la garde de nuit"
+        items={faq}
+      />
+
+      <ServiceCrossSell
+        currentSlug="garde-nuit"
+        recommendedSlugs={[
+          "aide-personnes-agees",
+          "alzheimer-parkinson",
+          "retour-hospitalisation",
+          "teleassistance",
+        ]}
+      />
+
+      <FinalCTA />
+    </>
   );
 }

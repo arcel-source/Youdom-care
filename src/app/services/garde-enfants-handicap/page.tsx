@@ -1,193 +1,268 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import ServiceHero from "@/components/service/ServiceHero";
+import ServicePainPoints from "@/components/service/ServicePainPoints";
+import ServiceIncluded from "@/components/service/ServiceIncluded";
+import ServiceMethod from "@/components/service/ServiceMethod";
+import ServicePricing from "@/components/service/ServicePricing";
+import ServiceProvider from "@/components/service/ServiceProvider";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceCrossSell from "@/components/service/ServiceCrossSell";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Garde d'enfants en situation de handicap | Youdom Care",
-  description: "Garde d'enfants handicapés. Intervenants formés et bienveillants. Sécurité maximale, activités adaptées. Devis gratuit.",
+  title:
+    "Garde d'enfants en situation de handicap à domicile | Youdom Care",
+  description:
+    "Garde qualifiée à domicile pour les enfants en situation de handicap : TSA, polyhandicap, troubles dys, déficience intellectuelle. AEEH éligible. Répit pour les parents.",
 };
+
+const painPoints = [
+  {
+    icon: "🫂",
+    title: "Parents épuisés",
+    description:
+      "Élever un enfant en situation de handicap est l'une des charges les plus intenses qui soit. Le répit n'est pas un confort, c'est une nécessité vitale.",
+  },
+  {
+    icon: "🚫",
+    title: "Refus de garde classique",
+    description:
+      "Crèches, baby-sitters, centres de loisirs sont rarement formés. Beaucoup refusent ou ne tiennent pas la durée.",
+  },
+  {
+    icon: "💔",
+    title: "Frères et sœurs en retrait",
+    description:
+      "Les fratries des enfants handicapés sont souvent négligées involontairement. Une garde permet de leur redonner du temps de qualité.",
+  },
+  {
+    icon: "💼",
+    title: "Carrière compromise",
+    description:
+      "Sans garde adaptée, beaucoup de parents (surtout les mères) abandonnent leur emploi. Conséquences financières et identitaires lourdes.",
+  },
+  {
+    icon: "🌱",
+    title: "Stagnation des apprentissages",
+    description:
+      "Sans stimulation adaptée hors temps scolaire (IME, SESSAD), les progrès stagnent ou régressent.",
+  },
+  {
+    icon: "🏥",
+    title: "Sortie d'IME / SESSAD",
+    description:
+      "L'attente d'une place en structure peut durer des mois. Une garde qualifiée à domicile assure la transition.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: "🏠",
+    title: "Garde à domicile sécurisée",
+    description:
+      "Présence qualifiée auprès de l'enfant, encadrement des routines, sécurité affective et physique.",
+  },
+  {
+    icon: "🛁",
+    title: "Soins quotidiens adaptés",
+    description:
+      "Toilette, change, repas (textures modifiées si dysphagie), administration de médicaments selon prescription.",
+  },
+  {
+    icon: "🎨",
+    title: "Activités éducatives & ludiques",
+    description:
+      "Jeux adaptés, activités sensorielles, soutien des apprentissages, supports visuels (pictogrammes, PECS).",
+  },
+  {
+    icon: "🧠",
+    title: "Stimulation & autonomie",
+    description:
+      "Travail sur les acquis IME/SESSAD, propreté, motricité fine, autonomie aux gestes du quotidien.",
+  },
+  {
+    icon: "🚗",
+    title: "Accompagnement RDV médicaux",
+    description:
+      "Pédopsychiatre, orthophoniste, psychomotricien, kinésithérapeute. Lien avec les rééducateurs.",
+  },
+  {
+    icon: "🏫",
+    title: "Sortie d'école & transitions",
+    description:
+      "Récupération à la sortie d'école/IME, gestion du temps périscolaire, devoirs adaptés, repos.",
+  },
+  {
+    icon: "👶",
+    title: "Garde sœurs & frères",
+    description:
+      "Possibilité de prendre en charge également les frères et sœurs (sur même prestation), pour libérer les parents.",
+  },
+  {
+    icon: "🌙",
+    title: "Garde de nuit possible",
+    description:
+      "Pour les enfants nécessitant surveillance nocturne (épilepsie, soins, troubles du sommeil), nous adaptons un dispositif spécifique.",
+  },
+];
+
+const methodPoints = [
+  {
+    title: "Rencontre avec l'enfant ET les parents",
+    description:
+      "La 1ʳᵉ visite est essentielle : observation, échange avec les parents sur les routines, ce qui apaise, ce qui agite. Aucune mission ne démarre sans cette rencontre.",
+  },
+  {
+    title: "Auxiliaire spécialisée handicap enfant",
+    description:
+      "Profil dédié : expérience IME, SESSAD, ou auprès d'enfants avec le même type de handicap. Formation aux outils CAA si besoin.",
+  },
+  {
+    title: "Cahier de liaison co-construit",
+    description:
+      "Un cahier détaillé tenu chaque jour : repas, selles, humeur, événements, progrès. Lu par les parents, l'IME, le pédopsy.",
+  },
+  {
+    title: "Coordination avec l'écosystème",
+    description:
+      "Lien avec l'IME, le SESSAD, le CAMSP, l'orthophoniste, l'AESH. La cohérence des prises en charge est cruciale pour les progrès.",
+  },
+  {
+    title: "Soutien aux fratries & parents",
+    description:
+      "Notre auxiliaire prend aussi en charge les frères/sœurs si besoin, pour permettre aux parents de souffler ou de leur consacrer du temps.",
+  },
+];
+
+const aides = [
+  {
+    code: "AEEH",
+    description:
+      "Allocation d'Éducation de l'Enfant Handicapé, complément 1 à 6 selon le handicap. La garde à domicile entre dans les dépenses justifiables.",
+  },
+  {
+    code: "PCH enfant",
+    description:
+      "Depuis 2023, les enfants peuvent bénéficier de la PCH dès le diagnostic. Cumul possible avec AEEH base.",
+  },
+  {
+    code: "CMG handicap (CAF)",
+    description:
+      "Le Complément de Mode de Garde majoré pour enfant handicapé peut financer une partie de la prestation.",
+  },
+  {
+    code: "Crédit d'impôt 50 %",
+    description:
+      "Automatique. Cumulable avec AEEH/PCH/CMG. Une famille peut financer 70 à 100 % du coût avec ces aides combinées.",
+  },
+];
+
+const faq = [
+  {
+    question: "Pour quels types de handicap êtes-vous formés ?",
+    answer:
+      "Nos auxiliaires sont formées à la diversité des handicaps de l'enfant : TSA (autisme), TDAH, troubles dys (dyspraxie, dyslexie), polyhandicap, déficience intellectuelle, infirmité motrice cérébrale, syndromes génétiques rares (Down, Williams, Prader-Willi, etc.). Pour chaque dossier, nous formons spécifiquement l'auxiliaire affectée.",
+  },
+  {
+    question: "Mon enfant a un PAI (Projet d'Accueil Individualisé). Vous l'appliquez ?",
+    answer:
+      "Oui, c'est même indispensable. Avant toute mission, l'auxiliaire reçoit une formation au PAI : médicaments, allergies, gestes d'urgence, signaux d'alerte. Notre coordinatrice valide qu'elle a tout intégré avant le démarrage.",
+  },
+  {
+    question: "Puis-je avoir une garde le matin avant l'école et le soir après ?",
+    answer:
+      "Oui. C'est même un cas très fréquent : 1 h le matin (préparation, école) + 2-3 h le soir (école → maison, devoirs, bain, repas). Notre auxiliaire fait la liaison parents <> école, une vraie continuité.",
+  },
+  {
+    question: "Pouvez-vous travailler avec l'AESH (auxiliaire scolaire) ?",
+    answer:
+      "Bien sûr. L'AESH accompagne à l'école, nous prenons le relais hors école. Cohérence indispensable : nous échangeons régulièrement (cahier de liaison, appels) avec l'AESH pour maintenir les acquis.",
+  },
+  {
+    question: "Mon enfant fait des crises difficiles. Vous gérez ?",
+    answer:
+      "Oui, nos auxiliaires sont formées à la désescalade comportementale (méthodes ABA si pertinent, sensorielles, adaptées au TSA). Aucune contention. Si une crise dépasse les compétences de l'auxiliaire, nous appelons les parents et le pédopsy. Tout est consigné pour le suivi médical.",
+  },
+  {
+    question: "Combien d'heures recommandez-vous ?",
+    answer:
+      "Selon les besoins : du simple répit parental (4 h hebdo) à la garde lourde (40 h hebdo en cas d'attente IME). Notre coordinatrice évalue le besoin réel — toujours révisable selon l'évolution de l'enfant et de votre situation pro.",
+  },
+];
 
 export default function GardeEnfantsHandicapPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Garde d&apos;enfants en situation de handicap : sécurité, bienveillance et confiance absolue
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">Intervenants expérimentés et formés. Vos enfants en de bonnes mains.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
-                  Demander un devis gratuit
-                </a>
-                <a href="tel:0184807297" className="px-8 py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-lg">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
-                <Image
-                  src="/images/services/aide-enfant.png"
-                  alt="Garde bienveillante d'enfant en situation de handicap"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <ServiceHero
+        category="Garde d'enfants en situation de handicap"
+        title="Une garde qualifiée. Pour eux. Pour vous."
+        subtitle="Garde à domicile pour les enfants en situation de handicap (TSA, polyhandicap, troubles dys, déficience intellectuelle). Une auxiliaire formée, une famille soulagée."
+        highlights={[
+          "Auxiliaires formées à chaque type de handicap",
+          "Application du PAI (Projet d'Accueil Individualisé)",
+          "Coordination avec IME, SESSAD, AESH, pédopsy",
+          "Cumul AEEH + PCH + crédit d'impôt 50 %",
+        ]}
+        image="/images/services/aide-enfant.png"
+        imageAlt="Auxiliaire accompagnant un enfant en situation de handicap"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Les défis des parents d&apos;enfants handicapés</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { icon: "😰", title: "L'angoisse de laisser son enfant", desc: "Et s'il a peur ? Et s'il se blesse ? Qui comprendra vraiment ses besoins ?" },
-              { icon: "🔍", title: "Trouver une garde adaptée", desc: "Crèches refusent. Écoles manquent ressources. Solution de qualité rarissime." },
-              { icon: "🛠️", title: "Compétences nécessaires rares", desc: "Quelqu'un formé, patient, bienveillant, qui comprend le handicap spécifique." },
-              { icon: "😩", title: "Épuisement parental", desc: "Travail + soins enfant + rdv méd = burnout. Couple se désunit souvent." },
-              { icon: "⚖️", title: "Culpabilité (faux problème)", desc: "\"Je suis mauvaise mère de chercher aide.\" Non. Parent qui respire = meilleur parent." },
-              { icon: "📚", title: "Continuité scolaire/médicale", desc: "École + rdv doc + coordination = difficile gérer seul." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-text-light">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePainPoints
+        eyebrow="Le contexte des familles"
+        title="Élever un enfant handicapé : des défis sous-estimés"
+        description="Aucune institution ne couvre l'intégralité des besoins. La garde à domicile qualifiée est souvent la seule réponse."
+        items={painPoints}
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Notre approche : expertise, patience, bienveillance</h2>
-          <div className="space-y-6">
-            <div className="p-8 bg-warm rounded-2xl border-l-4 border-secondary">
-              <h3 className="text-2xl font-bold text-text mb-3">Intervenants rigoureusement sélectionnés</h3>
-              <p className="text-text-light mb-4">
-                Expérience minimum 3-5 ans auprès enfants handicapés. CAP petite enfance ou DEAES idéal. Formations continues : gestes, handicaps spécifiques, communication, comportement.
-              </p>
-              <p className="text-text-light">Références vérifiées. Sélection très stricte. On refuse beaucoup de candidats.</p>
-            </div>
+      <ServiceIncluded
+        eyebrow="Notre prise en charge"
+        title="8 missions adaptées à votre enfant"
+        description="De la garde simple aux soins complexes : nous nous adaptons à chaque profil."
+        items={includedServices}
+      />
 
-            <div className="p-8 bg-warm rounded-2xl border-l-4 border-accent">
-              <h3 className="text-2xl font-bold text-text mb-3">Comprendre chaque enfant comme personne unique</h3>
-              <p className="text-text-light">
-                Cet enfant a un handicap, mais c&apos;est une personne. Arthur, 7 ans, aime dinosaures. Peur bruit fort. Besoin routine le matin. Notre intervenant observe, écoute, construit relation respectueuse avec Arthur — pas avec &quot;un cas autiste&quot;.
-              </p>
-            </div>
+      <ServiceMethod
+        eyebrow="Notre méthode"
+        title="Une garde co-construite avec vous"
+        description="L'enfant n'est pas un dossier. C'est un univers que nous apprenons à connaître."
+        points={methodPoints}
+        image="/images/services/aide-enfant.png"
+        imageAlt="Garde qualifiée enfant handicap"
+      />
 
-            <div className="p-8 bg-warm rounded-2xl border-l-4 border-primary">
-              <h3 className="text-2xl font-bold text-text mb-3">Services adaptés et bienveillants</h3>
-              <ul className="space-y-2 text-text-light">
-                <li>✓ Aide toilette, habillage, repas si besoin</li>
-                <li>✓ Communication adaptée au handicap (LSF, gestes, patience)</li>
-                <li>✓ Activités loisirs adaptées au niveau et intérêts</li>
-                <li>✓ Gestion comportements/crises calmement et bienveillance</li>
-                <li>✓ Aide devoirs et stimulation pédagogique</li>
-                <li>✓ Coordination école et médecins</li>
-                <li>✓ Sorties et accompagnement adaptés</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceProvider
+        title="Des auxiliaires expérimentées en handicap pédiatrique"
+        description="Toutes ont travaillé en IME, SESSAD, hôpital pédiatrique ou crèche inclusive avant de nous rejoindre. La passion de l'enfance et la formation au handicap."
+        specialization="TSA, polyhandicap, dys, méthodes ABA/PECS, premiers secours pédiatriques"
+        image="/images/services/aide-enfant.png"
+        imageAlt="Auxiliaire spécialisée enfant handicap"
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Ce que vous gagnez</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Pour votre enfant</h3>
-              <ul className="space-y-2 text-white/90">
-                <li>✓ Quelqu&apos;un qui comprend vraiment son handicap</li>
-                <li>✓ Relation de confiance + lien stable</li>
-                <li>✓ Activités adaptées + stimulation + plaisir</li>
-                <li>✓ Respect dignité et choix</li>
-                <li>✓ Vie &quot;normale&quot; pas isolement</li>
-              </ul>
-            </div>
+      <ServicePricing
+        hourlyRange={{ min: 24, max: 32 }}
+        aides={aides}
+        exampleNet="Exemple : 20 h/semaine de garde pour un enfant TSA = ~2 280 €/mois brut. Avec AEEH complément 4 + PCH + crédit d'impôt 50 %, beaucoup de familles ont un reste à charge proche de zéro."
+      />
 
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Pour vous (parents)</h3>
-              <ul className="space-y-2 text-white/90">
-                <li>✓ Confiance absolue (intervenant compétent)</li>
-                <li>✓ Enfin respirer ! Temps travail/couple/soi</li>
-                <li>✓ Réduction épuisement parental</li>
-                <li>✓ Meilleur rapport enfant (qualité vs corvée)</li>
-                <li>✓ Suivi coordonné école/médecins</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EngagementsBlock />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Débuter la garde : processus progressif et rassurant</h2>
-          <div className="space-y-4">
-            {[
-              { step: "1", title: "Appel conseil détaillé", desc: "Vous décrivez handicap enfant, fonctionnement jour, besoins spécifiques." },
-              { step: "2", title: "Évaluation à domicile", desc: "Rencontre enfant, observation calme, discussion famille." },
-              { step: "3", title: "Formation intervenant complète", desc: "Briefing sur handicap enfant, routines, gestes, urgences." },
-              { step: "4", title: "Rencontres progressives", desc: "Première visite : parents présents. Puis progressif selon confort enfant." },
-              { step: "5", title: "Débriefing et ajustements", desc: "Feedback après chaque visite. \"Comment s'est passé ? Besoin ajuster ?\"" },
-              { step: "6", title: "Démarrage progressif", desc: "Semaine 1 : demi-journée. Semaine 2 : journée. Puis augmente selon besoin." },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-4 p-6 bg-white rounded-xl border-l-4 border-secondary">
-                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-primary text-white font-bold flex items-center justify-center text-sm">
-                  {item.step}
-                </div>
-                <div>
-                  <h3 className="font-bold text-text">{item.title}</h3>
-                  <p className="text-text-light text-sm mt-1">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceFAQ
+        title="Vos questions sur la garde d'enfant en situation de handicap"
+        items={faq}
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Aides financières (AEEH, PCH, crédit d&apos;impôt 50%)</h2>
-          <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary mb-8">
-            <h3 className="font-bold text-text mb-2">AEEH (Allocation Éducation Enfant Handicapé)</h3>
-            <p className="text-text-light text-sm">Pour enfants handicapés 0-20 ans. Jusqu&apos;à 300-400€/mois. Accessible pour plupart situations.</p>
-          </div>
+      <ServiceCrossSell
+        currentSlug="garde-enfants-handicap"
+        recommendedSlugs={[
+          "aide-handicap",
+          "transport-pmr",
+          "assistance-administrative",
+          "garde-nuit",
+        ]}
+      />
 
-          <div className="bg-warm p-8 rounded-2xl border-l-4 border-accent">
-            <h3 className="font-bold text-text mb-2">Crédit d&apos;impôt 50% + TVA 5.5%</h3>
-            <p className="text-text-light text-sm">Service à personne automatique. Youdom Care aide démarches.</p>
-          </div>
-
-          <div className="mt-8 text-center">
-            <Link href="/aides-financieres" className="inline-block px-6 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary-light">
-              Guide aides financières →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Votre enfant mérite garde de qualité</h2>
-          <p className="text-white/80 mb-8">Youdom Care : gardes formées, bienveillantes, 98% satisfaction parents.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all text-lg">
-              Appeler maintenant
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+      <FinalCTA />
+    </>
   );
 }

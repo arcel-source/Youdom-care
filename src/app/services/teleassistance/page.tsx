@@ -1,173 +1,268 @@
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import ServiceHero from "@/components/service/ServiceHero";
+import ServicePainPoints from "@/components/service/ServicePainPoints";
+import ServiceIncluded from "@/components/service/ServiceIncluded";
+import ServiceMethod from "@/components/service/ServiceMethod";
+import ServicePricing from "@/components/service/ServicePricing";
+import ServiceProvider from "@/components/service/ServiceProvider";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceCrossSell from "@/components/service/ServiceCrossSell";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Téléassistance à Domicile | Youdom Care",
-  description: "Service de téléassistance 24h/24. Détection de chute, GPS, médaillon d'alerte. Sécurité maximale pour vos proches. Paris & IDF.",
+  title:
+    "Téléassistance 24/24 — bouton d'urgence senior | Youdom Care",
+  description:
+    "Téléassistance professionnelle 7j/7, 24h/24 pour personnes âgées et fragilisées : médaillon SOS, détecteur de chute, géolocalisation. Réaction immédiate. Crédit d'impôt 50 %.",
 };
+
+const painPoints = [
+  {
+    icon: "📞",
+    title: "Impossible d'appeler après une chute",
+    description:
+      "Sans matériel, une chute = des heures au sol seul, jusqu'à l'arrivée d'un proche. Aggravation systémique des conséquences.",
+  },
+  {
+    icon: "🌙",
+    title: "Nuits & week-ends critiques",
+    description:
+      "C'est la nuit, le week-end, les jours fériés que les drames arrivent — quand l'aidant n'est pas joignable.",
+  },
+  {
+    icon: "👨‍👩‍👧",
+    title: "Famille géographiquement éloignée",
+    description:
+      "Vous habitez loin de votre proche ? La téléassistance vous offre une ligne directe en cas de pépin.",
+  },
+  {
+    icon: "🚶‍♂️",
+    title: "Personnes désorientées (Alzheimer)",
+    description:
+      "La fugue, l'errance hors domicile : la téléassistance avec géolocalisation permet de localiser rapidement la personne.",
+  },
+  {
+    icon: "💊",
+    title: "Malaises soudains",
+    description:
+      "AVC, infarctus, hypoglycémie, chute de tension : la rapidité d'intervention est vitale. Chaque minute compte.",
+  },
+  {
+    icon: "🏠",
+    title: "Vivre seul, vieillir seul",
+    description:
+      "Préserver l'autonomie ne doit pas signifier abandonner la sécurité. La téléassistance, c'est l'autonomie protégée.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: "🆘",
+    title: "Médaillon ou bracelet SOS",
+    description:
+      "Bouton d'urgence simple et étanche, à porter en permanence. Une seule pression suffit pour déclencher l'alerte.",
+  },
+  {
+    icon: "🤸",
+    title: "Détecteur de chute automatique",
+    description:
+      "Capteur qui détecte une chute brutale et déclenche l'alerte automatiquement, même si la personne ne peut plus appuyer.",
+  },
+  {
+    icon: "📍",
+    title: "Géolocalisation GPS",
+    description:
+      "Pour les personnes sujettes à l'errance (Alzheimer), localisation précise en cas de fugue. Activable à distance.",
+  },
+  {
+    icon: "🔊",
+    title: "Haut-parleur & micro intégrés",
+    description:
+      "Échange direct avec notre centre d'écoute en cas d'alerte. Pas besoin de courir au téléphone.",
+  },
+  {
+    icon: "👂",
+    title: "Centre d'écoute 24/24",
+    description:
+      "Téléopérateurs formés, disponibles 7j/7, 24h/24. Réponse en moins de 30 secondes en moyenne.",
+  },
+  {
+    icon: "🚑",
+    title: "Déclenchement secours coordonné",
+    description:
+      "Selon la situation : appel famille, médecin, voisin, pompiers, SAMU. Procédure définie avec vous à l'avance.",
+  },
+  {
+    icon: "🏠",
+    title: "Trousseau de clés sécurisé",
+    description:
+      "Possibilité de déposer des clés (chez nous ou voisin de confiance) pour intervention sans bris de porte.",
+  },
+  {
+    icon: "📊",
+    title: "Suivi mensuel",
+    description:
+      "Compte-rendu mensuel à la famille : appels, alertes, état du matériel. Transparence totale.",
+  },
+];
+
+const methodPoints = [
+  {
+    title: "Visite d'installation à domicile",
+    description:
+      "Notre technicien installe le matériel chez vous, teste la couverture, configure les contacts d'urgence (famille, médecin, voisin).",
+  },
+  {
+    title: "Formation à l'usage",
+    description:
+      "L'utilisateur (et sa famille) apprend à utiliser le médaillon : déclencher, annuler en cas de fausse alerte, recharger.",
+  },
+  {
+    title: "Test mensuel automatique",
+    description:
+      "Chaque mois, notre centre lance un test de bon fonctionnement (en lien avec le bénéficiaire). Garantit que le matériel marche.",
+  },
+  {
+    title: "Procédures personnalisées",
+    description:
+      "Chaque dossier a sa procédure : qui appeler en 1ᵉʳ ? en 2ᵉ ? quand appeler le SAMU ? Construite avec vous, ajustable.",
+  },
+  {
+    title: "Maintenance & remplacement",
+    description:
+      "Si le matériel défaille : remplacement gratuit sous 48 h. Pas de coupure de service tolérée.",
+  },
+];
+
+const aides = [
+  {
+    code: "APA",
+    description:
+      "L'APA finance la téléassistance pour les personnes en perte d'autonomie. Souvent intégrée au plan d'aide.",
+  },
+  {
+    code: "Caisses retraite",
+    description:
+      "CARSAT, AGIRC-ARRCO, MSA financent souvent la téléassistance dans le cadre des aides à la prévention.",
+  },
+  {
+    code: "Crédit d'impôt 50 %",
+    description:
+      "L'abonnement téléassistance est éligible au crédit d'impôt SAP. Coût net divisé par deux.",
+  },
+  {
+    code: "Mairie / CCAS",
+    description:
+      "Beaucoup de communes financent ou cofinancent la téléassistance pour leurs seniors. Renseignez-vous au CCAS.",
+  },
+];
+
+const faq = [
+  {
+    question: "Combien de temps entre l'appui sur le bouton et la réponse ?",
+    answer:
+      "Notre engagement : moins de 30 secondes en moyenne. La connexion est immédiate, le téléopérateur prend l'appel et engage le dialogue. Si la personne ne répond pas, déclenchement immédiat de la procédure d'urgence.",
+  },
+  {
+    question: "Quelle est la portée du médaillon dans le logement ?",
+    answer:
+      "Notre boîtier central couvre l'intégralité d'un logement standard (jusqu'à ~80 m²) et une partie du jardin/balcon. Pour les très grandes maisons, nous installons un répéteur. Test de couverture systématique à l'installation.",
+  },
+  {
+    question: "Et en cas de coupure de courant ou de réseau internet ?",
+    answer:
+      "Le boîtier a une batterie de secours qui prend le relais (autonomie 24-48 h). Le service utilise la 4G en backup quand l'internet domestique tombe. Ces situations sont rares mais couvertes.",
+  },
+  {
+    question: "Le médaillon fonctionne-t-il sous la douche ?",
+    answer:
+      "Oui, nos médaillons sont étanches IP67 (résistants à l'immersion). Très important : la salle de bain est l'endroit n°1 des chutes graves. Le médaillon doit être porté sous la douche.",
+  },
+  {
+    question: "Vous gérez aussi les fausses alertes ?",
+    answer:
+      "Oui sans aucun problème. Les fausses alertes (médaillon coincé, geste involontaire) sont fréquentes au début. Notre téléopérateur dialogue, l'utilisateur peut annuler simplement. Pas de pénalité, pas de frais.",
+  },
+  {
+    question: "Mon proche refuse de porter le médaillon. Que faire ?",
+    answer:
+      "Très fréquent (oubli, pudeur, déni). Astuces : 1) commencer par un bracelet plus discret ; 2) installer aussi un détecteur de chute mural (sans rien à porter) ; 3) coupler avec une visite hebdomadaire d'auxiliaire qui rappelle, vérifie, dédramatise.",
+  },
+];
 
 export default function TeleassistancePage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Téléassistance : sécurité 24h/24 pour vos proches
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">
-                Un système d&apos;alerte intelligent pour rester autonome chez soi en toute sécurité.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Demander un devis gratuit
-                </Link>
-                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
-                <Image
-                  src="/images/services/tele-assistance.png"
-                  alt="Service de téléassistance"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <ServiceHero
+        category="Téléassistance 24/24"
+        title="Une présence rassurante. À chaque seconde."
+        subtitle="Téléassistance professionnelle 7j/7, 24h/24 : médaillon d'urgence, détecteur de chute, géolocalisation. Pour vivre seul·e, en sécurité, sans inquiéter ses proches."
+        highlights={[
+          "Réponse en moins de 30 secondes",
+          "Médaillon étanche, détecteur de chute auto",
+          "Géolocalisation pour les personnes désorientées",
+          "Procédures personnalisées avec votre famille",
+        ]}
+        image="/images/services/tele-assistance.png"
+        imageAlt="Médaillon de téléassistance"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-3 text-center">Pourquoi la téléassistance est essentielle</h2>
-          <p className="text-text-light text-center mb-12 text-lg">Chaque année, des milliers de seniors sont victimes de chutes à domicile. La téléassistance sauve des vies.</p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { icon: "⚠️", title: "Chutes à domicile", desc: "1 personne âgée sur 3 chute chaque année. Sans aide rapide, les conséquences peuvent être graves." },
-              { icon: "🏠", title: "Isolement", desc: "Vivre seul augmente les risques. La téléassistance compense l'absence de présence permanente." },
-              { icon: "💊", title: "Malaises soudains", desc: "Hypoglycémie, AVC, malaise cardiaque : chaque minute compte pour alerter les secours." },
-              { icon: "😰", title: "Angoisse des familles", desc: "Savoir que votre proche est protégé 24h/24 change tout pour la tranquillité d'esprit." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-text-light">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePainPoints
+        eyebrow="Pourquoi c'est essentiel"
+        title="La téléassistance n'est pas un gadget. C'est une assurance vie."
+        description="Sur 100 chutes graves de personnes âgées, 30 surviennent quand la personne est seule. L'arrivée tardive des secours conditionne le pronostic vital."
+        items={painPoints}
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Nos solutions de téléassistance</h2>
-          <div className="space-y-6">
-            {[
-              "Médaillon ou bracelet d'alerte étanche avec bouton SOS",
-              "Détecteur de chute automatique (sans action nécessaire)",
-              "Haut-parleur intégré pour communication mains-libres",
-              "Géolocalisation GPS pour les sorties extérieures",
-              "Plateforme d'écoute 24h/24, 7j/7 avec opérateurs formés",
-              "Alerte automatique des proches et des secours",
-              "Rappels de prise de médicaments programmables",
-              "Détecteurs de fumée et de gaz connectés",
-            ].map((service, idx) => (
-              <div key={idx} className="flex gap-4 p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <div className="text-secondary text-2xl font-bold flex-shrink-0">✓</div>
-                <div>
-                  <h3 className="font-bold text-text text-lg">{service}</h3>
-                  <p className="text-text-light text-sm mt-1">Technologie fiable, installation simple, assistance immédiate.</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceIncluded
+        eyebrow="Notre dispositif complet"
+        title="Tout ce qui sécurise votre proche, 24/24"
+        description="Du médaillon au centre d'écoute, du test mensuel au remplacement gratuit : un service intégral."
+        items={includedServices}
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Les avantages</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Pour le senior</h3>
-              <ul className="space-y-3">
-                {["Autonomie préservée au quotidien", "Sécurité permanente, jour et nuit", "Pas de contrainte ni d'intrusivité", "Contact humain en un clic", "Confiance pour vivre seul"].map((item, i) => (
-                  <li key={i} className="flex gap-2 text-white/90"><span>✓</span> {item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Pour la famille</h3>
-              <ul className="space-y-3">
-                {["Tranquillité d'esprit totale", "Alertes en temps réel sur votre mobile", "Moins de stress au quotidien", "Solution économique et éligible au crédit d'impôt", "Complémentaire à l'aide à domicile"].map((item, i) => (
-                  <li key={i} className="flex gap-2 text-white/90"><span>✓</span> {item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceMethod
+        eyebrow="Notre méthode"
+        title="Un déploiement maîtrisé, un suivi continu"
+        description="Pas juste un boîtier : un dispositif construit avec vous, validé techniquement, suivi mensuellement."
+        points={methodPoints}
+        image="/images/services/tele-assistance.png"
+        imageAlt="Installation téléassistance à domicile"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Mise en place simple</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { step: "1", title: "Évaluation des besoins", desc: "Analyse de la situation et choix de l'équipement adapté." },
-              { step: "2", title: "Installation à domicile", desc: "Un technicien installe et configure tout en 30 minutes." },
-              { step: "3", title: "Test et formation", desc: "Démonstration complète avec la personne et ses proches." },
-              { step: "4", title: "Suivi continu", desc: "Maintenance préventive et assistance technique incluses." },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-6">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary text-white font-bold text-lg">{item.step}</div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-text">{item.title}</h3>
-                  <p className="text-text-light mt-1">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceProvider
+        title="Un centre d'écoute français, formé, humain"
+        description="Nos téléopérateurs sont formés à l'écoute des personnes fragiles, à la gestion d'urgence, aux protocoles médicaux. Pas de robot, pas de délocalisé : des humains, ici."
+        specialization="Gestion d'urgence, premiers secours téléphoniques, écoute personnes fragiles"
+        image="/images/services/tele-assistance.png"
+        imageAlt="Centre d'écoute téléassistance"
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Questions fréquentes</h2>
-          <div className="space-y-6">
-            {[
-              { q: "Le médaillon est-il étanche ?", a: "Oui, nos médaillons et bracelets sont étanches. Vous pouvez les porter sous la douche, là où les risques de chute sont les plus élevés." },
-              { q: "Que se passe-t-il quand j'appuie sur le bouton ?", a: "Un opérateur formé répond en moins de 60 secondes via le haut-parleur. Il évalue la situation et alerte les proches ou les secours si nécessaire." },
-              { q: "La téléassistance fonctionne-t-elle en cas de coupure de courant ?", a: "Oui, nos équipements disposent d'une batterie de secours qui assure plusieurs heures d'autonomie." },
-              { q: "Est-ce éligible au crédit d'impôt ?", a: "Oui, la téléassistance est éligible au crédit d'impôt de 50% au titre des services à la personne." },
-            ].map((item, idx) => (
-              <div key={idx} className="p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <h3 className="font-bold text-text text-lg mb-2">Q: {item.q}</h3>
-                <p className="text-text-light">A: {item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePricing
+        hourlyRange={{ min: 25, max: 35 }}
+        aides={aides}
+        exampleNet="Exemple : abonnement mensuel téléassistance complète (médaillon + détecteur de chute + géolocalisation) = ~30-45 €/mois. Avec crédit d'impôt 50 % et APA, le reste à charge tombe souvent à 10-20 €/mois."
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Protégez votre proche dès aujourd&apos;hui</h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">La téléassistance, c&apos;est la liberté de vivre chez soi avec la sécurité en plus.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">Demander un devis gratuit</Link>
-            <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all text-lg">Appeler maintenant</a>
-          </div>
-          <p className="text-white/70 mt-6">Réponse sous 2 heures • Sans engagement • Conseil gratuit</p>
-        </div>
-      </section>
-    </div>
+      <EngagementsBlock />
+
+      <ServiceFAQ
+        title="Vos questions sur la téléassistance"
+        items={faq}
+      />
+
+      <ServiceCrossSell
+        currentSlug="teleassistance"
+        recommendedSlugs={[
+          "aide-personnes-agees",
+          "garde-nuit",
+          "alzheimer-parkinson",
+          "accompagnement-sorties",
+        ]}
+      />
+
+      <FinalCTA />
+    </>
   );
 }

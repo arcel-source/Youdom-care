@@ -1,184 +1,268 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import ServiceHero from "@/components/service/ServiceHero";
+import ServicePainPoints from "@/components/service/ServicePainPoints";
+import ServiceIncluded from "@/components/service/ServiceIncluded";
+import ServiceMethod from "@/components/service/ServiceMethod";
+import ServicePricing from "@/components/service/ServicePricing";
+import ServiceProvider from "@/components/service/ServiceProvider";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceCrossSell from "@/components/service/ServiceCrossSell";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Aide ménagère à domicile | Youdom Care",
-  description: "Aide ménagère à domicile. Ménage, linge, repassage. Confiance, qualité, tarifs transparents. Devis gratuit.",
+  title:
+    "Aide ménagère à domicile — Paris & Île-de-France | Youdom Care",
+  description:
+    "Ménage régulier, lessive, repassage, courses : un domicile propre c'est moins de chutes, moins d'infections, plus de sérénité. Crédit d'impôt 50 %. Devis gratuit.",
 };
+
+const painPoints = [
+  {
+    icon: "⚠️",
+    title: "Sécurité du logement",
+    description:
+      "Tapis qui glissent, sol encombré, salle de bain négligée : le ménage régulier prévient activement les chutes.",
+  },
+  {
+    icon: "🦠",
+    title: "Hygiène & santé",
+    description:
+      "Acariens, moisissures, infections urinaires liées à des sanitaires sales : un domicile propre, c'est de la santé.",
+  },
+  {
+    icon: "👕",
+    title: "Linge accumulé",
+    description:
+      "Lessive en retard, repassage qui s'entasse : une personne âgée seule peut basculer vers le négligé en quelques semaines.",
+  },
+  {
+    icon: "💔",
+    title: "Estime de soi en chute",
+    description:
+      "Vivre dans un logement dégradé pèse sur le moral. Beaucoup de seniors évitent de recevoir par honte. C'est le début de l'isolement.",
+  },
+  {
+    icon: "🛒",
+    title: "Courses devenues impossibles",
+    description:
+      "Lourdes, fatigantes, dangereuses (verglas, chaleur) : les courses sont l'une des tâches les premières à devenir un obstacle.",
+  },
+  {
+    icon: "🫂",
+    title: "Charge sur l'aidant",
+    description:
+      "Quand l'aidant doit aussi gérer le ménage de son proche, la rupture est proche. Délégation = soulagement immédiat.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: "🧹",
+    title: "Ménage complet",
+    description:
+      "Sols, surfaces, sanitaires, cuisine, vitres (selon hauteur). Adapté à votre logement et à vos préférences.",
+  },
+  {
+    icon: "🛏️",
+    title: "Entretien linge & literie",
+    description:
+      "Changement des draps, lavage, séchage, pliage. Particulièrement crucial en cas d'incontinence ou alitement.",
+  },
+  {
+    icon: "👕",
+    title: "Lessive & repassage",
+    description:
+      "Cycle complet : tri, lavage, séchage, repassage, rangement. Vêtements toujours propres et à portée.",
+  },
+  {
+    icon: "🛒",
+    title: "Courses",
+    description:
+      "Avec vous ou à votre place. Liste précise, respect des préférences, gestion budget si demandé.",
+  },
+  {
+    icon: "🍳",
+    title: "Préparation simple des repas",
+    description:
+      "Repas réchauffés, petits plats simples, sandwiches. Pour les repas élaborés, voir notre service aide aux personnes âgées.",
+  },
+  {
+    icon: "♻️",
+    title: "Sortie poubelles & courrier",
+    description:
+      "Tâches « invisibles » mais cruciales. Tri, sortie poubelles, récupération courrier, dépôt à la Poste.",
+  },
+  {
+    icon: "🌱",
+    title: "Plantes & petits travaux",
+    description:
+      "Arrosage, petit jardinage de balcon, recharge frigo, bricolage léger. Tout ce qui rend le « chez soi » vivant.",
+  },
+  {
+    icon: "🏠",
+    title: "Vigilance préventive",
+    description:
+      "Notre auxiliaire repère ce qui change : tapis dangereux, ampoule grillée, fuite naissante, anomalie. Et nous prévient.",
+  },
+];
+
+const methodPoints = [
+  {
+    title: "Visite de calibrage",
+    description:
+      "Nous venons voir le logement, comprendre vos exigences (produits préférés, zones sensibles, fréquence). Pas de standard : votre maison, votre cadre.",
+  },
+  {
+    title: "Plan de ménage personnalisé",
+    description:
+      "Liste de tâches par fréquence : hebdomadaire, bimensuelle, mensuelle. Validée avec vous, ajustable.",
+  },
+  {
+    title: "Auxiliaire dédiée",
+    description:
+      "La même personne à chaque visite : elle connaît votre logement, vos habitudes, vos préférences de produits.",
+  },
+  {
+    title: "Cahier de présence",
+    description:
+      "Tableau de signature et notes laissées au domicile : ce qui a été fait, ce qui reste, ce qui mérite votre attention.",
+  },
+  {
+    title: "Suivi qualité régulier",
+    description:
+      "Notre coordinatrice vous appelle après les premières visites pour ajuster, puis tous les 3 mois pour faire le point.",
+  },
+];
+
+const aides = [
+  {
+    code: "Crédit d'impôt 50 %",
+    description:
+      "Automatique en service à la personne. Récupéré en avance immédiate (l'URSSAF déduit directement de votre paiement).",
+  },
+  {
+    code: "APA",
+    description:
+      "Pour les seniors GIR 1-4, l'APA peut financer une partie du ménage si justifié dans le plan d'aide.",
+  },
+  {
+    code: "Caisses retraite",
+    description:
+      "CARSAT, AGIRC-ARRCO financent souvent l'aide ménagère pour les retraités GIR 5-6 en prévention.",
+  },
+  {
+    code: "CESU préfinancés",
+    description:
+      "Beaucoup d'employeurs proposent des CESU préfinancés à leurs salariés ou retraités. Acceptés directement par Youdom Care.",
+  },
+];
+
+const faq = [
+  {
+    question: "Quelle est la fréquence minimale ?",
+    answer:
+      "Nous démarrons à partir de 2 h hebdo (un seul passage) ou 1 h bihebdomadaire. Pour les contrats récurrents, c'est l'idéal pour maintenir un domicile en bon état sans vous engager au-delà de votre besoin.",
+  },
+  {
+    question: "Apportez-vous les produits d'entretien ?",
+    answer:
+      "Par défaut, nous utilisons vos produits (vous connaissez vos préférences, allergies, surfaces). Sur demande, nous fournissons des produits écologiques labellisés Ecocert (forfait additionnel modeste).",
+  },
+  {
+    question: "Faites-vous les vitres et les hauteurs ?",
+    answer:
+      "Vitres accessibles depuis l'intérieur : oui. Vitres à risque (extérieur étage, baies très hautes) : non, par sécurité. Pour les plafonds et grands rangements en hauteur, nous recommandons un service spécialisé ponctuel — nous pouvons vous orienter.",
+  },
+  {
+    question: "Que se passe-t-il si l'auxiliaire est absente ?",
+    answer:
+      "Si maladie ou imprévu, nous proposons un remplaçant formé à votre dossier dans la journée (jusqu'à J+1). La continuité est notre engagement : pas de service raté sans solution.",
+  },
+  {
+    question: "Vous gérez aussi les déménagements ou grands rangements ?",
+    answer:
+      "Pas en service récurrent. Mais nous pouvons organiser des prestations ponctuelles « grand ménage » (4-8 h) après hospitalisation, déménagement ou succession, en coordination avec votre auxiliaire habituelle.",
+  },
+  {
+    question: "Comment se passe le paiement ?",
+    answer:
+      "Mensualité par prélèvement SEPA, avec facture détaillée. Si vous activez l'avance immédiate du crédit d'impôt, votre paiement réel = 50 % du tarif (l'URSSAF avance le reste). Nous gérons l'inscription URSSAF gratuitement.",
+  },
+];
 
 export default function AideMenagerePage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Aide ménagère à domicile : confort et bien-être
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">
-                Services réguliers de ménage. Confiance et qualité garanties.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Demander un devis gratuit
-                </Link>
-                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
-                <Image
-                  src="/images/services/aide-menagere.jpg"
-                  alt="Service d'aide ménagère à domicile"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <ServiceHero
+        category="Aide ménagère"
+        title="Un chez-soi propre, c'est aussi un chez-soi qui rassure."
+        subtitle="Aide ménagère régulière à domicile : ménage, linge, courses, petits travaux. La même auxiliaire, vos préférences respectées, le crédit d'impôt 50 % automatique."
+        highlights={[
+          "Démarrage à partir de 2 h/semaine",
+          "La même auxiliaire à chaque visite",
+          "Avance immédiate du crédit d'impôt 50 %",
+          "Vigilance préventive sur la sécurité du logement",
+        ]}
+        image="/images/services/aide-menagere.jpg"
+        imageAlt="Aide ménagère en intervention à domicile"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Pourquoi une aide ménagère à domicile ?</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: "🧓", title: "Mobilité réduite", desc: "Personnes âgées, handicap — escalier impossible." },
-              { icon: "⏰", title: "Manque de temps", desc: "Travail, enfants, santé — pas d'énergie pour ménage." },
-              { icon: "😢", title: "Dépression/isolement", desc: "Énergie manquante. Besoin aide simple." },
-              { icon: "🛡️", title: "Prévention chutes", desc: "Domicile propre/rangé = moins de risques." },
-              { icon: "🏥", title: "Hygiène sanitaire", desc: "Acariens, moisissure — impact santé." },
-              { icon: "😊", title: "Bien-être psycho", desc: "Intérieur propre = moral meilleur." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-xl border border-gray-200">
-                <div className="text-3xl mb-2">{item.icon}</div>
-                <h3 className="font-bold text-text mb-1">{item.title}</h3>
-                <p className="text-text-light text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePainPoints
+        eyebrow="Pourquoi c'est essentiel"
+        title="Le ménage n'est pas un luxe. C'est de la santé publique."
+        description="Le logement d'une personne âgée ou fragilisée est un facteur direct de santé, de sécurité et d'estime de soi."
+        items={painPoints}
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Nos services de ménage détaillés</h2>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="grid md:grid-cols-2 gap-4">
-              {[
-                "Nettoyage courant (balai, serpillière, chiffons)",
-                "Dépoussiérage",
-                "Nettoyage salle de bain",
-                "Toilette W.C.",
-                "Nettoyage cuisine",
-                "Vaisselle",
-                "Entretien sols",
-                "Lessive et repassage",
-                "Rangement basic",
-                "Changement literie",
-                "Aération",
-                "Petits rangements",
-              ].map((service, idx) => (
-                <div key={idx} className="p-4 bg-warm rounded-lg flex items-center gap-3">
-                  <span className="text-secondary text-lg font-bold">✓</span>
-                  <p className="text-text font-medium text-sm">{service}</p>
-                </div>
-              ))}
-            </div>
+      <ServiceIncluded
+        eyebrow="Tout ce qu'on prend en charge"
+        title="8 missions pour un domicile vivant et sécurisé"
+        description="Au-delà du sol propre : un environnement préservé, vivable, prêt à vous accueillir vous et vos proches."
+        items={includedServices}
+      />
 
-            <div className="hidden lg:flex items-center">
-              <div className="rounded-3xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/about/assistant-menager.jpg"
-                  alt="Assistante ménagère professionnelle à domicile"
-                  width={600}
-                  height={700}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceMethod
+        eyebrow="Notre méthode"
+        title="Pas de standard : votre maison, votre cadre"
+        description="Chaque domicile a ses zones sensibles, ses préférences, ses produits. Nous nous y plions, pas l'inverse."
+        points={methodPoints}
+        image="/images/services/aide-menagere.jpg"
+        imageAlt="Auxiliaire en intervention ménage"
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Bénéfices</h2>
-          <div className="grid md:grid-cols-3 gap-6 text-white">
-            <div className="bg-white/10 p-6 rounded-xl backdrop-blur border border-white/20">
-              <h3 className="font-bold mb-3">Pour la personne aidée</h3>
-              <p className="text-sm text-white/80">Cadre sain, prévention chutes, bien-être psy, autonomie conservée.</p>
-            </div>
-            <div className="bg-white/10 p-6 rounded-xl backdrop-blur border border-white/20">
-              <h3 className="font-bold mb-3">Pour les aidants</h3>
-              <p className="text-sm text-white/80">Soulagement tâches lourdes, plus de temps qualité ensemble.</p>
-            </div>
-            <div className="bg-white/10 p-6 rounded-xl backdrop-blur border border-white/20">
-              <h3 className="font-bold mb-3">Pour le domicile</h3>
-              <p className="text-sm text-white/80">Durée mobilier, hygiène, prévention dégradations.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceProvider
+        title="Des auxiliaires de qualité, en CDI, formées"
+        description="Nous n'envoyons pas n'importe qui chez vous. Sélection rigoureuse, formation aux gestes ménagers professionnels, casier judiciaire vérifié."
+        specialization="Hygiène domiciliaire, manipulation produits, repérage des dangers domestiques"
+        image="/images/about/assistant-menager.jpg"
+        imageAlt="Auxiliaire ménagère professionnelle"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Flexibilité et régularité</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-xl border border-gray-200">
-              <h3 className="font-bold text-text mb-3">Fréquences possibles</h3>
-              <ul className="space-y-2 text-text-light text-sm">
-                <li>• 1x semaine</li>
-                <li>• 2-3x semaine</li>
-                <li>• 4x semaine</li>
-                <li>• Demi-journée, journée</li>
-              </ul>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-gray-200">
-              <h3 className="font-bold text-text mb-3">Avantages régularité</h3>
-              <ul className="space-y-2 text-text-light text-sm">
-                <li>• Same intervenant = confiance</li>
-                <li>• Même jour/horaire = repères</li>
-                <li>• Ajustements faciles</li>
-                <li>• Continuité garantie</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServicePricing
+        hourlyRange={{ min: 24, max: 30 }}
+        aides={aides}
+        exampleNet="Exemple : 4 h/semaine de ménage = ~480 €/mois brut. Avec crédit d'impôt 50 % en avance immédiate, vous payez réellement ~240 €/mois — soit 60 €/semaine pour un domicile entretenu."
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-8 text-center">Coûts et aides</h2>
-          <div className="bg-warm p-8 rounded-2xl border-l-4 border-secondary">
-            <h3 className="font-bold text-text mb-3">Crédit d&apos;impôt 50% automatique</h3>
-            <p className="text-text-light text-sm mb-4">Service à personne = réduction d&apos;impôts automatique 50%.</p>
-            <h3 className="font-bold text-text mb-3">TVA réduite 5.5%</h3>
-            <p className="text-text-light text-sm">Au lieu 20% pour autres services. Youdom Care applique directement.</p>
-          </div>
-        </div>
-      </section>
+      <EngagementsBlock />
 
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Un intérieur propre et confortable</h2>
-          <p className="text-white/80 mb-8">Régularité, confiance, qualité. Youdom Care : même intervenant, tarifs transparents.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg">
-              Demander un devis gratuit
-            </a>
-            <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl text-lg">
-              Appeler maintenant
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+      <ServiceFAQ
+        title="Vos questions sur l'aide ménagère"
+        items={faq}
+      />
+
+      <ServiceCrossSell
+        currentSlug="aide-menagere"
+        recommendedSlugs={[
+          "aide-personnes-agees",
+          "accompagnement-sorties",
+          "assistance-administrative",
+          "retour-hospitalisation",
+        ]}
+      />
+
+      <FinalCTA />
+    </>
   );
 }

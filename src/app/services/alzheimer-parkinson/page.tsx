@@ -1,197 +1,268 @@
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import ServiceHero from "@/components/service/ServiceHero";
+import ServicePainPoints from "@/components/service/ServicePainPoints";
+import ServiceIncluded from "@/components/service/ServiceIncluded";
+import ServiceMethod from "@/components/service/ServiceMethod";
+import ServicePricing from "@/components/service/ServicePricing";
+import ServiceProvider from "@/components/service/ServiceProvider";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceCrossSell from "@/components/service/ServiceCrossSell";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Aide Alzheimer & Parkinson à Domicile | Youdom Care",
-  description: "Accompagnement spécialisé Alzheimer et Parkinson à domicile. Personnel formé, stimulation cognitive, soutien aux aidants. Paris & IDF.",
-  openGraph: {
-    title: "Aide Alzheimer & Parkinson à Domicile | Youdom Care",
-    description: "Accompagnement spécialisé maladies neurodégénératives. Personnel formé, patience, dignité.",
-    type: "website",
-  },
+  title:
+    "Aide à domicile Alzheimer, Parkinson, SLA — accompagnement spécialisé | Youdom Care",
+  description:
+    "Accompagnement spécialisé pour les maladies neurodégénératives à domicile : Alzheimer, Parkinson, sclérose en plaques, SLA, démences vasculaires. Auxiliaires formées, continuité, dignité. Devis gratuit.",
 };
+
+const painPoints = [
+  {
+    icon: "🌀",
+    title: "Désorientation & confusion",
+    description:
+      "L'oubli du quotidien, des proches, des routines — une fragilité qui demande une présence patiente et expérimentée.",
+  },
+  {
+    icon: "😰",
+    title: "Anxiété & agitation",
+    description:
+      "Crises d'angoisse, déambulation nocturne, irritabilité : il faut savoir désamorcer sans confronter, rassurer sans infantiliser.",
+  },
+  {
+    icon: "🍽️",
+    title: "Refus alimentaire",
+    description:
+      "Perte d'appétit, oubli des repas, difficulté à mâcher : un suivi nutritionnel structuré devient vital pour éviter la dénutrition.",
+  },
+  {
+    icon: "🚶",
+    title: "Troubles moteurs spécifiques",
+    description:
+      "Tremblements, rigidité (Parkinson), spasticité (SEP), faiblesse progressive (SLA) : chaque maladie a ses gestes adaptés.",
+  },
+  {
+    icon: "💔",
+    title: "Aidants au bord de la rupture",
+    description:
+      "Vivre avec un proche désorienté 24/24 est l'un des stress les plus intenses connus en santé publique. Le répit n'est pas optionnel.",
+  },
+  {
+    icon: "🏥",
+    title: "Risque institutionnel",
+    description:
+      "Sans accompagnement adapté, l'EHPAD devient inéluctable. Un soutien spécialisé permet souvent de gagner 2 à 3 ans à domicile.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: "🧠",
+    title: "Stimulation cognitive adaptée",
+    description:
+      "Activités personnalisées (méthode Montessori adaptée, réminiscence, jeux), pour préserver les capacités le plus longtemps possible.",
+  },
+  {
+    icon: "🛁",
+    title: "Toilette adaptée à la pathologie",
+    description:
+      "Approche respectueuse face aux refus, gestes lents et expliqués, prévention des chutes en salle de bain.",
+  },
+  {
+    icon: "🍽️",
+    title: "Repas avec textures modifiées",
+    description:
+      "Adaptation aux troubles de la déglutition (Parkinson, SLA), repas équilibrés, hydratation surveillée, partage à table possible.",
+  },
+  {
+    icon: "💊",
+    title: "Suivi rigoureux des traitements",
+    description:
+      "Pilulier, horaires précis (cruciaux pour Parkinson), alerte immédiate au médecin en cas d'effets secondaires.",
+  },
+  {
+    icon: "🚶‍♀️",
+    title: "Mobilité & prévention chutes",
+    description:
+      "Manutention spécifique Parkinson (« freezing »), aides aux transferts SLA, sécurisation du domicile.",
+  },
+  {
+    icon: "👥",
+    title: "Maintien du lien social",
+    description:
+      "Sorties adaptées, conversation, contact avec les proches, coordination avec accueil de jour Alzheimer.",
+  },
+  {
+    icon: "🌙",
+    title: "Présence de nuit spécialisée",
+    description:
+      "Pour les déambulations nocturnes (Alzheimer), l'apnée du sommeil, l'angoisse vespérale.",
+  },
+  {
+    icon: "🤝",
+    title: "Soutien aux aidants familiaux",
+    description:
+      "Conseils, écoute, orientation vers les plateformes de répit, aide à la décision EHPAD si nécessaire.",
+  },
+];
+
+const methodPoints = [
+  {
+    title: "Évaluation neuro-comportementale",
+    description:
+      "Au-delà du GIR : analyse des troubles spécifiques (mémoire, langage, comportement, déglutition) pour ajuster finement l'intervention.",
+  },
+  {
+    title: "Auxiliaire formée à la maladie",
+    description:
+      "Nous sélectionnons une auxiliaire ayant déjà accompagné des bénéficiaires avec la même pathologie. Continuité indispensable pour Alzheimer (l'inconnu génère angoisse).",
+  },
+  {
+    title: "Routines stabilisées",
+    description:
+      "Les rituels rassurent : mêmes horaires, mêmes mots-clés, mêmes parcours dans le logement. Notre auxiliaire respecte et entretient ces ancrages.",
+  },
+  {
+    title: "Coordination médicale spécialisée",
+    description:
+      "Lien avec le neurologue, le gériatre, l'orthophoniste, le kiné. Compte-rendus mensuels, alerte rapide si évolution.",
+  },
+  {
+    title: "Cellule répit aidants",
+    description:
+      "Notre coordinatrice aide la famille à monter les dossiers répit (plateforme départementale, accueil de jour, hébergement temporaire).",
+  },
+];
+
+const aides = [
+  {
+    code: "APA majorée",
+    description:
+      "L'APA peut être majorée pour les pathologies lourdes (GIR 1-2). Notre coordinatrice aide à faire reconnaître l'évolution de la maladie.",
+  },
+  {
+    code: "ALD 100 %",
+    description:
+      "Alzheimer, Parkinson, SLA, SEP sont des affections de longue durée prises en charge à 100 % par l'Assurance Maladie pour les soins.",
+  },
+  {
+    code: "Plateforme répit",
+    description:
+      "Chaque département a une plateforme de répit pour les aidants Alzheimer. Accueil de jour, hébergement temporaire — souvent gratuit.",
+  },
+  {
+    code: "Crédit d'impôt 50 %",
+    description:
+      "Automatique sur l'aide à domicile. Maintenu même quand le proche est hospitalisé temporairement.",
+  },
+];
+
+const faq = [
+  {
+    question: "Mon père a la maladie d'Alzheimer et refuse l'aide. Que faire ?",
+    answer:
+      "C'est une situation très fréquente, rarement résolue par la confrontation. Notre approche : 1) commencer par 2-3 h hebdo en présentant l'auxiliaire comme « quelqu'un qui aide pour le ménage » ou « une visiteuse » ; 2) garder strictement la même personne (l'inconnu génère de l'anxiété chez les patients Alzheimer) ; 3) laisser le temps faire : en 2 à 6 semaines, le lien s'installe, l'auxiliaire devient une figure familière et rassurante.",
+  },
+  {
+    question: "Comment gérez-vous les crises d'angoisse ou d'agressivité ?",
+    answer:
+      "Nos auxiliaires sont formées à la désescalade : voix calme, contact visuel, distraction par un objet familier, sortie de la pièce si besoin. Nous n'utilisons jamais la contention. Si une crise se répète, nous alertons le neurologue et la famille pour ajuster le traitement ou l'environnement.",
+  },
+  {
+    question: "Vous accompagnez la maladie de Parkinson aux stades avancés ?",
+    answer:
+      "Oui, à tous les stades. Nous savons gérer les blocages moteurs (« freezing »), les dyskinésies, l'hypotension orthostatique, les troubles de la déglutition. Nos auxiliaires connaissent l'importance horaire stricte des prises de Lévodopa.",
+  },
+  {
+    question: "Et la sclérose latérale amyotrophique (SLA / maladie de Charcot) ?",
+    answer:
+      "La SLA exige un accompagnement très spécialisé (mobilité décroissante rapide, aide à la communication par regard, gastrostomie, ventilation). Nous travaillons en partenariat avec les centres de référence SLA et formons spécifiquement les auxiliaires affectées à ces missions.",
+  },
+  {
+    question: "Combien d'heures recommandez-vous au stade modéré d'Alzheimer ?",
+    answer:
+      "Au stade modéré (GIR 3-4), comptez 14 à 25 h/semaine en moyenne. Au stade sévère (GIR 1-2), souvent 40 h/semaine ou plus, parfois avec présence de nuit. Notre évaluation à domicile fixe le bon dosage — toujours révisable.",
+  },
+  {
+    question: "Comment soulager efficacement les aidants familiaux ?",
+    answer:
+      "Trois leviers : 1) la régularité (3 demi-journées hebdo récurrentes plutôt que 9 h en bloc) ; 2) la présence de nuit ponctuelle (1 fois/semaine pour permettre une vraie nuit de sommeil à l'aidant) ; 3) un séjour en hébergement temporaire 2 fois/an. Notre coordinatrice monte tout cela avec vous.",
+  },
+];
 
 export default function AlzheimerParkinsonPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* HERO */}
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Aide à domicile Alzheimer &amp; Parkinson
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">
-                Un accompagnement patient et spécialisé pour les maladies neurodégénératives. Maintenir la dignité et le lien.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Demander un devis gratuit
-                </Link>
-                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
-                <Image
-                  src="/images/services/old-people.png"
-                  alt="Aide Alzheimer et Parkinson à domicile"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <ServiceHero
+        category="Maladies neurodégénératives"
+        title="Quand la mémoire s'efface, la présence reste."
+        subtitle="Accompagnement à domicile spécialisé Alzheimer, Parkinson, sclérose en plaques, SLA. Des auxiliaires formées, des routines stabilisées, des aidants soulagés."
+        highlights={[
+          "Auxiliaires formées à chaque pathologie",
+          "Continuité d'intervenant absolue (vital pour Alzheimer)",
+          "Coordination avec neurologue, gériatre, orthophoniste",
+          "Soutien et répit pour les aidants familiaux",
+        ]}
+        image="/images/services/old-people.png"
+        imageAlt="Auxiliaire accompagnant une personne atteinte d'Alzheimer"
+      />
 
-      {/* DÉFIS */}
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-3 text-center">Les défis des maladies neurodégénératives</h2>
-          <p className="text-text-light text-center mb-12 text-lg">
-            Alzheimer et Parkinson transforment le quotidien. Un accompagnement adapté fait toute la différence.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { icon: "🧠", title: "Perte de mémoire progressive", desc: "Oublis fréquents, désorientation, difficulté à reconnaître les proches." },
-              { icon: "🤲", title: "Tremblements et rigidité", desc: "Parkinson affecte la motricité fine et l'équilibre au quotidien." },
-              { icon: "😰", title: "Anxiété et confusion", desc: "Les changements cognitifs génèrent stress et incompréhension." },
-              { icon: "👨‍👩‍👦", title: "Épuisement des aidants", desc: "Les familles s'épuisent face à une charge émotionnelle et physique constante." },
-              { icon: "🚶", title: "Risques d'errance", desc: "Les personnes atteintes peuvent se perdre, même dans des lieux familiers." },
-              { icon: "💊", title: "Gestion médicamenteuse complexe", desc: "Traitements multiples nécessitant un suivi rigoureux des prises." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-text-light">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePainPoints
+        eyebrow="Les défis spécifiques"
+        title="Vivre avec une maladie neurodégénérative à domicile"
+        description="Chaque pathologie a sa réalité. Nos accompagnements sont conçus pour chacune."
+        items={painPoints}
+      />
 
-      {/* SERVICES DÉTAILLÉS */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Nos services spécialisés</h2>
-          <div className="space-y-6">
-            {[
-              "Stimulation cognitive et exercices de mémoire adaptés",
-              "Aide aux gestes quotidiens (toilette, habillage, repas)",
-              "Surveillance continue et prévention des risques d'errance",
-              "Rappel et aide à la prise de médicaments",
-              "Activités de loisirs et maintien du lien social",
-              "Accompagnement aux rendez-vous médicaux spécialisés",
-              "Soutien psychologique et répit pour les aidants familiaux",
-              "Communication adaptée et techniques de validation",
-              "Adaptation du domicile pour la sécurité",
-              "Présence de nuit pour les phases d'agitation nocturne",
-            ].map((service, idx) => (
-              <div key={idx} className="flex gap-4 p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <div className="text-secondary text-2xl font-bold flex-shrink-0">✓</div>
-                <div>
-                  <h3 className="font-bold text-text text-lg">{service}</h3>
-                  <p className="text-text-light text-sm mt-1">Personnel spécifiquement formé aux maladies neurodégénératives.</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceIncluded
+        eyebrow="Notre prise en charge"
+        title="8 missions adaptées aux maladies neurodégénératives"
+        description="Toilette, alimentation, mobilité, stimulation cognitive : tout est ajusté à la pathologie et à son stade."
+        items={includedServices}
+      />
 
-      {/* BÉNÉFICES */}
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Les bénéfices de notre accompagnement</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Pour la personne malade</h3>
-              <ul className="space-y-3">
-                {["Maintien à domicile dans un environnement familier", "Ralentissement du déclin grâce à la stimulation", "Dignité et respect préservés", "Sécurité renforcée au quotidien", "Lien social maintenu"].map((item, i) => (
-                  <li key={i} className="flex gap-2 text-white/90"><span>✓</span> {item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">Pour la famille</h3>
-              <ul className="space-y-3">
-                {["Répit indispensable pour les aidants", "Tranquillité d'esprit au quotidien", "Conseils et formation aux gestes adaptés", "Coordination avec l'équipe médicale", "Soutien émotionnel et écoute"].map((item, i) => (
-                  <li key={i} className="flex gap-2 text-white/90"><span>✓</span> {item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceMethod
+        eyebrow="Une approche neuro-spécifique"
+        title="Notre méthodologie pour Alzheimer, Parkinson, SLA, SEP"
+        description="Construite avec des neurologues, des orthophonistes et des aidants experts."
+        points={methodPoints}
+        image="/images/about/aide-personnes-agees.jpg"
+        imageAlt="Auxiliaire et bénéficiaire en stimulation cognitive"
+      />
 
-      {/* PROCESSUS */}
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Mise en place de l&apos;accompagnement</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { step: "1", title: "Évaluation spécialisée", desc: "Bilan cognitif et fonctionnel à domicile avec un conseiller formé." },
-              { step: "2", title: "Plan d'aide personnalisé", desc: "Programme adapté au stade de la maladie et aux besoins de la famille." },
-              { step: "3", title: "Intervenant dédié formé", desc: "Auxiliaire spécialisée en maladies neurodégénératives, même personne." },
-              { step: "4", title: "Suivi et ajustements", desc: "Adaptation continue du plan selon l'évolution de la maladie." },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-6">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary text-white font-bold text-lg">{item.step}</div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-text">{item.title}</h3>
-                  <p className="text-text-light mt-1">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceProvider
+        title="Des auxiliaires spécifiquement formées au neurodégénératif"
+        description="Formation Humanitude, méthode Montessori adaptée, manutention Parkinson, communication Alzheimer : nos équipes sont à la hauteur de la complexité."
+        specialization="Humanitude, Montessori, désescalade comportementale, déglutition, manutention spécialisée"
+        image="/images/about/assistante-vie-famille.jpg"
+        imageAlt="Auxiliaire spécialisée maladies neurodégénératives"
+      />
 
-      {/* FAQ */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Questions fréquentes</h2>
-          <div className="space-y-6">
-            {[
-              { q: "Vos intervenants sont-ils formés à Alzheimer ?", a: "Oui, nos auxiliaires suivent des formations spécifiques sur les maladies neurodégénératives : communication adaptée, gestion de l'agitation, techniques de validation, stimulation cognitive." },
-              { q: "Peut-on intervenir en cas d'errance nocturne ?", a: "Absolument. Nous proposons des gardes de nuit spécialisées pour sécuriser les personnes sujettes à l'errance ou l'agitation nocturne." },
-              { q: "Comment se passe l'adaptation avec la personne malade ?", a: "Nous prenons le temps d'une période d'adaptation douce. L'intervenant apprend les habitudes, les préférences et établit un lien de confiance progressif." },
-              { q: "Les aides financières couvrent-elles ce type d'accompagnement ?", a: "Oui. L'APA (Allocation Personnalisée d'Autonomie) et le crédit d'impôt 50% s'appliquent. Nous vous aidons dans toutes les démarches." },
-            ].map((item, idx) => (
-              <div key={idx} className="p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <h3 className="font-bold text-text text-lg mb-2">Q: {item.q}</h3>
-                <p className="text-text-light">A: {item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePricing
+        hourlyRange={{ min: 28, max: 35 }}
+        aides={aides}
+        exampleNet="Exemple : 25 h/semaine au stade modéré d'Alzheimer (GIR 3) coûtent ~3 050 €/mois brut. Avec APA + crédit d'impôt 50 %, le reste à charge tombe entre 600 et 1 100 € selon les ressources."
+      />
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Un accompagnement adapté à votre proche</h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Alzheimer ou Parkinson ne doivent pas signifier la fin de la vie à domicile. Nos équipes spécialisées sont là pour vous.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">
-              Demander un devis gratuit
-            </Link>
-            <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all text-lg">
-              Appeler maintenant
-            </a>
-          </div>
-          <p className="text-white/70 mt-6">Réponse sous 2 heures • Sans engagement • Conseil gratuit</p>
-        </div>
-      </section>
-    </div>
+      <EngagementsBlock />
+
+      <ServiceFAQ
+        title="Vos questions sur l'accompagnement neurodégénératif"
+        items={faq}
+      />
+
+      <ServiceCrossSell
+        currentSlug="alzheimer-parkinson"
+        recommendedSlugs={[
+          "garde-nuit",
+          "aide-personnes-agees",
+          "accompagnement-sorties",
+          "retour-hospitalisation",
+        ]}
+      />
+
+      <FinalCTA />
+    </>
   );
 }

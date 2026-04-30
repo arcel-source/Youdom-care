@@ -1,149 +1,268 @@
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import ServiceHero from "@/components/service/ServiceHero";
+import ServicePainPoints from "@/components/service/ServicePainPoints";
+import ServiceIncluded from "@/components/service/ServiceIncluded";
+import ServiceMethod from "@/components/service/ServiceMethod";
+import ServicePricing from "@/components/service/ServicePricing";
+import ServiceProvider from "@/components/service/ServiceProvider";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceCrossSell from "@/components/service/ServiceCrossSell";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Assistance Informatique à Domicile | Youdom Care",
-  description: "Aide informatique pour seniors. Initiation tablette, smartphone, visioconférence, configuration, dépannage. Paris & IDF.",
+  title:
+    "Assistance informatique senior à domicile — ordinateur, smartphone | Youdom Care",
+  description:
+    "Aide informatique à domicile pour seniors : ordinateur, tablette, smartphone, internet, démarches en ligne, visioconférence. Cours patients, dépannages. Crédit d'impôt 50 %.",
 };
+
+const painPoints = [
+  {
+    icon: "🌐",
+    title: "Tout passe par internet",
+    description:
+      "Impôts, banque, médecin, courses : se passer du numérique en 2026 = exclusion progressive de la société.",
+  },
+  {
+    icon: "😰",
+    title: "Peur de mal faire",
+    description:
+      "« Je vais tout casser », « je ne comprends rien » : la peur empêche d'apprendre. Il faut un cadre rassurant.",
+  },
+  {
+    icon: "📱",
+    title: "Smartphone non maîtrisé",
+    description:
+      "WhatsApp, photos, appels vidéo : autant d'outils précieux pour le lien social, intimidants quand on ne sait pas s'en servir.",
+  },
+  {
+    icon: "👨‍👩‍👧",
+    title: "Petits-enfants distants",
+    description:
+      "Les petits-enfants vivent loin, ne décrochent plus le téléphone fixe. La visioconférence est le seul lien quotidien possible.",
+  },
+  {
+    icon: "🔒",
+    title: "Arnaques & cybersécurité",
+    description:
+      "Faux mails impôts, faux SMS Ameli, fake support technique : les seniors sont les cibles n°1 de la cybercriminalité.",
+  },
+  {
+    icon: "💔",
+    title: "Sentiment de relégation",
+    description:
+      "« Je suis trop vieux pour ces choses-là » — ce renoncement progressif érode l'estime de soi et accélère le déclin.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: "💻",
+    title: "Cours d'initiation patients",
+    description:
+      "Souris, clavier, fichiers, dossiers, internet, mail. À votre rythme, jusqu'à ce que ce soit acquis. Pas de jargon.",
+  },
+  {
+    icon: "📱",
+    title: "Maîtrise du smartphone",
+    description:
+      "Appels, SMS, WhatsApp, appel vidéo (FaceTime, WhatsApp), photos, GPS, applications utiles (Doctolib, SNCF, etc.).",
+  },
+  {
+    icon: "🛠️",
+    title: "Dépannage informatique",
+    description:
+      "Ordinateur lent, imprimante qui ne marche pas, wifi en panne, programme bloqué : nous résolvons sur place.",
+  },
+  {
+    icon: "🛒",
+    title: "Configuration matériel neuf",
+    description:
+      "Nouveau smartphone, ordinateur, tablette, box internet : déballage, configuration, transfert des données, premier usage.",
+  },
+  {
+    icon: "🏛️",
+    title: "Démarches administratives en ligne",
+    description:
+      "Création FranceConnect, Ameli, impôts, ANTS, CAF. Nous configurons une fois, vous utilisez ensuite (avec aide-mémoire papier).",
+  },
+  {
+    icon: "📷",
+    title: "Photos & souvenirs numériques",
+    description:
+      "Récupérer ses vieilles photos, les organiser, les imprimer. Apprendre à prendre des photos avec le smartphone.",
+  },
+  {
+    icon: "🔐",
+    title: "Sécurité & anti-arnaques",
+    description:
+      "Reconnaissance des arnaques courantes, gestion des mots de passe, antivirus, sécurisation des comptes bancaires en ligne.",
+  },
+  {
+    icon: "📞",
+    title: "Visioconférence familiale",
+    description:
+      "FaceTime, WhatsApp vidéo, Zoom, Skype : configuration, premier appel avec un proche, prise en main complète.",
+  },
+];
+
+const methodPoints = [
+  {
+    title: "Évaluation du niveau initial",
+    description:
+      "1 séance pour évaluer ce que vous savez déjà, ce que vous voulez apprendre en priorité, votre rythme préféré.",
+  },
+  {
+    title: "Plan d'apprentissage personnalisé",
+    description:
+      "Pas de programme standard : votre besoin (rester en contact avec petits-enfants ? gérer impôts ?) guide ce qu'on apprend en premier.",
+  },
+  {
+    title: "Mémo papier après chaque séance",
+    description:
+      "Étape par étape, avec captures d'écran. Vous gardez un cahier de référence consultable seul ensuite.",
+  },
+  {
+    title: "Pratique encadrée puis seul",
+    description:
+      "On fait ensemble plusieurs fois, puis vous faites seul, on vérifie. Apprentissage progressif, pas de prise en main à votre place.",
+  },
+  {
+    title: "Disponibilité par téléphone",
+    description:
+      "Entre les séances, possibilité d'un coup de fil de 5 min pour débloquer un point précis. Inclus dans l'abonnement.",
+  },
+];
+
+const aides = [
+  {
+    code: "Crédit d'impôt 50 %",
+    description:
+      "Notre service est éligible au crédit d'impôt SAP. Coût horaire net divisé par deux automatiquement.",
+  },
+  {
+    code: "Pass Numérique (CAF)",
+    description:
+      "Chéquiers de 10 ou 20 € pour financer des accompagnements numériques, distribués par CAF, mairies, MDS.",
+  },
+  {
+    code: "Aides Caisses retraite",
+    description:
+      "Plusieurs caisses (CARSAT, AGIRC-ARRCO) financent l'inclusion numérique des seniors dans le cadre de la prévention.",
+  },
+  {
+    code: "Conseiller Numérique France Services",
+    description:
+      "Le réseau public propose des accompagnements gratuits dans les MDS. Nous le complémentons à domicile pour les personnes peu mobiles.",
+  },
+];
+
+const faq = [
+  {
+    question: "Je ne sais rien faire en informatique. Vous êtes patients ?",
+    answer:
+      "C'est notre cœur de métier. Nous accompagnons des personnes qui partent de zéro, qui ont peur, qui ont déjà été humiliées par un proche pressé. Notre rythme : le vôtre. Notre seul jugement : « Que vous voulez apprendre aujourd'hui ? ». Aucune question n'est bête.",
+  },
+  {
+    question: "Vous travaillez sur Mac et Windows ?",
+    answer:
+      "Oui, sur les deux univers, ainsi que sur tablettes (iPad, Samsung), smartphones (iPhone, Android), TV connectées, box internet. Si vous avez du matériel spécifique, mentionnez-le à la réservation.",
+  },
+  {
+    question: "Pouvez-vous m'aider à choisir un nouveau smartphone ?",
+    answer:
+      "Oui, nous offrons un service de conseil avant achat (1 h gratuite) pour vous orienter vers le matériel adapté à vos besoins et votre budget. Pas de partenariat commercial : conseils 100 % indépendants.",
+  },
+  {
+    question: "Combien de séances pour devenir autonome ?",
+    answer:
+      "Pour les bases (mail, internet, WhatsApp, démarches simples) : 4 à 8 séances de 1-2 h, étalées sur 2-3 mois. Pour des compétences avancées (photos, cloud, comptabilité simple) : selon votre objectif. Notre but : vous rendre autonome, pas vous abonner à vie.",
+  },
+  {
+    question: "Et si après les cours, j'ai oublié ce qu'on a vu ?",
+    answer:
+      "C'est normal ! Le mémo papier qu'on vous laisse couvre les étapes. Si malgré ça vous bloquez, un coup de fil suffit (inclus). Et en cas de besoin, une séance « rappel » à tarif réduit pour rafraîchir.",
+  },
+  {
+    question: "Vous gérez l'achat & la réception du matériel ?",
+    answer:
+      "Sur demande : sélection avec vous, achat avec votre carte, livraison à votre domicile, configuration complète, transfert de données depuis l'ancien matériel, formation initiale. Service complet « clé en main ».",
+  },
+];
 
 export default function AssistanceInformatiquePage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Assistance informatique à domicile
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8">
-                Apprivoiser la technologie à votre rythme. Pour rester connecté avec le monde et vos proches.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/demander-devis" className="px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Demander un devis gratuit
-                </Link>
-                <a href="tel:0184807297" className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border border-white transition-all text-base sm:text-lg min-h-[44px] text-center">
-                  Appeler : 01 84 80 72 97
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:flex items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-[400px]">
-                <Image
-                  src="/images/services/assistance-informatique.png"
-                  alt="Assistance informatique à domicile pour seniors"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <ServiceHero
+        category="Assistance informatique"
+        title="Le numérique sans peur, ni jugement, ni jargon."
+        subtitle="Cours d'informatique patients à domicile pour seniors : ordinateur, smartphone, démarches en ligne, visioconférence familiale, sécurité. À votre rythme."
+        highlights={[
+          "Cours sur Mac, Windows, iPhone, Android, tablettes",
+          "Mémos papier après chaque séance",
+          "Démarches en ligne (impôts, Ameli, CAF) accompagnées",
+          "Sécurité & anti-arnaques expliquées clairement",
+        ]}
+        image="/images/services/assistance-informatique.png"
+        imageAlt="Cours d'informatique pour senior à domicile"
+      />
 
-      <section className="py-16 bg-warm">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-3 text-center">Le numérique, un enjeu majeur</h2>
-          <p className="text-text-light text-center mb-12 text-lg">La fracture numérique isole. Maîtriser les outils de base, c&apos;est garder le lien avec le monde.</p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { icon: "📱", title: "Fracture numérique", desc: "13 millions de Français sont éloignés du numérique. Les seniors sont les plus touchés." },
-              { icon: "👨‍👩‍👧", title: "Éloignement familial", desc: "Sans visioconférence, les petits-enfants éloignés deviennent de plus en plus lointains." },
-              { icon: "🏛️", title: "Démarches en ligne", desc: "Impôts, CPAM, CAF : de plus en plus de services publics ne sont qu'en ligne." },
-              { icon: "🔒", title: "Risques d'arnaque", desc: "Sans formation, les seniors sont vulnérables face aux escroqueries numériques." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-text-light">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicePainPoints
+        eyebrow="L'illectronisme, fléau silencieux"
+        title="13 millions de Français sont en difficulté avec le numérique"
+        description="L'illectronisme isole, exclut, fait perdre des droits. Apprendre à 70 ou 80 ans est non seulement possible — c'est libérateur."
+        items={painPoints}
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Nos services d&apos;assistance informatique</h2>
-          <div className="space-y-6">
-            {[
-              "Initiation à la tablette et au smartphone (envoi de photos, appels vidéo)",
-              "Configuration et paramétrage des appareils (Wi-Fi, comptes email)",
-              "Apprentissage de la visioconférence (Zoom, WhatsApp, Skype)",
-              "Aide aux démarches administratives en ligne",
-              "Installation et utilisation des applications utiles",
-              "Formation à la sécurité en ligne (mots de passe, arnaques)",
-              "Dépannage informatique simple à domicile",
-              "Configuration de la télécommande TV, box internet",
-              "Aide à l'utilisation des réseaux sociaux pour rester en contact",
-              "Formation progressive et patiente, à votre rythme",
-            ].map((service, idx) => (
-              <div key={idx} className="flex gap-4 p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <div className="text-secondary text-2xl font-bold flex-shrink-0">✓</div>
-                <div>
-                  <h3 className="font-bold text-text text-lg">{service}</h3>
-                  <p className="text-text-light text-sm mt-1">Formation à domicile, avec patience et pédagogie.</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceIncluded
+        eyebrow="Tout ce qu'on enseigne"
+        title="8 domaines couverts pour devenir vraiment autonome"
+        description="Du mail aux visios familiales, en passant par les arnaques : un programme complet et pratique."
+        items={includedServices}
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary-dark to-primary">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">Les bénéfices concrets</h2>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {[
-              { icon: "👨‍👩‍👧‍👦", title: "Lien familial", desc: "Appels vidéo avec les petits-enfants, partage de photos." },
-              { icon: "🌐", title: "Autonomie numérique", desc: "Gérer ses démarches en ligne en toute indépendance." },
-              { icon: "🛡️", title: "Sécurité", desc: "Reconnaître et éviter les arnaques en ligne." },
-              { icon: "🎮", title: "Loisirs", desc: "Jeux, musique, films, actualités en un clic." },
-              { icon: "🧠", title: "Stimulation cognitive", desc: "Apprendre de nouvelles choses stimule le cerveau." },
-              { icon: "😊", title: "Confiance en soi", desc: "Maîtriser le numérique, c'est regagner confiance." },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white/10 p-6 rounded-2xl backdrop-blur border border-white/20 text-center">
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-white/70 text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceMethod
+        eyebrow="Notre méthode"
+        title="L'apprentissage qui colle, pas la tutorielle qu'on oublie"
+        description="Mémo papier, rythme libre, pratique encadrée : voilà ce qui fait la différence avec un tuto YouTube."
+        points={methodPoints}
+        image="/images/services/assistance-informatique.png"
+        imageAlt="Apprentissage informatique patient"
+      />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-12 text-center">Questions fréquentes</h2>
-          <div className="space-y-6">
-            {[
-              { q: "Je n'y connais rien en informatique, est-ce adapté ?", a: "Absolument ! Nos intervenants sont formés à la pédagogie avec les seniors. On part de zéro si nécessaire, à votre rythme, sans jugement." },
-              { q: "Faut-il avoir du matériel ?", a: "Nous pouvons vous conseiller dans le choix d'une tablette ou d'un smartphone adapté. Si vous en avez déjà un, nous travaillons avec ce que vous avez." },
-              { q: "Combien de séances faut-il ?", a: "Cela dépend de vos objectifs. Certains gagnent en autonomie en 3-4 séances, d'autres préfèrent un accompagnement régulier. Tout est flexible." },
-              { q: "Le service est-il éligible au crédit d'impôt ?", a: "Oui, l'assistance informatique à domicile fait partie des services à la personne éligibles au crédit d'impôt de 50%." },
-            ].map((item, idx) => (
-              <div key={idx} className="p-6 bg-warm rounded-xl border-l-4 border-secondary">
-                <h3 className="font-bold text-text text-lg mb-2">Q: {item.q}</h3>
-                <p className="text-text-light">A: {item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceProvider
+        title="Des intervenants formés à la pédagogie senior"
+        description="Patience, vocabulaire accessible, capacité à expliquer 10 fois sans s'agacer. Beaucoup viennent de la médiation numérique ou ont enseigné."
+        specialization="Pédagogie adulte, médiation numérique, vulgarisation, écoute"
+        image="/images/services/assistance-informatique.png"
+        imageAlt="Pédagogue informatique senior"
+      />
 
-      <section className="py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Restez connecté avec le monde</h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">La technologie ne doit pas être un obstacle. Nos intervenants vous accompagnent avec patience.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/demander-devis" className="px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl transition-all text-lg">Demander un devis gratuit</Link>
-            <a href="tel:0667224507" className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all text-lg">Appeler maintenant</a>
-          </div>
-          <p className="text-white/70 mt-6">Réponse sous 2 heures • Sans engagement • Conseil gratuit</p>
-        </div>
-      </section>
-    </div>
+      <ServicePricing
+        hourlyRange={{ min: 30, max: 40 }}
+        aides={aides}
+        exampleNet="Exemple : pack initiation 6 séances de 2 h = ~390 € brut. Avec crédit d'impôt 50 %, ~195 € net. Cumulable avec Pass Numérique CAF (jusqu'à 200 € de chéquiers)."
+      />
+
+      <EngagementsBlock />
+
+      <ServiceFAQ
+        title="Vos questions sur les cours d'informatique"
+        items={faq}
+      />
+
+      <ServiceCrossSell
+        currentSlug="assistance-informatique"
+        recommendedSlugs={[
+          "assistance-administrative",
+          "aide-personnes-agees",
+          "accompagnement-sorties",
+          "teleassistance",
+        ]}
+      />
+
+      <FinalCTA />
+    </>
   );
 }
