@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig, services, personas, agrements } from "@/lib/site-config";
+import NewsletterCapture from "@/components/forms/NewsletterCapture";
 
 const featuredServices = services.filter((s) => s.featured).slice(0, 6);
 
@@ -113,6 +114,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/guides" className="text-white/70 hover:text-secondary text-sm transition-colors">
+                  Guides gratuits
+                </Link>
+              </li>
+              <li>
                 <Link href="/aides-financieres" className="text-white/70 hover:text-secondary text-sm transition-colors">
                   Aides financières
                 </Link>
@@ -135,6 +141,11 @@ export default function Footer() {
               <li>
                 <Link href="/faq" className="text-white/70 hover:text-secondary text-sm transition-colors">
                   FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/agence" className="text-white/70 hover:text-secondary text-sm transition-colors">
+                  Nos agences
                 </Link>
               </li>
               <li>
@@ -196,6 +207,20 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Newsletter */}
+        <div className="mt-12 pt-10 border-t border-white/10 grid lg:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-1">
+              📬 Notre newsletter mensuelle
+            </h3>
+            <p className="text-sm text-white/70 leading-relaxed">
+              1 email par mois maximum : guides, articles, actualité des aides
+              (APA, PCH, crédit d&apos;impôt). Désinscription en 1 clic.
+            </p>
+          </div>
+          <NewsletterCapture variant="footer" source="footer" />
         </div>
 
         {/* Bandeau bas */}

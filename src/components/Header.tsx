@@ -149,6 +149,7 @@ export default function Header() {
               <NavLink href="/aides-financieres">Aides & financement</NavLink>
               <NavLink href="/comment-ca-marche">Notre méthode</NavLink>
               <NavLink href="/blog">Blog</NavLink>
+              <NavLink href="/agence">Agences</NavLink>
               <NavLink href="/contact">Contact</NavLink>
             </nav>
 
@@ -268,6 +269,12 @@ export default function Header() {
             </MobileLink>
             <MobileLink href="/blog" onClick={() => setMobileOpen(false)}>
               Blog
+            </MobileLink>
+            <MobileLink href="/guides" onClick={() => setMobileOpen(false)}>
+              Guides gratuits
+            </MobileLink>
+            <MobileLink href="/agence" onClick={() => setMobileOpen(false)}>
+              Nos agences
             </MobileLink>
             <MobileLink href="/temoignages" onClick={() => setMobileOpen(false)}>
               Témoignages
