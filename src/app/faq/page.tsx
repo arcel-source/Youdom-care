@@ -1,115 +1,90 @@
 import { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
+import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+import FinalCTA from "@/components/sections/FinalCTA";
+import FAQAccordion from "./FAQAccordion";
+import JsonLd from "@/components/seo/JsonLd";
+import { faqSchema } from "@/lib/structured-data";
+import { allFaqItems } from "@/lib/faq-data";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "FAQ — Questions Fréquentes | Youdom Care",
-  description: "Toutes vos questions sur l'aide à domicile, crédit d'impôt, qualifications, week-ends, aides financières.",
+  title: "Questions fréquentes — toutes vos questions sur l'aide à domicile | Youdom Care",
+  description:
+    "30+ questions sur l'aide à domicile : démarrage, intervenants, tarifs, aides financières, services, qualité, espace client. Réponses claires et détaillées.",
 };
-
-const faqs = [
-  {
-    q: "Comment fonctionne le crédit d'impôt de 50% ?",
-    a: "L'ensemble des sommes versées pour aide à domicile ouvre droit à crédit d'impôt 50%, dans limites légales. On vous fournit l'attestation fiscale annuelle et accompagnons vos démarches.",
-  },
-  {
-    q: "Sous quel délai pouvez-vous intervenir ?",
-    a: "Nous garantissons réponse sous 2h après réception demande. En cas d'urgence (retour hospitalisation), on peut organiser intervention 24-48h.",
-  },
-  {
-    q: "Est-ce toujours la même personne qui intervient ?",
-    a: "Oui, c'est principe fondamental. Même auxiliaire à chaque visite, créant lien de confiance. En cas absence exceptionnelle, remplaçant qualifié prend relais.",
-  },
-  {
-    q: "Quelles sont les qualifications de vos intervenants ?",
-    a: "Tous diplômés (DEAVS, DEAES ou équivalent), références vérifiées, formation continue garantie. Vérification systématique antécédents et compétences.",
-  },
-  {
-    q: "Intervenez-vous le week-end et les jours fériés ?",
-    a: "Oui, disponibles 24h/24, 7j/7 incluant week-ends et jours fériés. Services adaptent entièrement à vos besoins, ponctuels ou permanents.",
-  },
-  {
-    q: "Quelles aides financières existent pour l'aide à domicile ?",
-    a: "Plusieurs dispositifs : APA (Allocation Personnalisée Autonomie), PCH (Prestation Compensation Handicap), aides CNAV, aides mutuelle, crédit d'impôt 50%. Nos conseillers vous guident gratuitement.",
-  },
-  {
-    q: "Combien coûte une auxiliaire de vie ?",
-    a: "Tarifs variables selon services, fréquence, localisation. Mais avec crédit d'impôt 50% + aides (APA, PCH), coût réel est moindre. On propose devis personnalisé.",
-  },
-  {
-    q: "Pouvez-vous augmenter/diminuer les heures selon les besoins ?",
-    a: "Absolument. Le plan d'aide évolue avec votre situation. Plus d'heures ou de services ? Moins ? On s'adapte, on ajuste, on n'est jamais figés.",
-  },
-];
 
 export default function FAQPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-3 mb-6">
-            Questions Fréquentes
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-            Tout ce que vous devez savoir sur nos services.
-          </p>
-        </div>
+      <JsonLd data={faqSchema(allFaqItems)} />
+
+      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-14 sm:pb-20 overflow-hidden">
+        <div
+          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
+          style={{ background: "var(--color-secondary)" }}
+          aria-hidden="true"
+        />
+        <Container className="relative z-10">
+          <nav
+            className="flex items-center gap-2 text-sm text-white/70 mb-6"
+            aria-label="Fil d'ariane"
+          >
+            <Link href="/" className="hover:text-secondary transition-colors">
+              Accueil
+            </Link>
+            <span aria-hidden="true">›</span>
+            <span className="text-white/50">FAQ</span>
+          </nav>
+          <div className="max-w-3xl">
+            <span className="eyebrow !text-secondary">Toutes les réponses</span>
+            <h1 className="text-white">
+              Questions fréquentes sur
+              <br />
+              <span className="text-secondary">l&apos;aide à domicile.</span>
+            </h1>
+            <p className="lead !text-white/85 mt-5">
+              Démarrage, intervenants, tarifs, aides financières, qualité — nous
+              avons regroupé les {allFaqItems.length} questions qui reviennent le
+              plus souvent. Recherchez ou parcourez par catégorie.
+            </p>
+          </div>
+        </Container>
       </section>
 
-      {/* FAQ + IMAGE SIDEBAR */}
-      <section className="py-24 bg-warm">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* FAQ List */}
-            <div className="lg:col-span-2">
-              <div className="space-y-3">
-                {faqs.map((item, i) => (
-                  <details key={i} className="border border-gray-200 rounded-2xl overflow-hidden group">
-                    <summary className="cursor-pointer flex items-center justify-between px-6 py-5 text-left hover:bg-warm/80 transition-colors">
-                      <span className="font-semibold text-text pr-4">{item.q}</span>
-                      <span className="text-primary text-xl group-open:rotate-45 transition-transform">+</span>
-                    </summary>
-                    <div className="px-6 pb-5 text-text-light leading-relaxed border-t border-gray-200">
-                      {item.a}
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </div>
+      <section className="bg-warm-grain py-16 sm:py-20">
+        <Container size="wide">
+          <FAQAccordion />
+        </Container>
+      </section>
 
-            {/* Sidebar Image */}
-            <div className="hidden lg:block">
-              <div className="sticky top-32 rounded-3xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/curated/home-mission-helping-exercise.jpg"
-                  alt="Aide à domicile professionnelle Youdom Care"
-                  width={400}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
+      <section className="bg-white py-16">
+        <Container size="narrow">
+          <div className="bg-primary-50 rounded-3xl p-8 sm:p-12 text-center border border-primary-100">
+            <div className="text-4xl mb-3" aria-hidden="true">💬</div>
+            <h2 className="text-primary-dark">Votre question n&apos;est pas listée ?</h2>
+            <p className="text-text-light mt-3 mb-6 max-w-xl mx-auto">
+              Notre coordinatrice vous répond personnellement, par téléphone ou
+              email, dans les 2 heures ouvrées.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button href="/contact" variant="primary" size="md" glow>
+                Poser ma question
+              </Button>
+              <Button
+                href={`tel:${siteConfig.phone.mainE164}`}
+                variant="outline"
+                size="md"
+              >
+                📞 {siteConfig.phone.main}
+              </Button>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Vous n&apos;avez pas trouvé votre réponse ?</h2>
-          <p className="text-white/70 text-lg mb-8">
-            Contactez-nous directement — on répond à tout.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/demander-devis" className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-8 py-4 rounded-full text-lg transition-all cta-glow">
-              Nous Contacter →
-            </a>
-            <a href="tel:+33667224507" className="border-2 border-white/30 hover:border-white text-white font-bold px-8 py-4 rounded-full text-lg transition-all">
-              📞 06 67 22 45 07
-            </a>
-          </div>
-        </div>
-      </section>
+      <FinalCTA />
     </>
   );
 }

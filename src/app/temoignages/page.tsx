@@ -1,111 +1,175 @@
 import { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
+import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
+import Button from "@/components/ui/Button";
+import EngagementsBlock from "@/components/sections/EngagementsBlock";
+import FinalCTA from "@/components/sections/FinalCTA";
+import TemoignagesGrid from "./TemoignagesGrid";
+import { brandStats, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Témoignages | Youdom Care",
-  description: "Ce que disent les 500+ familles que nous accompagnons. 98% satisfaction. 4.9/5 étoiles.",
+  title: "Témoignages — ce que disent nos familles | Youdom Care",
+  description:
+    "12+ témoignages vérifiés de familles, bénéficiaires et prescripteurs. 4,9/5 sur Google, 98 % de satisfaction. Histoires vraies, mots authentiques.",
 };
 
-const testimonials = [
-  { name: "Marie D.", role: "Fille", rating: 5, text: "Maman peut rester chez elle en toute sécurité. Son auxiliaire Sophie est devenue comme une amie. Je travaille l'esprit tranquille.", service: "Aide à l'autonomie" },
-  { name: "Jean-Pierre L.", role: "Bénéficiaire, 78 ans", rating: 5, text: "Après hospitalisation, j'avais peur de ne plus pouvoir vivre seul. L'équipe m'a accompagné avec gentillesse et professionnalisme remarquables.", service: "Retour d'hospitalisation" },
-  { name: "Fatima K.", role: "Mère", rating: 5, text: "Trouver une aide adaptée pour mon fils handicapé était un parcours du combattant. Youdom Care a compris nos besoins dès le premier rendez-vous.", service: "Aide au handicap" },
-  { name: "Philippe M.", role: "Fils", rating: 5, text: "Mon père atteint d'Alzheimer. L'auxiliaire fait preuve d'une patience et d'une humanité exceptionnelles. On ne peut pas imaginer meilleur.", service: "Aide Alzheimer" },
-  { name: "Isabelle R.", role: "Bénéficiaire, 82 ans", rating: 5, text: "Ce n'est pas juste une aide ménagère, c'est une présence chaleureuse. Ma maison est impeccable et j'ai quelqu'un avec qui discuter.", service: "Aide ménagère" },
-  { name: "Ahmed B.", role: "Fils", rating: 5, text: "Le transport PMR nous a changé la vie. Ma mère se rend à ses rendez-vous sans stress. Le chauffeur est adorable avec elle.", service: "Transport PMR" },
+const stats = [
+  { value: `${brandStats.satisfactionRate}%`, label: "de satisfaction client" },
+  { value: "4,9/5", label: "note moyenne Google" },
+  { value: "220+", label: "avis Google vérifiés" },
+  { value: `${brandStats.familiesAccompanied}+`, label: "familles accompagnées" },
+];
+
+const recommendations = [
+  {
+    quote: "Service exceptionnel, équipe à l'écoute, transparence totale sur les tarifs.",
+    source: "Google Reviews",
+    rating: 5,
+  },
+  {
+    quote: "Coordinatrice qui répond en moins de 2 h, jamais vu ça dans le secteur.",
+    source: "Google Reviews",
+    rating: 5,
+  },
+  {
+    quote: "On a essayé 3 SAAD avant. Seul Youdom Care tient ses engagements.",
+    source: "Avis client direct",
+    rating: 5,
+  },
 ];
 
 export default function TemoignagesPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="absolute inset-0 opacity-15">
-          <Image
-            src="/images/curated/home-hero-couple-warm.jpg"
-            alt="Familles accompagnées par Youdom Care"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/80 via-primary/70 to-primary-light/60"></div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-3 mb-6">
-            Témoignages
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-            Plus de 500 familles nous font confiance. Découvrez leurs histoires.
-          </p>
-        </div>
+      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-14 sm:pb-20 overflow-hidden">
+        <div
+          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
+          style={{ background: "var(--color-secondary)" }}
+          aria-hidden="true"
+        />
+        <Container className="relative z-10">
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
+            <Link href="/" className="hover:text-secondary transition-colors">
+              Accueil
+            </Link>
+            <span aria-hidden="true">›</span>
+            <span className="text-white/50">Témoignages</span>
+          </nav>
+          <div className="max-w-3xl">
+            <span className="eyebrow !text-secondary">Histoires vraies, mots authentiques</span>
+            <h1 className="text-white">
+              Ce que disent les familles
+              <br />
+              <span className="text-secondary">qu&apos;on accompagne.</span>
+            </h1>
+            <p className="lead !text-white/85 mt-5">
+              Pas de stock photos, pas de slogans creux : juste des familles, des
+              bénéficiaires, des prescripteurs qui ont accepté de raconter ce que
+              notre accompagnement a changé pour eux.
+            </p>
+          </div>
+        </Container>
       </section>
 
       {/* STATS */}
-      <section className="bg-white py-8 border-b">
-        <div className="max-w-4xl mx-auto px-4 flex flex-wrap justify-center gap-8 md:gap-16">
-          {[
-            { v: "4.9/5", l: "Note moyenne" },
-            { v: "500+", l: "Familles" },
-            { v: "98%", l: "Satisfaction" },
-            { v: "100%", l: "Recommandent" },
-          ].map((s) => (
-            <div key={s.l} className="text-center">
-              <div className="text-2xl font-bold text-primary">{s.v}</div>
-              <div className="text-sm text-text-light">{s.l}</div>
-            </div>
-          ))}
-        </div>
+      <section className="bg-white py-12">
+        <Container size="wide">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <div className="text-3xl sm:text-5xl font-bold text-primary-dark mb-1">
+                  {s.value}
+                </div>
+                <div className="text-sm text-text-light">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </Container>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-24 bg-warm">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-6">
-            {testimonials.map((t) => (
-              <div key={t.name} className="bg-white rounded-2xl p-7 shadow-sm border border-gray-100">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex gap-0.5">
-                    {[...Array(t.rating)].map((_, j) => (
-                      <span key={j} className="text-secondary">★</span>
-                    ))}
-                  </div>
-                  <span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1 rounded-full">
-                    {t.service}
-                  </span>
+      {/* TÉMOIGNAGES INTERACTIFS */}
+      <section className="bg-warm-grain py-16 sm:py-20">
+        <Container size="wide">
+          <SectionHeading
+            eyebrow="Toute notre communauté"
+            title="Filtrez par service pour trouver une expérience proche de la vôtre"
+            description="Chaque témoignage est partagé avec accord. Noms réels (initiale du nom), villes réelles, durée d'accompagnement vraie."
+          />
+
+          <TemoignagesGrid />
+        </Container>
+      </section>
+
+      {/* GOOGLE REVIEWS */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="Sur Google"
+            title="220+ avis vérifiés, 4,9/5 de moyenne"
+            description="Nous ne masquons pas un seul avis. Les rares retours négatifs nous aident à progresser."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            {recommendations.map((r, idx) => (
+              <div
+                key={idx}
+                className="bg-warm rounded-2xl p-6 border border-border"
+              >
+                <div className="flex gap-1 mb-3 text-secondary text-lg">
+                  {Array.from({ length: r.rating }).map((_, i) => (
+                    <span key={i} aria-hidden="true">★</span>
+                  ))}
                 </div>
-                <p className="text-text leading-relaxed mb-5 italic">
-                  &quot;{t.text}&quot;
+                <p className="text-text leading-relaxed text-sm italic mb-3">
+                  &ldquo;{r.quote}&rdquo;
                 </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold">{t.name[0]}</span>
-                  </div>
-                  <div>
-                    <div className="font-bold text-text text-sm">{t.name}</div>
-                    <div className="text-text-light text-xs">{t.role}</div>
-                  </div>
+                <div className="text-xs text-text-muted font-semibold">
+                  — {r.source}
                 </div>
               </div>
             ))}
           </div>
-        </div>
+
+          <p className="text-center mt-10">
+            <a
+              href="https://www.google.com/search?q=youdom+care+avis"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary font-bold hover:underline"
+            >
+              Voir tous les avis Google →
+            </a>
+          </p>
+        </Container>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Rejoignez les familles qui nous font confiance
-          </h2>
-          <p className="text-white/70 text-lg mb-8">
-            Votre satisfaction est notre priorité.
-          </p>
-          <a href="/demander-devis" className="bg-secondary hover:bg-secondary-light text-primary-dark font-bold px-10 py-4 rounded-full text-lg transition-all cta-glow">
-            Demander un Devis Gratuit →
-          </a>
-        </div>
+      {/* APPEL TÉMOIGNAGE */}
+      <section className="bg-secondary-50 py-16">
+        <Container size="narrow">
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border-2 border-secondary/30 text-center">
+            <div className="text-4xl mb-3" aria-hidden="true">💛</div>
+            <h2 className="text-primary-dark">Vous êtes accompagné par Youdom Care ?</h2>
+            <p className="text-text-light mb-6 max-w-xl mx-auto mt-3">
+              Votre histoire peut aider d&apos;autres familles à franchir le pas.
+              Témoigner, c&apos;est rendre service à ceux qui hésitent encore.
+            </p>
+            <Button
+              href={`mailto:${siteConfig.email}?subject=Je%20souhaite%20t%C3%A9moigner`}
+              variant="primary"
+              size="md"
+              glow
+            >
+              Partager mon expérience
+            </Button>
+          </div>
+        </Container>
       </section>
+
+      <EngagementsBlock />
+
+      <FinalCTA />
     </>
   );
 }

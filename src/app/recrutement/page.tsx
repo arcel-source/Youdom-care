@@ -1,249 +1,334 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import RecruitmentForm from "./RecruitmentForm";
+import Link from "next/link";
+import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
+import Button from "@/components/ui/Button";
+import RecruitmentFormV2 from "./RecruitmentFormV2";
+import FinalCTA from "@/components/sections/FinalCTA";
+import { siteConfig, brandStats } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Recrutement - Rejoignez Youdom Care | Auxiliaires de Vie",
+  title:
+    "Rejoindre Youdom Care — auxiliaire de vie en CDI à Paris & IDF | Recrutement",
   description:
-    "Postulez pour devenir auxiliaire de vie chez Youdom Care. Formation continue, équipe bienveillante, clients stables, CDI/CDD disponibles. Rejoignez-nous !",
+    "Auxiliaire de vie, garde d'enfants handicapés, garde de nuit : nous recrutons en CDI. Salaire au-dessus du marché, formations payées, mutuelle, équipe humaine.",
 };
 
-export default function RecruitmentPage() {
+const values = [
+  {
+    icon: "💼",
+    title: "CDI uniquement",
+    description:
+      "Pas d'auto-entrepreneuriat, pas de zéro-heure. CDI à temps choisi (15 h, 25 h, 35 h selon préférence).",
+  },
+  {
+    icon: "💰",
+    title: "Salaire au-dessus du marché",
+    description:
+      "Convention BAD respectée et dépassée. Primes ancienneté, dimanche/férié, transport, mutuelle prise en charge à 60 %.",
+  },
+  {
+    icon: "🎓",
+    title: "Formation continue payée",
+    description:
+      "Une formation par trimestre minimum (Humanitude, manutention, premiers secours, spécialisations) — sur le temps de travail.",
+  },
+  {
+    icon: "🤝",
+    title: "Équipe & coordination",
+    description:
+      "Coordinatrice dédiée, point équipe mensuel, soutien psychologique gratuit (Mon Soutien Psy + cellule interne).",
+  },
+  {
+    icon: "🏠",
+    title: "Bénéficiaires fidèles",
+    description:
+      "Vous gardez les mêmes bénéficiaires dans la durée. Liens construits, sens donné. Pas d'urbanité, pas de turnover.",
+  },
+  {
+    icon: "🚀",
+    title: "Évolution possible",
+    description:
+      "Coordinateur(trice), formateur(trice), référent(e) qualité : nos évolutions internes sont régulières et privilégiées.",
+  },
+];
+
+const offers = [
+  { title: "Auxiliaire de vie · Paris 12 et 75", postes: 4, contrat: "CDI 30 h" },
+  { title: "Garde de nuit · Paris/Boulogne", postes: 2, contrat: "CDI 28 h nuit" },
+  { title: "Aide à domicile · Vincennes / Saint-Mandé", postes: 3, contrat: "CDI 25 h" },
+  { title: "Garde d'enfants handicapés · Le Kremlin-Bicêtre", postes: 1, contrat: "CDI 20 h" },
+  { title: "Coordinateur(trice) de secteur · IDF", postes: 1, contrat: "CDI cadre" },
+  { title: "Chauffeur PMR · Paris/Boulogne", postes: 2, contrat: "CDI 35 h" },
+];
+
+const recruitmentSteps = [
+  { step: 1, title: "Candidature en ligne", description: "Formulaire ci-dessous, 5 min." },
+  { step: 2, title: "Entretien RH", description: "Échange téléphonique de 30 min sur votre parcours et motivations." },
+  { step: 3, title: "Mise en situation", description: "Entretien physique avec une mise en situation pratique (manutention, communication)." },
+  { step: 4, title: "Vérifications", description: "Contrôle casier B3, références anciens employeurs, diplômes." },
+  { step: 5, title: "Période d'observation", description: "Vos 3 premières missions accompagnées par votre coordinatrice." },
+];
+
+export default function RecrutementPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       {/* HERO */}
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-16 bg-gradient-to-br from-primary-dark via-primary to-primary-light overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Rejoignez notre équipe
+      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-14 sm:pb-20 overflow-hidden">
+        <div
+          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
+          style={{ background: "var(--color-secondary)" }}
+          aria-hidden="true"
+        />
+        <Container className="relative z-10">
+          <nav
+            className="flex items-center gap-2 text-sm text-white/70 mb-6"
+            aria-label="Fil d'ariane"
+          >
+            <Link href="/" className="hover:text-secondary transition-colors">
+              Accueil
+            </Link>
+            <span aria-hidden="true">›</span>
+            <span className="text-white/50">Recrutement</span>
+          </nav>
+          <div className="grid lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7">
+              <span className="eyebrow !text-secondary">Nous recrutons en CDI</span>
+              <h1 className="text-white">
+                Un métier de sens.
+                <br />
+                <span className="text-secondary">Une équipe qui prend soin de vous.</span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-6">
-                Devenez auxiliaire de vie chez Youdom Care et faites la différence dans la vie de nos clients. 
-                Nous cherchons des personnes bienveillantes, motivées et engagées.
+              <p className="lead !text-white/85 mt-5">
+                Vous avez un cœur d&apos;auxiliaire de vie ? Nous avons un
+                contrat à votre hauteur : CDI, salaire au-dessus du marché,
+                formations payées, équipe qui vous soutient.
               </p>
-              <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
-                <span className="bg-white/10 text-white/90 text-sm font-medium px-4 py-2 rounded-full border border-white/20">✅ CDI/CDD</span>
-                <span className="bg-white/10 text-white/90 text-sm font-medium px-4 py-2 rounded-full border border-white/20">📚 Formation continue</span>
-                <span className="bg-white/10 text-white/90 text-sm font-medium px-4 py-2 rounded-full border border-white/20">🤝 Équipe bienveillante</span>
+              <div className="flex flex-col sm:flex-row gap-3 mt-7">
+                <Button href="#offres" variant="primary" size="lg" glow>
+                  Voir les postes ouverts
+                </Button>
+                <Button href="#candidature" variant="white" size="lg">
+                  Postuler maintenant
+                </Button>
               </div>
             </div>
-            <div className="hidden lg:flex items-center justify-center">
-              <div className="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-2xl bg-gray-200">
+            <div className="lg:col-span-5">
+              <div className="relative h-72 sm:h-96 rounded-3xl overflow-hidden shadow-lifted">
                 <Image
-                  src="/images/curated/service-aide-personnes-agees.jpg"
-                  alt="Équipe Youdom Care"
+                  src="/images/curated/comment-ca-marche-caregiver.jpg"
+                  alt="Auxiliaire de vie Youdom Care en intervention"
                   fill
-                  className="object-cover"
                   priority
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                 />
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* POURQUOI NOUS */}
-      <section className="py-12 sm:py-16 md:py-20 bg-warm">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-4 text-center">Pourquoi travailler chez Youdom Care ?</h2>
-          <p className="text-text-light text-center mb-12 max-w-2xl mx-auto">
-            Au-delà d'un job, c'est une vocation. Voici ce que nous offrons à nos équipes.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: "❤️",
-                title: "Faire la différence",
-                desc: "Accompagnez nos clients au quotidien. Apportez du bien-être, de la dignité, et du sourire dans leur vie.",
-              },
-              {
-                icon: "🎓",
-                title: "Formation continue",
-                desc: "Accès à des formations régulières : gestes techniques, maladies neurodégénératives, premiers secours, communication.",
-              },
-              {
-                icon: "🏢",
-                title: "Stabilité d'emploi",
-                desc: "Clients stables et réguliers. Pas de recherche constante. Plannings connus à l'avance.",
-              },
-              {
-                icon: "👥",
-                title: "Équipe bienveillante",
-                desc: "Manager à l'écoute, collègues sympas, ambiance sans stress. Vraiment.",
-              },
-              {
-                icon: "💰",
-                title: "Salaire & avantages",
-                desc: "Salaire au-dessus du marché local, congés, avantages sociaux, tickets restaurant.",
-              },
-              {
-                icon: "🌍",
-                title: "Développement professionnel",
-                desc: "Évolutions possibles : responsable de secteur, formatrice, coordinatrice. Nous croyons en nos talents.",
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="font-bold text-text mb-2">{item.title}</h3>
-                <p className="text-text-light text-sm leading-relaxed">{item.desc}</p>
+      {/* CHIFFRES */}
+      <section className="bg-white py-12">
+        <Container size="wide">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
+            <Stat value={`${brandStats.caregiversCount}`} label="auxiliaires en CDI" />
+            <Stat value="13 €" label="net horaire moyen" hint="hors primes" />
+            <Stat value="4 / an" label="formations payées" />
+            <Stat value="< 5 %" label="de turnover annuel" />
+          </div>
+        </Container>
+      </section>
+
+      {/* VALEURS */}
+      <section className="bg-warm-grain py-16 sm:py-20">
+        <Container size="wide">
+          <SectionHeading
+            eyebrow="Pourquoi nous rejoindre"
+            title="6 raisons concrètes de choisir Youdom Care"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {values.map((v) => (
+              <div
+                key={v.title}
+                className="bg-white rounded-2xl p-6 border border-border hover:shadow-lifted transition-shadow"
+              >
+                <div
+                  className="w-12 h-12 rounded-2xl bg-primary-50 flex items-center justify-center text-2xl mb-4"
+                  aria-hidden="true"
+                >
+                  {v.icon}
+                </div>
+                <h3 className="text-base font-bold text-primary-dark mb-2">{v.title}</h3>
+                <p className="text-sm text-text-light leading-relaxed">{v.description}</p>
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* PROFIL RECHERCHÉ */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-4 text-center">Quel profil recherchons-nous ?</h2>
-          <p className="text-text-light text-center mb-10 max-w-2xl mx-auto">
-            Pas besoin d'avoir tout. L'essentiel, c'est l'envie, le cœur et la bienveillance.
-          </p>
+      {/* OFFRES */}
+      <section id="offres" className="bg-white py-16 sm:py-20">
+        <Container size="wide">
+          <SectionHeading
+            eyebrow="Postes ouverts"
+            title="13 postes à pourvoir cette saison"
+            description="Les besoins sont permanents. Si votre profil ne match pas exactement, candidature spontanée bienvenue."
+          />
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Compétences requises */}
-            <div>
-              <h3 className="text-xl font-bold text-primary mb-5 flex items-center gap-2">
-                <span className="text-2xl">✅</span> Compétences clés
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  "Diplôme DEAVS, ADVF, ou équivalent (ou expérience prouvée)",
-                  "Bonne hygiène et rigueur dans les tâches",
-                  "Sens du service client et bienveillance",
-                  "Autonomie et responsabilité",
-                  "Adaptabilité (différents clients, besoins variés)",
-                  "Permis B et véhicule (pour se déplacer entre les clients)",
-                  "Français courant, compréhension écrite et orale",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-text-light">
-                    <span className="text-secondary mt-1 shrink-0">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Qualités personnelles */}
-            <div>
-              <h3 className="text-xl font-bold text-primary mb-5 flex items-center gap-2">
-                <span className="text-2xl">💪</span> Qualités essentielles
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  "Empathie et capacité d'écoute",
-                  "Patience et calme",
-                  "Discrétion et confidentialité",
-                  "Ponctualité et fiabilité",
-                  "Respect du cadre professionnel",
-                  "Capacité à travailler en autonomie",
-                  "Motivation pour accompagner au long terme",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-text-light">
-                    <span className="text-secondary mt-1 shrink-0">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-10 p-6 bg-primary/5 border-l-4 border-primary rounded-lg">
-            <p className="text-text font-medium">
-              ℹ️ <strong>Important :</strong> Nous valorisons la diversité. Pas besoin d'être parfait(e). 
-              Ce qui compte, c'est votre envie d'apporter du soin, votre fiabilité et votre respect pour les gens.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESSUS DE CANDIDATURE */}
-      <section className="py-12 sm:py-16 md:py-20 bg-warm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-10 text-center">Comment ça se passe ?</h2>
-          <div className="space-y-6">
-            {[
-              {
-                num: "1",
-                title: "Vous postulez en ligne",
-                desc: "Remplissez le formulaire ci-dessous. On vous demande l'essentiel : infos de contact, CV, motivations, disponibilités.",
-              },
-              {
-                num: "2",
-                title: "Sélection de votre candidature",
-                desc: "Notre RH examine votre profil. Si ça match, on vous appelle dans les 48h.",
-              },
-              {
-                num: "3",
-                title: "Entretien téléphonique",
-                desc: "Rendez-vous 15-20 min avec notre coordinatrice pour parler de vos expériences, vos attentes, nos besoins.",
-              },
-              {
-                num: "4",
-                title: "Entretien en face à face",
-                desc: "Visite à nos bureaux (ou en visio). On fait connaissance, on vous explique notre philosophie, nos équipes.",
-              },
-              {
-                num: "5",
-                title: "Vérification des références",
-                desc: "On contacte vos anciens employeurs pour valider vos expériences et votre fiabilité.",
-              },
-              {
-                num: "6",
-                title: "Offre & contrat",
-                desc: "Proposition CDI/CDD selon les besoins. Signature et c'est parti !",
-              },
-            ].map((step, idx) => (
-              <div key={idx} className="flex gap-4 sm:gap-6">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-secondary text-primary rounded-full flex items-center justify-center font-bold text-lg sm:text-xl shrink-0">
-                  {step.num}
-                </div>
-                <div className="flex-1 pt-1">
-                  <h3 className="font-bold text-text mb-1">{step.title}</h3>
-                  <p className="text-text-light text-sm">{step.desc}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {offers.map((o, idx) => (
+              <div
+                key={idx}
+                className="bg-warm rounded-2xl p-5 border border-border hover:border-primary hover:bg-white transition-all"
+              >
+                <h3 className="text-base font-bold text-primary-dark mb-2">{o.title}</h3>
+                <div className="flex items-center justify-between text-xs text-text-light">
+                  <span>{o.contrat}</span>
+                  <span className="font-bold text-primary">
+                    {o.postes} poste{o.postes > 1 ? "s" : ""}
+                  </span>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+
+          <p className="text-center text-text-light mt-8 text-sm">
+            Vous n&apos;êtes pas dans cette liste ? <strong>Toute candidature sérieuse est étudiée.</strong>
+          </p>
+        </Container>
       </section>
 
-      {/* FORMULAIRE */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="max-w-2xl lg:max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text mb-2 text-center">Postulez maintenant</h2>
-          <p className="text-text-light text-center mb-10">
-            Remplissez le formulaire ci-dessous. On vous contactera rapidement.
-          </p>
-          <RecruitmentForm />
-        </div>
-      </section>
-
-      {/* CONTACT DIRECT */}
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-primary to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Des questions ?</h2>
-          <p className="text-white/80 mb-8">
-            Contactez directement notre responsable RH.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:rh@youdomcare.com"
-              className="w-full sm:w-auto px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 text-lg min-h-[44px] text-center"
-            >
-              📧 rh@youdomcare.com
-            </a>
-            <a
-              href="tel:0184807297"
-              className="w-full sm:w-auto px-8 py-4 bg-secondary hover:bg-secondary-light text-primary font-bold rounded-xl text-lg min-h-[44px] text-center"
-            >
-              📞 01 84 80 72 97
-            </a>
+      {/* PROCESS */}
+      <section className="bg-warm-grain py-16 sm:py-20">
+        <Container size="wide">
+          <SectionHeading
+            eyebrow="Notre process"
+            title="5 étapes claires pour vous rejoindre"
+            description="Pas de filtres opaques. Tout est transparent."
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {recruitmentSteps.map((s) => (
+              <div
+                key={s.step}
+                className="bg-white rounded-2xl p-5 border border-border"
+              >
+                <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold mb-3">
+                  {s.step}
+                </div>
+                <h3 className="text-sm font-bold text-primary-dark mb-1">{s.title}</h3>
+                <p className="text-xs text-text-light leading-snug">{s.description}</p>
+              </div>
+            ))}
           </div>
-        </div>
+        </Container>
       </section>
+
+      {/* CANDIDATURE */}
+      <section id="candidature" className="bg-white py-16 sm:py-20">
+        <Container size="wide">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14">
+            <div className="lg:col-span-7">
+              <span className="eyebrow">Candidature en ligne</span>
+              <h2>Postulez en 5 minutes</h2>
+              <p className="lead mt-3 mb-8">
+                Nous étudions toutes les candidatures sérieuses. Réponse sous{" "}
+                <strong>5 jours ouvrés</strong>.
+              </p>
+              <RecruitmentFormV2 />
+            </div>
+
+            <aside className="lg:col-span-5">
+              <div className="lg:sticky lg:top-24 space-y-5">
+                <div className="bg-primary-50 rounded-2xl p-6 border border-primary-100">
+                  <h3 className="font-bold text-primary-dark text-base mb-3">
+                    📞 Préférez le téléphone ?
+                  </h3>
+                  <p className="text-sm text-text-light leading-relaxed mb-4">
+                    Notre équipe RH vous écoute du lundi au vendredi.
+                  </p>
+                  <a
+                    href={`tel:${siteConfig.phone.mainE164}`}
+                    className="inline-flex items-center gap-2 font-bold text-primary hover:text-primary-light text-sm"
+                  >
+                    <span aria-hidden="true">📞</span> {siteConfig.phone.main}
+                  </a>
+                </div>
+
+                <div className="bg-secondary-50 rounded-2xl p-6 border border-secondary/30">
+                  <h3 className="font-bold text-primary-dark text-base mb-3">
+                    💼 Email recrutement
+                  </h3>
+                  <p className="text-sm text-text-light mb-3">
+                    Pour envoyer directement votre CV ou poser une question RH.
+                  </p>
+                  <a
+                    href={`mailto:${siteConfig.emailRecruitment}`}
+                    className="inline-flex items-center gap-2 font-bold text-primary hover:text-primary-light text-sm break-all"
+                  >
+                    <span aria-hidden="true">✉️</span> {siteConfig.emailRecruitment}
+                  </a>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 border border-border">
+                  <h3 className="font-bold text-primary-dark text-base mb-3">
+                    📋 Documents à prévoir
+                  </h3>
+                  <ul className="space-y-2 text-sm text-text-light">
+                    <li className="flex gap-2">
+                      <span className="text-primary shrink-0">✓</span>
+                      <span>CV à jour</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-primary shrink-0">✓</span>
+                      <span>Diplômes (DEAES, DEAVS) — si applicable</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-primary shrink-0">✓</span>
+                      <span>Pièce d&apos;identité valide</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-primary shrink-0">✓</span>
+                      <span>Casier judiciaire B3 (à jour 3 mois)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-primary shrink-0">✓</span>
+                      <span>Permis B + véhicule pour certains postes</span>
+                    </li>
+                  </ul>
+                  <p className="text-xs text-text-muted mt-3 italic">
+                    Documents à envoyer après ce premier contact.
+                  </p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </Container>
+      </section>
+
+      <FinalCTA />
+    </>
+  );
+}
+
+function Stat({
+  value,
+  label,
+  hint,
+}: {
+  value: string;
+  label: string;
+  hint?: string;
+}) {
+  return (
+    <div>
+      <div className="text-3xl sm:text-5xl font-bold text-primary-dark mb-1">{value}</div>
+      <div className="text-sm text-text-light leading-tight">
+        {label}
+        {hint ? <span className="block text-xs text-text-muted mt-0.5">({hint})</span> : null}
+      </div>
     </div>
   );
 }
