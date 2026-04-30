@@ -35,7 +35,7 @@ export const images = {
     },
     "aide-handicap": {
       src: `${BASE}/service-aide-handicap.jpg`,
-      alt: "Aide à domicile pour personne en fauteuil roulant",
+      alt: "Auxiliaire accompagnant une personne en fauteuil roulant à domicile, dans une interaction chaleureuse",
     },
     "garde-enfants-handicap": {
       src: `${BASE}/service-garde-enfants-handicap.jpg`,
