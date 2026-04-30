@@ -2,258 +2,415 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { siteConfig, services, personas } from "@/lib/site-config";
 
-const services = [
-  { href: "/services/aide-personnes-agees", label: "Aide personnes âgées" },
-  { href: "/services/aide-handicap", label: "Aide handicap" },
-  { href: "/services/garde-enfants-handicap", label: "Garde d'enfants" },
-  { href: "/services/aide-menagere", label: "Aide ménagère" },
-  { href: "/services/garde-nuit", label: "Présence de nuit" },
-  { href: "/services/accompagnement-sorties", label: "Accompagnement" },
-];
+const featuredServices = services.filter((s) => s.featured).slice(0, 6);
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<"services" | "publics" | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 16);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change (resize as proxy)
   useEffect(() => {
     const close = () => setMobileOpen(false);
     window.addEventListener("resize", close);
     return () => window.removeEventListener("resize", close);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg"
-          : "bg-white border-b border-gray-100 shadow-sm"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0" onClick={() => setMobileOpen(false)}>
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <span className="text-white font-bold text-lg">Y</span>
-            </div>
-            <span className="font-bold text-text hidden sm:inline">Youdom Care</span>
-          </Link>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-text-light hover:text-primary transition-colors text-sm">
-              Accueil
-            </Link>
-            <div className="relative group">
-              <button className="text-text-light hover:text-primary transition-colors text-sm flex items-center gap-1 h-16">
-                Services <span className="text-xs">▼</span>
-              </button>
-              <div className="absolute left-0 top-full w-56 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 -mt-1 pt-1">
-                <div className="py-2">
-                  <Link href="/services" className="block px-4 py-2.5 hover:bg-warm text-sm text-text font-medium border-b border-gray-100">
-                    Tous les services
-                  </Link>
-                  {services.map((s) => (
-                    <Link key={s.href} href={s.href} className="block px-4 py-2.5 hover:bg-warm text-sm text-text">
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <Link href="/comment-ca-marche" className="text-text-light hover:text-primary transition-colors text-sm">
-              Comment ça marche
-            </Link>
-            <Link href="/aides-financieres" className="text-text-light hover:text-primary transition-colors text-sm">
-              Aides financières
-            </Link>
-            <Link href="/contact" className="text-text-light hover:text-primary transition-colors text-sm">
-              Contact
-            </Link>
-          </nav>
-
-          {/* CTA buttons + Hamburger */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <Link
-              href="/demander-devis"
-              className="hidden md:flex px-4 lg:px-5 py-2 bg-secondary hover:bg-secondary-light text-primary-dark font-bold rounded-lg text-sm transition-colors min-h-[44px] items-center"
-            >
-              Devis Gratuit
-            </Link>
+    <>
+      {/* Top bar avec horaires & téléphone — desktop uniquement */}
+      <div className="hidden lg:block bg-primary-dark text-white text-sm">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-2 flex items-center justify-between">
+          <div className="flex items-center gap-6 text-white/80">
+            <span className="inline-flex items-center gap-1.5">
+              <span aria-hidden="true">🕒</span> {siteConfig.phone.hours}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <span aria-hidden="true">📍</span> {siteConfig.address.full}
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
             <a
-              href="tel:0184807297"
-              className="px-4 py-2 sm:px-5 bg-primary hover:bg-primary-light text-white font-bold rounded-lg text-sm transition-colors min-h-[44px] flex items-center"
+              href={`mailto:${siteConfig.email}`}
+              className="text-white/80 hover:text-secondary transition-colors"
             >
-              <span className="hidden sm:inline">01 84 80 72 97</span>
-              <span className="sm:hidden text-lg">📞</span>
+              {siteConfig.email}
             </a>
-
-            {/* Hamburger button - mobile only */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-gray-100 transition-colors"
-              aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-expanded={mobileOpen}
-            >
-              <span
-                className={`w-6 h-0.5 bg-primary transition-all duration-300 ${
-                  mobileOpen ? "rotate-45 translate-y-2" : ""
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-primary transition-all duration-300 ${
-                  mobileOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-primary transition-all duration-300 ${
-                  mobileOpen ? "-rotate-45 -translate-y-2" : ""
-                }`}
-              />
-            </button>
+            <span className="text-white/30">|</span>
+            <Link href="/recrutement" className="text-white/80 hover:text-secondary transition-colors">
+              Recrutement
+            </Link>
+            <span className="text-white/30">|</span>
+            <Link href="/espace-client" className="text-white/80 hover:text-secondary transition-colors">
+              Espace client
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-md shadow-soft border-b border-border-light"
+            : "bg-white border-b border-border-light"
         }`}
       >
-        <nav className="bg-white border-t border-gray-100 shadow-xl px-4 py-4 space-y-1 overflow-y-auto max-h-[75vh]">
-          <Link
-            href="/"
-            onClick={() => setMobileOpen(false)}
-            className="block px-4 py-3 text-base font-medium text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
-          >
-            Accueil
-          </Link>
-
-          {/* Services accordion */}
-          <div>
-            <button
-              onClick={() => setServicesOpen(!servicesOpen)}
-              className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 lg:h-20">
+            {/* Logo */}
+            <Link
+              href="/"
+              className="flex items-center gap-2.5 shrink-0"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Youdom Care - Accueil"
             >
-              <span>Services</span>
-              <span
-                className={`text-primary transition-transform duration-200 ${
-                  servicesOpen ? "rotate-180" : ""
-                }`}
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center shadow-card"
+                style={{
+                  background:
+                    "linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)",
+                }}
+                aria-hidden="true"
               >
-                ▼
-              </span>
-            </button>
-            <div
-              className={`overflow-hidden transition-all duration-300 ${
-                servicesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-              }`}
+                <span className="text-white font-bold text-xl font-display">Y</span>
+              </div>
+              <div className="hidden sm:flex flex-col leading-none">
+                <span className="font-bold text-primary-dark text-lg font-display">
+                  Youdom <span className="text-secondary-dark">Care</span>
+                </span>
+                <span className="text-[10px] text-text-light tracking-wider uppercase">
+                  Aide à domicile
+                </span>
+              </div>
+            </Link>
+
+            {/* Desktop nav */}
+            <nav className="hidden lg:flex items-center gap-1">
+              {/* Mega-menu Services */}
+              <DropdownNav label="Services" wide>
+                <div className="grid grid-cols-2 gap-1 p-3 w-[560px]">
+                  <Link
+                    href="/services"
+                    className="col-span-2 flex items-center justify-between p-3 rounded-lg bg-warm hover:bg-primary-50 group"
+                  >
+                    <div>
+                      <div className="font-bold text-primary-dark">Tous nos services</div>
+                      <div className="text-xs text-text-light">Voir l&apos;ensemble du catalogue</div>
+                    </div>
+                    <span className="text-primary group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+                  </Link>
+                  {featuredServices.map((s) => (
+                    <Link
+                      key={s.slug}
+                      href={`/services/${s.slug}`}
+                      className="p-2.5 rounded-lg hover:bg-warm transition-colors"
+                    >
+                      <div className="text-sm font-semibold text-primary-dark">{s.title}</div>
+                      <div className="text-xs text-text-light line-clamp-1">{s.summary}</div>
+                    </Link>
+                  ))}
+                </div>
+              </DropdownNav>
+
+              {/* Mega-menu Publics */}
+              <DropdownNav label="Nos publics">
+                <div className="p-2 w-[280px]">
+                  {personas.map((p) => (
+                    <Link
+                      key={p.id}
+                      href={p.href}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-warm transition-colors"
+                    >
+                      <span className="text-2xl shrink-0" aria-hidden="true">{p.icon}</span>
+                      <div>
+                        <div className="text-sm font-semibold text-primary-dark">{p.label}</div>
+                        <div className="text-xs text-text-light line-clamp-1">{p.description}</div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </DropdownNav>
+
+              <NavLink href="/aides-financieres">Aides & financement</NavLink>
+              <NavLink href="/comment-ca-marche">Notre méthode</NavLink>
+              <NavLink href="/temoignages">Témoignages</NavLink>
+              <NavLink href="/contact">Contact</NavLink>
+            </nav>
+
+            {/* CTA + hamburger */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <a
+                href={`tel:${siteConfig.phone.mainE164}`}
+                className="hidden md:flex items-center gap-2 px-3 lg:px-4 py-2 text-primary-dark hover:text-primary font-bold transition-colors text-sm"
+              >
+                <span aria-hidden="true">📞</span>
+                <span className="hidden lg:inline">{siteConfig.phone.main}</span>
+              </a>
+              <Link
+                href="/demander-devis"
+                className="hidden md:inline-flex items-center px-4 lg:px-5 py-2.5 bg-secondary hover:bg-secondary-light text-primary-dark font-bold rounded-lg text-sm transition-all min-h-[44px] cta-glow"
+              >
+                Devis gratuit
+              </Link>
+
+              {/* Mobile : tel + hamburger */}
+              <a
+                href={`tel:${siteConfig.phone.mainE164}`}
+                className="md:hidden flex items-center justify-center w-11 h-11 bg-primary text-white rounded-lg"
+                aria-label={`Appeler ${siteConfig.phone.main}`}
+              >
+                <span className="text-lg" aria-hidden="true">📞</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="lg:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-warm transition-colors"
+                aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                aria-expanded={mobileOpen}
+              >
+                <span
+                  className={`w-6 h-0.5 bg-primary transition-all duration-300 ${
+                    mobileOpen ? "rotate-45 translate-y-2" : ""
+                  }`}
+                />
+                <span
+                  className={`w-6 h-0.5 bg-primary transition-all duration-300 ${
+                    mobileOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`w-6 h-0.5 bg-primary transition-all duration-300 ${
+                    mobileOpen ? "-rotate-45 -translate-y-2" : ""
+                  }`}
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            mobileOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="bg-white border-t border-border-light shadow-xl px-4 py-4 space-y-1 overflow-y-auto max-h-[80vh]">
+            <MobileLink href="/" onClick={() => setMobileOpen(false)}>
+              Accueil
+            </MobileLink>
+
+            {/* Services accordion */}
+            <MobileAccordion
+              label="Services"
+              isOpen={mobileSection === "services"}
+              onToggle={() => setMobileSection(mobileSection === "services" ? null : "services")}
             >
               <Link
                 href="/services"
                 onClick={() => setMobileOpen(false)}
-                className="block pl-8 pr-4 py-2.5 text-sm font-medium text-primary hover:bg-warm rounded-lg transition-colors"
+                className="block pl-8 pr-4 py-2.5 text-sm font-semibold text-primary hover:bg-warm rounded-lg"
               >
-                Tous les services
+                Tous les services →
               </Link>
-              {services.map((s) => (
+              {featuredServices.map((s) => (
                 <Link
-                  key={s.href}
-                  href={s.href}
+                  key={s.slug}
+                  href={`/services/${s.slug}`}
                   onClick={() => setMobileOpen(false)}
-                  className="block pl-8 pr-4 py-2.5 text-sm text-text-light hover:text-primary hover:bg-warm rounded-lg transition-colors"
+                  className="block pl-8 pr-4 py-2.5 text-sm text-text-light hover:text-primary hover:bg-warm rounded-lg"
                 >
-                  {s.label}
+                  {s.title}
                 </Link>
               ))}
-            </div>
-          </div>
+            </MobileAccordion>
 
-          <Link
-            href="/comment-ca-marche"
-            onClick={() => setMobileOpen(false)}
-            className="block px-4 py-3 text-base font-medium text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
-          >
-            Comment ça marche
-          </Link>
-          <Link
-            href="/aides-financieres"
-            onClick={() => setMobileOpen(false)}
-            className="block px-4 py-3 text-base font-medium text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
-          >
-            Aides financières
-          </Link>
-          <Link
-            href="/qui-sommes-nous"
-            onClick={() => setMobileOpen(false)}
-            className="block px-4 py-3 text-base font-medium text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
-          >
-            Qui sommes-nous
-          </Link>
-          <Link
-            href="/temoignages"
-            onClick={() => setMobileOpen(false)}
-            className="block px-4 py-3 text-base font-medium text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
-          >
-            Témoignages
-          </Link>
-          <Link
-            href="/faq"
-            onClick={() => setMobileOpen(false)}
-            className="block px-4 py-3 text-base font-medium text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
-          >
-            FAQ
-          </Link>
-          <Link
-            href="/contact"
-            onClick={() => setMobileOpen(false)}
-            className="block px-4 py-3 text-base font-medium text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
-          >
-            Contact
-          </Link>
-
-          {/* Mobile CTA buttons */}
-          <div className="pt-3 border-t border-gray-100 space-y-3">
-            <Link
-              href="/demander-devis"
-              onClick={() => setMobileOpen(false)}
-              className="block w-full px-6 py-3 bg-secondary hover:bg-secondary-light text-primary-dark font-bold rounded-lg text-center text-base transition-colors min-h-[44px]"
+            <MobileAccordion
+              label="Nos publics"
+              isOpen={mobileSection === "publics"}
+              onToggle={() => setMobileSection(mobileSection === "publics" ? null : "publics")}
             >
-              Devis Gratuit →
-            </Link>
-            <div className="flex gap-3">
-              <a
-                href="tel:0184807297"
-                className="flex-1 px-4 py-3 bg-primary text-white font-bold rounded-lg text-center text-sm transition-colors min-h-[44px] flex items-center justify-center"
+              {personas.map((p) => (
+                <Link
+                  key={p.id}
+                  href={p.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-2 pl-8 pr-4 py-2.5 text-sm text-text-light hover:text-primary hover:bg-warm rounded-lg"
+                >
+                  <span aria-hidden="true">{p.icon}</span> {p.label}
+                </Link>
+              ))}
+            </MobileAccordion>
+
+            <MobileLink href="/aides-financieres" onClick={() => setMobileOpen(false)}>
+              Aides & financement
+            </MobileLink>
+            <MobileLink href="/comment-ca-marche" onClick={() => setMobileOpen(false)}>
+              Notre méthode
+            </MobileLink>
+            <MobileLink href="/qui-sommes-nous" onClick={() => setMobileOpen(false)}>
+              Qui sommes-nous
+            </MobileLink>
+            <MobileLink href="/temoignages" onClick={() => setMobileOpen(false)}>
+              Témoignages
+            </MobileLink>
+            <MobileLink href="/faq" onClick={() => setMobileOpen(false)}>
+              FAQ
+            </MobileLink>
+            <MobileLink href="/recrutement" onClick={() => setMobileOpen(false)}>
+              Recrutement
+            </MobileLink>
+            <MobileLink href="/contact" onClick={() => setMobileOpen(false)}>
+              Contact
+            </MobileLink>
+
+            {/* Mobile CTA */}
+            <div className="pt-4 mt-2 border-t border-border-light space-y-3">
+              <Link
+                href="/demander-devis"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full px-6 py-3.5 bg-secondary hover:bg-secondary-light text-primary-dark font-bold rounded-xl text-center text-base min-h-[48px] cta-glow"
               >
-                📞 01 84 80 72 97
-              </a>
-              <a
-                href="tel:0667224507"
-                className="flex-1 px-4 py-3 border-2 border-primary text-primary font-bold rounded-lg text-center text-sm transition-colors min-h-[44px] flex items-center justify-center"
-              >
-                📱 06 67 22 45 07
-              </a>
+                Devis gratuit en 3 min →
+              </Link>
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href={`tel:${siteConfig.phone.mainE164}`}
+                  className="px-4 py-3 bg-primary text-white font-bold rounded-xl text-center text-sm min-h-[44px] flex items-center justify-center gap-1.5"
+                >
+                  <span aria-hidden="true">📞</span> Fixe
+                </a>
+                <a
+                  href={`tel:${siteConfig.phone.mobileE164}`}
+                  className="px-4 py-3 border-2 border-primary text-primary font-bold rounded-xl text-center text-sm min-h-[44px] flex items-center justify-center gap-1.5"
+                >
+                  <span aria-hidden="true">📱</span> Mobile
+                </a>
+              </div>
+              <p className="text-xs text-text-muted text-center pt-1">
+                {siteConfig.phone.hours}
+              </p>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
+      </header>
+    </>
+  );
+}
+
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="px-3 py-2 text-text-light hover:text-primary font-medium transition-colors text-sm rounded-lg hover:bg-warm"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function DropdownNav({
+  label,
+  children,
+  wide,
+}: {
+  label: string;
+  children: React.ReactNode;
+  wide?: boolean;
+}) {
+  return (
+    <div className="relative group">
+      <button
+        type="button"
+        className="px-3 py-2 text-text-light group-hover:text-primary font-medium transition-colors text-sm flex items-center gap-1 h-16 lg:h-20 rounded-lg group-hover:bg-warm"
+      >
+        {label}
+        <span className="text-[10px] group-hover:rotate-180 transition-transform" aria-hidden="true">
+          ▼
+        </span>
+      </button>
+      <div
+        className={`absolute left-0 top-full bg-white rounded-2xl shadow-lifted border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ${
+          wide ? "" : ""
+        }`}
+      >
+        {children}
       </div>
-    </header>
+    </div>
+  );
+}
+
+function MobileLink({
+  href,
+  onClick,
+  children,
+}: {
+  href: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className="block px-4 py-3 text-base font-semibold text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function MobileAccordion({
+  label,
+  isOpen,
+  onToggle,
+  children,
+}: {
+  label: string;
+  isOpen: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={onToggle}
+        className="w-full flex items-center justify-between px-4 py-3 text-base font-semibold text-text hover:text-primary hover:bg-warm rounded-lg transition-colors"
+        aria-expanded={isOpen}
+      >
+        <span>{label}</span>
+        <span
+          className={`text-primary transition-transform duration-200 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+          aria-hidden="true"
+        >
+          ▼
+        </span>
+      </button>
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="py-1">{children}</div>
+      </div>
+    </div>
   );
 }
