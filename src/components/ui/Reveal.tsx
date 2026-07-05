@@ -28,6 +28,12 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // Garde-fou : si l'API n'est pas disponible, on révèle immédiatement
+    // pour ne jamais laisser de contenu masqué.
+    if (typeof IntersectionObserver === "undefined") {
+      setVisible(true);
+      return;
+    }
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

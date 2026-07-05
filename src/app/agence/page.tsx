@@ -59,7 +59,7 @@ export default function AgenceIndexPage() {
                         {a.city}
                       </h3>
                       <p className="text-sm text-text-light line-clamp-2 mt-2">
-                        {a.coverage.slice(0, 4).join(" · ")}
+                        {a.neighborhoods.slice(0, 4).join(" · ")}
                       </p>
                       <span className="inline-flex items-center gap-1 text-sm font-bold text-primary mt-4 group-hover:gap-2 transition-all">
                         Voir l&apos;agence →
