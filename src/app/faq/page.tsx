@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 import FinalCTA from "@/components/sections/FinalCTA";
 import FAQAccordion from "./FAQAccordion";
@@ -20,38 +20,18 @@ export default function FAQPage() {
     <>
       <JsonLd data={faqSchema(allFaqItems)} />
 
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-14 sm:pb-20 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-        <Container className="relative z-10">
-          <nav
-            className="flex items-center gap-2 text-sm text-white/70 mb-6"
-            aria-label="Fil d'ariane"
-          >
-            <Link href="/" className="hover:text-secondary transition-colors">
-              Accueil
-            </Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">FAQ</span>
-          </nav>
-          <div className="max-w-3xl">
-            <span className="eyebrow !text-secondary">Toutes les réponses</span>
-            <h1 className="text-white">
-              Questions fréquentes sur
-              <br />
-              <span className="text-secondary">l&apos;aide à domicile.</span>
-            </h1>
-            <p className="lead !text-white/85 mt-5">
-              Démarrage, intervenants, tarifs, aides financières, qualité — nous
-              avons regroupé les {allFaqItems.length} questions qui reviennent le
-              plus souvent. Recherchez ou parcourez par catégorie.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Toutes les réponses"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "FAQ" }]}
+        title={
+          <>
+            Questions fréquentes sur
+            <br />
+            <span className="text-secondary">l&apos;aide à domicile.</span>
+          </>
+        }
+        subtitle={`Démarrage, intervenants, tarifs, aides financières, qualité — nous avons regroupé les ${allFaqItems.length} questions qui reviennent le plus souvent. Recherchez ou parcourez par catégorie.`}
+      />
 
       <section className="bg-warm-grain py-16 sm:py-20">
         <Container size="wide">

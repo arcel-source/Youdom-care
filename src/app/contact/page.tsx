@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactForm from "./ContactForm";
 import { siteConfig } from "@/lib/site-config";
@@ -50,39 +51,18 @@ const contactChannels = [
 export default function ContactPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-14 sm:pb-20 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-        <Container className="relative z-10">
-          <nav
-            className="flex items-center gap-2 text-sm text-white/70 mb-6"
-            aria-label="Fil d'ariane"
-          >
-            <Link href="/" className="hover:text-secondary transition-colors">
-              Accueil
-            </Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Contact</span>
-          </nav>
-          <div className="max-w-3xl">
-            <span className="eyebrow !text-secondary">On vous écoute</span>
-            <h1 className="text-white">
-              Plusieurs façons de
-              <br />
-              <span className="text-secondary">nous joindre.</span>
-            </h1>
-            <p className="lead !text-white/85 mt-5">
-              Téléphone, email, WhatsApp ou formulaire en ligne — choisissez ce
-              qui vous convient. Notre équipe vous répond dans les 2 heures
-              ouvrées, urgence ou pas.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="On vous écoute"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Contact" }]}
+        title={
+          <>
+            Plusieurs façons de
+            <br />
+            <span className="text-secondary">nous joindre.</span>
+          </>
+        }
+        subtitle="Téléphone, email, WhatsApp ou formulaire en ligne — choisissez ce qui vous convient. Notre équipe vous répond dans les 2 heures ouvrées, urgence ou pas."
+      />
 
       {/* CANAUX */}
       <section className="bg-white py-16 sm:py-20">

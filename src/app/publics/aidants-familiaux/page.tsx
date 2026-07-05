@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -154,79 +154,36 @@ const ressources = [
 export default function AidantsFamiliauxPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-20 sm:pb-28 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"
-          style={{ background: "var(--color-accent)" }}
-          aria-hidden="true"
-        />
-
-        <Container size="wide" className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">
-              Accueil
-            </Link>
-            <span aria-hidden="true">›</span>
-            <Link href="/" className="hover:text-secondary transition-colors">
-              Nos publics
-            </Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Aidants familiaux</span>
-          </nav>
-
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/30 backdrop-blur border border-accent/40 text-sm font-medium text-white mb-6">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse-soft inline-block" />
-                Pour les 11 millions d&apos;aidants familiaux en France
-              </span>
-
-              <h1 className="text-white">
-                Vous aidez un proche.
-                <br />
-                <span className="text-secondary">Qui prend soin de vous ?</span>
-              </h1>
-
-              <p className="lead !text-white/90 mt-5">
-                Ce que vous faites est immense, invisible, épuisant. Cette page n&apos;est
-                pas pour votre proche. <strong className="text-white">Elle est pour vous.</strong>
-                Vos droits, votre répit, vos solutions. Sans jugement, sans pression.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <Button href="#guide" variant="primary" size="lg" glow>
-                  📕 Télécharger le guide gratuit
-                </Button>
-                <Button href="/contact" variant="white" size="lg">
-                  Parler à un coordinateur
-                </Button>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 relative">
-              <div className="relative h-80 sm:h-[440px] rounded-3xl overflow-hidden shadow-lifted">
-                <Image
-                  src="/images/curated/public-aidants-knitting-granddaughter.jpg"
-                  alt="Aidante familiale partageant un moment avec son proche"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                />
-              </div>
-
-              {/* Stat flottante */}
-              <div className="hidden sm:block absolute -bottom-6 -left-6 glass rounded-2xl p-4 shadow-lifted max-w-[260px]">
-                <div className="text-3xl font-bold text-primary-dark">11 millions</div>
-                <p className="text-xs text-text-light leading-snug">
-                  d&apos;aidants familiaux en France. 1 actif sur 4. Vous n&apos;êtes pas seul·e.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Pour les 11 millions d'aidants familiaux en France"
+        breadcrumb={[
+          { name: "Accueil", href: "/" },
+          { name: "Nos publics", href: "/" },
+          { name: "Aidants familiaux" },
+        ]}
+        title={
+          <>
+            Vous aidez un proche.
+            <br />
+            <span className="text-secondary">Qui prend soin de vous ?</span>
+          </>
+        }
+        subtitle={
+          <>
+            Ce que vous faites est immense, invisible, épuisant. Cette page n&apos;est
+            pas pour votre proche.{" "}
+            <strong className="text-white">Elle est pour vous.</strong> Vos droits,
+            votre répit, vos solutions. Sans jugement, sans pression.
+          </>
+        }
+        primaryCta={{ label: "📕 Télécharger le guide gratuit", href: "#guide" }}
+        secondaryCta={{ label: "Parler à un coordinateur", href: "/contact" }}
+        image={{
+          src: "/images/curated/public-aidants-knitting-granddaughter.jpg",
+          alt: "Aidante familiale partageant un moment avec son proche",
+        }}
+        proof={{ icon: "🫂", title: "11 millions d'aidants", subtitle: "1 actif sur 4. Vous n'êtes pas seul·e." }}
+      />
 
       {/* PAIN POINTS */}
       <section className="bg-warm-grain py-16 sm:py-24">

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { guides } from "@/lib/guides";
@@ -21,33 +22,19 @@ const colorMap: Record<string, string> = {
 export default function GuidesIndexPage() {
   return (
     <>
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-20 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-        <Container className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Guides gratuits</span>
-          </nav>
-          <div className="max-w-3xl">
-            <span className="eyebrow !text-secondary">Ressources gratuites</span>
-            <h1 className="text-white">
-              Nos guides PDF gratuits.
-              <br />
-              <span className="text-secondary">Comprendre, anticiper, défendre.</span>
-            </h1>
-            <p className="lead !text-white/85 mt-5">
-              {guides.length} guides, plus de 180 pages d&apos;information fiable :
-              droits, aides, démarches, accompagnement. Téléchargement gratuit
-              contre votre email.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        size="md"
+        eyebrow="Ressources gratuites"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Guides gratuits" }]}
+        title={
+          <>
+            Nos guides PDF gratuits.
+            <br />
+            <span className="text-secondary">Comprendre, anticiper, défendre.</span>
+          </>
+        }
+        subtitle={`${guides.length} guides, plus de 180 pages d'information fiable : droits, aides, démarches, accompagnement. Téléchargement gratuit contre votre email.`}
+      />
 
       <section className="bg-white py-16 sm:py-20">
         <Container size="wide">

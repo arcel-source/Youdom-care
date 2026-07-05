@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/ui/PageHero";
 import ArticleCard from "@/components/blog/ArticleCard";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { articles, articlesByCategory } from "@/lib/blog-articles";
@@ -28,36 +28,19 @@ export default function BlogIndexPage() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-20 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-        <Container className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">
-              Accueil
-            </Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Blog</span>
-          </nav>
-          <div className="max-w-3xl">
-            <span className="eyebrow !text-secondary">Ressources</span>
-            <h1 className="text-white">
-              Le blog Youdom Care.
-              <br />
-              <span className="text-secondary">Comprendre, anticiper, agir.</span>
-            </h1>
-            <p className="lead !text-white/85 mt-5">
-              Guides pratiques, retours d&apos;expérience, conseils d&apos;experts pour
-              vous aider à accompagner un proche, défendre vos droits et améliorer
-              le quotidien.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        size="md"
+        eyebrow="Ressources"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Blog" }]}
+        title={
+          <>
+            Le blog Youdom Care.
+            <br />
+            <span className="text-secondary">Comprendre, anticiper, agir.</span>
+          </>
+        }
+        subtitle="Guides pratiques, retours d'expérience, conseils d'experts pour vous aider à accompagner un proche, défendre vos droits et améliorer le quotidien."
+      />
 
       {/* ARTICLE FEATURED */}
       {featured ? (

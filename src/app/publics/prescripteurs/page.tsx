@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { siteConfig, brandStats } from "@/lib/site-config";
 
@@ -52,69 +52,47 @@ const advantages = [
 export default function PrescripteursPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-primary-dark text-white pt-12 sm:pt-16 pb-16 sm:pb-24 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
+      <PageHero
+        eyebrow="Pour les professionnels du soin et du social"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Prescripteurs" }]}
+        title={
+          <>
+            Un partenaire SAAD réactif,
+            <br />
+            <span className="text-secondary">pour vos patients et vos publics.</span>
+          </>
+        }
+        subtitle="Vous êtes médecin, assistant social, MDPH, cadre hospitalier ? Nous sommes votre relais terrain pour la mise en place d'aide à domicile : démarrage rapide, dossiers d'aide montés, coordination médicale."
+        primaryCta={{ label: "Devenir partenaire", href: "/contact" }}
+        secondaryCta={{
+          label: `Ligne pros : ${siteConfig.phone.main}`,
+          href: `tel:${siteConfig.phone.mainE164}`,
+          icon: <span aria-hidden="true">📞</span>,
+        }}
+        footnote={
+          <>
+            <span aria-hidden="true">⏱️</span> Devis sous 24 h ·{" "}
+            <span aria-hidden="true">🏥</span> Mise en place 48-72 h ·{" "}
+            <span aria-hidden="true">🤝</span> Convention possible
+          </>
+        }
+      />
 
-        <Container size="wide" className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Prescripteurs</span>
-          </nav>
-
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
-              <span className="eyebrow !text-secondary">Pour les professionnels du soin et du social</span>
-              <h1 className="text-white">
-                Un partenaire SAAD réactif,
-                <br />
-                <span className="text-secondary">pour vos patients et vos publics.</span>
-              </h1>
-              <p className="lead !text-white/90 mt-5">
-                Vous êtes médecin, assistant social, MDPH, cadre hospitalier ?
-                Nous sommes votre relais terrain pour la mise en place d&apos;aide à
-                domicile : démarrage rapide, dossiers d&apos;aide montés, coordination
-                médicale.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <Button
-                  href={`tel:${siteConfig.phone.mainE164}`}
-                  variant="primary"
-                  size="lg"
-                  glow
-                  icon={<span aria-hidden="true">📞</span>}
-                >
-                  Ligne dédiée pros : {siteConfig.phone.main}
-                </Button>
-                <Button href="/contact" variant="white" size="lg">
-                  Devenir partenaire
-                </Button>
-              </div>
-              <p className="text-sm text-white/70 mt-5">
-                <span aria-hidden="true">⏱️</span> Devis sous 24 h •
-                <span aria-hidden="true"> 🏥</span> Mise en place 48-72 h •
-                <span aria-hidden="true"> 🤝</span> Convention possible
-              </p>
+      {/* Bande de chiffres clés */}
+      <section className="bg-white border-b border-border">
+        <Container size="wide">
+          <div className="grid grid-cols-3 divide-x divide-border -mx-4 sm:mx-0">
+            <div className="px-4 py-6 text-center">
+              <div className="text-2xl sm:text-4xl font-bold text-primary-dark">{brandStats.familiesAccompanied}+</div>
+              <p className="text-xs sm:text-sm text-text-light mt-1">familles accompagnées en IDF</p>
             </div>
-
-            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15 col-span-2">
-                <div className="text-3xl font-bold text-secondary mb-1">{brandStats.familiesAccompanied}+</div>
-                <p className="text-sm text-white/80">familles accompagnées en IDF</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15">
-                <div className="text-3xl font-bold text-secondary mb-1">48 h</div>
-                <p className="text-xs text-white/80">délai mise en place urgence</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15">
-                <div className="text-3xl font-bold text-secondary mb-1">{brandStats.satisfactionRate}%</div>
-                <p className="text-xs text-white/80">satisfaction client</p>
-              </div>
+            <div className="px-4 py-6 text-center">
+              <div className="text-2xl sm:text-4xl font-bold text-primary-dark">48 h</div>
+              <p className="text-xs sm:text-sm text-text-light mt-1">délai de mise en place en urgence</p>
+            </div>
+            <div className="px-4 py-6 text-center">
+              <div className="text-2xl sm:text-4xl font-bold text-primary-dark">{brandStats.satisfactionRate}%</div>
+              <p className="text-xs sm:text-sm text-text-light mt-1">de satisfaction client</p>
             </div>
           </div>
         </Container>

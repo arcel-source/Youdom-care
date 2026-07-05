@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AidesSimulator from "@/components/sections/AidesSimulator";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -133,47 +133,24 @@ const detailedAides = [
 export default function AidesFinancieresPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-20 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-        <Container className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Aides financières</span>
-          </nav>
-          <div className="max-w-3xl">
-            <span className="eyebrow !text-secondary">Financement</span>
-            <h1 className="text-white">
-              Toutes les aides pour financer
-              <br />
-              <span className="text-secondary">votre aide à domicile en 2026.</span>
-            </h1>
-            <p className="lead !text-white/85 mt-5">
-              APA, PCH, crédit d&apos;impôt 50 %, mutuelles, MaPrimeAdapt&apos;, CESU :
-              le panorama complet et à jour. Avec un simulateur intégré pour estimer
-              votre coût net en 30 secondes.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 mt-8">
-              <Button href="#simulateur" variant="primary" size="lg" glow>
-                Lancer le simulateur
-              </Button>
-              <Button
-                href={`tel:${siteConfig.phone.mainE164}`}
-                variant="white"
-                size="lg"
-                icon={<span aria-hidden="true">📞</span>}
-              >
-                Échanger avec une coordinatrice
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Financement"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Aides financières" }]}
+        title={
+          <>
+            Toutes les aides pour financer
+            <br />
+            <span className="text-secondary">votre aide à domicile en 2026.</span>
+          </>
+        }
+        subtitle="APA, PCH, crédit d'impôt 50 %, mutuelles, MaPrimeAdapt', CESU : le panorama complet et à jour. Avec un simulateur intégré pour estimer votre coût net en 30 secondes."
+        primaryCta={{ label: "Lancer le simulateur", href: "#simulateur" }}
+        secondaryCta={{
+          label: "Échanger avec une coordinatrice",
+          href: `tel:${siteConfig.phone.mainE164}`,
+          icon: <span aria-hidden="true">📞</span>,
+        }}
+      />
 
       {/* RECAP RAPIDE */}
       <section className="bg-white py-12">

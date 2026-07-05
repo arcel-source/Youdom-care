@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -69,64 +70,33 @@ const aides = [
 export default function HandicapPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-24 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"
-          style={{ background: "var(--color-accent)" }}
-          aria-hidden="true"
-        />
-
-        <Container size="wide" className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Handicap</span>
-          </nav>
-
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
-              <span className="eyebrow !text-secondary">Pour les personnes en situation de handicap & leurs familles</span>
-              <h1 className="text-white">
-                Votre projet de vie.
-                <br />
-                <span className="text-secondary">Vos conditions. Votre rythme.</span>
-              </h1>
-              <p className="lead !text-white/90 mt-5">
-                L&apos;accompagnement à domicile pour personnes en situation de handicap qui
-                respecte d&apos;abord ce que vous voulez vivre, ce que vous savez faire, ce
-                que vous aimeriez pouvoir.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <Button href="/demander-devis" variant="primary" size="lg" glow>
-                  Demander un devis
-                </Button>
-                <Button
-                  href={`tel:${siteConfig.phone.mainE164}`}
-                  variant="white"
-                  size="lg"
-                  icon={<span aria-hidden="true">📞</span>}
-                >
-                  {siteConfig.phone.main}
-                </Button>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5">
-              <div className="relative h-80 sm:h-[440px] rounded-3xl overflow-hidden shadow-lifted">
-                <Image
-                  src="/images/curated/service-aide-handicap.jpg"
-                  alt="Accompagnement à domicile personne en situation de handicap"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Pour les personnes en situation de handicap & leurs familles"
+        breadcrumb={[
+          { name: "Accueil", href: "/" },
+          { name: "Nos publics", href: "/" },
+          { name: "Handicap" },
+        ]}
+        title={
+          <>
+            Votre projet de vie.
+            <br />
+            <span className="text-secondary">Vos conditions. Votre rythme.</span>
+          </>
+        }
+        subtitle="L'accompagnement à domicile pour personnes en situation de handicap qui respecte d'abord ce que vous voulez vivre, ce que vous savez faire, ce que vous aimeriez pouvoir."
+        primaryCta={{ label: "Demander un devis", href: "/demander-devis" }}
+        secondaryCta={{
+          label: siteConfig.phone.main,
+          href: `tel:${siteConfig.phone.mainE164}`,
+          icon: <span aria-hidden="true">📞</span>,
+        }}
+        image={{
+          src: "/images/curated/service-aide-handicap.jpg",
+          alt: "Accompagnement à domicile d'une personne en situation de handicap",
+        }}
+        proof={{ icon: "🤝", title: "Auxiliaires spécialisées", subtitle: "PCH · MDPH · dossiers montés pour vous" }}
+      />
 
       {/* PRINCIPES */}
       <section className="bg-white py-16 sm:py-24">

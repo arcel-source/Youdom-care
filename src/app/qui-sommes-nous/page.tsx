@@ -1,12 +1,11 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
-import { siteConfig, brandStats, agrements } from "@/lib/site-config";
+import { brandStats, agrements } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous — l'histoire de Youdom Care | Aide à domicile IDF",
@@ -66,35 +65,26 @@ const milestones = [
 export default function QuiSommesNousPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-20 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-        <Container className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Qui sommes-nous</span>
-          </nav>
-          <div className="max-w-3xl">
-            <span className="eyebrow !text-secondary">Notre histoire</span>
-            <h1 className="text-white">
-              Une équipe qui croit que vieillir chez soi
-              <br />
-              <span className="text-secondary">est un droit, pas un privilège.</span>
-            </h1>
-            <p className="lead !text-white/85 mt-5">
-              Depuis {brandStats.yearsOfExperience} ans, Youdom Care accompagne les
-              familles d&apos;Île-de-France pour permettre le maintien à domicile dans
-              la dignité. {brandStats.familiesAccompanied}+ familles, {brandStats.caregiversCount} auxiliaires en CDI,
-              {" "}{brandStats.satisfactionRate} % de satisfaction.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Notre histoire"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Qui sommes-nous" }]}
+        title={
+          <>
+            Une équipe qui croit que vieillir chez soi
+            <br />
+            <span className="text-secondary">est un droit, pas un privilège.</span>
+          </>
+        }
+        subtitle={
+          <>
+            Depuis {brandStats.yearsOfExperience} ans, Youdom Care accompagne les
+            familles d&apos;Île-de-France pour permettre le maintien à domicile dans
+            la dignité. {brandStats.familiesAccompanied}+ familles,{" "}
+            {brandStats.caregiversCount} auxiliaires en CDI, {brandStats.satisfactionRate} % de
+            satisfaction.
+          </>
+        }
+      />
 
       {/* HISTOIRE */}
       <section className="bg-white py-16 sm:py-24">

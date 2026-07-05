@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -60,47 +59,24 @@ const guarantees = [
 export default function CommentCaMarchePage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-20 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-        <Container className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Comment ça marche</span>
-          </nav>
-          <div className="max-w-3xl">
-            <span className="eyebrow !text-secondary">Notre méthode</span>
-            <h1 className="text-white">
-              De votre appel à la première visite,
-              <br />
-              <span className="text-secondary">en moins de 7 jours.</span>
-            </h1>
-            <p className="lead !text-white/85 mt-5">
-              Un parcours simple, transparent, entièrement gratuit jusqu&apos;à la
-              signature. Visite à domicile incluse, plan personnalisé, sans
-              engagement.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 mt-8">
-              <Button href="/demander-devis" variant="primary" size="lg" glow>
-                Démarrer ma demande
-              </Button>
-              <Button
-                href={`tel:${siteConfig.phone.mainE164}`}
-                variant="white"
-                size="lg"
-                icon={<span aria-hidden="true">📞</span>}
-              >
-                {siteConfig.phone.main}
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Notre méthode"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Comment ça marche" }]}
+        title={
+          <>
+            De votre appel à la première visite,
+            <br />
+            <span className="text-secondary">en moins de 7 jours.</span>
+          </>
+        }
+        subtitle="Un parcours simple, transparent, entièrement gratuit jusqu'à la signature. Visite à domicile incluse, plan personnalisé, sans engagement."
+        primaryCta={{ label: "Démarrer ma demande", href: "/demander-devis" }}
+        secondaryCta={{
+          label: siteConfig.phone.main,
+          href: `tel:${siteConfig.phone.mainE164}`,
+          icon: <span aria-hidden="true">📞</span>,
+        }}
+      />
 
       {/* 5 ÉTAPES — DÉTAILLÉES */}
       <section className="bg-white py-16 sm:py-24">

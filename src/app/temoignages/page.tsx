@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
@@ -42,36 +42,18 @@ const recommendations = [
 export default function TemoignagesPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-14 sm:pb-20 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-        <Container className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">
-              Accueil
-            </Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Témoignages</span>
-          </nav>
-          <div className="max-w-3xl">
-            <span className="eyebrow !text-secondary">Histoires vraies, mots authentiques</span>
-            <h1 className="text-white">
-              Ce que disent les familles
-              <br />
-              <span className="text-secondary">qu&apos;on accompagne.</span>
-            </h1>
-            <p className="lead !text-white/85 mt-5">
-              Pas de stock photos, pas de slogans creux : juste des familles, des
-              bénéficiaires, des prescripteurs qui ont accepté de raconter ce que
-              notre accompagnement a changé pour eux.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Histoires vraies, mots authentiques"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Témoignages" }]}
+        title={
+          <>
+            Ce que disent les familles
+            <br />
+            <span className="text-secondary">qu&apos;on accompagne.</span>
+          </>
+        }
+        subtitle="Pas de stock photos, pas de slogans creux : juste des familles, des bénéficiaires, des prescripteurs qui ont accepté de raconter ce que notre accompagnement a changé pour eux."
+      />
 
       {/* STATS */}
       <section className="bg-white py-12">

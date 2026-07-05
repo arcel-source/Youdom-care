@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import AidesSimulator from "@/components/sections/AidesSimulator";
@@ -60,64 +61,29 @@ const benefits = [
 export default function SeniorsPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-24 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-
-        <Container size="wide" className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Seniors</span>
-          </nav>
-
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
-              <span className="eyebrow !text-secondary">Pour les seniors et leurs familles</span>
-              <h1 className="text-white">
-                Vieillir chez soi.
-                <br />
-                <span className="text-secondary">Sereinement. Dignement.</span>
-              </h1>
-              <p className="lead !text-white/90 mt-5">
-                À 70, 80 ou 95 ans, votre maison reste votre maison. Notre rôle :
-                vous donner les bonnes mains, le bon moment, pour que vous y restiez
-                en sécurité — sans renoncer à rien.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <Button href="/demander-devis" variant="primary" size="lg" glow>
-                  Devis gratuit en 3 min
-                </Button>
-                <Button
-                  href={`tel:${siteConfig.phone.mainE164}`}
-                  variant="white"
-                  size="lg"
-                  icon={<span aria-hidden="true">📞</span>}
-                >
-                  {siteConfig.phone.main}
-                </Button>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5">
-              <div className="relative h-80 sm:h-[440px] rounded-3xl overflow-hidden shadow-lifted">
-                <Image
-                  src="/images/curated/service-aide-personnes-agees.jpg"
-                  alt="Personne âgée à son domicile, accompagnée"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Pour les seniors et leurs familles"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Seniors" }]}
+        title={
+          <>
+            Vieillir chez soi.
+            <br />
+            <span className="text-secondary">Sereinement. Dignement.</span>
+          </>
+        }
+        subtitle="À 70, 80 ou 95 ans, votre maison reste votre maison. Notre rôle : vous donner les bonnes mains, le bon moment, pour que vous y restiez en sécurité — sans renoncer à rien."
+        primaryCta={{ label: "Devis gratuit en 3 min", href: "/demander-devis" }}
+        secondaryCta={{
+          label: siteConfig.phone.main,
+          href: `tel:${siteConfig.phone.mainE164}`,
+          icon: <span aria-hidden="true">📞</span>,
+        }}
+        image={{
+          src: "/images/curated/service-aide-personnes-agees.jpg",
+          alt: "Personne âgée à son domicile, accompagnée par une auxiliaire Youdom Care",
+        }}
+        proof={{ icon: "🛡️", title: "Service agréé SAP", subtitle: "Crédit d'impôt 50 % automatique" }}
+      />
 
       {/* PARCOURS PAR ÂGE */}
       <section className="bg-white py-16 sm:py-24">

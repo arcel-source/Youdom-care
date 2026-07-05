@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
+import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { agencies, agenciesByRegion } from "@/lib/agencies";
@@ -17,28 +17,19 @@ const regionOrder = ["Paris", "Petite couronne", "Grande couronne"];
 export default function AgenceIndexPage() {
   return (
     <>
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-16 sm:pb-20 overflow-hidden">
-        <Container className="relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70 mb-6" aria-label="Fil d'ariane">
-            <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Agences</span>
-          </nav>
-          <div className="max-w-3xl">
-            <span className="eyebrow !text-secondary">Nos zones d&apos;intervention</span>
-            <h1 className="text-white">
-              Une présence locale,
-              <br />
-              <span className="text-secondary">partout en Île-de-France.</span>
-            </h1>
-            <p className="lead !text-white/85 mt-5">
-              {agencies.length} villes desservies. Des coordinatrices proches de
-              chez vous. Des auxiliaires qui connaissent votre quartier, vos
-              hôpitaux, vos commerces.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        size="md"
+        eyebrow="Nos zones d'intervention"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Nos agences" }]}
+        title={
+          <>
+            Une présence locale,
+            <br />
+            <span className="text-secondary">partout en Île-de-France.</span>
+          </>
+        }
+        subtitle={`${agencies.length} villes desservies. Des coordinatrices proches de chez vous. Des auxiliaires qui connaissent votre quartier, vos hôpitaux, vos commerces.`}
+      />
 
       <section className="bg-white py-16 sm:py-20">
         <Container size="wide">

@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import RecruitmentFormV2 from "./RecruitmentFormV2";
@@ -74,61 +73,25 @@ const recruitmentSteps = [
 export default function RecrutementPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-hero-gradient text-white pt-12 sm:pt-16 pb-14 sm:pb-20 overflow-hidden">
-        <div
-          className="absolute -top-20 right-0 w-[28rem] h-[28rem] rounded-full mix-blend-screen filter blur-3xl opacity-25 animate-blob"
-          style={{ background: "var(--color-secondary)" }}
-          aria-hidden="true"
-        />
-        <Container className="relative z-10">
-          <nav
-            className="flex items-center gap-2 text-sm text-white/70 mb-6"
-            aria-label="Fil d'ariane"
-          >
-            <Link href="/" className="hover:text-secondary transition-colors">
-              Accueil
-            </Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/50">Recrutement</span>
-          </nav>
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
-              <span className="eyebrow !text-secondary">Nous recrutons en CDI</span>
-              <h1 className="text-white">
-                Un métier de sens.
-                <br />
-                <span className="text-secondary">Une équipe qui prend soin de vous.</span>
-              </h1>
-              <p className="lead !text-white/85 mt-5">
-                Vous avez un cœur d&apos;auxiliaire de vie ? Nous avons un
-                contrat à votre hauteur : CDI, salaire au-dessus du marché,
-                formations payées, équipe qui vous soutient.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 mt-7">
-                <Button href="#offres" variant="primary" size="lg" glow>
-                  Voir les postes ouverts
-                </Button>
-                <Button href="#candidature" variant="white" size="lg">
-                  Postuler maintenant
-                </Button>
-              </div>
-            </div>
-            <div className="lg:col-span-5">
-              <div className="relative h-72 sm:h-96 rounded-3xl overflow-hidden shadow-lifted">
-                <Image
-                  src="/images/curated/comment-ca-marche-caregiver.jpg"
-                  alt="Auxiliaire de vie Youdom Care en intervention"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Nous recrutons en CDI"
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Recrutement" }]}
+        title={
+          <>
+            Un métier de sens.
+            <br />
+            <span className="text-secondary">Une équipe qui prend soin de vous.</span>
+          </>
+        }
+        subtitle="Vous avez un cœur d'auxiliaire de vie ? Nous avons un contrat à votre hauteur : CDI, salaire au-dessus du marché, formations payées, équipe qui vous soutient."
+        primaryCta={{ label: "Voir les postes ouverts", href: "#offres" }}
+        secondaryCta={{ label: "Postuler maintenant", href: "#candidature" }}
+        image={{
+          src: "/images/curated/comment-ca-marche-caregiver.jpg",
+          alt: "Auxiliaire de vie Youdom Care en intervention",
+        }}
+        proof={{ icon: "💛", title: "Emplois en CDI", subtitle: "Formations payées · équipe soudée" }}
+      />
 
       {/* CHIFFRES */}
       <section className="bg-white py-12">
