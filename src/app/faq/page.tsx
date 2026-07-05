@@ -21,6 +21,7 @@ export default function FAQPage() {
       <JsonLd data={faqSchema(allFaqItems)} />
 
       <PageHero
+        bgImage="/images/curated/blog-handshake-trust.jpg"
         eyebrow="Toutes les réponses"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "FAQ" }]}
         title={

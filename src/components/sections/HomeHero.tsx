@@ -6,10 +6,23 @@ import { siteConfig, brandStats } from "@/lib/site-config";
 export default function HomeHero() {
   return (
     <section className="relative isolate overflow-hidden bg-hero-gradient text-white pt-12 sm:pt-16 lg:pt-24 pb-24 sm:pb-32 lg:pb-40">
-      {/* Voile sombre pour garantir la lisibilité du texte sur le dégradé */}
+      {/* Image de fond cinématographique (Ken Burns) */}
+      <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+        <Image
+          src="/images/curated/home-hero-couple-warm.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover animate-ken-burns"
+          sizes="100vw"
+        />
+      </div>
+      {/* Double voile : sombre global + renfort à gauche pour garantir la
+          lisibilité du texte tout en laissant respirer la photo à droite. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary-dark/55" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-primary-dark/70 via-primary-dark/30 to-transparent"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-primary-dark/90 via-primary-dark/45 to-transparent"
       />
 
       {/* Grille subtile */}

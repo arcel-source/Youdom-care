@@ -19,6 +19,7 @@ export default function AgenceIndexPage() {
     <>
       <PageHero
         size="md"
+        bgImage="/images/curated/qui-sommes-nous-couple-indoors.jpg"
         eyebrow="Nos zones d'intervention"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Nos agences" }]}
         title={

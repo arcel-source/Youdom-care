@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import JsonLd from "@/components/seo/JsonLd";
+import Reveal from "@/components/ui/Reveal";
 import { faqSchema } from "@/lib/structured-data";
 import { faqQuick } from "@/lib/site-config";
 import HomeHero from "@/components/sections/HomeHero";
@@ -33,16 +34,16 @@ export default function Home() {
       />
       <HomeHero />
       <TrustBar />
-      <PersonaSelector />
-      <ServiceFinder />
-      <ServicesShowcase />
-      <MissionStory />
-      <AidesSimulator />
-      <ProcessTimeline />
-      <EngagementsBlock />
-      <TestimonialsWall />
-      <AidantsCapture />
-      <FAQQuick />
+      <Reveal><PersonaSelector /></Reveal>
+      <Reveal><ServiceFinder /></Reveal>
+      <Reveal><ServicesShowcase /></Reveal>
+      <Reveal><MissionStory /></Reveal>
+      <Reveal><AidesSimulator /></Reveal>
+      <Reveal><ProcessTimeline /></Reveal>
+      <Reveal><EngagementsBlock /></Reveal>
+      <Reveal><TestimonialsWall /></Reveal>
+      <Reveal><AidantsCapture /></Reveal>
+      <Reveal><FAQQuick /></Reveal>
       <FinalCTA />
     </>
   );

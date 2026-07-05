@@ -134,6 +134,7 @@ export default function AidesFinancieresPage() {
   return (
     <>
       <PageHero
+        bgImage="/images/curated/aides-financieres-senior-video.jpg"
         eyebrow="Financement"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Aides financières" }]}
         title={

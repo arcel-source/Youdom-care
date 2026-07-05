@@ -66,6 +66,7 @@ export default function QuiSommesNousPage() {
   return (
     <>
       <PageHero
+        bgImage="/images/curated/qui-sommes-nous-couple-indoors.jpg"
         eyebrow="Notre histoire"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Qui sommes-nous" }]}
         title={

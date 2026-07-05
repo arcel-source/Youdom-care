@@ -53,6 +53,7 @@ export default function PrescripteursPage() {
   return (
     <>
       <PageHero
+        bgImage="/images/curated/blog-handshake-trust.jpg"
         eyebrow="Pour les professionnels du soin et du social"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Prescripteurs" }]}
         title={

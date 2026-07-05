@@ -30,6 +30,7 @@ export default function BlogIndexPage() {
     <>
       <PageHero
         size="md"
+        bgImage="/images/curated/blog-coffee-balcony-warm.jpg"
         eyebrow="Ressources"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Blog" }]}
         title={

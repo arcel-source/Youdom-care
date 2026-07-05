@@ -52,6 +52,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
+        bgImage="/images/curated/home-hero-couple-warm.jpg"
         eyebrow="On vous écoute"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Contact" }]}
         title={

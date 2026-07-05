@@ -1,11 +1,12 @@
 import Container from "@/components/ui/Container";
+import Counter from "@/components/ui/Counter";
 import { brandStats, siteConfig } from "@/lib/site-config";
 
 const items = [
-  { value: `${brandStats.satisfactionRate}%`, label: "de satisfaction client" },
-  { value: `${brandStats.familiesAccompanied}+`, label: "familles accompagnées" },
-  { value: `${brandStats.yearsOfExperience}+`, label: "ans d'expertise" },
-  { value: `< ${brandStats.responseTimeHours} h`, label: "de délai de réponse" },
+  { value: brandStats.satisfactionRate, suffix: "%", label: "de satisfaction client" },
+  { value: brandStats.familiesAccompanied, suffix: "+", label: "familles accompagnées" },
+  { value: brandStats.yearsOfExperience, suffix: "+", label: "ans d'expertise" },
+  { value: brandStats.responseTimeHours, prefix: "< ", suffix: " h", label: "de délai de réponse" },
 ];
 
 const trustChips = [
@@ -23,9 +24,12 @@ export default function TrustBar() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-10">
           {items.map((item) => (
             <div key={item.label} className="text-center">
-              <div className="text-2xl sm:text-4xl font-bold text-primary-dark mb-1">
-                {item.value}
-              </div>
+              <Counter
+                value={item.value}
+                prefix={item.prefix}
+                suffix={item.suffix}
+                className="block text-2xl sm:text-4xl font-bold text-primary-dark mb-1"
+              />
               <div className="text-xs sm:text-sm text-text-light leading-tight">
                 {item.label}
               </div>

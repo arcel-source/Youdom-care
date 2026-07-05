@@ -43,6 +43,7 @@ export default function TemoignagesPage() {
   return (
     <>
       <PageHero
+        bgImage="/images/curated/home-hero-couple-warm.jpg"
         eyebrow="Histoires vraies, mots authentiques"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Témoignages" }]}
         title={

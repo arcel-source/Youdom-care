@@ -202,11 +202,79 @@ input, textarea, select {
   66% { transform: translate(-20px, 20px) scale(0.95); }
 }
 
+/* Ken Burns — zoom/pano lent d'une image de fond, effet cinématographique */
+@keyframes kenBurns {
+  0% { transform: scale(1.08) translate(0, 0); }
+  50% { transform: scale(1.16) translate(-1.5%, -1.5%); }
+  100% { transform: scale(1.08) translate(0, 0); }
+}
+
+/* Dégradé animé (sheen sur fonds/CTA) */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Révélation au scroll */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .animate-fade-in-up { animation: fadeInUp 0.7s ease-out forwards; }
 .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
 .animate-pulse-soft { animation: pulseSoft 2.4s ease-in-out infinite; }
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-blob { animation: blob 18s ease-in-out infinite; }
+.animate-ken-burns { animation: kenBurns 26s ease-in-out infinite; }
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* ============================================================
+   RÉVÉLATION AU SCROLL (composant Reveal)
+   ============================================================ */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: opacity, transform;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Effets d'entrée alternatifs */
+[data-reveal="left"] { transform: translateX(-32px); }
+[data-reveal="right"] { transform: translateX(32px); }
+[data-reveal="zoom"] { transform: scale(0.94); }
+[data-reveal="left"].is-visible,
+[data-reveal="right"].is-visible { transform: translateX(0); }
+[data-reveal="zoom"].is-visible { transform: scale(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .animate-ken-burns { animation: none !important; }
+}
+
+/* Survol carte « magnétique » plus marqué */
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 24px -8px rgba(15, 53, 85, 0.14),
+    0 32px 60px -16px rgba(15, 53, 85, 0.22);
+}
 
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }

@@ -24,6 +24,7 @@ export default function GuidesIndexPage() {
     <>
       <PageHero
         size="md"
+        bgImage="/images/curated/blog-mother-daughter-braille.jpg"
         eyebrow="Ressources gratuites"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Guides gratuits" }]}
         title={

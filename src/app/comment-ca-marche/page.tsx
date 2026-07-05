@@ -60,6 +60,7 @@ export default function CommentCaMarchePage() {
   return (
     <>
       <PageHero
+        bgImage="/images/curated/comment-ca-marche-caregiver.jpg"
         eyebrow="Notre méthode"
         breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Comment ça marche" }]}
         title={

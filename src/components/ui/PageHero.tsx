@@ -33,6 +33,8 @@ type Props = {
   image?: { src: string; alt: string };
   /** Carte flottante posée sur le visuel (badge de confiance). */
   proof?: { icon?: React.ReactNode; title: string; subtitle: string };
+  /** Image de fond plein cadre (avec voile de lisibilité + effet Ken Burns). */
+  bgImage?: string;
   layout?: "split" | "center";
   /** Rendu compact pour les pages secondaires (moins de padding vertical). */
   size?: "lg" | "md";
@@ -51,6 +53,7 @@ export default function PageHero({
   footnote,
   image,
   proof,
+  bgImage,
   layout = image ? "split" : "center",
   size = "lg",
   children,
@@ -64,6 +67,26 @@ export default function PageHero({
     <section
       className={`relative isolate overflow-hidden bg-hero-gradient text-white ${pad}`}
     >
+      {/* Image de fond cinématographique (Ken Burns) + voile de lisibilité */}
+      {bgImage ? (
+        <>
+          <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+            <Image
+              src={bgImage}
+              alt=""
+              fill
+              priority
+              className="object-cover animate-ken-burns"
+              sizes="100vw"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-dark/92 via-primary-dark/78 to-primary/70"
+          />
+        </>
+      ) : null}
+
       {/* Grille subtile en overlay */}
       <div
         aria-hidden="true"
