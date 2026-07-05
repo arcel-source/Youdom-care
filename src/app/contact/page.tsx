@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Reveal from "@/components/ui/Reveal";
 import ContactForm from "./ContactForm";
 import { siteConfig } from "@/lib/site-config";
 
@@ -74,10 +75,11 @@ export default function ContactPage() {
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {contactChannels.map((c) => (
-              <div
+            {contactChannels.map((c, idx) => (
+              <Reveal
                 key={c.title}
-                className="bg-warm rounded-2xl p-6 border border-border hover:border-primary hover:bg-white transition-all"
+                delay={idx * 70}
+                className="bg-warm rounded-2xl p-6 border border-border hover:border-primary hover:bg-white transition-all h-full"
               >
                 <div
                   className="w-12 h-12 rounded-2xl bg-primary-50 flex items-center justify-center text-2xl mb-4"
@@ -113,7 +115,7 @@ export default function ContactPage() {
                     <div className="text-text-muted text-xs mt-1">{c.secondary}</div>
                   )
                 ) : null}
-              </div>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -183,8 +185,16 @@ export default function ContactPage() {
                   <p className="text-sm text-text-light leading-relaxed">
                     {siteConfig.address.full}
                     <br />
-                    Accès : Métro Bastille (1, 5, 8) ou Gare de Lyon (1, 14, RER A & D)
+                    Accès : Gare de Lyon (M1, M14, RER A & D) ou Bastille (M1, 5, 8)
                   </p>
+                  <div className="mt-4 rounded-xl overflow-hidden border border-border">
+                    <iframe
+                      title="Carte du siège Youdom Care"
+                      src="https://www.openstreetmap.org/export/embed.html?bbox=2.3665,48.8426,2.3805,48.8496&layer=mapnik&marker=48.8461,2.3735"
+                      className="w-full h-48 border-0"
+                      loading="lazy"
+                    />
+                  </div>
                   <p className="text-xs text-text-muted mt-3 italic">
                     Sur rendez-vous uniquement.
                   </p>
