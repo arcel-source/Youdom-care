@@ -95,39 +95,47 @@ img, video, iframe {
    TYPOGRAPHIE
    ============================================================ */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  font-weight: 700;
-  overflow-wrap: break-word;
-  color: var(--color-primary-dark);
-}
+/*
+ * Typographie de base placée dans @layer base pour que les utilitaires
+ * Tailwind (ex. `text-white` sur les héros) puissent surcharger la couleur.
+ * Sans ce layer, ces règles non-layerisées l'emportaient sur `text-white`,
+ * rendant les titres bleu foncé (donc invisibles) sur les fonds sombres.
+ */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    font-weight: 700;
+    overflow-wrap: break-word;
+    color: var(--color-primary-dark);
+  }
 
-h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); letter-spacing: -0.03em; }
-h2 { font-size: clamp(1.875rem, 4vw, 2.75rem); }
-h3 { font-size: clamp(1.375rem, 2.5vw, 1.75rem); }
-h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
+  h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); letter-spacing: -0.03em; }
+  h2 { font-size: clamp(1.875rem, 4vw, 2.75rem); }
+  h3 { font-size: clamp(1.375rem, 2.5vw, 1.75rem); }
+  h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 
-p, li, span, a {
-  overflow-wrap: break-word;
-}
+  p, li, span, a {
+    overflow-wrap: break-word;
+  }
 
-.lead {
-  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
-  line-height: 1.65;
-  color: var(--color-text-light);
-}
+  .lead {
+    font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+    line-height: 1.65;
+    color: var(--color-text-light);
+  }
 
-.eyebrow {
-  display: inline-block;
-  font-family: var(--font-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 0.75rem;
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
 }
 
 /* ============================================================
