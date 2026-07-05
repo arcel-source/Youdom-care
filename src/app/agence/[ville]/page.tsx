@@ -69,12 +69,8 @@ function localBusinessAgencySchema(agency: ReturnType<typeof getAgencyBySlug>) {
       "@id": `${siteConfig.url}#organization`,
     },
     priceRange: "€€",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "220",
-      bestRating: "5",
-    },
+    // aggregateRating retiré : une note en dur, identique sur chaque ville et
+    // non adossée à des avis réels, expose à une pénalité Rich Results.
   };
 }
 

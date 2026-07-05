@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Assistance administrative à domicile — APA, MDPH, démarches | Youdom Care",
+    "Assistance administrative à domicile — APA, MDPH, démarches",
   description:
     "Aide à la gestion des dossiers : APA, PCH, MDPH, mutuelles, courrier, factures. Évite l'oubli, la pénalité, le découragement. Crédit d'impôt 50 %. Devis gratuit.",
+  alternates: { canonical: "/services/assistance-administrative" },
 };
 
 const painPoints = [
@@ -194,6 +197,19 @@ const faq = [
 export default function AssistanceAdministrativePage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Assistance administrative",
+        description:
+          "Aide à la gestion des dossiers : APA, PCH, MDPH, mutuelles, courrier, factures. Évite l'oubli, la pénalité, le découragement. Crédit d'impôt 50 %. Devis gratuit.",
+        url: "/services/assistance-administrative",
+        image: "/images/curated/service-assistance-administrative.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Assistance administrative", url: "/services/assistance-administrative" },
+      ])} />
       <ServiceHero
         category="Assistance administrative"
         title="On s'occupe des papiers. Vous respirez."

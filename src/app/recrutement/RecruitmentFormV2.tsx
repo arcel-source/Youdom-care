@@ -26,6 +26,7 @@ type Status = "idle" | "loading" | "success" | "error";
 export default function RecruitmentFormV2() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -44,6 +45,7 @@ export default function RecruitmentFormV2() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (status === "loading") return;
     if (!form.consent) {
       setError("Vous devez accepter le traitement de votre candidature.");
       setStatus("error");
@@ -55,7 +57,7 @@ export default function RecruitmentFormV2() {
       const res = await fetch("/api/recrutement", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website: honeypot }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -181,8 +183,23 @@ export default function RecruitmentFormV2() {
         </span>
       </label>
 
+      {/* Honeypot anti-spam : invisible et hors lecteurs d'écran */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="sr-only"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+      />
+
       {status === "error" && error ? (
-        <div className="text-sm text-danger bg-danger-50 border border-danger/20 rounded-lg px-3 py-2">
+        <div
+          role="alert"
+          className="text-sm text-danger bg-danger-50 border border-danger/20 rounded-lg px-3 py-2"
+        >
           ❌ {error}
         </div>
       ) : null}
@@ -212,13 +229,23 @@ function Field({
   value: string;
   onChange: (v: string) => void;
 }) {
+  const id = `recrutement-field-${label
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")}`;
   return (
     <div>
-      <label className="block text-sm font-semibold text-primary-dark mb-1.5">
+      <label
+        htmlFor={id}
+        className="block text-sm font-semibold text-primary-dark mb-1.5"
+      >
         {label}
         {required && <span className="text-danger ml-1">*</span>}
       </label>
       <input
+        id={id}
         type={type}
         required={required}
         value={value}

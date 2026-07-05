@@ -2,25 +2,40 @@ import { NextRequest, NextResponse } from "next/server";
 import { notifyTeam, sendClientConfirmation } from "@/lib/email";
 import { siteConfig } from "@/lib/site-config";
 import { getGuideBySlug } from "@/lib/guides";
+import {
+  checkRateLimit,
+  escapeHtml,
+  isHoneypotTriggered,
+  isValidEmail,
+} from "@/lib/api-helpers";
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { firstName, email, guideSlug, guideTitle } = body ?? {};
+    const limited = checkRateLimit(request, "lead-magnet");
+    if (limited) return limited;
 
-    if (!email || typeof email !== "string" || !email.includes("@")) {
+    const body = await request.json();
+    const { firstName, email, guideSlug } = body ?? {};
+
+    if (isHoneypotTriggered(body)) return NextResponse.json({ ok: true });
+
+    if (!isValidEmail(email)) {
       return NextResponse.json({ error: "Email invalide." }, { status: 400 });
     }
     if (!guideSlug || typeof guideSlug !== "string") {
       return NextResponse.json({ error: "Guide non spécifié." }, { status: 400 });
     }
 
+    // Le guide (et donc son titre) est résolu côté serveur : on n'injecte
+    // jamais le `guideTitle` fourni par le client dans le sujet/HTML de l'email.
     const guide = getGuideBySlug(guideSlug);
-    const downloadUrl = guide
-      ? `${siteConfig.url}${guide.pdfPath}`
-      : `${siteConfig.url}/guides`;
+    if (!guide) {
+      return NextResponse.json({ error: "Guide introuvable." }, { status: 404 });
+    }
+    const guideTitle = guide.title;
+    const downloadUrl = `${siteConfig.url}${guide.pdfPath}`;
 
-    await notifyTeam(`Demande de guide : ${guideTitle ?? guideSlug}`, {
+    await notifyTeam(`Demande de guide : ${guideTitle}`, {
       reçu_le: new Date().toISOString(),
       firstName,
       email,
@@ -30,10 +45,10 @@ export async function POST(request: NextRequest) {
 
     await sendClientConfirmation(
       email,
-      `Votre guide « ${guideTitle ?? guide?.title ?? "Youdom Care"} »`,
+      `Votre guide « ${guideTitle} »`,
       `
-        <p>Bonjour ${firstName || ""},</p>
-        <p>Voici le guide que vous avez demandé : <strong>${guideTitle ?? guide?.title ?? ""}</strong>.</p>
+        <p>Bonjour ${escapeHtml(firstName)},</p>
+        <p>Voici le guide que vous avez demandé : <strong>${escapeHtml(guideTitle)}</strong>.</p>
         <p><a href="${downloadUrl}" style="background:#1B4D7A;color:white;padding:12px 20px;border-radius:8px;text-decoration:none;display:inline-block">📥 Télécharger le guide (PDF)</a></p>
         <p>Si vous avez des questions, notre équipe est joignable :</p>
         <ul>

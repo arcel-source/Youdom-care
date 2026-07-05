@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Aide à domicile pour personnes en situation de handicap | Youdom Care",
+    "Aide à domicile pour personnes en situation de handicap",
   description:
     "Accompagnement personnalisé pour adultes et jeunes en situation de handicap : aide quotidienne, autonomie, projet de vie, dignité. PCH + crédit d'impôt 50 %. Devis gratuit.",
+  alternates: { canonical: "/services/aide-handicap" },
 };
 
 const painPoints = [
@@ -199,6 +202,19 @@ const faq = [
 export default function AideHandicapPage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Aide & accompagnement handicap",
+        description:
+          "Accompagnement personnalisé pour adultes et jeunes en situation de handicap : aide quotidienne, autonomie, projet de vie, dignité. PCH + crédit d'impôt 50 %. Devis gratuit.",
+        url: "/services/aide-handicap",
+        image: "/images/curated/service-aide-handicap.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Aide & accompagnement handicap", url: "/services/aide-handicap" },
+      ])} />
       <ServiceHero
         category="Aide & accompagnement handicap"
         title="Vivre votre vie. À votre rythme. À vos conditions."

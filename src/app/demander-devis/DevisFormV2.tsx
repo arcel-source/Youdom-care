@@ -126,6 +126,7 @@ export default function DevisFormV2() {
   const [draft, setDraft] = useState<DraftData>(emptyDraft);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [hydrated, setHydrated] = useState(false);
 
   // Hydratation : charger depuis localStorage
@@ -213,6 +214,7 @@ export default function DevisFormV2() {
   }, [step, draft]);
 
   async function handleSubmit() {
+    if (submitStatus === "loading") return;
     setSubmitStatus("loading");
     setErrorMsg("");
     try {
@@ -231,6 +233,7 @@ export default function DevisFormV2() {
           message: draft.message,
           newsletter: draft.newsletter,
           estimation,
+          website: honeypot,
         }),
       });
       if (!res.ok) {
@@ -637,8 +640,23 @@ export default function DevisFormV2() {
                 </span>
               </label>
 
+              {/* Honeypot anti-spam : invisible et hors lecteurs d'écran */}
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="sr-only"
+                onChange={(e) => setHoneypot(e.target.value)}
+                value={honeypot}
+              />
+
               {submitStatus === "error" && errorMsg ? (
-                <div className="text-sm text-danger bg-danger-50 border border-danger/20 rounded-lg px-3 py-2">
+                <div
+                  role="alert"
+                  className="text-sm text-danger bg-danger-50 border border-danger/20 rounded-lg px-3 py-2"
+                >
                   ❌ {errorMsg}
                 </div>
               ) : null}
@@ -733,13 +751,23 @@ function Field({
   required?: boolean;
   className?: string;
 }) {
+  const id = `devis-field-${label
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")}`;
   return (
     <div className={className}>
-      <label className="block text-sm font-semibold text-primary-dark mb-1.5">
+      <label
+        htmlFor={id}
+        className="block text-sm font-semibold text-primary-dark mb-1.5"
+      >
         {label}
         {required && <span className="text-danger ml-1">*</span>}
       </label>
       <input
+        id={id}
         type={type}
         required={required}
         value={value}

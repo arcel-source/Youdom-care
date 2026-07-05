@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Retour d'hospitalisation à domicile — démarrage en 48 h | Youdom Care",
+    "Retour d'hospitalisation à domicile — démarrage en 48 h",
   description:
     "Sortie d'hôpital sereine pour votre proche : aide aux soins, suivi post-opératoire, coordination avec médecin et infirmière. Démarrage en 48 à 72 h, week-end inclus. Pris en charge possible par la mutuelle.",
+  alternates: { canonical: "/services/retour-hospitalisation" },
 };
 
 const painPoints = [
@@ -194,6 +197,19 @@ const faq = [
 export default function RetourHospitalisationPage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Retour d'hospitalisation",
+        description:
+          "Sortie d'hôpital sereine pour votre proche : aide aux soins, suivi post-opératoire, coordination avec médecin et infirmière. Démarrage en 48 à 72 h, week-end inclus. Pris en charge possible par la mutuelle.",
+        url: "/services/retour-hospitalisation",
+        image: "/images/curated/service-retour-hospitalisation.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Retour d'hospitalisation", url: "/services/retour-hospitalisation" },
+      ])} />
       <ServiceHero
         category="Retour d'hospitalisation"
         title="La sortie d'hôpital sereine, dès le 1ᵉʳ jour."

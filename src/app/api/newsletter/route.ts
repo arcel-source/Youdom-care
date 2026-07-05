@@ -1,13 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { notifyTeam, sendClientConfirmation } from "@/lib/email";
 import { siteConfig } from "@/lib/site-config";
+import { checkRateLimit, isHoneypotTriggered, isValidEmail } from "@/lib/api-helpers";
 
 export async function POST(request: NextRequest) {
   try {
+    const limited = checkRateLimit(request, "newsletter");
+    if (limited) return limited;
+
     const body = await request.json();
     const { email, source } = body ?? {};
 
-    if (!email || typeof email !== "string" || !email.includes("@")) {
+    if (isHoneypotTriggered(body)) return NextResponse.json({ ok: true });
+
+    if (!isValidEmail(email)) {
       return NextResponse.json({ error: "Email invalide." }, { status: 400 });
     }
 

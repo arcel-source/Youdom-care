@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Aide ménagère à domicile — Paris & Île-de-France | Youdom Care",
+    "Aide ménagère à domicile — Paris & Île-de-France",
   description:
     "Ménage régulier, lessive, repassage, courses : un domicile propre c'est moins de chutes, moins d'infections, plus de sérénité. Crédit d'impôt 50 %. Devis gratuit.",
+  alternates: { canonical: "/services/aide-menagere" },
 };
 
 const painPoints = [
@@ -194,6 +197,19 @@ const faq = [
 export default function AideMenagerePage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Aide ménagère",
+        description:
+          "Ménage régulier, lessive, repassage, courses : un domicile propre c'est moins de chutes, moins d'infections, plus de sérénité. Crédit d'impôt 50 %. Devis gratuit.",
+        url: "/services/aide-menagere",
+        image: "/images/curated/service-aide-menagere.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Aide ménagère", url: "/services/aide-menagere" },
+      ])} />
       <ServiceHero
         category="Aide ménagère"
         title="Un chez-soi propre, c'est aussi un chez-soi qui rassure."

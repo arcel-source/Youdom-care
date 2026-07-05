@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Aide à domicile Alzheimer, Parkinson, SLA — accompagnement spécialisé | Youdom Care",
+    "Aide à domicile Alzheimer, Parkinson, SLA — accompagnement spécialisé",
   description:
     "Accompagnement spécialisé pour les maladies neurodégénératives à domicile : Alzheimer, Parkinson, sclérose en plaques, SLA, démences vasculaires. Auxiliaires formées, continuité, dignité. Devis gratuit.",
+  alternates: { canonical: "/services/alzheimer-parkinson" },
 };
 
 const painPoints = [
@@ -194,6 +197,19 @@ const faq = [
 export default function AlzheimerParkinsonPage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Maladies neurodégénératives",
+        description:
+          "Accompagnement spécialisé pour les maladies neurodégénératives à domicile : Alzheimer, Parkinson, sclérose en plaques, SLA, démences vasculaires. Auxiliaires formées, continuité, dignité. Devis gratuit.",
+        url: "/services/alzheimer-parkinson",
+        image: "/images/curated/service-alzheimer-parkinson.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Maladies neurodégénératives", url: "/services/alzheimer-parkinson" },
+      ])} />
       <ServiceHero
         category="Maladies neurodégénératives"
         title="Quand la mémoire s'efface, la présence reste."

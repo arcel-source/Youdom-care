@@ -57,17 +57,22 @@ export default function AidesSimulator() {
     const visits = freqOptions.find((f) => f.value === frequency)?.visitsPerWeek ?? 3;
     const { monthlyHours, gross } = computeMonthlyCost(visits, hoursPerVisit);
     const { apa, pch } = computeAides(profile, monthlyHours, gross);
-    const afterAides = Math.max(0, gross - apa - pch);
-    const creditImpot = afterAides * 0.5;
-    const restAcharge = afterAides - creditImpot;
+    // Décaissement réel chaque mois : coût brut moins les aides directes (APA/PCH).
+    // Le crédit d'impôt n'est PAS déduit ici : il est récupéré l'année suivante
+    // (ou via l'avance immédiate URSSAF), il n'allège pas la trésorerie du même mois.
+    const monthlyOutOfPocket = Math.max(0, gross - apa - pch);
+    const creditImpot = monthlyOutOfPocket * 0.5;
+    // Coût net réel une fois le crédit d'impôt pris en compte (base annuelle ramenée au mois).
+    const netCost = monthlyOutOfPocket - creditImpot;
 
     return {
       monthlyHours: Math.round(monthlyHours),
       gross: Math.round(gross),
       apa: Math.round(apa),
       pch: Math.round(pch),
+      monthlyOutOfPocket: Math.round(monthlyOutOfPocket),
       creditImpot: Math.round(creditImpot),
-      restAcharge: Math.round(restAcharge),
+      netCost: Math.round(netCost),
     };
   }, [profile, hoursPerVisit, frequency]);
 
@@ -202,23 +207,35 @@ export default function AidesSimulator() {
                 {result.pch > 0 ? (
                   <Row label="PCH estimée" value={`− ${result.pch} €`} accent="success" />
                 ) : null}
-                <Row
-                  label="Crédit d'impôt 50 %"
-                  value={`− ${result.creditImpot} €`}
-                  accent="success"
-                />
+
+                <div className="pt-3 border-t border-primary-dark/10">
+                  <Row
+                    label="Reste à payer chaque mois"
+                    value={`${result.monthlyOutOfPocket} €`}
+                  />
+                  <div className="mt-2">
+                    <Row
+                      label="Crédit d'impôt 50 % (récupéré)"
+                      value={`− ${result.creditImpot} €`}
+                      accent="success"
+                    />
+                  </div>
+                </div>
 
                 <div className="pt-4 border-t-2 border-primary-dark/10">
                   <div className="text-sm text-text-light mb-1">
-                    Votre reste à charge mensuel estimé
+                    Coût net réel estimé, crédit d&apos;impôt déduit
                   </div>
                   <div className="text-4xl sm:text-5xl font-extrabold text-primary-dark">
-                    {result.restAcharge} €
+                    {result.netCost} €
                     <span className="text-lg text-text-light font-normal ml-2">/ mois</span>
                   </div>
                   <p className="text-xs text-text-muted mt-2">
-                    Estimation à titre indicatif basée sur les barèmes 2026. Le devis exact
-                    dépend de votre situation (GIR, ressources, plan d&apos;aide).
+                    Vous réglez <strong>{result.monthlyOutOfPocket} €/mois</strong> ; le crédit
+                    d&apos;impôt de 50 % vous est ensuite remboursé (l&apos;année suivante, ou
+                    au fil de l&apos;eau avec l&apos;avance immédiate URSSAF). Estimation
+                    indicative sur les barèmes 2026 — le devis exact dépend de votre situation
+                    (GIR, ressources, plan d&apos;aide).
                   </p>
                 </div>
 

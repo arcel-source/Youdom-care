@@ -16,9 +16,11 @@ export default function NewsletterCapture({
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (status === "loading") return;
     setStatus("loading");
     setError("");
 
@@ -26,7 +28,7 @@ export default function NewsletterCapture({
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source }),
+        body: JSON.stringify({ email, source, website: honeypot }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -84,8 +86,19 @@ export default function NewsletterCapture({
             {status === "loading" ? "..." : "OK"}
           </button>
         </div>
+        {/* Honeypot anti-spam : invisible et hors lecteurs d'écran */}
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="sr-only"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
         {status === "error" ? (
-          <p className="text-xs text-secondary-light">⚠️ {error}</p>
+          <p role="alert" className="text-xs text-secondary-light">⚠️ {error}</p>
         ) : null}
       </form>
     );
@@ -118,8 +131,19 @@ export default function NewsletterCapture({
         >
           {status === "loading" ? "Inscription..." : "📬 S'abonner à la newsletter"}
         </button>
+        {/* Honeypot anti-spam : invisible et hors lecteurs d'écran */}
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="sr-only"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
         {status === "error" ? (
-          <p className="text-sm text-danger">⚠️ {error}</p>
+          <p role="alert" className="text-sm text-danger">⚠️ {error}</p>
         ) : null}
         <p className="text-xs text-text-muted text-center">
           1 email par mois maximum. Désinscription en 1 clic. RGPD respecté.

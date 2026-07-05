@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { notifyTeam, sendClientConfirmation } from "@/lib/email";
 import { siteConfig } from "@/lib/site-config";
+import {
+  checkRateLimit,
+  escapeHtml,
+  isHoneypotTriggered,
+  isValidEmail,
+} from "@/lib/api-helpers";
 
 /**
  * Réception d'une demande de devis.
@@ -9,11 +15,16 @@ import { siteConfig } from "@/lib/site-config";
  */
 export async function POST(request: NextRequest) {
   try {
+    const limited = checkRateLimit(request, "devis");
+    if (limited) return limited;
+
     const body = await request.json();
+
+    if (isHoneypotTriggered(body)) return NextResponse.json({ ok: true });
 
     // Validation minimale : email obligatoire pour pouvoir répondre
     const email: string | undefined = body?.contact?.email;
-    if (!email || typeof email !== "string" || !email.includes("@")) {
+    if (!isValidEmail(email)) {
       return NextResponse.json(
         { error: "Email invalide ou manquant." },
         { status: 400 },
@@ -32,7 +43,7 @@ export async function POST(request: NextRequest) {
       email,
       "Votre demande de devis a bien été reçue",
       `
-        <p>Bonjour ${firstName || ""},</p>
+        <p>Bonjour ${escapeHtml(firstName)},</p>
         <p>Nous venons de recevoir votre demande de devis chez ${siteConfig.name}.</p>
         <p>Une coordinatrice vous rappelle dans les <strong>2 heures ouvrées</strong> qui suivent
         pour qualifier votre besoin et organiser une visite à domicile gratuite.</p>

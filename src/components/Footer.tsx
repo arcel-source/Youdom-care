@@ -239,11 +239,8 @@ export default function Footer() {
             <Link href="/cgu" className="text-white/50 hover:text-white text-xs transition-colors">
               CGU
             </Link>
-            <Link href="/cookies" className="text-white/50 hover:text-white text-xs transition-colors">
+            <Link href="/confidentialite#cookies" className="text-white/50 hover:text-white text-xs transition-colors">
               Cookies
-            </Link>
-            <Link href="/sitemap" className="text-white/50 hover:text-white text-xs transition-colors">
-              Plan du site
             </Link>
           </div>
         </div>

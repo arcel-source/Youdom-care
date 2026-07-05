@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Accompagnement aux sorties, courses, RDV médicaux | Youdom Care",
+    "Accompagnement aux sorties, courses, RDV médicaux",
   description:
     "Accompagnement personnalisé pour les courses, rendez-vous médicaux, sorties culturelles et loisirs. Le lien social qui maintient en vie. Crédit d'impôt 50 %. Devis gratuit.",
+  alternates: { canonical: "/services/accompagnement-sorties" },
 };
 
 const painPoints = [
@@ -194,6 +197,19 @@ const faq = [
 export default function AccompagnementSortiesPage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Accompagnement & sorties",
+        description:
+          "Accompagnement personnalisé pour les courses, rendez-vous médicaux, sorties culturelles et loisirs. Le lien social qui maintient en vie. Crédit d'impôt 50 %. Devis gratuit.",
+        url: "/services/accompagnement-sorties",
+        image: "/images/curated/service-accompagnement-sorties.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Accompagnement & sorties", url: "/services/accompagnement-sorties" },
+      ])} />
       <ServiceHero
         category="Accompagnement & sorties"
         title="Sortir, c'est rester vivant."

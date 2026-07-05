@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Assistance informatique senior à domicile — ordinateur, smartphone | Youdom Care",
+    "Assistance informatique senior à domicile — ordinateur, smartphone",
   description:
     "Aide informatique à domicile pour seniors : ordinateur, tablette, smartphone, internet, démarches en ligne, visioconférence. Cours patients, dépannages. Crédit d'impôt 50 %.",
+  alternates: { canonical: "/services/assistance-informatique" },
 };
 
 const painPoints = [
@@ -194,6 +197,19 @@ const faq = [
 export default function AssistanceInformatiquePage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Assistance informatique",
+        description:
+          "Aide informatique à domicile pour seniors : ordinateur, tablette, smartphone, internet, démarches en ligne, visioconférence. Cours patients, dépannages. Crédit d'impôt 50 %.",
+        url: "/services/assistance-informatique",
+        image: "/images/curated/service-assistance-informatique.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Assistance informatique", url: "/services/assistance-informatique" },
+      ])} />
       <ServiceHero
         category="Assistance informatique"
         title="Le numérique sans peur, ni jugement, ni jargon."

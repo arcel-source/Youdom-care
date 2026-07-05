@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Transport PMR — véhicules adaptés Paris & IDF | Youdom Care",
+    "Transport PMR — véhicules adaptés Paris & IDF",
   description:
     "Transport adapté pour personnes à mobilité réduite : véhicules accessibles fauteuil roulant, chauffeurs formés, RDV médicaux et sorties. Réservation simple. Devis gratuit.",
+  alternates: { canonical: "/services/transport-pmr" },
 };
 
 const painPoints = [
@@ -182,6 +185,19 @@ const faq = [
 export default function TransportPmrPage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Transport PMR",
+        description:
+          "Transport adapté pour personnes à mobilité réduite : véhicules accessibles fauteuil roulant, chauffeurs formés, RDV médicaux et sorties. Réservation simple. Devis gratuit.",
+        url: "/services/transport-pmr",
+        image: "/images/curated/service-transport-pmr.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Transport PMR", url: "/services/transport-pmr" },
+      ])} />
       <ServiceHero
         category="Transport PMR"
         title="Se déplacer en sécurité, sans stress, partout en IDF."

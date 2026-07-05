@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Garde de nuit & présence nocturne à domicile | Youdom Care",
+    "Garde de nuit & présence nocturne à domicile",
   description:
     "Présence de nuit (passive ou active) pour personnes âgées, en sortie d'hôpital ou avec Alzheimer. Sécurité 24/24, sommeil retrouvé pour la famille. Devis gratuit.",
+  alternates: { canonical: "/services/garde-nuit" },
 };
 
 const painPoints = [
@@ -182,6 +185,19 @@ const faq = [
 export default function GardeNuitPage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Présence de nuit",
+        description:
+          "Présence de nuit (passive ou active) pour personnes âgées, en sortie d'hôpital ou avec Alzheimer. Sécurité 24/24, sommeil retrouvé pour la famille. Devis gratuit.",
+        url: "/services/garde-nuit",
+        image: "/images/curated/service-garde-nuit.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Présence de nuit", url: "/services/garde-nuit" },
+      ])} />
       <ServiceHero
         category="Présence de nuit"
         title="Vos nuits retrouvées. Leur sécurité assurée."

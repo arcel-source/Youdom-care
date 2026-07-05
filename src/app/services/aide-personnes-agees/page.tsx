@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Aide à domicile pour personnes âgées — maintien à domicile en sécurité | Youdom Care",
+    "Aide à domicile pour personnes âgées — maintien à domicile en sécurité",
   description:
     "Aide à domicile pour seniors à Paris & Île-de-France. Toilette, repas, mobilité, présence rassurante. Le même intervenant, APA + crédit d'impôt 50 %. Devis gratuit en 3 min.",
+  alternates: { canonical: "/services/aide-personnes-agees" },
 };
 
 const painPoints = [
@@ -204,6 +207,19 @@ const faq = [
 export default function AidePersonnesAgeesPage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Aide à domicile pour personnes âgées",
+        description:
+          "Aide à domicile pour seniors à Paris & Île-de-France. Toilette, repas, mobilité, présence rassurante. Le même intervenant, APA + crédit d'impôt 50 %. Devis gratuit en 3 min.",
+        url: "/services/aide-personnes-agees",
+        image: "/images/curated/service-aide-personnes-agees.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Aide à domicile pour personnes âgées", url: "/services/aide-personnes-agees" },
+      ])} />
       <ServiceHero
         category="Aide aux personnes âgées"
         title="Vivre chez soi en sécurité, sereinement, dignement."

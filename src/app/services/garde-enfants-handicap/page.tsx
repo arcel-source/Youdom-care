@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Garde d'enfants en situation de handicap à domicile | Youdom Care",
+    "Garde d'enfants en situation de handicap à domicile",
   description:
     "Garde qualifiée à domicile pour les enfants en situation de handicap : TSA, polyhandicap, troubles dys, déficience intellectuelle. AEEH éligible. Répit pour les parents.",
+  alternates: { canonical: "/services/garde-enfants-handicap" },
 };
 
 const painPoints = [
@@ -194,6 +197,19 @@ const faq = [
 export default function GardeEnfantsHandicapPage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Garde d'enfants en situation de handicap",
+        description:
+          "Garde qualifiée à domicile pour les enfants en situation de handicap : TSA, polyhandicap, troubles dys, déficience intellectuelle. AEEH éligible. Répit pour les parents.",
+        url: "/services/garde-enfants-handicap",
+        image: "/images/curated/service-garde-enfants-handicap.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Garde d'enfants en situation de handicap", url: "/services/garde-enfants-handicap" },
+      ])} />
       <ServiceHero
         category="Garde d'enfants en situation de handicap"
         title="Une garde qualifiée. Pour eux. Pour vous."

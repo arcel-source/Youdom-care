@@ -9,12 +9,15 @@ import ServiceFAQ from "@/components/service/ServiceFAQ";
 import ServiceCrossSell from "@/components/service/ServiceCrossSell";
 import EngagementsBlock from "@/components/sections/EngagementsBlock";
 import FinalCTA from "@/components/sections/FinalCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title:
-    "Téléassistance 24/24 — bouton d'urgence senior | Youdom Care",
+    "Téléassistance 24/24 — bouton d'urgence senior",
   description:
     "Téléassistance professionnelle 7j/7, 24h/24 pour personnes âgées et fragilisées : médaillon SOS, détecteur de chute, géolocalisation. Réaction immédiate. Crédit d'impôt 50 %.",
+  alternates: { canonical: "/services/teleassistance" },
 };
 
 const painPoints = [
@@ -194,6 +197,19 @@ const faq = [
 export default function TeleassistancePage() {
   return (
     <>
+      <JsonLd data={serviceSchema({
+        name: "Téléassistance 24/24",
+        description:
+          "Téléassistance professionnelle 7j/7, 24h/24 pour personnes âgées et fragilisées : médaillon SOS, détecteur de chute, géolocalisation. Réaction immédiate. Crédit d'impôt 50 %.",
+        url: "/services/teleassistance",
+        image: "/images/curated/service-teleassistance.jpg",
+      })} />
+      <JsonLd data={faqSchema(faq)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Accueil", url: "/" },
+        { name: "Nos services", url: "/services" },
+        { name: "Téléassistance 24/24", url: "/services/teleassistance" },
+      ])} />
       <ServiceHero
         category="Téléassistance 24/24"
         title="Une présence rassurante. À chaque seconde."

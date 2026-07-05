@@ -23,9 +23,11 @@ export default function LeadCaptureForm({
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (status === "loading") return;
     if (!consent) {
       setErrorMessage("Vous devez accepter de recevoir le guide par email.");
       setStatus("error");
@@ -44,6 +46,7 @@ export default function LeadCaptureForm({
           email,
           guideSlug,
           guideTitle,
+          website: honeypot,
         }),
       });
 
@@ -150,8 +153,23 @@ export default function LeadCaptureForm({
           </span>
         </label>
 
+        {/* Honeypot anti-spam : invisible et hors lecteurs d'écran */}
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="sr-only"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+
         {status === "error" && errorMessage ? (
-          <div className="text-sm text-danger bg-danger-50 border border-danger/20 rounded-lg px-3 py-2">
+          <div
+            role="alert"
+            className="text-sm text-danger bg-danger-50 border border-danger/20 rounded-lg px-3 py-2"
+          >
             ❌ {errorMessage}
           </div>
         ) : null}

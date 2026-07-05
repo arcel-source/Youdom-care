@@ -61,7 +61,7 @@ export default function ServiceFinder() {
               {/* Indicateur d'étape */}
               <div className="flex items-center gap-2 mb-8">
                 <span
-                  className={`flex-1 h-1.5 rounded-full ${audience ? "bg-primary" : "bg-primary"}`}
+                  className={`flex-1 h-1.5 rounded-full ${audience ? "bg-primary" : "bg-primary-lighter"}`}
                 />
                 <span
                   className={`flex-1 h-1.5 rounded-full ${need ? "bg-primary" : "bg-border"}`}

@@ -43,13 +43,10 @@ export function localBusinessSchema() {
       },
     ],
     priceRange: "€€",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "220",
-      bestRating: "5",
-      worstRating: "1",
-    },
+    // NOTE : aggregateRating retiré volontairement. Google exige que la note
+    // provienne d'avis réels, collectés et visibles sur le site. À réactiver
+    // uniquement quand une source d'avis vérifiés (Google, Trustpilot, etc.)
+    // sera branchée, sous peine de pénalité manuelle « structured data ».
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
