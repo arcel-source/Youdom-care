@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import FloatingCTA from "@/components/FloatingCTA";
+import SiteChrome from "@/components/SiteChrome";
 import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 import { localBusinessSchema } from "@/lib/structured-data";
@@ -99,10 +97,7 @@ export default function RootLayout({
         >
           Aller au contenu principal
         </a>
-        <Header />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <FloatingCTA />
+        <SiteChrome>{children}</SiteChrome>
         <JsonLd data={localBusinessSchema()} />
       </body>
     </html>
