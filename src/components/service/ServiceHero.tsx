@@ -72,7 +72,7 @@ export default function ServiceHero({
 
             <h1 className="text-white text-balance">{title}</h1>
 
-            <p className="lead text-white/85 mt-6">{subtitle}</p>
+            <p className="lead !text-white/90 mt-6">{subtitle}</p>
 
             {highlights.length > 0 ? (
               <ul className="mt-8 space-y-2.5">
@@ -101,7 +101,7 @@ export default function ServiceHero({
               </Button>
             </div>
 
-            <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/75 mt-6">
+            <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/90 mt-6">
               <span className="inline-flex items-center gap-1.5"><span aria-hidden="true">⏱️</span> Réponse en moins de 2 h</span>
               <span className="inline-flex items-center gap-1.5"><span aria-hidden="true">🏠</span> Visite gratuite</span>
               <span className="inline-flex items-center gap-1.5"><span aria-hidden="true">🤝</span> Sans engagement</span>

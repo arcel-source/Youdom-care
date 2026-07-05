@@ -140,7 +140,7 @@ export default function PageHero({
 
             {subtitle ? (
               <p
-                className={`lead text-white/85 mt-6 ${
+                className={`lead !text-white/90 mt-6 ${
                   layout === "center" ? "mx-auto max-w-2xl" : ""
                 }`}
               >
@@ -192,7 +192,7 @@ export default function PageHero({
             ) : null}
 
             {footnote ? (
-              <p className="text-sm text-white/70 mt-5">{footnote}</p>
+              <p className="text-sm text-white/85 mt-5">{footnote}</p>
             ) : null}
 
             {children}

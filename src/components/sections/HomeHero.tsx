@@ -6,17 +6,11 @@ import { siteConfig, brandStats } from "@/lib/site-config";
 export default function HomeHero() {
   return (
     <section className="relative isolate overflow-hidden bg-hero-gradient text-white pt-12 sm:pt-16 lg:pt-24 pb-24 sm:pb-32 lg:pb-40">
-      {/* Image d'ambiance en fond, très discrète */}
-      <div className="absolute inset-0 opacity-20" aria-hidden="true">
-        <Image
-          src="/images/curated/home-hero-couple-warm.jpg"
-          alt=""
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-      </div>
+      {/* Voile sombre pour garantir la lisibilité du texte sur le dégradé */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-primary-dark/70 via-primary-dark/30 to-transparent"
+      />
 
       {/* Grille subtile */}
       <div
@@ -65,7 +59,7 @@ export default function HomeHero() {
             </h1>
 
             <p
-              className="lead text-white/90 mt-7 animate-fade-in-up"
+              className="lead !text-white/95 mt-7 animate-fade-in-up"
               style={{ animationDelay: "200ms" }}
             >
               Nous accompagnons votre proche chez lui — toilette, repas, présence,
@@ -93,7 +87,7 @@ export default function HomeHero() {
             </div>
 
             <p
-              className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/75 mt-6 animate-fade-in-up"
+              className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/90 mt-6 animate-fade-in-up"
               style={{ animationDelay: "400ms" }}
             >
               <span className="inline-flex items-center gap-1.5">
