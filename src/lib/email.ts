@@ -12,7 +12,13 @@
  * NOTE : pour activer Resend, décommentez l'import et le code dans sendEmail.
  */
 
-// import { Resend } from "resend";
+export type EmailAttachment = {
+  filename: string;
+  /** URL publique du fichier (Resend récupère et joint le fichier). */
+  path?: string;
+  /** Contenu encodé base64 (alternative à path). */
+  content?: string;
+};
 
 export type EmailMessage = {
   to: string | string[];
@@ -20,6 +26,7 @@ export type EmailMessage = {
   html?: string;
   text?: string;
   replyTo?: string;
+  attachments?: EmailAttachment[];
 };
 
 const FROM = process.env.EMAIL_FROM || "Youdom Care <noreply@youdom-care.com>";
@@ -36,22 +43,24 @@ export async function sendEmail(message: EmailMessage): Promise<string | null> {
       from: FROM,
       to: message.to,
       subject: message.subject,
+      attachments: message.attachments?.map((a) => a.filename),
       preview: message.text?.slice(0, 200) || "(html only)",
     });
     return `console-${Date.now()}`;
   }
 
-  // Production : décommentez après `npm install resend`
-  /*
+  // Production : envoi réel via Resend (import dynamique pour rester optionnel).
   try {
+    const { Resend } = await import("resend");
     const resend = new Resend(process.env.RESEND_API_KEY!);
     const { data, error } = await resend.emails.send({
       from: FROM,
       to: Array.isArray(message.to) ? message.to : [message.to],
       subject: message.subject,
       html: message.html,
-      text: message.text,
+      text: message.text ?? "",
       replyTo: message.replyTo,
+      attachments: message.attachments,
     });
     if (error) {
       console.error("Resend error:", error);
@@ -62,9 +71,6 @@ export async function sendEmail(message: EmailMessage): Promise<string | null> {
     console.error("sendEmail error:", err);
     return null;
   }
-  */
-
-  return `resend-not-configured-${Date.now()}`;
 }
 
 /**
@@ -88,11 +94,13 @@ export function sendClientConfirmation(
   to: string,
   subject: string,
   bodyHtml: string,
+  attachments?: EmailAttachment[],
 ) {
   return sendEmail({
     to,
     subject,
     html: bodyHtml,
     replyTo: TEAM_INBOX,
+    attachments,
   });
 }

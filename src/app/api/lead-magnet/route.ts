@@ -57,6 +57,8 @@ export async function POST(request: NextRequest) {
         </ul>
         <p>À très vite,<br/>L'équipe ${siteConfig.name}</p>
       `,
+      // Le PDF est joint à l'email : le client reçoit directement son document.
+      [{ filename: guide.pdfPath.split("/").pop() ?? "guide.pdf", path: downloadUrl }],
     );
 
     return NextResponse.json({ ok: true });
