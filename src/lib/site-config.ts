@@ -32,7 +32,7 @@ export const siteConfig = {
  * À garder à jour quand les chiffres bougent.
  */
 export const brandStats = {
-  yearsOfExperience: 10,
+  yearsOfExperience: 12,
   familiesAccompanied: 500,
   satisfactionRate: 98,
   responseTimeHours: 2,

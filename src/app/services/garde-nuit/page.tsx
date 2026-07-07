@@ -122,7 +122,7 @@ const methodPoints = [
   {
     title: "Soutien & relais permanent",
     description:
-      "Coordinateur d'astreinte joignable 24/24 par l'auxiliaire si situation imprévue (refus de couché, fugue Alzheimer, urgence médicale).",
+      "Coordinateur d'astreinte joignable 24/24 par l'auxiliaire si situation imprévue (refus de se coucher, errance nocturne, urgence médicale).",
   },
 ];
 

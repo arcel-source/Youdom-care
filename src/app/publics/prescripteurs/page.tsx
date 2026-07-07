@@ -44,8 +44,8 @@ const advantages = [
     description: "Pas d'auto-entrepreneurs. Pas de turnover. Sélection en 6 étapes, formations continues, casier B3 vérifié annuellement.",
   },
   {
-    title: "Couverture IDF complète",
-    description: "Paris + petite couronne + grande couronne (Yvelines, Essonne, Seine-et-Marne, Hauts-de-Seine, Val-d'Oise, Seine-Saint-Denis).",
+    title: "Couverture Paris & petite couronne",
+    description: "Paris intra-muros et petite couronne (Hauts-de-Seine 92, Seine-Saint-Denis 93, Val-de-Marne 94) — 21 communes desservies, extension régulière.",
   },
 ];
 
