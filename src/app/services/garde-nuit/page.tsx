@@ -239,7 +239,7 @@ export default function GardeNuitPage() {
         title="Des auxiliaires de nuit qualifiées et reposées"
         description="Nous ne demandons jamais à une auxiliaire de jour de prendre une nuit. Nuit et jour : équipes dédiées, formées différemment."
         specialization="Veille passive, gestion des troubles du sommeil, soins palliatifs, premiers secours"
-        image="/images/curated/public-aidants-knitting-granddaughter.jpg"
+        image="/images/curated/blog-presence-bedside.jpg"
         imageAlt="Auxiliaire de nuit formée"
       />
 

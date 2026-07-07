@@ -245,6 +245,9 @@ export default function TransportPmrPage() {
 
       <ServicePricing
         hourlyRange={{ min: 30, max: 45 }}
+        priceLabel="À partir de"
+        priceUnit="/trajet"
+        priceNote="Forfait selon distance et attente"
         aides={aides}
         exampleNet="Exemple : 4 trajets aller-retour mensuels (RDV médical + sortie familiale) = ~360 €/mois brut. Avec mutuelle + crédit d'impôt, le reste à charge tombe souvent autour de 100-150 €."
       />

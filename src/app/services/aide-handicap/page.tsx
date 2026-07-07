@@ -256,7 +256,7 @@ export default function AideHandicapPage() {
         title="Des auxiliaires formées au handicap, choisies pour vous"
         description="Au-delà des compétences techniques : empathie, capacité d'adaptation, respect de l'intimité. Vous validez le profil avant tout démarrage."
         specialization="Manutention, communication adaptée, gestion troubles comportement, autonomisation"
-        image="/images/curated/public-aidants-knitting-granddaughter.jpg"
+        image="/images/curated/comment-ca-marche-caregiver.jpg"
         imageAlt="Auxiliaire spécialisée handicap"
       />
 

@@ -78,7 +78,7 @@ export const faqCategories: FAQCategory[] = [
       {
         question: "Quel est le tarif horaire ?",
         answer:
-          "Notre tarif varie de 25 à 35 €/h selon le service (jour, nuit, dimanche, niveau de spécialisation). Avec le crédit d'impôt de 50 % automatique et les aides comme l'APA ou la PCH, le reste à charge tombe souvent entre 5 et 12 € de l'heure pour les seniors.",
+          "Notre tarif varie de 24 à 35 €/h selon le service (ménage, aide à la personne, nuit, dimanche, niveau de spécialisation). Avec le crédit d'impôt de 50 % automatique et les aides comme l'APA ou la PCH, le reste à charge tombe souvent entre 5 et 12 € de l'heure pour les seniors.",
       },
       {
         question: "L'avance immédiate du crédit d'impôt 50 %, comment ça marche ?",

@@ -318,7 +318,7 @@ export const faqQuick = [
   {
     question: "Combien ça coûte vraiment, après les aides ?",
     answer:
-      "Le tarif horaire varie de 25 à 32 €. Avec le crédit d'impôt de 50 % automatique et les aides comme l'APA ou la PCH, le reste à charge tombe souvent entre 5 et 12 € de l'heure. Notre simulateur calcule votre coût réel en 30 secondes.",
+      "Le tarif horaire varie de 24 à 35 € selon la prestation (ménage, aide à la personne, nuit, spécialisé). Avec le crédit d'impôt de 50 % automatique et les aides comme l'APA ou la PCH, le reste à charge tombe souvent entre 5 et 12 € de l'heure. Notre simulateur calcule votre coût réel en 30 secondes.",
   },
   {
     question: "Quand pouvez-vous commencer ?",

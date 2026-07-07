@@ -251,7 +251,7 @@ export default function AlzheimerParkinsonPage() {
         title="Des auxiliaires spécifiquement formées au neurodégénératif"
         description="Formation Humanitude, méthode Montessori adaptée, manutention Parkinson, communication Alzheimer : nos équipes sont à la hauteur de la complexité."
         specialization="Humanitude, Montessori, désescalade comportementale, déglutition, manutention spécialisée"
-        image="/images/curated/public-aidants-knitting-granddaughter.jpg"
+        image="/images/curated/comment-ca-marche-caregiver.jpg"
         imageAlt="Auxiliaire spécialisée maladies neurodégénératives"
       />
 

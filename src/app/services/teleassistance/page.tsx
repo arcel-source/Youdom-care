@@ -256,7 +256,10 @@ export default function TeleassistancePage() {
       />
 
       <ServicePricing
-        hourlyRange={{ min: 25, max: 35 }}
+        hourlyRange={{ min: 30, max: 45 }}
+        priceLabel="Abonnement mensuel"
+        priceUnit="/mois"
+        priceNote="Selon options (détecteur de chute, GPS)"
         aides={aides}
         exampleNet="Exemple : abonnement mensuel téléassistance complète (médaillon + détecteur de chute + géolocalisation) = ~30-45 €/mois. Avec crédit d'impôt 50 % et APA, le reste à charge tombe souvent à 10-20 €/mois."
       />

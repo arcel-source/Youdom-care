@@ -251,7 +251,7 @@ export default function RetourHospitalisationPage() {
         title="Des auxiliaires formées au post-hospitalier"
         description="Nos équipes connaissent les protocoles de sortie d'hôpital, savent reconnaître les signaux d'alerte et travailler en binôme avec les libéraux."
         specialization="Soins post-op, prévention escarres, dénutrition, communication médicale"
-        image="/images/curated/public-aidants-knitting-granddaughter.jpg"
+        image="/images/curated/comment-ca-marche-caregiver.jpg"
         imageAlt="Auxiliaire spécialisée post-hospitalisation"
       />
 

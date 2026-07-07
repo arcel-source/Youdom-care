@@ -60,7 +60,7 @@ const devisFaq = [
   {
     question: "Combien coûte l'aide à domicile, une fois les aides déduites ?",
     answer:
-      "Le tarif horaire va de 25 à 32 €. Avec le crédit d'impôt de 50 % et les aides comme l'APA ou la PCH, le reste à charge tombe souvent entre 5 et 12 € de l'heure. Notre coordinatrice chiffre votre situation exacte gratuitement.",
+      "Le tarif horaire va de 24 à 35 € selon la prestation. Avec le crédit d'impôt de 50 % et les aides comme l'APA ou la PCH, le reste à charge tombe souvent entre 5 et 12 € de l'heure. Notre coordinatrice chiffre votre situation exacte gratuitement.",
   },
   {
     question: "Sous combien de temps pouvez-vous démarrer ?",

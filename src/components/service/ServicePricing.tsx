@@ -10,9 +10,22 @@ type Props = {
   hourlyRange: { min: number; max: number };
   aides: AideRef[];
   exampleNet?: string;
+  /** Libellé du prix (défaut « Tarif horaire »). Ex. « Abonnement mensuel ». */
+  priceLabel?: string;
+  /** Unité affichée après le montant (défaut « /h »). Ex. « /mois », « /trajet ». */
+  priceUnit?: string;
+  /** Note sous le prix (défaut « Variable selon plan d'aide »). */
+  priceNote?: string;
 };
 
-export default function ServicePricing({ hourlyRange, aides, exampleNet }: Props) {
+export default function ServicePricing({
+  hourlyRange,
+  aides,
+  exampleNet,
+  priceLabel = "Tarif horaire",
+  priceUnit = "/h",
+  priceNote = "Variable selon plan d'aide",
+}: Props) {
   return (
     <section className="bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white py-16 sm:py-20">
       <Container size="wide">
@@ -28,13 +41,13 @@ export default function ServicePricing({ hourlyRange, aides, exampleNet }: Props
             <div className="grid grid-cols-2 gap-4 mt-8">
               <div className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15">
                 <div className="text-xs uppercase tracking-wider text-secondary font-bold mb-1">
-                  Tarif horaire
+                  {priceLabel}
                 </div>
                 <div className="text-3xl font-bold">
                   {hourlyRange.min}–{hourlyRange.max} €
-                  <span className="text-base text-white/60 font-normal">/h</span>
+                  <span className="text-base text-white/60 font-normal">{priceUnit}</span>
                 </div>
-                <p className="text-xs text-white/70 mt-1">Variable selon plan d&apos;aide</p>
+                <p className="text-xs text-white/70 mt-1">{priceNote}</p>
               </div>
               <div className="bg-secondary/20 backdrop-blur rounded-2xl p-5 border border-secondary/40">
                 <div className="text-xs uppercase tracking-wider text-secondary font-bold mb-1">

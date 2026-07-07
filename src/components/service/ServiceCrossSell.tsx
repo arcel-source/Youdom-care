@@ -17,10 +17,14 @@ export default function ServiceCrossSell({
   description = "Nos clients combinent souvent ce service avec ceux-ci pour un accompagnement encore plus complet.",
   recommendedSlugs,
 }: Props) {
-  // Si pas de liste explicite : on prend 3 services featured différents du courant
-  const list = recommendedSlugs
-    ? services.filter((s) => recommendedSlugs.includes(s.slug))
-    : services.filter((s) => s.featured && s.slug !== currentSlug).slice(0, 3);
+  // Grille de 3 colonnes : on plafonne à 3 cartes pour éviter une 4ᵉ orpheline.
+  // Avec une liste explicite, on respecte l'ordre fourni.
+  const pool = recommendedSlugs
+    ? recommendedSlugs
+        .map((slug) => services.find((s) => s.slug === slug))
+        .filter((s): s is (typeof services)[number] => Boolean(s))
+    : services.filter((s) => s.featured);
+  const list = pool.filter((s) => s.slug !== currentSlug).slice(0, 3);
 
   if (list.length === 0) return null;
 
