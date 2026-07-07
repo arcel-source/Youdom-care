@@ -66,7 +66,7 @@ export default function ServicePricing({
 
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
               <Button href="/demander-devis" variant="primary" size="lg" glow>
-                Devis personnalisé gratuit
+                Demander un devis gratuit
               </Button>
               <Button href="/aides-financieres" variant="white" size="lg">
                 Voir toutes les aides

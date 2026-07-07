@@ -76,7 +76,7 @@ export default function AgenceIndexPage() {
           </>
         }
         subtitle={`${agencies.length} communes desservies à Paris et en petite couronne. Des coordinatrices proches de chez vous, des auxiliaires qui connaissent votre quartier, vos hôpitaux, vos commerces.`}
-        primaryCta={{ label: "Devis gratuit en 3 min", href: "/demander-devis" }}
+        primaryCta={{ label: "Demander un devis gratuit", href: "/demander-devis" }}
         secondaryCta={{
           label: siteConfig.phone.main,
           href: `tel:${siteConfig.phone.mainE164}`,

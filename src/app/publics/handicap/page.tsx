@@ -85,7 +85,7 @@ export default function HandicapPage() {
           </>
         }
         subtitle="L'accompagnement à domicile pour personnes en situation de handicap qui respecte d'abord ce que vous voulez vivre, ce que vous savez faire, ce que vous aimeriez pouvoir."
-        primaryCta={{ label: "Demander un devis", href: "/demander-devis" }}
+        primaryCta={{ label: "Demander un devis gratuit", href: "/demander-devis" }}
         secondaryCta={{
           label: siteConfig.phone.main,
           href: `tel:${siteConfig.phone.mainE164}`,

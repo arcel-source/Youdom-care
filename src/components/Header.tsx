@@ -332,7 +332,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className="block w-full px-6 py-3.5 bg-secondary hover:bg-secondary-light text-primary-dark font-bold rounded-xl text-center text-base min-h-[48px] cta-glow"
               >
-                Devis gratuit en 3 min →
+                Demander un devis gratuit →
               </Link>
               <div className="grid grid-cols-2 gap-3">
                 <a

@@ -31,7 +31,7 @@ export default function Footer() {
               href="/demander-devis"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-secondary text-primary-dark font-bold rounded-xl hover:bg-secondary-light transition-colors cta-glow"
             >
-              Devis en ligne
+              Devis gratuit
             </Link>
           </div>
         </div>

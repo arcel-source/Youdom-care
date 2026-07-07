@@ -87,7 +87,7 @@ export default function HomeHero() {
               style={{ animationDelay: "300ms" }}
             >
               <Button href="/demander-devis" variant="primary" size="lg" glow>
-                Devis en ligne — 3 min
+                Demander un devis gratuit
               </Button>
               <Button
                 href={`tel:${siteConfig.phone.mainE164}`}

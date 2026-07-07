@@ -72,7 +72,7 @@ export default function SeniorsPage() {
           </>
         }
         subtitle="À 70, 80 ou 95 ans, votre maison reste votre maison. Notre rôle : vous donner les bonnes mains, le bon moment, pour que vous y restiez en sécurité — sans renoncer à rien."
-        primaryCta={{ label: "Devis gratuit en 3 min", href: "/demander-devis" }}
+        primaryCta={{ label: "Demander un devis gratuit", href: "/demander-devis" }}
         secondaryCta={{
           label: siteConfig.phone.main,
           href: `tel:${siteConfig.phone.mainE164}`,

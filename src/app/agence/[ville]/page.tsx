@@ -114,7 +114,7 @@ export default async function AgencePage({
         ]}
         title={<>{agency.heroTitle}</>}
         subtitle={agency.heroSubtitle}
-        primaryCta={{ label: "Devis gratuit en 3 min", href: "/demander-devis" }}
+        primaryCta={{ label: "Demander un devis gratuit", href: "/demander-devis" }}
         secondaryCta={{
           label: siteConfig.phone.main,
           href: `tel:${siteConfig.phone.mainE164}`,
