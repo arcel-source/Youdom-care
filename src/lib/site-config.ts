@@ -165,7 +165,7 @@ export const services = [
     summary: "Courses, RDV médecins, loisirs. Autonomie et lien social.",
     image: "/images/curated/service-accompagnement-sorties.jpg",
     audience: ["senior", "handicap"],
-    featured: true,
+    featured: false,
   },
   {
     slug: "retour-hospitalisation",
