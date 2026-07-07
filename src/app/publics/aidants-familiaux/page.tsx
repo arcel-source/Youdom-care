@@ -156,11 +156,7 @@ export default function AidantsFamiliauxPage() {
     <>
       <PageHero
         eyebrow="Pour les 11 millions d'aidants familiaux en France"
-        breadcrumb={[
-          { name: "Accueil", href: "/" },
-          { name: "Nos publics", href: "/" },
-          { name: "Aidants familiaux" },
-        ]}
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Aidants familiaux" }]}
         title={
           <>
             Vous aidez un proche.

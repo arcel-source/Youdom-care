@@ -17,8 +17,8 @@ export const metadata: Metadata = {
     "Accompagnement à domicile pour personnes en situation de handicap, adultes et enfants. Approche autodétermination, PCH, MDPH. Auxiliaires formées spécialisées.",
 };
 
-const handicapServices = services.filter((s) =>
-  (s.audience as readonly string[]).includes("handicap"),
+const handicapServices = services.filter(
+  (s) => (s.audience as readonly string[]).includes("handicap") && s.featured,
 );
 
 const principles = [
@@ -72,11 +72,7 @@ export default function HandicapPage() {
     <>
       <PageHero
         eyebrow="Pour les personnes en situation de handicap & leurs familles"
-        breadcrumb={[
-          { name: "Accueil", href: "/" },
-          { name: "Nos publics", href: "/" },
-          { name: "Handicap" },
-        ]}
+        breadcrumb={[{ name: "Accueil", href: "/" }, { name: "Handicap" }]}
         title={
           <>
             Votre projet de vie.
