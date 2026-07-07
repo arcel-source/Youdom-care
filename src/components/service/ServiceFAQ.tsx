@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
@@ -22,6 +22,7 @@ export default function ServiceFAQ({
   items,
 }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const uid = useId();
 
   return (
     <section className="bg-warm-grain py-16 sm:py-20">
@@ -31,6 +32,8 @@ export default function ServiceFAQ({
         <div className="space-y-3">
           {items.map((item, index) => {
             const isOpen = openIndex === index;
+            const btnId = `${uid}-q-${index}`;
+            const panelId = `${uid}-a-${index}`;
             return (
               <article
                 key={index}
@@ -40,9 +43,11 @@ export default function ServiceFAQ({
               >
                 <button
                   type="button"
+                  id={btnId}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left"
                   aria-expanded={isOpen}
+                  aria-controls={panelId}
                 >
                   <h3 className="text-base sm:text-lg font-bold text-primary-dark pr-4 m-0">
                     {item.question}
@@ -60,6 +65,10 @@ export default function ServiceFAQ({
                 </button>
 
                 <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={btnId}
+                  hidden={!isOpen}
                   className={`grid transition-all duration-300 ease-in-out ${
                     isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                   }`}

@@ -170,6 +170,7 @@ export default function AidesSimulator() {
                       key={f.value}
                       type="button"
                       onClick={() => setFrequency(f.value)}
+                      aria-pressed={frequency === f.value}
                       className={`px-3 py-2.5 text-sm font-semibold rounded-lg border-2 transition-all ${
                         frequency === f.value
                           ? "border-primary bg-primary text-white"
@@ -193,7 +194,7 @@ export default function AidesSimulator() {
             <div className="relative">
               <h3 className="text-primary-dark mb-6 text-xl">Votre estimation mensuelle</h3>
 
-              <div className="space-y-4">
+              <div className="space-y-4" aria-live="polite">
                 <Row label="Heures par mois" value={`${result.monthlyHours} h`} />
                 <Row
                   label="Coût brut"

@@ -38,7 +38,11 @@ export default function FAQAccordion() {
       {/* Recherche */}
       <div className="max-w-2xl mx-auto mb-6">
         <div className="relative">
+          <label htmlFor="faq-search" className="sr-only">
+            Rechercher dans la FAQ
+          </label>
           <input
+            id="faq-search"
             type="search"
             placeholder="Rechercher dans la FAQ..."
             value={search}
@@ -62,11 +66,9 @@ export default function FAQAccordion() {
             </button>
           ) : null}
         </div>
-        {search ? (
-          <p className="text-sm text-text-light mt-3 text-center">
-            {totalCount} résultat{totalCount > 1 ? "s" : ""} pour « {search} »
-          </p>
-        ) : null}
+        <p className="text-sm text-text-light mt-3 text-center" aria-live="polite">
+          {search ? `${totalCount} résultat${totalCount > 1 ? "s" : ""} pour « ${search} »` : ""}
+        </p>
       </div>
 
       {/* Filtres catégories */}
@@ -74,6 +76,7 @@ export default function FAQAccordion() {
         <button
           type="button"
           onClick={() => setActiveCategory(null)}
+          aria-pressed={activeCategory === null}
           className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
             activeCategory === null
               ? "bg-primary text-white"
@@ -89,6 +92,7 @@ export default function FAQAccordion() {
             onClick={() =>
               setActiveCategory(activeCategory === cat.id ? null : cat.id)
             }
+            aria-pressed={activeCategory === cat.id}
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
               activeCategory === cat.id
                 ? "bg-primary text-white"
@@ -122,9 +126,11 @@ export default function FAQAccordion() {
                   >
                     <button
                       type="button"
+                      id={`${id}-btn`}
                       onClick={() => setOpenId(isOpen ? null : id)}
                       className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left"
                       aria-expanded={isOpen}
+                      aria-controls={`${id}-panel`}
                     >
                       <h3 className="text-base sm:text-lg font-bold text-primary-dark pr-4 m-0">
                         {item.question}
@@ -142,6 +148,10 @@ export default function FAQAccordion() {
                     </button>
 
                     <div
+                      id={`${id}-panel`}
+                      role="region"
+                      aria-labelledby={`${id}-btn`}
+                      hidden={!isOpen}
                       className={`grid transition-all duration-300 ease-in-out ${
                         isOpen
                           ? "grid-rows-[1fr] opacity-100"
