@@ -458,6 +458,46 @@ export const aidesFinancieres = [
   },
 ] as const;
 
+/**
+ * Navigation principale — SOURCE UNIQUE réutilisée par le Header (desktop +
+ * mobile) et le Footer, pour garantir une structure identique partout.
+ *
+ * - kind "services" / "publics" : méga-menus spéciaux (alimentés par `services`
+ *   et `personas`).
+ * - `children` : simple menu déroulant de liens.
+ * - `href` seul : lien simple.
+ */
+export type NavChild = { label: string; href: string };
+export type NavItem =
+  | { label: string; kind: "services" }
+  | { label: string; kind: "publics" }
+  | { label: string; href: string }
+  | { label: string; children: readonly NavChild[] };
+
+export const mainNav: readonly NavItem[] = [
+  { label: "Services", kind: "services" },
+  { label: "Nos publics", kind: "publics" },
+  { label: "Aides & financement", href: "/aides-financieres" },
+  {
+    label: "À propos",
+    children: [
+      { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
+      { label: "Notre méthode", href: "/comment-ca-marche" },
+      { label: "Nos agences", href: "/agence" },
+      { label: "Témoignages", href: "/temoignages" },
+    ],
+  },
+  {
+    label: "Ressources",
+    children: [
+      { label: "Blog", href: "/blog" },
+      { label: "Guides gratuits", href: "/guides" },
+      { label: "Questions fréquentes", href: "/faq" },
+    ],
+  },
+  { label: "Contact", href: "/contact" },
+] as const;
+
 export type Persona = (typeof personas)[number];
 export type Service = (typeof services)[number];
 export type Testimonial = (typeof testimonials)[number];

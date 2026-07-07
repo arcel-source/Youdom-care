@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button";
 import PageHero from "@/components/ui/PageHero";
 import Reveal from "@/components/ui/Reveal";
 import JsonLd from "@/components/seo/JsonLd";
+import ServiceFinder from "@/components/sections/ServiceFinder";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { services, siteConfig } from "@/lib/site-config";
 import { breadcrumbSchema } from "@/lib/structured-data";
@@ -199,35 +200,8 @@ export default function ServicesIndexPage() {
         </Container>
       </section>
 
-      {/* AIDE AU CHOIX */}
-      <section className="bg-primary text-white py-14 sm:py-20">
-        <Container>
-          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-center">
-            <div>
-              <span className="eyebrow !text-secondary">Vous hésitez ?</span>
-              <h2 className="text-white">Un doute sur le bon service ? On vous guide.</h2>
-              <p className="lead !text-white/85 mt-3">
-                Décrivez votre situation en 3 minutes : notre coordinatrice identifie
-                les services adaptés, combine plusieurs prestations si besoin, et
-                chiffre votre reste à charge réel — gratuitement.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 shrink-0">
-              <Button href="/demander-devis" variant="primary" size="lg" glow>
-                Être guidé gratuitement
-              </Button>
-              <Button
-                href={`tel:${siteConfig.phone.mainE164}`}
-                variant="white"
-                size="lg"
-                icon={<span aria-hidden="true">📞</span>}
-              >
-                {siteConfig.phone.main}
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* AIDE AU CHOIX — quiz interactif */}
+      <Reveal><ServiceFinder /></Reveal>
 
       {/* SERVICE SUR-MESURE */}
       <section className="bg-warm py-16 sm:py-20">

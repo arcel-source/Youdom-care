@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { siteConfig, services, personas } from "@/lib/site-config";
+import { siteConfig, services, personas, mainNav } from "@/lib/site-config";
 
 const featuredServices = services.filter((s) => s.featured).slice(0, 6);
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileSection, setMobileSection] = useState<"services" | "publics" | null>(null);
+  const [mobileSection, setMobileSection] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -99,58 +99,81 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* Desktop nav */}
+            {/* Desktop nav — générée depuis mainNav (source unique) */}
             <nav className="hidden lg:flex items-center gap-1">
-              {/* Mega-menu Services */}
-              <DropdownNav label="Services" wide>
-                <div className="grid grid-cols-2 gap-1 p-3 w-[560px]">
-                  <Link
-                    href="/services"
-                    className="col-span-2 flex items-center justify-between p-3 rounded-lg bg-warm hover:bg-primary-50 group"
-                  >
-                    <div>
-                      <div className="font-bold text-primary-dark">Tous nos services</div>
-                      <div className="text-xs text-text-light">Voir l&apos;ensemble du catalogue</div>
-                    </div>
-                    <span className="text-primary group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
-                  </Link>
-                  {featuredServices.map((s) => (
-                    <Link
-                      key={s.slug}
-                      href={`/services/${s.slug}`}
-                      className="p-2.5 rounded-lg hover:bg-warm transition-colors"
-                    >
-                      <div className="text-sm font-semibold text-primary-dark">{s.title}</div>
-                      <div className="text-xs text-text-light line-clamp-1">{s.summary}</div>
-                    </Link>
-                  ))}
-                </div>
-              </DropdownNav>
-
-              {/* Mega-menu Publics */}
-              <DropdownNav label="Nos publics">
-                <div className="p-2 w-[280px]">
-                  {personas.map((p) => (
-                    <Link
-                      key={p.id}
-                      href={p.href}
-                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-warm transition-colors"
-                    >
-                      <span className="text-2xl shrink-0" aria-hidden="true">{p.icon}</span>
-                      <div>
-                        <div className="text-sm font-semibold text-primary-dark">{p.label}</div>
-                        <div className="text-xs text-text-light line-clamp-1">{p.description}</div>
+              {mainNav.map((item) => {
+                if ("kind" in item && item.kind === "services") {
+                  return (
+                    <DropdownNav key={item.label} label={item.label} wide>
+                      <div className="grid grid-cols-2 gap-1 p-3 w-[560px]">
+                        <Link
+                          href="/services"
+                          className="col-span-2 flex items-center justify-between p-3 rounded-lg bg-warm hover:bg-primary-50 group"
+                        >
+                          <div>
+                            <div className="font-bold text-primary-dark">Tous nos services</div>
+                            <div className="text-xs text-text-light">Voir l&apos;ensemble du catalogue</div>
+                          </div>
+                          <span className="text-primary group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+                        </Link>
+                        {featuredServices.map((s) => (
+                          <Link
+                            key={s.slug}
+                            href={`/services/${s.slug}`}
+                            className="p-2.5 rounded-lg hover:bg-warm transition-colors"
+                          >
+                            <div className="text-sm font-semibold text-primary-dark">{s.title}</div>
+                            <div className="text-xs text-text-light line-clamp-1">{s.summary}</div>
+                          </Link>
+                        ))}
                       </div>
-                    </Link>
-                  ))}
-                </div>
-              </DropdownNav>
-
-              <NavLink href="/aides-financieres">Aides & financement</NavLink>
-              <NavLink href="/comment-ca-marche">Notre méthode</NavLink>
-              <NavLink href="/blog">Blog</NavLink>
-              <NavLink href="/agence">Agences</NavLink>
-              <NavLink href="/contact">Contact</NavLink>
+                    </DropdownNav>
+                  );
+                }
+                if ("kind" in item && item.kind === "publics") {
+                  return (
+                    <DropdownNav key={item.label} label={item.label}>
+                      <div className="p-2 w-[280px]">
+                        {personas.map((p) => (
+                          <Link
+                            key={p.id}
+                            href={p.href}
+                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-warm transition-colors"
+                          >
+                            <span className="text-2xl shrink-0" aria-hidden="true">{p.icon}</span>
+                            <div>
+                              <div className="text-sm font-semibold text-primary-dark">{p.label}</div>
+                              <div className="text-xs text-text-light line-clamp-1">{p.description}</div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </DropdownNav>
+                  );
+                }
+                if ("children" in item) {
+                  return (
+                    <DropdownNav key={item.label} label={item.label}>
+                      <div className="p-2 w-[240px]">
+                        {item.children.map((c) => (
+                          <Link
+                            key={c.href}
+                            href={c.href}
+                            className="block p-2.5 rounded-lg text-sm font-semibold text-primary-dark hover:bg-warm transition-colors"
+                          >
+                            {c.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </DropdownNav>
+                  );
+                }
+                return (
+                  <NavLink key={item.label} href={item.href}>
+                    {item.label}
+                  </NavLink>
+                );
+              })}
             </nav>
 
             {/* CTA + hamburger */}
@@ -216,77 +239,90 @@ export default function Header() {
               Accueil
             </MobileLink>
 
-            {/* Services accordion */}
-            <MobileAccordion
-              label="Services"
-              isOpen={mobileSection === "services"}
-              onToggle={() => setMobileSection(mobileSection === "services" ? null : "services")}
-            >
-              <Link
-                href="/services"
-                onClick={() => setMobileOpen(false)}
-                className="block pl-8 pr-4 py-2.5 text-sm font-semibold text-primary hover:bg-warm rounded-lg"
-              >
-                Tous les services →
-              </Link>
-              {featuredServices.map((s) => (
-                <Link
-                  key={s.slug}
-                  href={`/services/${s.slug}`}
-                  onClick={() => setMobileOpen(false)}
-                  className="block pl-8 pr-4 py-2.5 text-sm text-text-light hover:text-primary hover:bg-warm rounded-lg"
-                >
-                  {s.title}
-                </Link>
-              ))}
-            </MobileAccordion>
+            {mainNav.map((item) => {
+              const close = () => setMobileOpen(false);
+              if ("kind" in item && item.kind === "services") {
+                return (
+                  <MobileAccordion
+                    key={item.label}
+                    label={item.label}
+                    isOpen={mobileSection === item.label}
+                    onToggle={() => setMobileSection(mobileSection === item.label ? null : item.label)}
+                  >
+                    <Link
+                      href="/services"
+                      onClick={close}
+                      className="block pl-8 pr-4 py-2.5 text-sm font-semibold text-primary hover:bg-warm rounded-lg"
+                    >
+                      Tous les services →
+                    </Link>
+                    {featuredServices.map((s) => (
+                      <Link
+                        key={s.slug}
+                        href={`/services/${s.slug}`}
+                        onClick={close}
+                        className="block pl-8 pr-4 py-2.5 text-sm text-text-light hover:text-primary hover:bg-warm rounded-lg"
+                      >
+                        {s.title}
+                      </Link>
+                    ))}
+                  </MobileAccordion>
+                );
+              }
+              if ("kind" in item && item.kind === "publics") {
+                return (
+                  <MobileAccordion
+                    key={item.label}
+                    label={item.label}
+                    isOpen={mobileSection === item.label}
+                    onToggle={() => setMobileSection(mobileSection === item.label ? null : item.label)}
+                  >
+                    {personas.map((p) => (
+                      <Link
+                        key={p.id}
+                        href={p.href}
+                        onClick={close}
+                        className="flex items-center gap-2 pl-8 pr-4 py-2.5 text-sm text-text-light hover:text-primary hover:bg-warm rounded-lg"
+                      >
+                        <span aria-hidden="true">{p.icon}</span> {p.label}
+                      </Link>
+                    ))}
+                  </MobileAccordion>
+                );
+              }
+              if ("children" in item) {
+                return (
+                  <MobileAccordion
+                    key={item.label}
+                    label={item.label}
+                    isOpen={mobileSection === item.label}
+                    onToggle={() => setMobileSection(mobileSection === item.label ? null : item.label)}
+                  >
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        onClick={close}
+                        className="block pl-8 pr-4 py-2.5 text-sm text-text-light hover:text-primary hover:bg-warm rounded-lg"
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </MobileAccordion>
+                );
+              }
+              return (
+                <MobileLink key={item.label} href={item.href} onClick={close}>
+                  {item.label}
+                </MobileLink>
+              );
+            })}
 
-            <MobileAccordion
-              label="Nos publics"
-              isOpen={mobileSection === "publics"}
-              onToggle={() => setMobileSection(mobileSection === "publics" ? null : "publics")}
-            >
-              {personas.map((p) => (
-                <Link
-                  key={p.id}
-                  href={p.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-2 pl-8 pr-4 py-2.5 text-sm text-text-light hover:text-primary hover:bg-warm rounded-lg"
-                >
-                  <span aria-hidden="true">{p.icon}</span> {p.label}
-                </Link>
-              ))}
-            </MobileAccordion>
-
-            <MobileLink href="/aides-financieres" onClick={() => setMobileOpen(false)}>
-              Aides & financement
-            </MobileLink>
-            <MobileLink href="/comment-ca-marche" onClick={() => setMobileOpen(false)}>
-              Notre méthode
-            </MobileLink>
-            <MobileLink href="/qui-sommes-nous" onClick={() => setMobileOpen(false)}>
-              Qui sommes-nous
-            </MobileLink>
-            <MobileLink href="/blog" onClick={() => setMobileOpen(false)}>
-              Blog
-            </MobileLink>
-            <MobileLink href="/guides" onClick={() => setMobileOpen(false)}>
-              Guides gratuits
-            </MobileLink>
-            <MobileLink href="/agence" onClick={() => setMobileOpen(false)}>
-              Nos agences
-            </MobileLink>
-            <MobileLink href="/temoignages" onClick={() => setMobileOpen(false)}>
-              Témoignages
-            </MobileLink>
-            <MobileLink href="/faq" onClick={() => setMobileOpen(false)}>
-              FAQ
-            </MobileLink>
             <MobileLink href="/recrutement" onClick={() => setMobileOpen(false)}>
               Recrutement
             </MobileLink>
-            <MobileLink href="/contact" onClick={() => setMobileOpen(false)}>
-              Contact
+            <MobileLink href="/espace-client" onClick={() => setMobileOpen(false)}>
+              Espace client
             </MobileLink>
 
             {/* Mobile CTA */}
@@ -347,6 +383,7 @@ function DropdownNav({
     <div className="relative group">
       <button
         type="button"
+        aria-haspopup="true"
         className="px-3 py-2 text-text-light group-hover:text-primary font-medium transition-colors text-sm flex items-center gap-1 h-16 lg:h-20 rounded-lg group-hover:bg-warm"
       >
         {label}

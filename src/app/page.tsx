@@ -9,13 +9,10 @@ import PersonaSelector from "@/components/sections/PersonaSelector";
 import EmpathyBlock from "@/components/sections/EmpathyBlock";
 import ProcessTimeline from "@/components/sections/ProcessTimeline";
 import ServicesShowcase from "@/components/sections/ServicesShowcase";
-import ServiceFinder from "@/components/sections/ServiceFinder";
 import WhyDifferent from "@/components/sections/WhyDifferent";
-import MissionStory from "@/components/sections/MissionStory";
 import AidesSimulator from "@/components/sections/AidesSimulator";
 import TestimonialsWall from "@/components/sections/TestimonialsWall";
 import LocalPresence from "@/components/sections/LocalPresence";
-import AidantsCapture from "@/components/sections/AidantsCapture";
 import FAQQuick from "@/components/sections/FAQQuick";
 import FinalCTA from "@/components/sections/FinalCTA";
 
@@ -51,30 +48,23 @@ export default function Home() {
 
       {/* 5. Nos services */}
       <Reveal><ServicesShowcase /></Reveal>
-      <Reveal><ServiceFinder /></Reveal>
 
       {/* 6. Pourquoi nous — différenciation */}
       <WhyDifferent />
 
-      {/* 7. Notre histoire */}
-      <Reveal><MissionStory /></Reveal>
-
-      {/* 8. Combien ça coûte — transparence */}
+      {/* 7. Combien ça coûte — transparence */}
       <Reveal><AidesSimulator /></Reveal>
 
-      {/* 9. Preuve sociale */}
+      {/* 8. Preuve sociale */}
       <Reveal><TestimonialsWall /></Reveal>
 
-      {/* 10. Présence locale IDF */}
+      {/* 9. Présence locale IDF */}
       <LocalPresence />
 
-      {/* 11. Ressources aidants */}
-      <Reveal><AidantsCapture /></Reveal>
-
-      {/* 12. FAQ */}
+      {/* 10. FAQ */}
       <Reveal><FAQQuick /></Reveal>
 
-      {/* 13. Dernier appel à l'action */}
+      {/* 11. Dernier appel à l'action */}
       <FinalCTA />
     </>
   );

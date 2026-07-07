@@ -320,7 +320,7 @@ export default function AidantsFamiliauxPage() {
                 <p className="text-sm text-text-light leading-relaxed mb-6 flex-1">
                   {r.description}
                 </p>
-                <Button href="/contact" variant="secondary" size="md" fullWidth>
+                <Button href="/guides" variant="secondary" size="md" fullWidth>
                   Télécharger gratuitement
                 </Button>
               </article>

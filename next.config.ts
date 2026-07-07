@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
         destination: "/services/alzheimer-parkinson",
         permanent: true,
       },
+      // Page newsletter supprimée → renvoi vers les guides (meilleur point de capture)
+      {
+        source: "/newsletter",
+        destination: "/guides",
+        permanent: true,
+      },
     ];
   },
 };

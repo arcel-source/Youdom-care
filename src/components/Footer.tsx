@@ -38,9 +38,9 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-          {/* Colonne 1 : marque + description + agréments */}
-          <div className="lg:col-span-4">
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+          {/* Colonne 1 : marque + agréments */}
+          <div className="col-span-2 lg:col-span-4">
             <Link href="/" className="inline-flex items-center gap-2.5 mb-5">
               <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center"
@@ -62,7 +62,7 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="text-white/70 text-sm leading-relaxed mb-6">
+            <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-xs">
               {siteConfig.tagline} Une équipe d&apos;auxiliaires de vie en CDI, formées,
               fidèles à votre famille. {siteConfig.zone}.
             </p>
@@ -71,24 +71,22 @@ export default function Footer() {
               {agrements.slice(0, 4).map((a) => (
                 <div key={a.short} className="flex items-start gap-2 text-white/70">
                   <span className="text-success shrink-0 mt-0.5" aria-hidden="true">✓</span>
-                  <div>
-                    <span className="font-semibold text-white">{a.label}</span>
-                  </div>
+                  <span className="font-semibold text-white">{a.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Colonne 2 : services */}
-          <div className="lg:col-span-3">
-            <h3 className="font-bold text-base mb-5 text-white">Nos services</h3>
+          {/* Colonne 2 : Services */}
+          <div className="lg:col-span-2">
+            <h3 className="font-bold text-base mb-5 text-white">Services</h3>
             <ul className="space-y-2.5">
               <li>
                 <Link
                   href="/services"
                   className="text-secondary hover:text-secondary-light text-sm font-semibold transition-colors"
                 >
-                  Voir tous les services →
+                  Tous les services →
                 </Link>
               </li>
               {featuredServices.map((s) => (
@@ -104,61 +102,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Colonne 3 : ressources */}
+          {/* Colonne 3 : À propos */}
           <div className="lg:col-span-2">
-            <h3 className="font-bold text-base mb-5 text-white">Ressources</h3>
+            <h3 className="font-bold text-base mb-5 text-white">À propos</h3>
             <ul className="space-y-2.5">
-              <li>
-                <Link href="/blog" className="text-white/70 hover:text-secondary text-sm transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/guides" className="text-white/70 hover:text-secondary text-sm transition-colors">
-                  Guides gratuits
-                </Link>
-              </li>
-              <li>
-                <Link href="/aides-financieres" className="text-white/70 hover:text-secondary text-sm transition-colors">
-                  Aides financières
-                </Link>
-              </li>
-              <li>
-                <Link href="/comment-ca-marche" className="text-white/70 hover:text-secondary text-sm transition-colors">
-                  Notre méthode
-                </Link>
-              </li>
-              <li>
-                <Link href="/qui-sommes-nous" className="text-white/70 hover:text-secondary text-sm transition-colors">
-                  Qui sommes-nous
-                </Link>
-              </li>
-              <li>
-                <Link href="/temoignages" className="text-white/70 hover:text-secondary text-sm transition-colors">
-                  Témoignages
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="text-white/70 hover:text-secondary text-sm transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/agence" className="text-white/70 hover:text-secondary text-sm transition-colors">
-                  Nos agences
-                </Link>
-              </li>
-              <li>
-                <Link href="/recrutement" className="text-white/70 hover:text-secondary text-sm transition-colors">
-                  Recrutement
-                </Link>
-              </li>
+              <li><Link href="/qui-sommes-nous" className="text-white/70 hover:text-secondary text-sm transition-colors">Qui sommes-nous</Link></li>
+              <li><Link href="/comment-ca-marche" className="text-white/70 hover:text-secondary text-sm transition-colors">Notre méthode</Link></li>
+              <li><Link href="/agence" className="text-white/70 hover:text-secondary text-sm transition-colors">Nos agences</Link></li>
+              <li><Link href="/temoignages" className="text-white/70 hover:text-secondary text-sm transition-colors">Témoignages</Link></li>
+              <li><Link href="/recrutement" className="text-white/70 hover:text-secondary text-sm transition-colors">Recrutement</Link></li>
+              <li><Link href="/espace-client" className="text-white/70 hover:text-secondary text-sm transition-colors">Espace client</Link></li>
             </ul>
           </div>
 
-          {/* Colonne 4 : publics */}
-          <div className="lg:col-span-3">
-            <h3 className="font-bold text-base mb-5 text-white">Nos publics</h3>
+          {/* Colonne 4 : Ressources */}
+          <div className="lg:col-span-2">
+            <h3 className="font-bold text-base mb-5 text-white">Ressources</h3>
+            <ul className="space-y-2.5">
+              <li><Link href="/aides-financieres" className="text-white/70 hover:text-secondary text-sm transition-colors">Aides &amp; financement</Link></li>
+              <li><Link href="/blog" className="text-white/70 hover:text-secondary text-sm transition-colors">Blog</Link></li>
+              <li><Link href="/guides" className="text-white/70 hover:text-secondary text-sm transition-colors">Guides gratuits</Link></li>
+              <li><Link href="/faq" className="text-white/70 hover:text-secondary text-sm transition-colors">Questions fréquentes</Link></li>
+            </ul>
+
+            <h3 className="font-bold text-base mt-8 mb-4 text-white">Nos publics</h3>
             <ul className="space-y-2.5">
               {personas.map((p) => (
                 <li key={p.id}>
@@ -166,13 +133,16 @@ export default function Footer() {
                     href={p.href}
                     className="flex items-center gap-2 text-white/70 hover:text-secondary text-sm transition-colors"
                   >
-                    <span aria-hidden="true">{p.icon}</span> {p.label}
+                    <span aria-hidden="true">{p.icon}</span> {p.shortLabel}
                   </Link>
                 </li>
               ))}
             </ul>
+          </div>
 
-            <h3 className="font-bold text-base mt-8 mb-4 text-white">Nous contacter</h3>
+          {/* Colonne 5 : contact */}
+          <div className="col-span-2 lg:col-span-2">
+            <h3 className="font-bold text-base mb-5 text-white">Nous contacter</h3>
             <ul className="space-y-2 text-sm text-white/70">
               <li className="flex items-start gap-2">
                 <span aria-hidden="true">📍</span>
